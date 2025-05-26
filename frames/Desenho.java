@@ -158,20 +158,20 @@ public class Desenho extends JLabel{
 	 * @param filename Nome do modelo.
 	 */
 	public void open(String filename, UsuarioCadastro userInfo) throws Exception{
-		//this.graph = graph.open(filename);
+		this.graph = graph.open(filename);
 		
 		try{		
-			/*FileInputStream fos = new FileInputStream(filename);
+			FileInputStream fos = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(fos);
 
-			graph = (Graph)in.readObject();*/
+			graph = (Graph)in.readObject();
 
 			//pular a primeira linha
 			//ler a linha comment
 			//ler nós até que a próxima linha contenha ->
 			//ler arestas até encontrar }
 
-        String path = "graph.gv";
+       /* String path = "graph.gv";
 
         // Armazenamento
         int tExec = -1, seed = -1;
@@ -294,7 +294,7 @@ public class Desenho extends JLabel{
         System.out.println("\nArestas:");
         for (int[] par : arestas) {
             System.out.println(par[0] + " -> " + par[1]);
-        }
+        }*/
     }
 	catch (Exception e){	
 			e.printStackTrace();
