@@ -221,21 +221,47 @@ public class Desenho extends JLabel{
 					String[] partes = comment.trim().split("\\s+"); // divide por espaços múltiplos
 					int tipo = -1;
 					if (partes.length==1) {tipo = Integer.parseInt(partes[0]);}
+					String distChegada = "";
+					String distServico = "";
+					String mediaChegada = "";
+					String mediaServico = "";
 					// Se você souber quantos valores esperar, pode armazenar em variáveis:
 					if (partes.length >= 5) {
 						tipo = Integer.parseInt(partes[0]);
-						int distChegada = Integer.parseInt(partes[1]);
-						int distServico = Integer.parseInt(partes[2]);
-						int mediaChegada = Integer.parseInt(partes[3]);
-						int mediaServico = Integer.parseInt(partes[4]);
-
-						//como colocar esses valores no Node?
+						distChegada = partes[1];
+						distServico = partes[2];
+						mediaChegada = partes[3];
+						mediaServico = partes[4];
 					}
-					if(tipo==1||tipo==3)this.graph.addNode(new Node(0,0,null,tipo,nodeId,""));
-					this.graph.addNode(new Node());//o que é int chega em Node?
+					if(tipo==1||tipo==3){this.graph.addNode(new Node(0,0,null,tipo,nodeId,""));}
+					else 
+					{
+						Node node = new Node(0,0,null,tipo,nodeId,"");
+						switch(distServico)
+						{	case "0":
+								node.setDistribuicaoServico("normal");
+							case "1":
+								node.setDistribuicaoServico("expntl");
+							case "2":
+								node.setDistribuicaoServico("uniform");
+							default:
+								node.setDistribuicaoServico("expntl");}
+						switch(distChegada)
+						{	case "0":
+								node.setDistribuicaoChegada("normal");
+							case "1":
+								node.setDistribuicaoChegada("expntl");
+							case "2":
+								node.setDistribuicaoChegada("uniform");
+							default:
+								node.setDistribuicaoChegada("expntl");}
+						node.setMediaFonte(mediaChegada);
+						node.setMedia(mediaServico);
+						this.graph.addNode(node);//o que é int chega em Node? numero de dos que saem desse no, isso sera descoberto a seguir
+					}
 
 					//nodes.put(nodeId, comment);
-					this.graph.addNode(new Node(0,0,null,));
+					this.graph.addNode(new Node(0,0,null,2,nodeId,0,""));
 				}
 
 
@@ -245,7 +271,10 @@ public class Desenho extends JLabel{
                     if (matcher.find()) {
                         int origem = Integer.parseInt(matcher.group(1));
                         int destino = Integer.parseInt(matcher.group(2));
-                        arestas.add(new int[]{origem, destino});
+                        //arestas.add(new int[]{origem, destino});
+						this.graph.getNode(origem).setChega(this.graph.getNode(origem).getChega()+1);
+						this.graph.getNode(origem).getArcs().addElement(new Arc(this.graph.getNode(origem), 
+						this.graph.getNode(destino),destino,this.graph.getNode(destino).getTipoNo(),""));
                     }
                 }
             }
