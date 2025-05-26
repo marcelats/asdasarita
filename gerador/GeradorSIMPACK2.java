@@ -20,8 +20,8 @@ import javax.swing.JOptionPane;
 
 
 /**
- *  Classe que gera código na extensão funcional SMPL (MacDougall).
- *  @author André Felipe Rodrigues
+ *  Classe que gera c   digo na extens   o funcional SMPL (MacDougall).
+ *  @author Andr    Felipe Rodrigues
  *  @version 1.0
  */
 
@@ -38,17 +38,17 @@ public class GeradorSIMPACK2 extends Gerador {
 	private int numClientes;
 	private String antigoMaxClientes;
 	/**
-	 * Variável utilizada para armazenar as informações que serão gravadas no arquivo de  
-	 * saída.
+	 * Vari   vel utilizada para armazenar as informa      es que ser   o gravadas no arquivo de  
+	 * sa   da.
 	 */
 	private StringBuffer buffer = new StringBuffer(120);	
 	
 	
 	/**
-	 * Para impressão do relatório de estatísticas
+	 * Para impress   o do relat   rio de estat   sticas
 	 */
 		
-	/* Definição de constantes */	
+	/* Defini      o de constantes */	
 	private static final int tempoExecDefault = 20000;
 	private static final String pontoVirgula = ";";
 	
@@ -58,7 +58,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	/**
 	 * Construtor da Classe.
-	 * @param graph Recebe o modelo que irá gerar o programa de simulação.
+	 * @param graph Recebe o modelo que ir    gerar o programa de simula      o.
 	 */
 	public GeradorSIMPACK2(Graph graph) {
   	
@@ -71,7 +71,7 @@ public class GeradorSIMPACK2 extends Gerador {
 		int contFonte = 0;
 		
 		
-		for (int i = 0; i < graph.getSize(); i++){ // conta o número de fontes do grafo
+		for (int i = 0; i < graph.getSize(); i++){ // conta o n   mero de fontes do grafo
 			if (graph.getNode(i).isPrimRec()){
 				contFonte++;																		
 			}
@@ -81,12 +81,12 @@ public class GeradorSIMPACK2 extends Gerador {
 		numInitRel = contFonte+2;		
 		
 		
-		c = new Controler(graph, numInitReq, numInitRel); // gera números de case apropriados para request e release de cada centro de serviço
+		c = new Controler(graph, numInitReq, numInitRel); // gera n   meros de case apropriados para request e release de cada centro de servi   o
 	}
 
 	
 	/**
-	 * Cria o arquivo que irá conter o programa de simulação.
+	 * Cria o arquivo que ir    conter o programa de simula      o.
 	 */
 	public void criaArquivo(){
 		
@@ -151,7 +151,7 @@ public class GeradorSIMPACK2 extends Gerador {
 				JOptionPane.showMessageDialog(
 						null,
 						"ASDA - ERRO",
-						"Não foi possível criar arquivo Makefile.aimk",
+						"N   o foi poss   vel criar arquivo Makefile.aimk",
 						JOptionPane.ERROR_MESSAGE);
 				e.printStackTrace();
 			}
@@ -162,8 +162,8 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * Quando tempo de warm-up é definido como automático, ele é setado como 5%
-	 * do tempo total de simulação
+	 * Quando tempo de warm-up     definido como autom   tico, ele     setado como 5%
+	 * do tempo total de simula      o
 	 * @return
 	 */
 	private double generateWarmUpTime()
@@ -180,8 +180,8 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * Grava o valor da variável buffer no arquivo.
-	 * @param buffer Variável que contém as informações a serem gravadas no arquivo.
+	 * Grava o valor da vari   vel buffer no arquivo.
+	 * @param buffer Vari   vel que cont   m as informa      es a serem gravadas no arquivo.
 	 */
 	private void gravaArquivo(StringBuffer buffer) {
 				
@@ -202,21 +202,21 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 
 	/**
-	 * Gera o comando para limitar a execução da simulação:
+	 * Gera o comando para limitar a execu      o da simula      o:
 	 * - por tempo;
-	 * - por número de clientes que deixam o sistema ou
-	 * - pelo número de ciclos do cliente no sisema.
+	 * - por n   mero de clientes que deixam o sistema ou
+	 * - pelo n   mero de ciclos do cliente no sisema.
 	 */
 	private void defineTempoMax(){
-		// definição do tempo máximo da simulação
+		// defini      o do tempo m   ximo da simula      o
 		buffer.delete(0,119);
 		buffer.append(" float Te = ");
 		if (graph.getTempoExecucao().equals("0")){
 			JOptionPane.showMessageDialog(
 					null,
-					"Tempo de simulação definido automaticamente\n" +
-					"Tempo padrão = " + tempoExecDefault,
-					"Tempo de execução não especificado",
+					"Tempo de simula      o definido automaticamente\n" +
+					"Tempo padr   o = " + tempoExecDefault,
+					"Tempo de execu      o n   o especificado",
 					JOptionPane.INFORMATION_MESSAGE);
 			graph.setTempoExecucao(String.valueOf(tempoExecDefault));
 		}
@@ -232,7 +232,7 @@ public class GeradorSIMPACK2 extends Gerador {
 		
 		stopByUsers = valueOfStopByUsers(); // temos agora stopByUsers e numClientes;
 		if (numClientes > 1) // se mais de um cliente, coloca numero maximo de clientes como numClientes
-			                 // mesmo se o usuário tinha definido um número para o número máximo de clientes
+			                 // mesmo se o usu   rio tinha definido um n   mero para o n   mero m   ximo de clientes
 							// nesse caso, ele teria sido inconsistente em sua modelagem
 		{
 			antigoMaxClientes = graph.getNumeroMaximoEntidades();		
@@ -267,11 +267,11 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Gera o comando para determinar qual a seqüência a ser utilizada na geração do 
-	 * número aleatório. Quando o comando smpl é executado a seqüência é setada para 1 
-	 * e incrementada a medida em que é utilizada.
+	 * Gera o comando para determinar qual a seq      ncia a ser utilizada na gera      o do 
+	 * n   mero aleat   rio. Quando o comando smpl     executado a seq      ncia     setada para 1 
+	 * e incrementada a medida em que     utilizada.
 	 * @param sequencia Um valor <code>Integer</code> compreendido no intervalo 1..15.
-	 * @param espaco Para formatação do arquivo de saída.
+	 * @param espaco Para formata      o do arquivo de sa   da.
 	 */
 	private void geraStream(int indice, String espaco,boolean fonte){
 		
@@ -316,7 +316,7 @@ public class GeradorSIMPACK2 extends Gerador {
 
 	
 	/**
-	 * Gera as variáveis para os tempos médios entre chegadas e serviço.
+	 * Gera as vari   veis para os tempos m   dios entre chegadas e servi   o.
 	 *
 	 */
 	private void defineVarTempos(){
@@ -332,9 +332,9 @@ public class GeradorSIMPACK2 extends Gerador {
 		
 
 		
-		// define tempo de chegada de centros de serviços que são primeiro recurso
+		// define tempo de chegada de centros de servi   os que s   o primeiro recurso
 		for (int i = 0; i < graph.getSize(); i++)
-		{   // Centro de serviço de chegada			
+		{   // Centro de servi   o de chegada			
 			if ((graph.getNode(i).getTipoNo() == 2) && (graph.getNode(i).isPrimRec())){
 				buffer.append(nomeA);
 				buffer.append(String.valueOf(graph.getNode(i).getIdNo()));
@@ -344,7 +344,7 @@ public class GeradorSIMPACK2 extends Gerador {
 		}				
 			
 		for (int i = 0; i< graph.getSize(); i++)
-		{	// Define a taxa de serviço de todos centros de serviços
+		{	// Define a taxa de servi   o de todos centros de servi   os
 			if (graph.getNode(i).getTipoNo() == 2){
 				buffer.append(", ");
 				buffer.append(nomeB);
@@ -362,7 +362,7 @@ public class GeradorSIMPACK2 extends Gerador {
 
 	
 	/**
-	 * Gera as variáveis para as definições dos recursos que compoem o modelo a ser 
+	 * Gera as vari   veis para as defini      es dos recursos que compoem o modelo a ser 
 	 * implementado.
 	 *
 	 */
@@ -381,7 +381,7 @@ public class GeradorSIMPACK2 extends Gerador {
 		// retira ultima virgula
 		int temp = buffer.lastIndexOf(", ");
 		buffer.delete(temp, buffer.length());
-		// adiciona o ponto e vírgula
+		// adiciona o ponto e v   rgula
 		buffer.append(";");
 		gravaArquivo(buffer);
 			        
@@ -389,8 +389,8 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/*
-	 * Método de auxílio para não redefinir a mesma linha no código usado
-	 * para os dois tipos de estatísticas
+	 * M   todo de aux   lio para n   o redefinir a mesma linha no c   digo usado
+	 * para os dois tipos de estat   sticas
 	 */
 	private void defineLinhaTotClientes()
 	{
@@ -406,8 +406,8 @@ public class GeradorSIMPACK2 extends Gerador {
 
 
 	/**
-	 * Define as variáveis que serão utilizadas para os cálculos estatísticos:
-	 * tamanho máximo e mínimo da fila associada ao recurso especificado.
+	 * Define as vari   veis que ser   o utilizadas para os c   lculos estat   sticos:
+	 * tamanho m   ximo e m   nimo da fila associada ao recurso especificado.
 	 *
 	 */
 	private void defineEstatMaxMin(){
@@ -425,14 +425,14 @@ public class GeradorSIMPACK2 extends Gerador {
 				cont++;
 		}
 		
-		if (cont != 0) // só gera se o grafo define estatísticas
+		if (cont != 0) // s    gera se o grafo define estat   sticas
 		{
 			buffer.append(" unsigned int ");
 			
 			for (i = 0; i < graph.getSize(); i++)
 			{
 				Node temp = graph.getNode(i);
-				if (  (temp.getTipoNo() == 2) && (temp.getComprimentoMaxMin()) ) // o nó mede estatística fila vazia
+				if (  (temp.getTipoNo() == 2) && (temp.getComprimentoMaxMin()) ) // o n    mede estat   stica fila vazia
 				{
 					buffer.append(nomeMax);
 					buffer.append(temp.getIdNo());
@@ -442,7 +442,7 @@ public class GeradorSIMPACK2 extends Gerador {
 					buffer.append(temp.getIdNo());
 					buffer.append(" = 1000");
 					cont--;
-					if (cont == 0) // não tem mais variáveis para adicionar, finaliza com ;
+					if (cont == 0) // n   o tem mais vari   veis para adicionar, finaliza com ;
 						buffer.append(";");
 					else
 						buffer.append(",");							
@@ -455,7 +455,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Define as variáveis que serão utilizadas para os cálculos estatísticos: porcentagem
+	 * Define as vari   veis que ser   o utilizadas para os c   lculos estat   sticos: porcentagem
 	 * de vezes em que o cliente encontra a fila vazia, associada ao recurso especificado.
 	 */
 	private void defineEstatFilaVazia(){
@@ -473,14 +473,14 @@ public class GeradorSIMPACK2 extends Gerador {
 				cont++;
 		}
 		
-		if (cont != 0) // só gera se o grafo define estatísticas
+		if (cont != 0) // s    gera se o grafo define estat   sticas
 		{
 			buffer.append(" unsigned int ");
 			
 			for (i = 0; i < graph.getSize(); i++)
 			{
 				Node temp = graph.getNode(i);
-				if (  (temp.getTipoNo() == 2) && (temp.getEstatisticaFilaVazia()) ) // o nó mede estatística fila vazia
+				if (  (temp.getTipoNo() == 2) && (temp.getEstatisticaFilaVazia()) ) // o n    mede estat   stica fila vazia
 				{
 					buffer.append(nomeTotal);
 					buffer.append(temp.getIdNo());
@@ -490,7 +490,7 @@ public class GeradorSIMPACK2 extends Gerador {
 					buffer.append(temp.getIdNo());
 					buffer.append(" = 0");
 					cont--;
-					if (cont == 0) // não tem mais variáveis para adicionar, finaliza com ;
+					if (cont == 0) // n   o tem mais vari   veis para adicionar, finaliza com ;
 						buffer.append(";");
 					else
 						buffer.append(",");							
@@ -504,7 +504,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Define as variáveis necessárias para utilizar o método de análise Batch Means.
+	 * Define as vari   veis necess   rias para utilizar o m   todo de an   lise Batch Means.
 	 *
 	 */
 	private void defineBMeans(){
@@ -535,8 +535,8 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * Declara e abre para escrita o arquivo de saída no código do programa de simulação.
-	 * Este arquivo de saída conterá o relatório da simulação.
+	 * Declara e abre para escrita o arquivo de sa   da no c   digo do programa de simula      o.
+	 * Este arquivo de sa   da conter    o relat   rio da simula      o.
 	 */
 	private void defineArqSaida(){
 		
@@ -544,7 +544,7 @@ public class GeradorSIMPACK2 extends Gerador {
 		buffer.append(" FILE *p, *saida;\n");
 		buffer.append(" saida = fopen(\"");
 		buffer.append(graph.getNomeModelo());
-		buffer.append(".out\",\"w\");\n"); // chegou a quase 100 caracteres já
+		buffer.append(".out\",\"w\");\n"); // chegou a quase 100 caracteres j   
 		gravaArquivo(buffer);
 		buffer.delete(0,119);
 		buffer.append(" if ((p = sendto(saida)) == NULL)\n");
@@ -555,7 +555,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Gera o comando SMPL para a inicialização do modelo de simulação.
+	 * Gera o comando SMPL para a inicializa      o do modelo de simula      o.
 	 *
 	 */
 	private void nomeParametro(){
@@ -570,7 +570,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * Gera o comando <code>facility</code> para a definição dos recursos que compoem o 
+	 * Gera o comando <code>facility</code> para a defini      o dos recursos que compoem o 
 	 * sistema.
 	 */
 	private void geraDefServer(){
@@ -597,10 +597,10 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	/**
 	 * Seta o valor de stopByUsers e ainda o retorna apropriadamente
-	 * Se o criador da simulação coloca mais de um cliente chegando no sistema na mão,
-	 * então a simulação deve ser parada pelo numero máximo de clientes, mesmo que ele não queira
-	 * porque senão a simulação geraria resultados não muito verdadeiros
-	 * seta também o número de clientes apropriado do sistema
+	 * Se o criador da simula      o coloca mais de um cliente chegando no sistema na m   o,
+	 * ent   o a simula      o deve ser parada pelo numero m   ximo de clientes, mesmo que ele n   o queira
+	 * porque sen   o a simula      o geraria resultados n   o muito verdadeiros
+	 * seta tamb   m o n   mero de clientes apropriado do sistema
 	 * @return
 	 */
 	private boolean valueOfStopByUsers()
@@ -626,8 +626,8 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Escalona o primeivo evento a ocorrer no caso de sistema com uma única entrada, ou todos
-	 * os eventos que devem ser escalonados antes do início da simulação para modelos de
+	 * Escalona o primeivo evento a ocorrer no caso de sistema com uma    nica entrada, ou todos
+	 * os eventos que devem ser escalonados antes do in   cio da simula      o para modelos de
 	 * sistemas fechados.
 	 */
 	private void geraPrimeiroEvento(){
@@ -638,7 +638,7 @@ public class GeradorSIMPACK2 extends Gerador {
 		
 		buffer.delete(0,119);
 		
-		for (int i = 0; i < graph.getSize(); i++){ // conta o número de fontes do grafo e acerta os numCase
+		for (int i = 0; i < graph.getSize(); i++){ // conta o n   mero de fontes do grafo e acerta os numCase
 			if (graph.getNode(i).isPrimRec()){
 				id = graph.getNode(i).getIdNo();
 				c.setCase(numCase,id);
@@ -676,11 +676,11 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Gera o comando de repetição, limitando a simulação por:
+	 * Gera o comando de repeti      o, limitando a simula      o por:
 	 * - tempo,
-	 * - número de clientes que passam pelo sistema,
-	 * - número de voltas no sistema 
-	 * - método de análise Batch Means.
+	 * - n   mero de clientes que passam pelo sistema,
+	 * - n   mero de voltas no sistema 
+	 * - m   todo de an   lise Batch Means.
 	 *
 	 */
 	private void geraLoop(){
@@ -809,7 +809,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	}	
 	
 	/**
-	 * Função que gera o reset para o warm-up
+	 * Fun      o que gera o reset para o warm-up
 	 *
 	 */
 	private void geraWarmUp()
@@ -855,7 +855,7 @@ public class GeradorSIMPACK2 extends Gerador {
 					totClientes = true;
 					temEst = true;
 					if (!ident)
-						buffer.append("      Tot"); // conserto de identação
+						buffer.append("      Tot"); // conserto de identa      o
 					else
 						buffer.append("Tot");
 					buffer.append(temp.getIdNo());
@@ -866,7 +866,7 @@ public class GeradorSIMPACK2 extends Gerador {
 				}
 				
 				if (temEst) //temEst serve para identificar se houve necessidade 
-				{								// de geração de código para esse cs
+				{								// de gera      o de c   digo para esse cs
 					gravaArquivo(buffer);
 					buffer.delete(0,119);
 				}
@@ -913,7 +913,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	 * @param destino 
 	 * @param numeroRecurso
 	 * @param distribuicao true o false
-	 * @author André Felipe Rodrigues
+	 * @author Andr    Felipe Rodrigues
 	 */
 	/*private void geraSchedule(int destino, int numeroRecurso, boolean distribuicao, String tipo)
 	{
@@ -935,11 +935,11 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * gera schedule adicionado para a utilização de outras probabilidades (hiperexponencial, etc)
+	 * gera schedule adicionado para a utiliza      o de outras probabilidades (hiperexponencial, etc)
 	 * @param destino primeiro parametro do schedule
 	 * @param tempo segundo parametro do schedule
-	 * @param espaco o tanto de espaço de identação que se quer dar
-	 * @author André Felipe Rodrigues
+	 * @param espaco o tanto de espa   o de identa      o que se quer dar
+	 * @author Andr    Felipe Rodrigues
 	 */
 	
 	private String geraStringSchedule(int indice, boolean chegada)
@@ -1058,10 +1058,10 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * Gera o comando <code>release</code> para a liberação do recurso.
+	 * Gera o comando <code>release</code> para a libera      o do recurso.
 	 * @param numeroRecurso Um valor <code>Integer</code> que indica o recurso corrente. 
 	 * @param numeroEvento Um valor <code>Integer</code>.
-	 * @param totalRecurso Um valor <code>Integer</code> que indica o número de recursos 
+	 * @param totalRecurso Um valor <code>Integer</code> que indica o n   mero de recursos 
 	 */
 	private void geraRelease(int numeroRecurso){		
 		buffer.delete(0,119);
@@ -1170,11 +1170,11 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Método que analisa e verifica se já houve empilhamento do centro de serviço
-	 * @param v Vetor que armazena o id de nós que já foram empilhados
-	 * @param id O valor do id do centro de serviço que está consultando
-	 * @return Retorna true se já foi empilhado, e false caso contrário
-	 * @author André Felipe Rodrigues
+	 * M   todo que analisa e verifica se j    houve empilhamento do centro de servi   o
+	 * @param v Vetor que armazena o id de n   s que j    foram empilhados
+	 * @param id O valor do id do centro de servi   o que est    consultando
+	 * @return Retorna true se j    foi empilhado, e false caso contr   rio
+	 * @author Andr    Felipe Rodrigues
 	 */
 	private boolean jahFoiEmpilhado(Vector v, int id)
 	{
@@ -1189,7 +1189,7 @@ public class GeradorSIMPACK2 extends Gerador {
 			while ( (!flag) && ( i < v.size()) ) // percorre o vetor
 			{
 				String temp = (String)v.get(i);
-				if ( Integer.parseInt(temp) == id ) // achou ocorrência do id no vetor
+				if ( Integer.parseInt(temp) == id ) // achou ocorr   ncia do id no vetor
 					flag = true;
 				else
 					i++;
@@ -1209,28 +1209,28 @@ public class GeradorSIMPACK2 extends Gerador {
 		gravaArquivo(buffer);
 	}
 	/**
-	 * Gera os eventos que constituem a simulação.
-	 * @author André Felipe Rodrigues
+	 * Gera os eventos que constituem a simula      o.
+	 * @author Andr    Felipe Rodrigues
 	 *
 	 */
 	private void geraEventos(){
 		
-		int id = 0;		// variável que armazena o id do nó que está gerando eventos
-		int indice;		// variável que armazena o indice desse nó no vetor de nós do grafo - corretivo
+		int id = 0;		// vari   vel que armazena o id do n    que est    gerando eventos
+		int indice;		// vari   vel que armazena o indice desse n    no vetor de n   s do grafo - corretivo
 		int numCase;
 		
-		QueueL stack = new QueueL(); 		// pilha que armazena os centros de seriço que serão processados
-		Vector jahEmpilhados = new Vector(0); // armazena os id de centros de serviços que já foram processados
+		QueueL stack = new QueueL(); 		// pilha que armazena os centros de seri   o que ser   o processados
+		Vector jahEmpilhados = new Vector(0); // armazena os id de centros de servi   os que j    foram processados
 		
-		for (int i = 0; i < graph.getSize(); i++){ // conta o número de fontes do grafo
+		for (int i = 0; i < graph.getSize(); i++){ // conta o n   mero de fontes do grafo
 			if (graph.getNode(i).isPrimRec()){
 				id = graph.getNode(i).getIdNo();
 				indice = correctID(id);
 				numCase = c.getCase(id);
 				geraCase(numCase);
 			    geraProximaChegada(c.getRequest(id),indice,numCase);
-				if (!jahFoiEmpilhado(jahEmpilhados, id))  // verifica se o id do cs já foi empilhado antes
-				{	stack.push(String.valueOf(id)); // armazendo como Strings pq é object
+				if (!jahFoiEmpilhado(jahEmpilhados, id))  // verifica se o id do cs j    foi empilhado antes
+				{	stack.push(String.valueOf(id)); // armazendo como Strings pq     object
 					jahEmpilhados.add(String.valueOf(id));
 				}
 				geraBreak();
@@ -1238,20 +1238,20 @@ public class GeradorSIMPACK2 extends Gerador {
 		}		
 		
 		
-		// ***** laço de geração de todos eventos *******
-		while (!stack.isEmpty()) // enquanto a pilha não está vazia
+		// ***** la   o de gera      o de todos eventos *******
+		while (!stack.isEmpty()) // enquanto a pilha n   o est    vazia
 		{
 			
 			id = Integer.parseInt((String)stack.pop()); // desempilha
 			
 			indice = correctID(id);	 
 			
-			// gerando comentário do centro de serviço
-			geraComentario(" centro de serviço = " 
+			// gerando coment   rio do centro de servi   o
+			geraComentario(" centro de servi   o = " 
 					+ graph.getNode(indice).getNomeCentroServico(),"        ");
 			
 			// ****** gerando request  ****
-			geraCase(c.getRequest(id)); // gerando request do nó com identificação id			
+			geraCase(c.getRequest(id)); // gerando request do n    com identifica      o id			
 			
 	//		geraCodeEstatisticas(indice);
 	//		geraStream(indice,"          ", false);
@@ -1265,22 +1265,22 @@ public class GeradorSIMPACK2 extends Gerador {
 				geraSchedule(c.getRelease(id),"TBatch","             ");
 				geraChaves("          ", false);
 			}
-			else // para gerar estatísticas Batch */
+			else // para gerar estat   sticas Batch */
 				geraSchedule(c.getRelease(id),secParam,"             ");
 				
 			geraBreak();
 				
-			// **** liberação do recurso ****
+			// **** libera      o do recurso ****
 			geraCase(c.getRelease(id)); 
 			geraCurrentCustomer();
 			geraRelease(indice);
 
 			
-			// ****** verifica as conexões do grafo e gera os schedule apropriados ********
-			if (graph.getNode(indice).getSize() >= 2) // tem duas ligações - tbém tem que verificar fim do grafo
+			// ****** verifica as conex   es do grafo e gera os schedule apropriados ********
+			if (graph.getNode(indice).getSize() >= 2) // tem duas liga      es - tb   m tem que verificar fim do grafo
 			{
 				graph.getNode(indice).setProb(true);
-				if (graph.getNode(indice).isProb()) // se é por probabilidade
+				if (graph.getNode(indice).isProb()) // se     por probabilidade
 				{
 					buffer.delete(0,119);
 					buffer.append("          Aleatorio = random(1,10000);");
@@ -1291,7 +1291,7 @@ public class GeradorSIMPACK2 extends Gerador {
 					int idTemp; //,indiceProx ;
 					while (cont < graph.getNode(indice).getSize() )
 					{
-						if (graph.getNode(indice).getArc(cont).getNodeB().getTipoNo() == 2) // é centro de serviço
+						if (graph.getNode(indice).getArc(cont).getNodeB().getTipoNo() == 2) //     centro de servi   o
 						{
 							double tempNumber;
 							tempNumber = Double.parseDouble(graph.getNode(indice).getArc(cont).getProbabilidade());
@@ -1316,7 +1316,7 @@ public class GeradorSIMPACK2 extends Gerador {
 						{
 							if ( 	(graph.getNode(indice).getArc(cont).getNodeB().getTipoNo() == 3) 
 									&& (graph.getNumeroMaximoEntidades()!= null) 
-									&& (!graph.getNumeroMaximoEntidades().equals("0")) ){ // está ligado ao nó final e gera MaximoEntidades
+									&& (!graph.getNumeroMaximoEntidades().equals("0")) ){ // est    ligado ao n    final e gera MaximoEntidades
 								double tempNumber;
 								tempNumber = Double.parseDouble(graph.getNode(indice).getArc(cont).getProbabilidade());
 								tempNumber = tempNumber*100 + limiteInf - 1;
@@ -1335,9 +1335,9 @@ public class GeradorSIMPACK2 extends Gerador {
 				geraBreak();
 			
 			}
-			else // só tem uma ligação possível - verificar se não é fim do grafo
+			else // s    tem uma liga      o poss   vel - verificar se n   o     fim do grafo
 			{
-				if (graph.getNode(indice).getArc(0).getNodeB().getTipoNo() == 2) // não está ligado ao destino
+				if (graph.getNode(indice).getArc(0).getNodeB().getTipoNo() == 2) // n   o est    ligado ao destino
 				{
 					Node temp = graph.getNode(indice).getArc(0).getNodeB();
 					id = temp.getIdNo();
@@ -1351,7 +1351,7 @@ public class GeradorSIMPACK2 extends Gerador {
 						jahEmpilhados.add(String.valueOf(id));
 					}
 				}
-				else if (graph.getNode(indice).getArc(0).getNodeB().getTipoNo() == 3){ // está ligado a saída
+				else if (graph.getNode(indice).getArc(0).getNodeB().getTipoNo() == 3){ // est    ligado a sa   da
 					geraContagemMaximoEntidades(indice,"");
 					geraUpdateCompletions("           ");
 				}
@@ -1373,7 +1373,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Gera o relatório final (padrão do smpl) no programa de simulação.
+	 * Gera o relat   rio final (padr   o do smpl) no programa de simula      o.
 	 *
 	 */
 	private void geraRelatorioFinal(){
@@ -1384,7 +1384,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	}
 	
 	/**
-	 * Gera as variáveis (contadores) para o caso de número de voltas definidas para os 
+	 * Gera as vari   veis (contadores) para o caso de n   mero de voltas definidas para os 
 	 * clientes em um determinado servidor.
 	 *
 	 */
@@ -1436,7 +1436,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * Gera relatório com as estatísticas das filas dos recursos especificados pelo usuário.
+	 * Gera relat   rio com as estat   sticas das filas dos recursos especificados pelo usu   rio.
 	 *
 	 */
 	private void geraRelatEstMaxMin(){
@@ -1453,9 +1453,9 @@ public class GeradorSIMPACK2 extends Gerador {
 				if (temp.getComprimentoMaxMin()) // tem que gerar para ComprimentoMaxMin
 				{
 					buffer.delete(0,119);
-					if (!title)  // escreve título da geração de relatórios para esta estatística
+					if (!title)  // escreve t   tulo da gera      o de relat   rios para esta estat   stica
 					{
-						buffer.append("   printf(\"\\n\\nRelatório - Máximo e Mínimo das Filas \\n \"); ");
+						buffer.append("   printf(\"\\n\\nRelat   rio - M   ximo e M   nimo das Filas \\n \"); ");
 						gravaArquivo(buffer);
 						buffer.delete(0,119);
 						title = true;
@@ -1469,7 +1469,7 @@ public class GeradorSIMPACK2 extends Gerador {
 					gravaArquivo(buffer);
 					
 					buffer.delete(0,119);
-					buffer.append("   printf(\"\\n Mínimo clientes recurso "
+					buffer.append("   printf(\"\\n M   nimo clientes recurso "
 							+ temp.getNomeCentroServico() 
 							+ " : %i \", Min"
 							+ temp.getIdNo()
@@ -1484,7 +1484,7 @@ public class GeradorSIMPACK2 extends Gerador {
 		
 
 	/**
-	 * Gera relatório com as estatísticas das filas dos recursos especificados pelo usuário: 
+	 * Gera relat   rio com as estat   sticas das filas dos recursos especificados pelo usu   rio: 
 	 * porcentagem de vezes na qual o clienet encontra a fila vazia.
 	 */
 	private void geraRelatFilaVazia(){
@@ -1501,9 +1501,9 @@ public class GeradorSIMPACK2 extends Gerador {
 				if (temp.getEstatisticaFilaVazia()) // tem que gerar para ComprimentoMaxMin
 				{
 					buffer.delete(0,119);
-					if (!title)  // escreve título da geração de relatórios para esta estatística
+					if (!title)  // escreve t   tulo da gera      o de relat   rios para esta estat   stica
 					{
-						buffer.append("   printf(\"\\n\\nRelatório - Total de Vezes - Fila Vazia \\n \"); ");
+						buffer.append("   printf(\"\\n\\nRelat   rio - Total de Vezes - Fila Vazia \\n \"); ");
 						gravaArquivo(buffer);
 						buffer.delete(0,119);
 						title = true;
@@ -1534,7 +1534,7 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	
 	/**
-	 * Através dos comandos do arquivo GABARITO.DAT determina a próxima primitiva a 
+	 * Atrav   s dos comandos do arquivo GABARITO.DAT determina a pr   xima primitiva a 
 	 * ser executada.
 	 *
 	 */
@@ -1545,7 +1545,7 @@ public class GeradorSIMPACK2 extends Gerador {
 			BufferedReader sai = new BufferedReader(arq);		
 			String linha = new String();
 			while ((linha = sai.readLine()) != null){
-				if (linha.indexOf("%") != 0){ // se não começa com %, então copia toda a linha	
+				if (linha.indexOf("%") != 0){ // se n   o come   a com %, ent   o copia toda a linha	
 					buffer.delete(0,119);
 					buffer.append(linha);
 					gravaArquivo(buffer);
@@ -1557,7 +1557,7 @@ public class GeradorSIMPACK2 extends Gerador {
 					{
 						case '0': defineTempoMax(); 
 								  break;
-						case '1': //definições
+						case '1': //defini      es
 								  defineVarTempos(); 
 				//				  defineVarWarmUp(); sem warm-up por enquanto
 								  defineVarServer();
@@ -1569,33 +1569,33 @@ public class GeradorSIMPACK2 extends Gerador {
 								  break;
 						case '2': nomeParametro();
 								break;
-								//definição dos recursos do modelo
+								//defini      o dos recursos do modelo
 						case '3': geraDefServer();
 								break;
-								//escalona eventos antes do inicio da simulação
+								//escalona eventos antes do inicio da simula      o
 						case '4': geraPrimeiroEvento(); 
 								break;
-								//limitante da simulação*/
+								//limitante da simula      o*/
 						case '5': geraLoop();
 								break;
 						case '6': geraCause();
 								break;
 						case '7': geraSwitch();
 								break;
-								//eventos que constituem a simulação
+								//eventos que constituem a simula      o
 						case '8': geraEventos();
 								break;
-								//relatório padrão - colocar o if
+								//relat   rio padr   o - colocar o if
 						case '9': geraRelatorioFinal();
 								break;
-						/*		  //definições
+						/*		  //defini      es
 						case 'A': geraContadores();
 								  break;
 								  */
-								  //relatório de estatísticas
+								  //relat   rio de estat   sticas
 						case 'C': geraRelatEstMaxMin();
 								  break;
-								  //relatório de estatísticas
+								  //relat   rio de estat   sticas
 						case 'D': geraRelatFilaVazia();
 								  break;
 								
@@ -1631,11 +1631,11 @@ public class GeradorSIMPACK2 extends Gerador {
 	
 	/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& CLASSE INTERNA CONTROLER &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
 	/**
-	 * Classe interna que auxilia a geração de código
-	 * responsável por organizar o número do evento para cada nó (os cases)
-	 * Com essa classe agora é possível, sabendo-se o id do nó do grafo,
-	 * saber qual o número do evento request e release respectivos
-	 * @author André
+	 * Classe interna que auxilia a gera      o de c   digo
+	 * respons   vel por organizar o n   mero do evento para cada n    (os cases)
+	 * Com essa classe agora     poss   vel, sabendo-se o id do n    do grafo,
+	 * saber qual o n   mero do evento request e release respectivos
+	 * @author Andr   
 	 */
 	private class Controler
 	{
@@ -1652,9 +1652,9 @@ public class GeradorSIMPACK2 extends Gerador {
 		
 		/**
 		 * Construtor da classe Controler
-		 * Cria os vetores de armazenamento já com os valores corretos
-		 * para os releases e requests de cada nó.
-		 * @param g Grafo da classe gerador já consistente e existente
+		 * Cria os vetores de armazenamento j    com os valores corretos
+		 * para os releases e requests de cada n   .
+		 * @param g Grafo da classe gerador j    consistente e existente
 		 */
 		public Controler(Graph g, int num1, int num2)
 		{
@@ -1662,11 +1662,11 @@ public class GeradorSIMPACK2 extends Gerador {
 			
 			for (int i = 0; i < graph.getSize(); i++)
 			{
-				if (g.getNode(i).getTipoNo() == 2) // contagem dos nós centro de serviço
+				if (g.getNode(i).getTipoNo() == 2) // contagem dos n   s centro de servi   o
 					n++;
 			}
 			
-			nRequest = new int[n];  // alocagem de memória
+			nRequest = new int[n];  // alocagem de mem   ria
 			nRelease = new int[n];
 			id = new int[n];
 			nCase = new int[n];
@@ -1675,9 +1675,9 @@ public class GeradorSIMPACK2 extends Gerador {
 				nCase[i] = 0;
 			}
 			
-			int contador1=num1, contador2=num2; // contadores auxilires começando com 2 e 3
+			int contador1=num1, contador2=num2; // contadores auxilires come   ando com 2 e 3
 			
-			for (int i = 0, j = 0; i < g.getSize(); i++)  // atribuição dos valores request e release
+			for (int i = 0, j = 0; i < g.getSize(); i++)  // atribui      o dos valores request e release
 			{
 				if (g.getNode(i).getTipoNo() == 2)
 				{
@@ -1693,9 +1693,9 @@ public class GeradorSIMPACK2 extends Gerador {
 		
 		/**
 		 * retorna o valor do case request para o no <code> idN </code>
-		 * @param idN id do nó que se quer saber o request especificado
+		 * @param idN id do n    que se quer saber o request especificado
 		 * @return retorna o valor do request especificado para idN
-		 * retorna 0 se não encontrado (note que não será gerado nenhum case 0:
+		 * retorna 0 se n   o encontrado (note que n   o ser    gerado nenhum case 0:
 		 * portanto, o retorno de zero representa algum erro
 		 */
 		public int getRequest(int idN)
@@ -1703,7 +1703,7 @@ public class GeradorSIMPACK2 extends Gerador {
 			int retorno = 0;
 			int i = 0;
 			boolean flag = true;
-			while ( (flag) && (i < id.length)) // procura do nó pelo vetor
+			while ( (flag) && (i < id.length)) // procura do n    pelo vetor
 			{
 				if (id[i] == idN)
 				{
@@ -1717,9 +1717,9 @@ public class GeradorSIMPACK2 extends Gerador {
 		
 		/**
 		 * retorna o valor do case release para o no <code> idN </code>
-		 * @param idN id do nó que se quer saber o request especificado
+		 * @param idN id do n    que se quer saber o request especificado
 		 * @return retorna o valor do release especificado para idN
-		 * retorna 0 se não encontrado (note que não será gerado nenhum case 0:
+		 * retorna 0 se n   o encontrado (note que n   o ser    gerado nenhum case 0:
 		 * portanto, o retorno de zero representa algum erro
 		 */
 		public int getRelease(int idN)
@@ -1740,9 +1740,9 @@ public class GeradorSIMPACK2 extends Gerador {
 		}
 		
 		/**
-		 * retorna o valor do case armazenado para o nó <code> idN </code>
-		 * @param idN id do nó que estamos procurando o valor do case
-		 * @return retorna o número do case apropriado para o nó
+		 * retorna o valor do case armazenado para o n    <code> idN </code>
+		 * @param idN id do n    que estamos procurando o valor do case
+		 * @return retorna o n   mero do case apropriado para o n   
 		 */
 		public int getCase(int idN)
 		{
@@ -1762,9 +1762,9 @@ public class GeradorSIMPACK2 extends Gerador {
 		}
 		
 		/**
-		 * coloca o valor de case inicial para o nó (usado para nós fonte (source))
+		 * coloca o valor de case inicial para o n    (usado para n   s fonte (source))
 		 * @param valorCase valor do case que queremos colocar
-		 * @param idNo id do nó que deve ser colocado o valor do case inicial
+		 * @param idNo id do n    que deve ser colocado o valor do case inicial
 		 */
 		public void setCase(int valorCase, int idNo)
 		{
@@ -1772,7 +1772,7 @@ public class GeradorSIMPACK2 extends Gerador {
 			boolean flag = true;
 			while ( (flag) && (i < id.length))
 			{
-				if (id[i] == idNo) // achou o o lugar certo para a atribuição
+				if (id[i] == idNo) // achou o o lugar certo para a atribui      o
 				{
 					nCase[i] = valorCase;
 					flag = false;
@@ -1782,8 +1782,8 @@ public class GeradorSIMPACK2 extends Gerador {
 		}
 		
 		/**
-		 * Método que imprime no console os valores dessa estrutura inteira
-		 * Método utilizado para testes da classe
+		 * M   todo que imprime no console os valores dessa estrutura inteira
+		 * M   todo utilizado para testes da classe
 		 */
 		public void print()
 		{
@@ -1792,7 +1792,7 @@ public class GeradorSIMPACK2 extends Gerador {
 				System.out.println("\nID = " + id[i]);
 				System.out.println("Numero Request = " + nRequest[i]);
 				System.out.println("Numero Release = " + nRelease[i]);
-				System.out.println("Valor do case (valor = 0 -> não nó source): " + nCase[i]);
+				System.out.println("Valor do case (valor = 0 -> n   o n    source): " + nCase[i]);
 			}
 		}		
 		

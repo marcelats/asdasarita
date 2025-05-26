@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 public class ProcessoLogicoParSMPL implements Serializable {
 	
-	boolean processoPai; // se é processo pai da simulação ou não
+	boolean processoPai; // se   processo pai da simula  o ou n o
 	int tid; // identificador do processo
 	double lookAhead;	
 	

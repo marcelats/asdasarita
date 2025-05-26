@@ -66,7 +66,7 @@ public class FramePLogico extends JFrame {
 	private JTextField jTextFieldValorSemente = null;
 	
 	
-	// para ver visual - comentar essas variáveis
+	// para ver visual - comentar essas vari veis
 	private Graph graph;	
 	private int cp;	
 	private boolean editar, naveg, novo, paiSelected;
@@ -94,8 +94,8 @@ public class FramePLogico extends JFrame {
 			cp = -1;
 			JOptionPane.showMessageDialog(
 					null
-					,"Defina os processos lógicos - ainda não existe nenhum processo lógico definido"
-					,"Defina Processos Lógicos",
+					,"Defina os processos l gicos - ainda n o existe nenhum processo l gico definido"
+					,"Defina Processos L gicos",
 					JOptionPane.INFORMATION_MESSAGE
 					);
 		}
@@ -117,7 +117,7 @@ public class FramePLogico extends JFrame {
 		this.setSize(437, 237);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Definição de Processos Lógicos");
+		this.setTitle("Defini  o de Processos L gicos");
 		this.setVisible(true);
 	}
 
@@ -152,7 +152,7 @@ public class FramePLogico extends JFrame {
 			jLabel1.setText("SLAVENAME");
 			jLabel1.setBounds(new Rectangle(26, 69, 81, 16));
 			jLabel = new JLabel();
-			jLabel.setText("Número do Processo Lógico:");
+			jLabel.setText("N mero do Processo L gico:");
 			jLabel.setBounds(new Rectangle(26, 43, 172, 16));
 			jPanel1 = new JPanel();
 			jPanel1.setLayout(null);
@@ -185,7 +185,7 @@ public class FramePLogico extends JFrame {
 			jButtonNext.setToolTipText("");
 			jButtonNext.setName("jButtonNext");
 			jButtonNext.setBounds(new Rectangle(114, 129, 82, 26));
-			jButtonNext.setText("Próximo");
+			jButtonNext.setText("Pr ximo");
 			jButtonNext.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					nextPerformed(e);
@@ -341,9 +341,9 @@ public class FramePLogico extends JFrame {
 				
 					JOptionPane.showMessageDialog(
 							null,
-							"Já existe um processo pai registrado.\n" +
-							"Só é permitido um processo pai por simulação",
-							"ASDA - Processo pai já existente",
+							"J  existe um processo pai registrado.\n" +
+							"S    permitido um processo pai por simula  o",
+							"ASDA - Processo pai j  existente",
 							JOptionPane.WARNING_MESSAGE
 							);
 					p.setProcessoPai(false);
@@ -391,9 +391,9 @@ public class FramePLogico extends JFrame {
 					if ((jCheckBox.isSelected() && (tidPai != Integer.parseInt(jTextFieldTid.getText()))))
 						JOptionPane.showMessageDialog(
 								null,
-								"Já existe um processo pai registrado.\n" +
-								"Só é permitido um processo pai por simulação",
-								"ASDA - Processo pai já existente",
+								"J  existe um processo pai registrado.\n" +
+								"S    permitido um processo pai por simula  o",
+								"ASDA - Processo pai j  existente",
 								JOptionPane.WARNING_MESSAGE
 								);
 					

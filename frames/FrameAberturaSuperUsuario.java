@@ -11,10 +11,10 @@ import java.sql.*;
 
 
 /**
- * Classe que exibe uma mensagem de saudação ao superusuário dizendo as permissões que ele 
+ * Classe que exibe uma mensagem de sauda      o ao superusu   rio dizendo as permiss   es que ele 
  * tem no ambiente. 
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues (adição da passagem das informações de CadastroUsuario)
+ * @author Andr    Felipe Rodrigues (adi      o da passagem das informa      es de CadastroUsuario)
  * @version 1.0
  */
 public class FrameAberturaSuperUsuario extends JFrame {
@@ -38,8 +38,8 @@ public class FrameAberturaSuperUsuario extends JFrame {
     private UsuarioCadastro user;
     
     /**
-     * Frame que permite ao superusuário adicionar novos usuários e alterar as 
-     * informaçoes de usuários já cadastrados. 
+     * Frame que permite ao superusu   rio adicionar novos usu   rios e alterar as 
+     * informa   oes de usu   rios j    cadastrados. 
      */
     private FrameUsuario frameUsuario;
     
@@ -52,8 +52,8 @@ public class FrameAberturaSuperUsuario extends JFrame {
 
     /**
      * Construtor da classe.
-     * @param con Conexão com o banco de dados asda - MySQL.
-     * @param nome Nome do usuário que está conectado com o banco de dados.
+     * @param con Conex   o com o banco de dados asda - MySQL.
+     * @param nome Nome do usu   rio que est    conectado com o banco de dados.
      */
     public FrameAberturaSuperUsuario(Connection con, String nome, UsuarioCadastro user) {
 
@@ -92,14 +92,14 @@ public class FrameAberturaSuperUsuario extends JFrame {
         this.setForeground(Color.black);
         this.setResizable(false);
         this.setSize(new Dimension(415, 340));
-        this.setTitle("Bem-vindo SuperUsuário");
+        this.setTitle("Bem-vindo SuperUsu   rio");
         jPanel1.setLayout(null);
         jPanel1.setBackground(
             UIManager.getColor("InternalFrame.activeTitleGradient"));
         jPanel1.setBorder(BorderFactory.createLoweredBevelBorder());
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 12));
         jLabel1.setText(
-            "ASDA - Ambiente de Simulaçao Distribuída Automático");
+            "ASDA - Ambiente de Simula   ao Distribu   da Autom   tico");
         jLabel1.setBounds(new Rectangle(11, 10, 312, 20));
         jLabel2.setText("");
         jLabel2.setIcon(logo);
@@ -111,13 +111,13 @@ public class FrameAberturaSuperUsuario extends JFrame {
         jTextPane1.setToolTipText("");
         jTextPane1.setEditable(false);
         jTextPane1.setText(
-            "Voce tem permissao para alterar as variáveis do ASDA, bem como as "
-            + "variáveis dos módulos avaliador, escalonamento e replicador.");
+            "Voce tem permissao para alterar as vari   veis do ASDA, bem como as "
+            + "vari   veis dos m   dulos avaliador, escalonamento e replicador.");
         jTextPane1.setBounds(new Rectangle(136, 90, 259, 71));
         jTextPane2.setBounds(new Rectangle(136, 162, 258, 71));
         jTextPane2.setText(
-            "Tem permissão tambem para adicionar novos usuários e alterar as informaçoes "
-            + "de usuários já cadastrados.");
+            "Tem permiss   o tambem para adicionar novos usu   rios e alterar as informa   oes "
+            + "de usu   rios j    cadastrados.");
         jTextPane2.setToolTipText("");
         jTextPane2.setEditable(false);
         jTextPane2.setBackground(
@@ -128,7 +128,7 @@ public class FrameAberturaSuperUsuario extends JFrame {
         jLabel4.setBounds(new Rectangle(10, 215, 87, 24));
         jLabel5.setBounds(new Rectangle(10, 233, 374, 24));
         jLabel5.setText(
-            "Laboratório de Sistemas Distribuídos e Programação Concorrente");
+            "Laborat   rio de Sistemas Distribu   dos e Programa      o Concorrente");
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 11));
         jLabel5.setEnabled(true);
         jLabel6.setFont(new java.awt.Font("Dialog", 2, 11));
@@ -169,8 +169,8 @@ public class FrameAberturaSuperUsuario extends JFrame {
     }
 
     /**
-     * Fecha o Frame de Abertura Superusuário e exibe o frame que permite ao superusuário 
-     * adicionar novos usuários e alterar as informaçoes de usuários já cadastrados.
+     * Fecha o Frame de Abertura Superusu   rio e exibe o frame que permite ao superusu   rio 
+     * adicionar novos usu   rios e alterar as informa   oes de usu   rios j    cadastrados.
      * @param e Indica em qual componente ocorreu o ato de teclar.
      */
     public void button1Performed(ActionEvent e) {

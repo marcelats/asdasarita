@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 /**  
- * Representa o usuário que foi armazenado no banco de dados, com todos seus
- * atributos e configurações de modelagem
- * @author André Felipe Rodrigues
+ * Representa o usu rio que foi armazenado no banco de dados, com todos seus
+ * atributos e configura  es de modelagem
+ * @author Andr  Felipe Rodrigues
  * @version 1.0
  */ 
 
@@ -165,7 +165,7 @@ public class UsuarioCadastro implements Serializable{
 	{
 		String ret;
 		ret = "ID: " + getId()
-			+ "Nome do usuário: " + getNome()
+			+ "Nome do usu rio: " + getNome()
 			+ "Tipo de Modelo: " + getTipoModelo();
 		return ret;
 	}

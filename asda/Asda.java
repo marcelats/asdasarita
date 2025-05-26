@@ -18,7 +18,7 @@ public class Asda {
     boolean packFrame = false;
 
     /**
-     * Construtor da aplicação.
+     * Construtor da aplica  o.
      */
     public Asda() {
 
@@ -39,7 +39,7 @@ public class Asda {
     }
 
     /**
-     * Método principal
+     * M todo principal
      * @param args
      */
     public static void main(String[] args) {

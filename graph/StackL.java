@@ -2,8 +2,8 @@ package graph;
 import java.util.LinkedList;
 
 /**
- * Criação de um TAD pilha via uma lista ligada oferecida por java.util.LinkedList;
- * @author André Felipe Rodrigues
+ * Criao de um TAD pilha via uma lista ligada oferecida por java.util.LinkedList;
+ * @author Andr Felipe Rodrigues
  *
  */
 public class StackL {

@@ -2,20 +2,20 @@ package avaliador;
 import java.io.*;
 
 /**
- * Classe que implementa o módulo Avaliador Nível 1A. Responsável por verificar se as 
- * ligações entre os nós do grafo estão corretas.
+ * Classe que implementa o m   dulo Avaliador N   vel 1A. Respons   vel por verificar se as 
+ * liga      es entre os n   s do grafo est   o corretas.
  * @author Thais Souza Aiza
  * @version 1.0
  */
 public class AvaliadorNivelUmA implements Serializable {
 
     /**
-     * Retorna true se a ligação está correta e false se a ligação está incorreta.
-     * Ligações corretas: Fonte para Centro de Serviço, Centro de Serviço para Centro de 
-     * Serviço e Centro de Serviço para Sorvedouro.
-     * Todas as demais ligações estão incorretas. 
-     * @param origem Nó de origem do arco
-     * @param destino Nó de destino do arco
+     * Retorna true se a liga      o est    correta e false se a liga      o est    incorreta.
+     * Liga      es corretas: Fonte para Centro de Servi   o, Centro de Servi   o para Centro de 
+     * Servi   o e Centro de Servi   o para Sorvedouro.
+     * Todas as demais liga      es est   o incorretas. 
+     * @param origem N    de origem do arco
+     * @param destino N    de destino do arco
      * @return Um valor <code>boolean</code>.
      */
     public boolean verifica(int origem, int destino) {

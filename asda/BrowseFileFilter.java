@@ -53,7 +53,7 @@ public class BrowseFileFilter extends FileFilter {
 
 	/**
 	 * Cria um filtro de arquivos que aceita um arquivo com uma
-	 * dada extensão.
+	 * dada extens   o.
 	 * Examplo: novo BrowseFileFilter("jpg");
 	 *
 	 * @see #addExtension
@@ -67,8 +67,8 @@ public class BrowseFileFilter extends FileFilter {
 	 * arquivos.
 	 * Examplo: novo BrowseFileFilter("jpg", "JPEG Image Images");
 	 *
-	 * Note que o "." antes da extensão não é necessário. 
-	 * Se fornecido, ele será ignorado.
+	 * Note que o "." antes da extens   o n   o     necess   rio. 
+	 * Se fornecido, ele ser    ignorado.
 	 *
 	 * @see #addExtension
 	 */
@@ -82,8 +82,8 @@ public class BrowseFileFilter extends FileFilter {
 	 * Cria um filtro de arquivo para um vetor de strings fornecido.
 	 * Examplo: novo BrowseFileFilter(String {"gif", "jpg"});
 	 *
-	 * Note que o "." antes da extensão não é necessário. 
-	 * Se fornecido, ele será ignorado.
+	 * Note que o "." antes da extens   o n   o     necess   rio. 
+	 * Se fornecido, ele ser    ignorado.
 	 *
 	 * @see #addExtension
 	 */
@@ -92,11 +92,11 @@ public class BrowseFileFilter extends FileFilter {
 	}
 
 	/**
-	 * Cria um filtro de arquivo para um vetor de strings e uma descrição fornecida.
+	 * Cria um filtro de arquivo para um vetor de strings e uma descri      o fornecida.
 	 * Examplo: novo BrowseFileFilter(String {"gif", "jpg"}, "Gif and JPG Images");
 	 *
-	 * Note que o "." antes da extensão não é necessário. 
-	 * Se fornecido, ele será ignorado.
+	 * Note que o "." antes da extens   o n   o     necess   rio. 
+	 * Se fornecido, ele ser    ignorado.
 	 * 
 	 * @see #addExtension
 	 */
@@ -111,7 +111,7 @@ public class BrowseFileFilter extends FileFilter {
 
 	/**
 	 *
-	 * Arquivos que começam com "." são ignorados.
+	 * Arquivos que come   am com "." s   o ignorados.
 	 *
 	 * @see #getExtension
 	 * @see FileFilter#accepts
@@ -130,7 +130,7 @@ public class BrowseFileFilter extends FileFilter {
 	}
 
 	/**
-	 * Retorna a extensão do arquivo.
+	 * Retorna a extens   o do arquivo.
 	 *
 	 * @see #getExtension
 	 * @see FileFilter#accept
@@ -159,7 +159,7 @@ public class BrowseFileFilter extends FileFilter {
 
 
 	/**
-	 * Retorna a descrição humana dos arquivos 
+	 * Retorna a descri      o humana dos arquivos 
 	 * Examplo: "JPEG e GIF Arquivos de Imagem (*.jpg, *.gif)"
 	 *
 	 * @see setDescription
@@ -188,7 +188,7 @@ public class BrowseFileFilter extends FileFilter {
 	}
 
 	/**
-	 * Seta a descrição humana para o filtro de arquivos. 
+	 * Seta a descri      o humana para o filtro de arquivos. 
 	 * Examplo: filter.setDescription("Gif e JPG Imagens");
 	 *
 	 * @see setDescription
@@ -201,9 +201,9 @@ public class BrowseFileFilter extends FileFilter {
 	}
 
 	/**
-	 * Determina se a lista de extensão tem uma descrição humana (.jpg, .gif, etc).
+	 * Determina se a lista de extens   o tem uma descri      o humana (.jpg, .gif, etc).
 	 *
-	 * Relevante somente se descrição foi provida pelo construtor ou usando
+	 * Relevante somente se descri      o foi provida pelo construtor ou usando
 	 * setDescription();
 	 *
 	 * @see getDescription
@@ -216,10 +216,10 @@ public class BrowseFileFilter extends FileFilter {
 	}
 
 	/**
-	 * Retorna se a lista de extensões (.jpg, .gif, etc) possui
-	 * uma descrição humana.
+	 * Retorna se a lista de extens   es (.jpg, .gif, etc) possui
+	 * uma descri      o humana.
 	 *
-	 * Relevante somente se descrição foi provida pelo construtor ou usando
+	 * Relevante somente se descri      o foi provida pelo construtor ou usando
 	 * setDescription();
 	 *
 	 * @see getDescription

@@ -11,9 +11,9 @@ import java.sql.*;
 
 
 /**
- * Classe que exibe uma mensagem de saudação ao usuário de simulação.  
+ * Classe que exibe uma mensagem de sauda      o ao usu   rio de simula      o.  
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues - passagem do Cadastro de usuário para a próxima janela
+ * @author Andr    Felipe Rodrigues - passagem do Cadastro de usu   rio para a pr   xima janela
  * @version 1.0
  */
 public class FrameAberturaUsuarioSimulacao extends JFrame {
@@ -36,7 +36,7 @@ public class FrameAberturaUsuarioSimulacao extends JFrame {
     private Janela menuPrincipal;
     
     /**
-     * Armazena as informações do usuário
+     * Armazena as informa      es do usu   rio
      */
     private UsuarioCadastro userInfo;
 
@@ -47,8 +47,8 @@ public class FrameAberturaUsuarioSimulacao extends JFrame {
 
     /**
      * Construtor do frame.
-     * @param con Conexão com o banco de dados asda - MySQL.
-     * @param nome Nome do usuário do ambiente.
+     * @param con Conex   o com o banco de dados asda - MySQL.
+     * @param nome Nome do usu   rio do ambiente.
      */
     public FrameAberturaUsuarioSimulacao(UsuarioCadastro user) {
     	
@@ -81,14 +81,14 @@ public class FrameAberturaUsuarioSimulacao extends JFrame {
         this.setForeground(Color.black);
         this.setResizable(false);
         this.setSize(new Dimension(415, 340));
-        this.setTitle("Bem-vindo Usuário de Simulação");
+        this.setTitle("Bem-vindo Usu   rio de Simula      o");
         jPanel1.setLayout(null);
         jPanel1.setBackground(
             UIManager.getColor("InternalFrame.activeTitleGradient"));
         jPanel1.setBorder(BorderFactory.createLoweredBevelBorder());
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 12));
         jLabel1.setText(
-            "ASDA - Ambiente de Simulaçao Distribuída Automático");
+            "ASDA - Ambiente de Simula   ao Distribu   da Autom   tico");
         jLabel1.setBounds(new Rectangle(11, 10, 312, 20));
         jLabel2.setText("");
         jLabel2.setIcon(logo);
@@ -100,8 +100,8 @@ public class FrameAberturaUsuarioSimulacao extends JFrame {
         jTextPane1.setToolTipText("");
         jTextPane1.setEditable(false);
         jTextPane1.setText(
-            "Voce tem permissao para desenvoler novos programas de simulação, "
-            + "bem como utiizar programas já desenvolvidos e replicá-los.");
+            "Voce tem permissao para desenvoler novos programas de simula      o, "
+            + "bem como utiizar programas j    desenvolvidos e replic   -los.");
         jTextPane1.setBounds(new Rectangle(136, 90, 259, 71));
         jLabel4.setEnabled(true);
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12));
@@ -109,7 +109,7 @@ public class FrameAberturaUsuarioSimulacao extends JFrame {
         jLabel4.setBounds(new Rectangle(10, 215, 87, 24));
         jLabel5.setBounds(new Rectangle(10, 233, 374, 24));
         jLabel5.setText(
-            "Laboratório de Sistemas Distribuídos e Programação Concorrente");
+            "Laborat   rio de Sistemas Distribu   dos e Programa      o Concorrente");
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 11));
         jLabel5.setEnabled(true);
         jLabel6.setFont(new java.awt.Font("Dialog", 2, 11));
@@ -148,7 +148,7 @@ public class FrameAberturaUsuarioSimulacao extends JFrame {
         }
     }
     /**
-     * Exibe o frame para a especificação do modelo.
+     * Exibe o frame para a especifica      o do modelo.
      * @param e Indica em qual componente ocorreu o ato de teclar.
      */
     public void okPerformed(ActionEvent e) {

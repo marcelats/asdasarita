@@ -2,27 +2,27 @@ package gerador;
 import graph.Graph;
 
 /**
- * Classe abstrata gerador que contém os métodos necessários para
- * a geração de código de uma simulação 
- * @author André Felipe Rodrigues 
+ * Classe abstrata gerador que cont   m os m   todos necess   rios para
+ * a gera      o de c   digo de uma simula      o 
+ * @author Andr    Felipe Rodrigues 
  * @version 1.0
  */
 
 public abstract class Gerador
 {
 	/**
-	 * Armazena os nós, arcos e todas as informações do modelo.
+	 * Armazena os n   s, arcos e todas as informa      es do modelo.
 	 */
 	protected Graph graph;  	// para dar visibilidade aos filhos
 	
 	/**
-	 * o nome do arquivo no qual o código será gerado
+	 * o nome do arquivo no qual o c   digo ser    gerado
 	 */
 	protected String filename;  // para dar visibilidade aos filhos
 	
 	/**
-	 * Construtor básico e mínimo para a classe Gerador e filhos
-	 * @param graph Grafo = modelo do qual o código será gerado
+	 * Construtor b   sico e m   nimo para a classe Gerador e filhos
+	 * @param graph Grafo = modelo do qual o c   digo ser    gerado
 	 */
 	public Gerador(Graph graph)
 	{
@@ -46,16 +46,16 @@ public abstract class Gerador
 
 
 	/**
-	 * Método do qual é responsável para criar o arquivo do código 
-	 * que será gerado
-	 * Como a geração do código é diferente para cada tipo de linguagem,
-	 * esse método deve ser implementado independentemente
+	 * M   todo do qual     respons   vel para criar o arquivo do c   digo 
+	 * que ser    gerado
+	 * Como a gera      o do c   digo     diferente para cada tipo de linguagem,
+	 * esse m   todo deve ser implementado independentemente
 	 */
 	abstract public void criaArquivo();
 
 
 	/**
-	 * Método responsável por ler o arquivo gabarito e gerar o código da simulação
+	 * M   todo respons   vel por ler o arquivo gabarito e gerar o c   digo da simula      o
 	 * @param gabarito
 	 */
 	abstract public void leGabarito(String gabarito);

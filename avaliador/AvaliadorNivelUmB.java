@@ -8,16 +8,16 @@ import javax.swing.*;
 
 
 /**
- * Classe que implementa o módulo Avaliador Nível 1B. Responsável por verificar se está correto.
- * A verificação ocorre antes da parametrização do modelo. 
+ * Classe que implementa o m   dulo Avaliador N   vel 1B. Respons   vel por verificar se est    correto.
+ * A verifica      o ocorre antes da parametriza      o do modelo. 
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues (método verificaValoresMinimos)
+ * @author Andr    Felipe Rodrigues (m   todo verificaValoresMinimos)
  * @version 1.0 
  */
 public class AvaliadorNivelUmB implements Serializable{
 	
 	/**
-	 * Utilizado para mostrar ao usuário mensagens.
+	 * Utilizado para mostrar ao usu   rio mensagens.
 	 */
 	JFrame frame;
 	
@@ -27,53 +27,53 @@ public class AvaliadorNivelUmB implements Serializable{
 	public String tipoModelo = "";
 	
 	/**
-	 * Indica se o modelo está certo ou errado. 
+	 * Indica se o modelo est    certo ou errado. 
 	 */
 	boolean erro = false;
 	        
 	/**
-	 * Indica se o modelo contém erros.
+	 * Indica se o modelo cont   m erros.
 	 */
 	boolean result = false;
 	        
 	/**
-	 * Indica o número de fontes do modelo.
+	 * Indica o n   mero de fontes do modelo.
 	 */
 	int numFonte;        
 	
 	/**
-	 * Indica o número de centros de serviço do modelo.
+	 * Indica o n   mero de centros de servi   o do modelo.
 	 */
 	int numCS;        
 	
 	/**
-	 * Indica o número de sorvedouros do modelo.
+	 * Indica o n   mero de sorvedouros do modelo.
 	 */
 	int numSorvedouro;
 	
 	/**
-	 * Indica se todas as ligações estão corretas ou não.
+	 * Indica se todas as liga      es est   o corretas ou n   o.
 	 */
 	int ligaOK = 0;
     
     /**
-     * Indica se o modelo tem fonte ou não. Para os casos de modelo fechado o modelo não 
+     * Indica se o modelo tem fonte ou n   o. Para os casos de modelo fechado o modelo n   o 
      * possui fonte.
      */    
 	boolean temFonte = false;
     
     /**
-     * Indica se o modelo tem sorvedouro ou não. Para os casos de modelo fechado o modelo 
-     * não possui sorvedouro.
+     * Indica se o modelo tem sorvedouro ou n   o. Para os casos de modelo fechado o modelo 
+     * n   o possui sorvedouro.
      */    
 	boolean temSorvedouro = false;
 	
 	/**
-	 * Método que verifica se o grafo possui todas as ligações necessárias. Isto é,
-	 * verifica se o modelo não possui elementos sem ligações.
+	 * M   todo que verifica se o grafo possui todas as liga      es necess   rias. Isto    ,
+	 * verifica se o modelo n   o possui elementos sem liga      es.
 	 * @param graph Modelo
-	 * @return Um valor <code>boolean</code> true se o modelo possui todas as ligações 
-	 * e false faltam ligações.
+	 * @return Um valor <code>boolean</code> true se o modelo possui todas as liga      es 
+	 * e false faltam liga      es.
 	 */
 	public int verificaLigacoes(Graph graph){
 		
@@ -96,11 +96,11 @@ public class AvaliadorNivelUmB implements Serializable{
 	}
 
 	 /**
-	  * Método responsável para verificar se o modelo é um modelo válido ou não.
-	  * Caso o modelo não seja válido uma mensagem de Erro é enviada para o usuário.
+	  * M   todo respons   vel para verificar se o modelo     um modelo v   lido ou n   o.
+	  * Caso o modelo n   o seja v   lido uma mensagem de Erro     enviada para o usu   rio.
 	  * @param graph Modelo
-	  * @return Um valor <code>boolean</code> true se o modelo é válido e false se o 
-	  * modelo é inválido.
+	  * @return Um valor <code>boolean</code> true se o modelo     v   lido e false se o 
+	  * modelo     inv   lido.
 	  */
 	 public boolean  verificaValidadeDoModelo(Graph graph){
 	 	
@@ -128,7 +128,7 @@ public class AvaliadorNivelUmB implements Serializable{
 	
 			if (graph.getSize() == 0){
 				JOptionPane.showMessageDialog(frame,
-								"Modelo Inválido!!! Especifique um Modelo",
+								"Modelo Inv   lido!!! Especifique um Modelo",
 								"ASDA - Erro",
 								JOptionPane.ERROR_MESSAGE);
 				erro = true;
@@ -138,33 +138,33 @@ public class AvaliadorNivelUmB implements Serializable{
 			}
 			else{
 				/*
-				 * Verifica se o tamanho do grafo é igual
+				 * Verifica se o tamanho do grafo     igual
 				 */
 				
 				if (graph.getSize() == 1){
 					
 					/*
-					 * Exibe para o usuário mensagens de erro, pois faltam templates para 
+					 * Exibe para o usu   rio mensagens de erro, pois faltam templates para 
 					 * serem espeficicados
 					 */
 					
 					switch (graph.getTipoNo(i)){
 						case 1: JOptionPane.showMessageDialog(frame,
-						                        "Modelo Inválido!!! Especifique o template Centro de Serviço",
+						                        "Modelo Inv   lido!!! Especifique o template Centro de Servi   o",
 						                        "ASDA - Erro",
 						                        JOptionPane.ERROR_MESSAGE);
 								erro = true;				
 								result = false;
 								break;
 						case 2: JOptionPane.showMessageDialog(frame,
-												"Modelo Inválido!!! Especifique o template Fonte",
+												"Modelo Inv   lido!!! Especifique o template Fonte",
 												"ASDA - Erro",
 												JOptionPane.ERROR_MESSAGE);
 								erro = true;				
 								result = false;
 								break;
 						case 3: JOptionPane.showMessageDialog(frame,
-												"Modelo Inválido!!! Especifique os templates Fonte e Centro de Serviço",
+												"Modelo Inv   lido!!! Especifique os templates Fonte e Centro de Servi   o",
 												"ASDA - Erro",
 												JOptionPane.ERROR_MESSAGE);
 								erro = true;				
@@ -187,7 +187,7 @@ public class AvaliadorNivelUmB implements Serializable{
 					
 					if ((numFonte == 0) && (numSorvedouro > 0) && (numCS > 0)){
 						JOptionPane.showMessageDialog(frame,
-										"Modelo Inválido!!! Especifique o template Fonte",
+										"Modelo Inv   lido!!! Especifique o template Fonte",
 										"ASDA - Erro",
 										JOptionPane.ERROR_MESSAGE);
 						erro = true;				
@@ -196,7 +196,7 @@ public class AvaliadorNivelUmB implements Serializable{
 					else{
 						if ((numFonte > 0) && (numCS > 0) && (numSorvedouro == 0)){
 							JOptionPane.showMessageDialog(frame,
-											"Modelo Inválido!!! Especifique o template Sorvedouro",
+											"Modelo Inv   lido!!! Especifique o template Sorvedouro",
 											"ASDA - Erro",
 											JOptionPane.ERROR_MESSAGE);
 							erro = true;				
@@ -205,7 +205,7 @@ public class AvaliadorNivelUmB implements Serializable{
 						else{
 							if ((numFonte > 0) && (numCS > 0) && (numSorvedouro > 0)){
 							JOptionPane.showMessageDialog(frame,
-											"Modelo Inválido!!! Especifique as ligações",
+											"Modelo Inv   lido!!! Especifique as liga      es",
 											"ASDA - Erro",
 											JOptionPane.ERROR_MESSAGE);
 							erro = true;				
@@ -228,7 +228,7 @@ public class AvaliadorNivelUmB implements Serializable{
 	 }
 	 	 
 	/**
-	 * Método responsável por verificar qual é o tipo do modelo.
+	 * M   todo respons   vel por verificar qual     o tipo do modelo.
 	 * @param graph Modelo
 	 * @return O tipo do modelo. Aberto, fechado ou misto.
 	 */
@@ -250,12 +250,12 @@ public class AvaliadorNivelUmB implements Serializable{
 	public boolean verificaValoresMinimos(Graph graph)
 	{
 		
-		/* verifica a consistência do grafo - não avalia nós */
+		/* verifica a consist   ncia do grafo - n   o avalia n   s */
 		if (graph.getNomeModelo() == null)
 		{
 			JOptionPane.showMessageDialog(
 					null,
-					"O modelo não tem nome",
+					"O modelo n   o tem nome",
 					"ASDA - Erro: Modelo sem nome",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
@@ -263,7 +263,7 @@ public class AvaliadorNivelUmB implements Serializable{
 		 {
 				JOptionPane.showMessageDialog(
 						null,
-						"Tempo de execução não definido - defina-o em parametrização do modelo",
+						"Tempo de execu      o n   o definido - defina-o em parametriza      o do modelo",
 						"ASDA - Erro",
 						JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -272,7 +272,7 @@ public class AvaliadorNivelUmB implements Serializable{
 			graph.setNumeroMaximoEntidades("0");
 		else if (graph.getWarmUp() == null)
 		{
-			graph.setWarmUp("automático");
+			graph.setWarmUp("autom   tico");
 		}
 		else if (graph.getTamanhoBatch() == null)
 			graph.setTamanhoBatch("0");
@@ -280,18 +280,18 @@ public class AvaliadorNivelUmB implements Serializable{
 		{
 			JOptionPane.showMessageDialog(
 					null,
-					"É necessário definir ao menos uma chegada para o modelo",
-					"ASDA - Chegadas não definidas",
+					"    necess   rio definir ao menos uma chegada para o modelo",
+					"ASDA - Chegadas n   o definidas",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		
-		/* vefirifa a consistência dos nós do grafo */
+		/* vefirifa a consist   ncia dos n   s do grafo */
 		int cont = 0;
 		for (int i = 0; i < graph.getSize(); i++)			
 		{
-			Node temp = graph.getNode(i); // percorrendo os nós
-			if (temp.getTipoNo() == 2) 	// se é centro de serviço
+			Node temp = graph.getNode(i); // percorrendo os n   s
+			if (temp.getTipoNo() == 2) 	// se     centro de servi   o
 			{
 				if ((temp.getNomeCentroServico() == null) || (temp.getNomeCentroServico().equals("")))
 				{
@@ -302,8 +302,8 @@ public class AvaliadorNivelUmB implements Serializable{
 				{
 					JOptionPane.showMessageDialog(
 							null,
-							"Defina a média de serviço no nó " + temp.getNomeCentroServico(), 
-							"ASDA - Erro na média do centro de serviço",
+							"Defina a m   dia de servi   o no n    " + temp.getNomeCentroServico(), 
+							"ASDA - Erro na m   dia do centro de servi   o",
 							JOptionPane.ERROR_MESSAGE);
 					return false;
 				}
@@ -314,21 +314,21 @@ public class AvaliadorNivelUmB implements Serializable{
 				{
 					JOptionPane.showMessageDialog(
 							null,
-							"Defina corretamente o número de servidores do nó " + temp.getNomeCentroServico(), 
-							"ASDA - Número de servidores inválido",
+							"Defina corretamente o n   mero de servidores do n    " + temp.getNomeCentroServico(), 
+							"ASDA - N   mero de servidores inv   lido",
 							JOptionPane.ERROR_MESSAGE);
 					return false;
 				}
-				else if (temp.getSize() > 1) // se está ligado a mais de um nó
+				else if (temp.getSize() > 1) // se est    ligado a mais de um n   
 				{
 					if ( (Probabilidades.somaLig(temp) > 100.5) || (Probabilidades.somaLig(temp) < 99.99))
 					{
 						JOptionPane.showMessageDialog(
 								null,
-								"Probabilidade das ligações do nó "
+								"Probabilidade das liga      es do n    "
 									+ temp.getNomeCentroServico()
-									+ "não estão definidas corretamente", 
-								"ASDA - Probabilidades definidas inválida para o nó",
+									+ "n   o est   o definidas corretamente", 
+								"ASDA - Probabilidades definidas inv   lida para o n   ",
 								JOptionPane.ERROR_MESSAGE);
 						return false;
 					}
@@ -340,8 +340,8 @@ public class AvaliadorNivelUmB implements Serializable{
 					{
 						JOptionPane.showMessageDialog(
 								null,
-								"Defina a média de chegada na fonte. Nó = " + temp.getNomeCentroServico(),
-								"ASDA - Erro no centro de serviço souce",
+								"Defina a m   dia de chegada na fonte. N    = " + temp.getNomeCentroServico(),
+								"ASDA - Erro no centro de servi   o souce",
 								JOptionPane.ERROR_MESSAGE);
 						return false;
 					}
@@ -357,13 +357,13 @@ public class AvaliadorNivelUmB implements Serializable{
 				JOptionPane.showMessageDialog(
 						null,
 						cont + "teve seu nome definido automaticamente",
-						"ASDA - Nome do nó não definido",
+						"ASDA - Nome do n    n   o definido",
 						JOptionPane.ERROR_MESSAGE);
 			else
 				JOptionPane.showMessageDialog(
 						null,
 						cont + "tiveram seus nomes definidos automaticamente",
-						"ASDA - Nomes de algus nós não definidos",
+						"ASDA - Nomes de algus n   s n   o definidos",
 						JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
