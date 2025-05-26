@@ -1,0 +1,26 @@
+
+                             smpl SIMULATION REPORT
+
+
+ MODEL:  MODELX1                                              TIME:   60000.134
+                                                          INTERVAL:   56996.784
+
+                           MEAN BUSY     MEAN QUEUE        OPERATION COUNTS
+ FACILITY          UTIL.     PERIOD        LENGTH     RELEASE   PREEMPT   QUEUE
+ CS_1             0.7848      3.960         2.638       11297         0    8785
+ CS_3             0.4714      2.969         0.421        9051         0    4257
+
+
+Relatório - Máximo e Mínimo das Filas 
+ 
+ Maximo clientes recurso CS_1 : 23 
+ Mínimo clientes recurso CS_1 : 0 
+ Maximo clientes recurso CS_3 : 8 
+ Mínimo clientes recurso CS_3 : 0 
+
+Relatório - Total de Vezes - Fila Vazia 
+ 
+ Total de Clientes do recurso CS_1 : 20082 
+ Total clientes que encontraram fila vazia no recurso CS_1 : 6447 
+ Total de Clientes do recurso CS_3 : 13309 
+ Total clientes que encontraram fila vazia no recurso CS_3 : 9377 

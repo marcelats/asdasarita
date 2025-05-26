@@ -1,0 +1,290 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/airport version 2 
+-------------------------------------------------------------------------------
+This program simulates the arrival of passengers at an airport,
+whereupon they give their luggage to a skycap and then check in at the
+ticket counter.  Each skycap is a single-server facility, and has
+his/her own queue.  The ticket-counter, by contrast, is a multi-server
+facility, with a single queue.  These attributes match those typical
+of many real airport situations.
+
+The purpose of this program is to test code fragments which are
+examples in the Sim++ manual.  The code sequences below do not
+represent a sane attempt at a single simulation program; rather, it is
+a cut and paste FROM the manual, in sequential order, to ensure that
+all the code fragments presented there are free of syntax arrors, and
+actually run.  Please DON'T use this as an example of a simulation
+program, because it has NO overall semantics!
+
+Version 1 tests the cAPI portion of the manual; version 2 tests the
+ooAPI portion of the manual.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+int main ()
+  {
+  cout << "begin test code fragments for ooAPI in Sim++ manual\n";
+
+  // Have to go out of order here: constructor must appear before any Future
+  // method can be used.
+  cout << "Test 4.3.3 constructor\n";
+  Future fut(LINKED);
+  cout << "end test 4.3.3\n";
+
+  cout << "test 4.3.1 Introduction\n";
+  double now = Future::SimTime();
+  cout << "now = " << now << '\n';
+  cout << "end test 4.3.1\n";
+
+  // Note: can stop the simulation here to verify that report stats gets 
+  // called automatically from within the Future destructor which gets executed
+  // when the Future object goes out of scope.  Not only that but because
+  // nothing has happened, one can verify that report of statistics is well 
+  // behaved under these circumstances.
+
+  cout << "test 4.3.5 event scheduling\n";
+  Token tkn;
+  enum EventIds {ARRIVE, RQST_SKYCAP, RLS_SKYCAP, RQST_TKT_CHK, RLS_TKT_CHK};
+  cout << "1st: event-id\n";
+  Future::Schedule (RLS_SKYCAP, 3.4, tkn);
+  cout << "2nd: event-routine\n";
+  void RlsSkycap (void); // fn prototype declaration
+  Future::Schedule (RlsSkycap, 3.4, tkn, "Release Skycap");  
+  cout << "end test 4.3.5\n";
+
+  cout << "test 4.3.6 event occurrence\n";
+  cout << "semiautomatic method\n";
+  int nts = 500;
+    while (nts > 0) // ye olde main while loop
+    {
+    Estatus es = Future::Dispatch();
+    if (es.rtncod != ES_OK) { es.ES_Display(); break; }
+    }    
+  cout << "end semiautomatic method, start 1st example of manual method\n";
+   {
+   enum EventIds {BEGIN_TOUR, REQUEST_CPU, RELEASE_CPU, REQUEST_DISK,
+                  RELEASE_DISK};
+   void BeginTour(void);                 // These are the fn prototype
+   void RequestCPU(void);                // declarations for the 
+   void RlsCPU_SelectDisk(void);         // event routines
+   void RequestDisk(void);               // These functions must also
+   void RlsDisk_EndTour(void);           // have DEFINITIONS somewhere.
+   while (nts > 0) // ye olde main while loop
+     {
+     Estatus es = Future::NextEvent ();
+     switch (es.event_id)
+       {
+       case BEGIN_TOUR  : BeginTour         (); break;
+       case REQUEST_CPU : RequestCPU        (); break;
+       case RELEASE_CPU : RlsCPU_SelectDisk (); break;
+       case REQUEST_DISK: RequestDisk       (); break;
+       case RELEASE_DISK: RlsDisk_EndTour   (); break;
+       default: cout << "PULLED SOMETHING UNEXPECTED OUT OF THE HAT!\n";
+                nts = 0; // quit the loop
+       } //end ye olde "case statement"
+     } // end ye olde "main while loop"   
+    }
+  cout << "end 1st example manual method, start 2d example of manual method\n";
+  while (nts > 0) // ye olde main while loop
+    {
+    Estatus es = Future::NextEvent ();
+    if (es.fn == NULL) ErrXit (0, "NULL event routine!");
+    (* es.fn) (); // call the event routine:
+    } // end ye olde "main while loop"    \end{verbatim}
+  cout << "end 2d example of manual method\n";
+  cout << "end test 4.3.6\n";
+
+  cout << "test 4.3.7 latching onto the current event\n";
+  tkn = Future::CurrentToken();
+  cout << "end test 4.3.7\n";
+
+  cout << "test 4.3.8 information about future event list (FEL)\n";
+  if (Future::FELspecies() == HEAP) 
+    cout << "Heap\n";
+  else
+    cout << "Not heap\n";
+  if (Future::EventListSize() > 4) 
+    cout << "Heavy load\n";
+  else
+    cout << "Light load\n";
+  if (Future::FELempty () ) 
+    cout << "FEL is empty\n";
+  else
+    cout << "FEL contains event(s)\n";
+  Future::FELdrain ();
+  cout << "end test 4.3.8\n";
+
+  cout << "test 4.3.9 cancelling future events\n";
+  Estatus es = Future::CancelToken (7);
+  if (es.rtncod != ES_OK) cout << "Unable to cancel token 7\n";
+  cout << "es.rtncod = " << es.rtncod << '\n';
+  cout << "end test 4.3.9\n";
+
+  cout << "test 4.3.10 looking at the simulation clock\n";
+  now = Future::SimTime();
+  cout << "now = " << now << '\n';
+  cout << "end test 4.3.10\n";
+
+  cout << "test 4.3.11 recording arrivals and departures\n";
+  cout << "update arrivals with returned value\n";
+  int count = Future::UpdateArrivals ();
+  cout << "return value = " << count << '\n';
+  cout << "update departures without returning anything\n";
+  Future::UpdateDepartures ();                           
+  cout << "end test 4.3.11\n";
+
+  cout << "test 4.3.12 display info about the simulation -- snapshots\n";
+  if (Future::EventListSize() < 4)
+    Future::Snapshot("Checkpoint delta");   
+  cout << "end test 4.3.12\n";
+
+  cout << "test 4.4.2 facility constructor\n";
+  Facility * skycap [3], * tkt_agent;
+  for (int ii=0; ii < 3; ii++)
+    skycap [ii] = new Facility ("skycap");
+  tkt_agent = new Facility ("ticket agent", 4);    
+  cout << "end test 4.4.2\n";
+
+  // Note: Test 4.4.3 is for the facility destructors.  This code has been
+  // moved DOWNWARDS to AFTER all other facility operations.
+
+  cout << "test 4.4.4 requesting service\n";
+  Token Susie; 
+  cout << "Susie is about to walk up to ticket agents\n";
+  FacStatus rtncod = tkt_agent->Request (Susie);
+  if (rtncod == FREE)
+    Future::Schedule (RLS_TKT_CHK, 3.4, Susie);
+  cout << "return code from Request was " << rtncod << '\n';
+  Token Frank; 
+  cout << "Frank is about to choose a skycap at random\n";
+  int which_skycap = random (0, 2);
+  cout << "Frank chose skycap " << which_skycap << '\n';
+  const SKYCAP_ID = 0; // token integer attribute 0 holds skycap number
+  Frank.SetTokenIattr (SKYCAP_ID, which_skycap);
+  rtncod = skycap [which_skycap]->Request(Frank);
+  cout << "return code from Request was " << rtncod << '\n';
+  if (rtncod == FREE)
+    Future::Schedule (RLS_SKYCAP, 1.2, Frank);
+  Future::Snapshot("After test 4.4.4 requesting service");   
+  cout << "end test 4.4.4\n";
+
+  cout << "test 4.4.5 preemption\n";
+  enum PassPri {COACH, BUSINESS_CLASS, FIRST_CLASS};
+  // can generate error "token with this id is alrdy rcvg svc fr this facil"
+  // if we use tkn vs Boris in the Preempt() call below.  Note: we could 
+  // get away with using tkn if we change his id.
+  Token Boris;
+  int rc = tkt_agent->Preempt (Boris.Id(), FIRST_CLASS);
+  cout << "Preempt returned " << rc << '\n';
+  cout << "end test 4.4.5\n";
+
+  cout << "test 4.4.6 Releasing a server\n";
+  tkt_agent->Release (Susie.Id() );
+  // You can generate an error in which Token detects an attempt to use
+  // an attribute that has never been set, if you use tkn below instead
+  // of Frank.
+  which_skycap = Frank.TokenIattr (SKYCAP_ID);
+  skycap[which_skycap]->Release (Frank.Id() );
+  cout << "end test 4.4.6\n";
+
+  cout << "test 4.4.7 ascertaining facility usage\n";
+  double t = tkt_agent->InuseTime ();
+  cout << "ticket agent inuse = " << t << '\n';
+  double total_elapsed_time = Future::SimTime();
+  cout << "total elapsed time = " << total_elapsed_time << '\n';
+  double inuse_percent = t / total_elapsed_time * 100.0;
+  cout << "Facility in use " << inuse_percent << "% of the time\n";   
+  cout << "end test 4.4.7\n";
+
+  cout << "test 4.4.8 reporting facility status\n";
+   {
+    FacStatus rtncod = tkt_agent->Status ();
+    if (rtncod == FREE) 
+      cout << "ticket agent(s) free\n";
+    else
+      cout << "ticket agents all busy\n";
+   }
+  cout << "end test 4.4.8\n";
+
+  cout << "test 4.4.9 ascertaining length of a facility's priority q\n";
+    void TryAnotherAirline (Token t);
+    Token Zelda;
+    int qlen = tkt_agent->FQlength ();
+    if (qlen < 20)
+      {
+      cout << "Zelda will fly on Acme Airlines\n";
+      rtncod = tkt_agent->Request (Zelda);
+      if (rtncod == FREE)
+        Future::Schedule (RLS_TKT_CHK, expntl (2.5), Zelda); 
+      }
+    else
+      TryAnotherAirline(Zelda);                            
+  cout << "done with Zelda.  Now let's see whcih skycap has shortest q\n";
+      const NUM_SKYCAPS = 3;
+      int min_i = 0;
+      int minlen = skycap [0] -> FQlength ();
+      for (ii=1; ii < NUM_SKYCAPS; ii++)
+        {
+        int len_i = skycap [ii] -> FQlength ();
+        if (len_i < minlen)
+          {
+          min_i = ii;
+          minlen = len_i;
+          }
+        }
+      cout << "skycap " << min_i << " has shortest line\n";   
+  cout << "end test 4.4.9\n";
+
+  cout << "test 4.4.10 reporting emptiness of q\n";
+    if (skycap[2]->FQempty() ) cout << "Empty!\n";               
+  cout << "end test 4.4.10\n";
+
+  cout << "test 4.4.3 Destructor\n";
+  cout << "about to delete array of skycaps\n";
+  for (ii=0; ii < 3; ii++) delete skycap [ii];
+  cout << "done with skycaps, about to delete tkt_agent\n";
+  delete tkt_agent;
+  cout << "done with tkt_agent\n";
+  cout << "end test 4.4.3\n";
+
+  cout << "end test ooAPI\n";
+  }
+
+
+  // for test 4.3.5
+  // function definition of RlsSkycap must appear somewhere, else there'll be 
+  // an unresolved symbol at link time
+  void RlsSkycap () 
+    { 
+    }
+
+  // for test 4.3.6
+  // fn dfns
+  void BeginTour()
+    {
+    }
+  void RequestCPU()
+    {
+    }
+  void RlsCPU_SelectDisk()
+    {
+    }
+  void RequestDisk()
+    {
+    }
+  void RlsDisk_EndTour()
+    {
+    }
+
+  // for test 4.4.9
+  // fn dfn
+  void TryAnotherAirline (Token tt)
+    {
+    cout << "Zelda, with id " << tt.Id() << " is\n";
+    cout << "Trying another airline, in test 4.4.9\n";
+    }

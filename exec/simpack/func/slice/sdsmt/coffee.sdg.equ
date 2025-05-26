@@ -1,0 +1,6 @@
+{CocT} {CocT = 0.2*(RT-CT)} {Change of coffee Temperature} {2}
+
+{RT} {RT = 20} {Room Temperature} {0}
+
+{CT} {CT = CT(t-1) +CocT} {Coffee Temperature} {2}
+

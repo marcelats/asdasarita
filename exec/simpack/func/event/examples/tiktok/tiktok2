@@ -1,0 +1,79 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/tiktok (formerly ticktock.c in clock directory in simpack):
+version 2.
+
+The following code was ported from SimPack's "ticktock.c".  The simulation
+style of the code below is "manual, event_id".  The API is ooAPI.  See readme.
+
+This program consists of three independent event chains.  This program
+simulates a clock using discrete event simulation.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+enum EventId {SECONDS, MINUTES, HOURS};
+const MAX_TIME = 1000;
+
+void SecondsFn (void);
+void MinutesFn (void);
+void HoursFn   (void);
+
+int seconds = 0, minutes = 0, hours = 0;
+
+main()
+  {
+  new Future (HEAP);
+
+  Token tick;
+  Future::Schedule (SECONDS,    0.0, tick);
+  Future::Schedule (MINUTES,   60.0, tick);
+  Future::Schedule (HOURS,   3600.0, tick);
+
+  while (Future::SimTime() < MAX_TIME)
+    {
+    Estatus es = Future::NextEvent ();
+    switch (es.event_id)
+      {
+      case SECONDS: SecondsFn (); break;
+      case MINUTES: MinutesFn (); break;
+      case HOURS  : HoursFn   (); break;
+      default     : ErrXit (91, "bad event");
+      } // end switch
+    } // end while
+  return 0;
+  } // end main
+
+/*=============================================================================
+Event routines:
+-----------------------------------------------------------------------------*/
+
+void SecondsFn ()
+  {
+  Token tick;
+  cout << "Time: " << setw(2) << hours   << ':'
+                   << setw(2) << minutes << ':'
+                   << setw(2) << seconds << '\n';
+  seconds = (seconds+1) % 60;
+  Future::Schedule (SECONDS, 1.0, tick);
+  } // end fn
+
+void MinutesFn ()
+  {
+  Token tick;
+  minutes = (minutes+1) % 60;
+  Future::Schedule (MINUTES, 60.0, tick);
+  }
+
+void HoursFn ()
+  {
+  Token tick;
+  hours = (hours+1) % 12;
+  Future::Schedule (HOURS, 3600.0, tick);
+  }
+
+// end tiktok
+

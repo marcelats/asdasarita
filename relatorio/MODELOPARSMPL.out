@@ -1,0 +1,19 @@
+
+**** Simulation Error at Time 13118.688
+     Empty Element Pool
+
+                             smpl SIMULATION REPORT
+
+
+ MODEL:  MODELOPARSMPL                                        TIME:   13118.688
+                                                          INTERVAL:   10618.411
+
+                           MEAN BUSY     MEAN QUEUE        OPERATION COUNTS
+ FACILITY          UTIL.     PERIOD        LENGTH     RELEASE   PREEMPT   QUEUE
+ CS_1             0.9999      3.012      1386.285        3525         0    3525
+ CS_2             0.9749      2.949        22.502        3511         0    3435
+ CS_3             1.0001      3.982       574.650        2667         0    2667
+ CS_4             0.7726      3.079         2.678        2664         0    2022
+ CS_5             1.0000      4.916       367.367        2160         0    2160
+ CS_6             0.9971      5.107        52.920        2073         0    2070
+

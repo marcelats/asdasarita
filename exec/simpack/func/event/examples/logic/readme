@@ -1,0 +1,95 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/logic
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+                         +----------+---------+---------+---------+---...
+                         |          |         |         |         |
+                      cpudisk     block     tiktok     ssq      logic
+                                                                  ^
+                                                                  ^
+You are here  = = = = = = = = = = = = = = = = = = = = = = = = = = /
+
+-------------------------------------------------------------------------------
+
+DESCRIPTION OF APPLICATION:
+
+This is a simple digital logic simulator with nominal gate delays.
+For available gate types, note the program logic.c - it is easy to
+add new gates after seeing this template. The form of the input file
+for 'logic' is:
+
+#-of-gates output-gate time-for-simulation
+#-of-gate1 gate-type delay input-1 input-2 ... #-of-outputs out-1 out-2 ...
+#-of-gate2 gate-type delay input-1 input-2 ... #-of-outputs out-1 out-2 ...
+...
+
+If there are zero inputs, leave the input part of the input record blank.
+The program (logic.c) specifies the # of inputs for each type of gate
+whereas the number of outputs is arbitrary.
+
+-------------------------------------------------------------------------------
+
+How to run the program (i'm not certain about this):
+
+    logic < inv.dat
+
+i think inv.dat is the fiel of input parameters.  Two such files came with the
+simpack example code, and i have kept them both.  There are also two output
+files from the simpack example directory, and i have kept both of them too.  It
+looks like inv.out was probably produced by
+
+    logic < inv.dat > inv.out
+
+I have left these files as they were.  In keeping with my conventionin the
+other sim++ example directories, i have named the output file of the original
+simpack code output.v0u.  It happens that this file is identical with inv.out.
+
+-------------------------------------------------------------------------------
+
+Changes i made to turn version 0 (simpack) into version 1 (sim++):
+
+1. removed the explicit directory info from the include line for queuing.h
+2. included stdio.h
+3. added fn prototype declaration for read_network().
+4. changed read_network() return type to void.
+5. added fn prototype declaration for update_block().
+6. changed update_block() return type to void.
+7. changed style of fn dfn of update_block(), which was obsolete.
+8. added return 0 at end of main()
+
+As usual these are all language requirements, not sim++ requirements.
+
+-------------------------------------------------------------------------------
+
+14 Files in this directory:
+
+readme               explanatory text file (this file)
+logic0               simpack source code
+makefile.simpack     translates simpack version
+logic1               sim++ source code, modified as explained above, using
+                      cAPI, so looks very similar to simpack code
+translat             translates sim++ version under unix
+makefile              ditto (invoked by translat above)
+translat.bat         translates sim++ version using Borland Turbo c++ under dos
+                      or os2
+inv.dat              input files.  the way you use them is
+andor.dat              logic < inv.dat
+                      or
+                       logic < inv.dat > output.vxx
+
+output.v0u           simpack output file    (corresponds to inv.out)
+output.v1d           sim++ dos output file  (corresponds to inv.out)
+output.v1u           sim++ unix output file (corresponds to inv.out)
+
+inv.out              output files from original simpack example directory
+andor.out
+

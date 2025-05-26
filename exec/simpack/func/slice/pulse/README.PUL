@@ -1,0 +1,36 @@
+
+'pulse' is a simulator for pulse processes. The example given within
+the file 'herb.dat' is a pulse process for three populations:
+1) Plants, 2) herbivores, and 3) carnivores. The format for the
+input file is:
+
+#of-vertices #-iterations
+adjacency matrix for graph
+vertex-label-1
+vertex-label-2
+. . .
+initial-value-vector
+initial-pulse-vector
+
+The model is pictured as follows, where:
+
+(P) = # of Plants
+(H) = # of Herbivores
+(C) = # of Carnivores
+
+
+     -1        +1                +1
+    ---   ---------------    ---------------
+   |   | /               \  /               \
+   |   |/                 v/                 v
+    -> o (P)              o  (H)             o (C)
+        ^                 /^                 /
+         \               /  \               /
+          ---------------    ---------------
+               -1                -1
+
+
+SUGGESTED READING:
+
+"Discrete Mathematical Models" by Fred S. Roberts, Prentice Hall, 1976.
+

@@ -1,0 +1,109 @@
+
+IMPORTANT: To take advantage of this software (DEQ), you need the following
+on your UNIX system: 
+
+ (1) gnuplot:
+     
+     gnuplot - information on how to obtain GNU software is located in
+     the Simulation Digest tools directory. There is a file '.gnuplot'
+     in this directory that tells gnuplot what to do. If you want output
+     to go to a Postscript device, for instance, or something other than
+     an X window, make changes to the .gnuplot file.
+
+ (2) gcc - one of the primary source routines is written in ANSI C. The
+     c compiler 'gcc' is available freely from the Gnu Free Software 
+     Foundation. See the file 'gnu.software.Z' also in the UF simulation
+     library. This will give you information on how to get 'gcc'.
+
+To make DEQ, do a 'make all'. Then you can run 'deq' from the
+UNIX command line as follows:
+
+%deq
+
+You have the choice of entering one of two types of systems. Either
+
+  (1) a single equation with high order terms (derivatives). Note
+      that the system may be homogeneous or non-homogeneous, and that
+      the left hand side of the equation must be the higher order
+      term. Note the following notation: use x[1] for the first derivative
+      of x with respect to time (i.e. x' or dx/dt), x[2] is the second
+      derivative, and so on. x[0] is simply x.
+
+  (2) a set of first order equations for an 'n'-dimensional system.
+      You will be prompted for each equation in turn. Here x[1] means
+      the first state variable. x[2] means the second state variable,
+      and so on.
+
+
+EXAMPLE 1
+---------
+
+An Example of a single equation is to enter:
+
+  x[2] = -16*x[0] + 10*cos(3.7*t)
+
+Note that this equation is x'' = -16x + 10cos(3.7t) using standard
+notation. Try plotting this over time (always denoted as 't') by 
+specifying 't' as the x-axis variable, and x[0] as the y axis 
+variable to be plotted by gnuplot.
+
+EXAMPLE 2
+---------
+
+An Example of the Lorenz System (Phase Plot) is to enter (note: left
+hand sides of equations are prompted by DEQ):
+
+  x[1]' = 10*(-x[1] + x[2])
+  x[2]' = 28*x[1] - x[2] - x[1]*x[3]
+  x[3]' = -2.666*x[3] + x[1]*x[2]
+
+Try plotting x[1] vs. x[2] when prompted for this information.
+
+------------------------------------------------------------------------
+DEQ is composed of the following files:
+
+Permanent files:
+
+	deq.1   	the document describing this project.  To view,
+			type  nroff -man deq.1 | more
+
+	deq     	the batch file used to run DEQ.
+
+	order1.c	the program which prompts the user for the
+			equation(s) and any necessary info. Then
+			transfers this info into a suitable format for
+			the code generator.  
+
+			NOTE: this code is in ANSI C.  To compile,
+			type   gcc order1.c -o order1
+
+	contsim.c	the program which converts the system of
+			1st-order differential equations into an
+			equivalent c program.  The integration method
+			used is fourth-order Runge-Kutta. To compile,
+			type  cc contsim.c -lm -o contsim
+
+Temporary files:
+
+	dump.in		the file containing a system of 1st-order 
+			equations created by order1 and used by
+			contsim. You can create these separately if
+                        you wish.
+
+	dump.c		the c source file created by contsim which,
+			when run, creates dump.plot.  To compile,
+			type   cc dump.c -lm -o dump
+
+	dump		the executable file.
+
+	dump.plot	the raw data created by dump which is used
+			by gnuplot.
+
+	
+
+
+
+			
+			
+
+

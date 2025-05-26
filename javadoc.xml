@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="asda" default="javadoc">
+    <target name="javadoc">
+        <javadoc destdir="doc" access="public" use="true" notree="false"
+            nonavbar="false" noindex="false" splitindex="true"
+            author="true" version="true" nodeprecatedlist="false"
+            nodeprecated="false"
+            sourcefiles="ScrollingPanel.java,FrameAberturaUsuarioSimulacao.java,ImagePreview.java,ImageFileView.java,FrameUsuario.java,Servico.java,DesenhaSeta.java,FrameAberturaSuperUsuario.java,InsereUsuarios.java,Chegada.java,AvaliadorNivelUmA.java,FModelo.java,Utils.java,Usuario.java,FrameAsda.java,FChegadaModelo.java,Loop.java,ControlPanel.java,BrowseFileFilter.java,Ligacao.java,AberturaSuperUsuario.java,Modelo.java,AvaliadorNivelUmB.java,ParametrizaCS.java,Desenho.java,Janela.java,GeradorLib.java,AdicionaUsuario.java,Gerador.java,StandardShapes.java,Probabilidades.java,Asda.java,ImageDisplayer.java,Arc.java,ParametrizaFonte.java,Node.java,ApagaUsuarios.java,EditaUsuarios.java,AberturaUsuarioSimulacao.java,PesquisaUsuarios.java,JFrameUtil.java,ImagePanel.java,Graph.java,Ajuda1.java,ImageFilter.java"
+            sourcepath="." classpath="C:\mysql-connector-java-3.1.0-alpha\mysql-connector-java-3.1.0-alpha-bin.jar"/>
+    </target>
+</project>

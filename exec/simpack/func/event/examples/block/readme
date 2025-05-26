@@ -1,0 +1,151 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/block (formerly blocking in simpack)
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+                                             +----------+----------+---...
+                                             |          |          |
+                                          cpudisk     block      tiktok
+                                                        ^
+                                                        ^
+You are here  = = = = = = = = = = = = = = = = = = = = = =
+
+-------------------------------------------------------------------------------
+
+This functional model has three functions: a spiral accumulator,
+a lathe and an inspector which are connected in series. A set number of
+raw parts are sent through the accumulator, and they wait there until the
+person operating the lathe is ready to accept them. After the parts
+have been processed through the lathe, they proceed to an inspector who
+determines the quality of the new processed part. It takes 2.0 seconds to
+traverse the accumulator. The person operating the lathe takes 2 minutes
+per part and cannot handle any more than one part at a time (a queue size
+of zero). The inspector takes 15 seconds and can handle a queue of 3
+processed parts. The lathe operator and inspector times are sampled from
+a normal distribution.
+
+This model illustrates the principle of blocking. That is, the first
+facility (accumulator) must wait until the second facility (lathe operator)
+is ready. The lathe operator must also wait for the inspector if
+necessary. This example also demonstrates how cost is applied to
+a model. The cost of operation is equal to:
+
+cost for generated parts + labor for first person + labor for second person
+
+The labor cost is set as a function of the time that the person is busy,
+as opposed to the elapsed time. This is ideal from a manager's perspective,
+however, it is not often the case in reality :)
+
+parts generated --------> accumulator -----------> lathe ------> inspector
+                  queue                  queue            queue
+                of length              of length        of length
+                infinity                 zero             three
+
+-------------------------------------------------------------------------------
+
+block is one of several example programs provided with this release of sim++.
+There are several versions of the block program.  The block program was
+formerly named "blocking" in simpack.  The users guide provides information
+about these various versions and how to use them to help you learn about sim++.
+Each version of the program begins with a brief description of how it differs
+from the other versions.
+
+  version 1 = essentially original simpack code, using sim++ cAPI
+  version 2 = c++ version using ooAPI
+  version 3 = 2 above + semiautomatic style (atomic occurrence/execution)
+  version 4 = 2 above + automatic style (atomic occurrence/execution)
+
+Each of the versions above can be translated and run.  There is also a version
+numbered 0, which is NOT intended to be translated or run.  Version 0 is the
+simpack version of block (except that its name was "blocking").  It is present
+so you can compare it with version 1 to see what exactly had to be changed to
+get it to translate without warnings or errors under sim++.
+
+In case you are interested (for example if you are porting code from simpack
+to sim++) here are the differences between versions 0 and 1:
+
+    1.  location of queuing.h is now specified by a compiler command line
+    switch (in translat and translat.bat) instead of in the source code.
+    If queuing.h HAPPENS to be in the right place on your system, you don't
+    need to make this change, but i recommend it.
+
+    2.  included <stdio.h>.  Apparently some compilers don't require this.
+    Borland Turbo C++ gives an error.  In g++, if you don't include
+    stdio.h, you get a warning:  "warning:  implicit declaration of
+    function `printf'".  My requirement is that code must compile free of
+    warnings or errors.  Hence i included <stdio.h> and recommend you do
+    too.  Under g++ your code will compile without making this change, so
+    in that environment it's optional.
+
+    3.  added a "return" statement.  Without it, Borland compiler produces
+    warning:  "Function should return a value in function main()".  g++
+    does not complain about the absence of a return statement, but it
+    doesn't hurt and is there for warning-free compile under dos.  Your
+    code will compile without making this change.
+
+    4.  added "fflush()" because using Borland Turbo C++ and running under
+    dos or os2 produces iostream output (from report_stats() ) *before*
+    stdio output, which is out of order (see source code).  Does NOT do
+    this when program is run with stdout to screen.  It ONLY does this when
+    stdout is redirected to a file.  Unix does NOT have this quirk.
+    fflush(stdout) takes care of this, which explains its addition to the
+    source code.  This change is optional.  If you don't make it,
+    everything still works.  Under unix, there won't be a problem.
+
+So ALL the changes above have to do with portability between dos and unix, or
+the change from c to c++.  NONE has to do with sim++.  And ALL the changes are,
+to a degree, optional, depending on your environment and whether warnings
+bother you or not.
+
+There's a shell script named "translat" which will translate any of versions 1
+thru 4, producing as its output the executable "block", which you may then
+run.  "translat" uses a make file whose name is "makefile".
+
+The source code for version 1 is present as file name "block1".  "translat"
+copies it to "block.C" before invoking make.  Same idea for versions 2 thru
+4.
+
+-------------------------------------------------------------------------------
+
+There are 19 files in this directory.  Here's an annotated list of them:
+
+readme              provides info about the block example program
+
+block0              various versions of source code as explained above
+block1
+block2
+block3
+block4
+
+translat            selects and translates a version of the program under unix
+makefile
+
+translat.bat        selects and translates a version of program under dos or
+                     windows or os2
+
+makefile.simpack    translates the simpack version of cpudisk (version 0)
+
+output.v0u          output files.  the extension is of the form .vix, where
+output.v1d           i is the version number 1..4, and x is u for unix or
+output.v1u           d for dos
+output.v2d
+output.v2u
+output.v3d
+output.v3u
+output.v4d
+output.v4u
+
+A final note about stdio.h and fflush(), continued from discussion above:  if
+you use iostream instead of stdio, you need not include stdio.h and you need
+not use fflush().
+
+=========================== end readme ========================================
+

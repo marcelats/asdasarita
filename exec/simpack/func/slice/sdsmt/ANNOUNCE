@@ -1,0 +1,32 @@
+
+         ANNOUNCEMENT: NEW SYSTEM DYNAMICS TOOL USING X WINDOWS
+                           SimPack Toolkit
+
+
+There is a new System Dynamics tool under X windows called 'sdsmt' produced
+as a simulation class assignment. If you are interested in trying it,
+you can find the compressed tar file, via anonymous ftp, at:
+
+ ftp.cis.ufl.edu/pub/fishwick/sdsmt.tar.Z
+
+The file includes an executable for the Sun SPARC 4 but it may also be
+implemented on other machines using X windows (we have not ported it,
+however). The graphical user interface was built using Tk/Tcl. Full
+documentation is available for the tool in the form of the README file
+and the Postscript documentation in DOC.PS.
+
+If you have any suggestions for improvement or find bugs, please contact
+Mr. Tsae-Feng Yu at yu@cis.ufl.edu who will make changes as he has time
+in his schedule. Also, please cc: messages to me. Have fun!
+
+-paul
+
+Paul A. Fishwick               E-Mail: fishwick@cis.ufl.edu
+Dept. of Computer Science      Phone & FAX: (904) 392-1414
+University of Florida          WWW: http://www.cis.ufl.edu/~fishwick
+CSE 301, Gainesville, FL 32611              
+
+
+
+
+

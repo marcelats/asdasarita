@@ -1,0 +1,44 @@
+
+echo ' '
+echo 'Sim++ is the property of Paul Fishwick and Robert Cubert,'
+echo 'copyright (c) 1995; see License in root directory of the distribution,'
+echo 'which is simpack/func/event.'
+echo ' '
+
+if ( [ "$1" = "rm" -o "$1" = "-rm" ] ) then
+  echo ' '
+  echo 'Removing all translation byproducts from Sim++ program examples ...'
+  echo ' '
+  (cd cpudisk; translat -rm)
+  (cd block;   translat -rm)
+  (cd tiktok;  translat -rm)
+  (cd ssq;     translat -rm)
+  (cd iterate; translat -rm)
+  (cd airport; translat -rm)
+  (cd logic;   translat -rm)
+  (cd network; translat -rm)
+  (cd qnet;    translat -rm)
+  (cd route;   translat -rm)
+  echo ' '
+  echo 'Done Removing.'
+  echo ' '
+  exit 0
+  fi
+
+echo ' '
+echo 'Build (version 1 of) ALL Sim++ Program Examples ...'
+echo ' '
+
+  (cd cpudisk; translat 1)
+  (cd block;   translat 1)
+  (cd tiktok;  translat 1)
+  (cd ssq;     translat 1)
+  (cd iterate; translat 1)
+  (cd logic;   translat 1)
+  (cd network; translat 1)
+  (cd qnet;    translat 1)
+  (cd route;   translat 1)
+
+echo ' '
+echo 'simpack/func/event/examples/translat is done.'
+echo ' '

@@ -1,0 +1,59 @@
+/*---------------------------------------------
+                 S I M P A C K
+            Simulation Tool Package
+        Copyright 1990, Paul A. Fishwick
+---------------------------------------------*/
+
+/* NOTE: This program is the SimPack equivalent
+of an SMPL program by M. H. MacDougall, "Simulating
+Computer Systems", MIT Press, 1987 */
+
+
+#include "queuing.h"
+
+#define ARRIVAL 1
+#define REQUEST_SERVER 2
+#define RELEASE_SERVER 3
+main()
+  {
+    int event,queue_id,i,iteration;
+    TOKEN customer;
+    double sample;
+
+    customer.attr[0] = 1;
+    init_simpack(LINKED);
+    queue_id = create_facility("queue",1);
+    schedule(ARRIVAL,0.0,customer);
+    iteration = 0;
+    while (sim_time()< 1000.0)
+      {
+        next_event(&event,&customer);
+        /* printf("%d %f\n",iteration,sim_time()); */
+        iteration++;
+        switch(event)
+          {
+          case ARRIVAL:
+              update_arrivals();
+              schedule(REQUEST_SERVER,0.0,customer);
+              customer.attr[0] += 1;
+              schedule(ARRIVAL,2.0,customer);
+              break;
+          case REQUEST_SERVER:
+              if (request(queue_id,customer,0) == FREE) {
+                sample = expntl(2.0);
+                schedule(RELEASE_SERVER,sample,customer);
+              }
+              break;
+          case RELEASE_SERVER:
+              release(queue_id,customer);
+              update_completions();
+              break;
+          }
+      }
+   report_stats();
+  return 0; // pacify compiler
+  } /* end main() */
+
+
+
+

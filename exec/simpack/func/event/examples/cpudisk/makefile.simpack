@@ -1,0 +1,15 @@
+
+cpudisk: cpudisk.o ../queuing/queuing.o
+	@echo 'Link the cpudisk application'
+	@echo ' '
+	cc -o cpudisk cpudisk.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	ls -l cpudisk
+	date
+
+cpudisk.o: cpudisk.c
+	@echo 'Compile cpudisk simpack application'
+	cc -c -o cpudisk.o cpudisk.c
+	ls -l cpudisk.o
+	@echo ' '
+
+

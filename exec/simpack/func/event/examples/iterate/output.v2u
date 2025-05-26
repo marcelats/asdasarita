@@ -1,0 +1,319 @@
+Future constructed: Fri Jun 30 10:36:53 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 494
+
+System Wide Statistics
+----------------------
+NOTE: facility 1 'queue' has 1 busy server(s)
+System Utilization: 97.7%
+Arrival Rate: 0.501000, Throughput: 0.494000
+Mean Service Time per Token: 1.976938
+Mean # of Tokens in System: 10.270485    Largest FEL size was 3
+Mean Residence Time for each Token: 20.790456
+
+Facility Statistics
+-------------------
+F 1 (queue): Idle:  2.3%, Util: 97.7%, Preemptions: 0, LongestQ: 26
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 5 items
+Future constructed: Fri Jun 30 10:36:53 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 496
+
+System Wide Statistics
+----------------------
+NOTE: facility 2 'queue' has 1 busy server(s)
+System Utilization: 93.2%
+Arrival Rate: 0.501000, Throughput: 0.496000
+Mean Service Time per Token: 1.878303
+Mean # of Tokens in System: 6.208237    Largest FEL size was 3
+Mean Residence Time for each Token: 12.516606
+
+Facility Statistics
+-------------------
+F 2 (queue): Idle:  6.8%, Util: 93.2%, Preemptions: 0, LongestQ: 20
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 3 items
+Future constructed: Fri Jun 30 10:36:54 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 485
+
+System Wide Statistics
+----------------------
+NOTE: facility 3 'queue' has 1 busy server(s)
+System Utilization: 99.0%
+Arrival Rate: 0.501000, Throughput: 0.485000
+Mean Service Time per Token: 2.041785
+Mean # of Tokens in System: 8.879414    Largest FEL size was 3
+Mean Residence Time for each Token: 18.308069
+
+Facility Statistics
+-------------------
+F 3 (queue): Idle:  1.0%, Util: 99.0%, Preemptions: 0, LongestQ: 18
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 14 items
+Future constructed: Fri Jun 30 10:36:54 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 481
+
+System Wide Statistics
+----------------------
+NOTE: facility 4 'queue' has 1 busy server(s)
+System Utilization: 98.0%
+Arrival Rate: 0.501000, Throughput: 0.481000
+Mean Service Time per Token: 2.036404
+Mean # of Tokens in System: 8.202443    Largest FEL size was 3
+Mean Residence Time for each Token: 17.052895
+
+Facility Statistics
+-------------------
+F 4 (queue): Idle:  2.0%, Util: 98.0%, Preemptions: 0, LongestQ: 23
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 18 items
+Future constructed: Fri Jun 30 10:36:55 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 497
+
+System Wide Statistics
+----------------------
+NOTE: facility 5 'queue' has 1 busy server(s)
+System Utilization: 100.0%
+Arrival Rate: 0.501000, Throughput: 0.497000
+Mean Service Time per Token: 2.012044
+Mean # of Tokens in System: 15.535790    Largest FEL size was 3
+Mean Residence Time for each Token: 31.259135
+
+Facility Statistics
+-------------------
+F 5 (queue): Idle:  0.0%, Util: 100.0%, Preemptions: 0, LongestQ: 29
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 2 items
+Future constructed: Fri Jun 30 10:36:55 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 487
+
+System Wide Statistics
+----------------------
+NOTE: facility 6 'queue' has 1 busy server(s)
+System Utilization: 92.0%
+Arrival Rate: 0.501000, Throughput: 0.487000
+Mean Service Time per Token: 1.888391
+Mean # of Tokens in System: 7.595600    Largest FEL size was 3
+Mean Residence Time for each Token: 15.596715
+
+Facility Statistics
+-------------------
+F 6 (queue): Idle:  8.0%, Util: 92.0%, Preemptions: 0, LongestQ: 24
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 12 items
+Future constructed: Fri Jun 30 10:36:56 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 491
+
+System Wide Statistics
+----------------------
+NOTE: facility 7 'queue' has 1 busy server(s)
+System Utilization: 94.4%
+Arrival Rate: 0.501000, Throughput: 0.491000
+Mean Service Time per Token: 1.923407
+Mean # of Tokens in System: 6.774214    Largest FEL size was 3
+Mean Residence Time for each Token: 13.796770
+
+Facility Statistics
+-------------------
+F 7 (queue): Idle:  5.6%, Util: 94.4%, Preemptions: 0, LongestQ: 21
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 8 items
+Future constructed: Fri Jun 30 10:36:56 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 445
+
+System Wide Statistics
+----------------------
+NOTE: facility 8 'queue' has 1 busy server(s)
+System Utilization: 99.0%
+Arrival Rate: 0.501000, Throughput: 0.445000
+Mean Service Time per Token: 2.225555
+Mean # of Tokens in System: 22.805908    Largest FEL size was 3
+Mean Residence Time for each Token: 51.249231
+
+Facility Statistics
+-------------------
+F 8 (queue): Idle:  1.0%, Util: 99.0%, Preemptions: 0, LongestQ: 54
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 54 items
+Future constructed: Fri Jun 30 10:36:56 1995
+Draining future event list containing 2 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 456
+
+System Wide Statistics
+----------------------
+NOTE: facility 9 'queue' has 1 busy server(s)
+System Utilization: 95.3%
+Arrival Rate: 0.501000, Throughput: 0.456000
+Mean Service Time per Token: 2.090030
+Mean # of Tokens in System: 15.878642    Largest FEL size was 3
+Mean Residence Time for each Token: 34.821583
+
+Facility Statistics
+-------------------
+F 9 (queue): Idle:  4.7%, Util: 95.3%, Preemptions: 0, LongestQ: 44
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 43 items
+Future constructed: Fri Jun 30 10:36:57 1995
+Draining future event list containing 1 items
+Terminating simulation from Arrive()
+------------------------------------------
+In Event Status Block:
+ return code: ES_NO_EVENT
+------------------------------------------
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Departures: 500
+
+System Wide Statistics
+----------------------
+System Utilization: 97.0%
+Arrival Rate: 0.501000, Throughput: 0.500000
+Mean Service Time per Token: 1.939204
+Mean # of Tokens in System: 11.684262    Largest FEL size was 3
+Mean Residence Time for each Token: 23.368523
+
+Facility Statistics
+-------------------
+F 10 (queue): Idle:  3.0%, Util: 97.0%, Preemptions: 0, LongestQ: 24
+Draining future event list containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 0 items

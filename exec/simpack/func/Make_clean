@@ -1,0 +1,9 @@
+#! /bin/csh -f
+echo 'Remove Simpack2.x queuing library object file ...'
+(cd queuing; rm -f queuing.o)
+echo 'Remove Sim++ ...'
+(cd event; Make_clean)
+echo 'Remove SimPack3 Time-Slice Functional Model Packages ...'
+(cd slice; Make_clean)
+echo 'simpack/func/Make_clean is done.'
+date

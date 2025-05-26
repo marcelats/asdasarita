@@ -1,0 +1,21 @@
+
+There are two programs that perform basic molecular gas
+simulations within a box. The first program (gas1) uses
+a time slicing technique and the second program (gas2)
+uses a discrete event scheduling simulation method. Gas
+molecules are travelling at constant velocity, therefore,
+it is easy to -ahead of time- calculate the next collision
+time for any number of gas molecules (thereby making the
+discrete event approach possible).
+
+The inspiration for these programs came from one of 
+A.K. Dewdney's books on computer recreations (chapters 
+originally appeared in Scientific American).
+
+Each program prints records of the form:
+
+#-of-molecule   X-position  Y-position
+
+Any number of initial molecules may be specified. One
+can change the NUM_BALLS value to be something other
+than 4 (the current value).

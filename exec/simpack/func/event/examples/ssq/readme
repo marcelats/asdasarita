@@ -1,0 +1,251 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/ssq (formerly q1 in simpack)
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+                                   +----------+---------+---------+---...
+                                   |          |         |         |
+                                cpudisk     block     tiktok     ssq
+                                                                  ^
+                                                                  ^
+You are here  = = = = = = = = = = = = = = = = = = = = = = = = = = /
+
+-------------------------------------------------------------------------------
+
+This program simulates a single server queue.
+
+-------------------------------------------------------------------------------
+
+ssq is one of several example programs provided with this release of sim++.
+There are several versions of the ssq program.  The ssq program was formerly
+named "q1" in the "ssq" directory in simpack.  Each version of the program
+begins with a brief
+
+  version 1 = essentially original simpack code, using sim++ cAPI,
+              baseline version, no snapshots
+  version 2 = version 1 + snapshots at every event, BATCH mode, with simulation
+              exit time reduced from 1000 to 5, to limit quantity of output
+  version 3 = same as version 2 except INTERACTIVE mode
+  version 4 = same as versions 2 and 3, except selective snapshots instead of
+              snapshot at every event
+
+  version 5 = baseline c++ version using ooAPI, no snapshots
+  version 6 = baseline c++ version using ooAPI, no snapshots,
+              semiautomatic simulation style
+  version 7 = baseline c++ version using ooAPI, no snapshots,
+              automatic simulation style
+
+  version 8 = 7 above + snapshots after every event, BATCH mode
+  version 9 = same as 8, except INTERACTIVE mode
+  version 10 = same as 9, except idle facilities are NOT displayed
+  version 11 = same as 10, except BATCH mode, suitable for redirection to a
+               file (CAUTION: file will be LARGE)
+
+  version 12 = 7 above + selective snapshots, which allow any or all of the
+               following, whenever yoou wish:  display future event
+               list and ALL faciliities, display ALL facilities; and
+               display a single facility, thus avoiding the DELUGE of
+               output you get with the conventional snapshot approach.
+
+  version 13 = 7 above + automatic snapshots, in BATCH mode, over a very narrow
+               time interval.  Gives a "magnifying glass", so you can look in
+               detail at just one place in the execution, without generating
+               so much output that it is unmanageable, and without having to
+               insert code to perform snapshots on demand.
+
+Each of the versions above can be translated and run.  There is also a version
+numbered 0, which is NOT intended to be translated or run.  Version 0 is the
+simpack version of ssq (except that its name was "q1").  It is present so you
+can compare it with version 1 to see what exactly had to be changed to get it
+to translate without warnings or errors under sim++.
+
+ALL the changes between versions 0 and 1 have to do with portability between
+dos and unix, or the change from c to c++, etc.  NONE has to do with sim++.
+And ALL the changes are, to a degree, optional, depending on your environment
+and whether warnings bother you or not.
+
+There's a shell script named "translat" which will translate any of versions 1
+thru 4, producing as its output the executable "tiktok", which you may then
+run.  "translat" uses a make file whose name is "makefile".
+
+The source code for version 1 is present as file name "ssq1".  "translat"
+copies it to "ssq.C" before invoking make.  Same idea for versions 2 thru
+13.
+
+-------------------------------------------------------------------------------
+
+There are 36 files in this directory.  Here's an annotated list of them:
+
+readme              provides info about the tiktok example program
+
+ssq0                various versions of source code as explained above
+ssq1
+ssq2
+ssq3
+ssq4
+ssq5
+ssq6
+ssq7
+ssq8
+ssq9
+ssq10
+ssq11
+ssq12
+ssq13
+
+translat            selects and translates a version of the program under unix
+makefile
+
+translat.bat        selects and translates a version of program under dos or
+                     windows or os2
+
+makefile.simpack    translates the simpack version of cpudisk (version 0)
+
+output.v0u          output files:  the extension is of the form .vix, where
+output.v1d           i is the version number 1..4, and x is u for unix or
+output.v1u           d for dos
+output.v2d
+output.v2u          Note: there are no output files for versions 3, 9, 10,
+output.v4d           and 12, because these are all INTERACTIVE mode.
+output.v4u
+output.v5d
+output.v5u
+output.v6d
+output.v6u
+output.v7d
+output.v7u
+output.v8d
+output.v8u
+output.11d
+output.11u
+
+-------------------------------------------------------------------------------
+
+Below are some examples of snapshot output.  There are samples of Calendar and
+Linked and Leftist future event lists (FEL's).  You would see slightly
+different display formats for Heap, but the idea is the same.
+
+Facility queues are always linked, and they are also displayed below.  Do NOT
+confuse the linked list facility queue with the linked list FEL.
+
+
+------------------------------------------------------------
+                          LINKED
+------------------------------------------------------------
+
+Future constructed: Thu Apr 20 12:06:10 1995
+Interactive mode is ENABLED
+-------------------------------------------------------------
+Simulation snapshot at time: 657.9
+Title: 'Checkpoint 1'
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                82    Remove duplicates? No
+Completions:             73    Snapshots On Demand
+Tokens in system:         9    Ranmark: Off
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Linked and contains 4 elements at time: 657.9
+        +-----+  +-----+  +-----+  +-----+
+Token   |    9|  |    7|  |    1|  |    2|
+Time  <=|658.3|<=|663.3|<=|681.6|<=|684.6|
+Event   |    5|  |    3|  |    5|  |    5|
+        +-----+  +-----+  +-----+  +-----+
+------------------------------------------------------------
+-- [Enter] to proceed, X to exit, G to go, S to Skip --
+## FACILITY  1 (CPU):  1 server(s),  1 busy.
+Server detail: ( 0) TK   7 PR  1
+Display 'CPU' queue and contains 2 elements at time: 657.9
+        +-----+  +-----+
+Token   |    6|  |    3|
+Time  <=|-13.9|<=|652.9|
+Event   |    3|  |    2|
+        +-----+  +-----+
+
+------------------------------------------------------------
+## FACILITY  3 (disk):  1 server(s),  1 busy.
+Server detail: ( 0) TK   1 PR  0
+Display 'disk' queue and contains 3 elements at time: 657.9
+        +-----+  +-----+  +-----+
+Token   |    5|  |    4|  |    8|
+Time  <=|642.7|<=|647.6|<=|657.9|
+Event   |    4|  |    4|  |    4|
+        +-----+  +-----+  +-----+
+
+------------------------------------------------------------
+## FACILITY  4 (disk):  1 server(s),  1 busy.
+Server detail: ( 0) TK   9 PR  0
+Display 'disk' queue and contains 0 elements at time: 657.9
+------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------
+                           CALENDAR
+------------------------------------------------------------
+Simulation snapshot at time:   0.0
+Title: AFTER-PREEMPT  Facility  1  Token   7  Priority  1.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 9    Remove duplicates? No
+Completions:              0    Snapshots Always On
+Tokens in system:         9    Ranmark: Off
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Calendar  contains 2 elements at time: 0.0
+It has been as large as 9 elements so far.
+*--------------------------- Calendar parameters -----------------------------*
+Bucketspace capacity:      150        Bucketspace address:     0x1cea3bb8
+Offset into bucketspace:     0        Active bucket array:     0x1cea3bb8
+Resize enabled?              N        # active buckets:                 2
+Split threshold:             4        Previous bucket:                  1
+Fold threshold:              0        Previous key:                   5.8
+Calendar width:            1.0        Bucket top:                     1.5
+     0: [Token:   8, Time:       0.0, Event:'RqstCPU']
+        [Token:   9, Time:       0.0, Event:'RqstCPU']
+------------------------------------------------------------
+## FACILITY  1 (CPU):  1 server(s),  1 busy.
+Server detail: ( 0) TK   7 PR  1
+Display Linked 'CPU' queue contains 6 elements at time: 0.0
+It has been as large as 6 elements so far.
+        +-----+  +-----+  +-----+  +-----+  +-----+  +-----+
+Token   |    1|  |    2|  |    3|  |    4|  |    5|  |    6|
+Time  <=| -5.8|<=|  0.0|<=|  0.0|<=|  0.0|<=|  0.0|<=|  0.0|
+Event   |RlsCP|  |RqstC|  |RqstC|  |RqstC|  |RqstC|  |RqstC|
+        +-----+  +-----+  +-----+  +-----+  +-----+  +-----+
+
+
+
+
+-------------------------------------------------------------
+                        LEFTIST
+-------------------------------------------------------------
+Simulation snapshot at time:   0.0
+Title: AFTER SCHEDULE Event 'RqstCPU'  Inter-Time     0  Token 5.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               0    Snapshots Always On
+Tokens in system:         2    Ranmark: Off
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Leftist  contains 9 elements at time: 0.0
+It has been as large as 9 elements so far.
+Token: 2, Time: 0.0, Event: 'Begin tour'
+'' Token: 7, Time: 0.0, Event: 'Begin tour'
+'' '' Token: 8, Time: 0.0, Event: 'Begin tour'
+`` `` Token: 9, Time: 0.0, Event: 'Begin tour'
+`` Token: 6, Time: 0.0, Event: 'Begin tour'
+'' '' Token: 1, Time: 0.0, Event: 'RqstCPU'
+'' '' '' Token: 4, Time: 0.0, Event: 'Begin tour'
+`` `` `` Token: 3, Time: 0.0, Event: 'RqstCPU'
+`` `` Token: 5, Time: 0.0, Event: 'RqstCPU'
+------------------------------------------------------------
+
+
+
+=========================== end readme ========================================
+

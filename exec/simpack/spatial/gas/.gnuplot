@@ -1,0 +1,10 @@
+set term postscript eps
+set xtics 0.0,0.1,1.0
+set ytics 0.0,0.1,1.0
+set output "molecule3.ps"
+set sample 10000
+set data style linespoints
+set nokey
+plot 'molecule3'
+
+

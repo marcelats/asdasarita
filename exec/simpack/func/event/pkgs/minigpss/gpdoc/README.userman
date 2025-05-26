@@ -1,0 +1,43 @@
+
+                            
+
+ 
+                             MINI-GPSS User Manual
+
+        (1)  Creating a MINI-GPSS program 
+
+            Write a MINI-GPSS simulation program.  The syntax to a     
+
+            MINI-GPSS program is described under the section
+
+            MINI-GPSS Program Syntax.
+
+        (2)  Executing the MINI-GPSS simulator 
+
+            The file that you created in (1) is the source-file.
+
+            Type at the system prompt:
+
+                 gp < source-file 
+             
+             At this point, if there are syntax errors the simulator
+
+             will specify the error and the line where the error
+
+             is located.  If there are no syntax errors, the simulator
+
+             will produce the simulation output and will generate
+
+             "C" equivalent code to the simulation.  The "C" generated
+
+             code is located in the file simgen.c.  To compile simgen.c,
+
+             type at the system prompt:
+
+                 cc -o simgen simgen.c queuing.o -lm -lcurses -ltermcap 
+
+             To run the executable (simgen), type at the system prompt:
+
+                 simgen 
+               
+           

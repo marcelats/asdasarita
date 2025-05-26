@@ -1,0 +1,106 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/ssq version 10 (formerly q1.c in ssq directory in SimPack):
+-------------------------------------------------------------------------------
+The following code was ported from SimPack's "q1.c".
+This program simulates a single server queue.
+
+The simulation style of the code below is "automatic, event_routine".
+The code is c++.  The API is ooAPI.
+
+Look at the Future constructor.  Parameter 5 (YES) indicates whether we want
+snapshots or not (default is NO).  Parameter 6 (YES) indicates whether snapshot
+mode is interactive or not (default is BATCH).  Here we have specified
+INTERACTIVE snapshots, which means that you will receive displays of future
+event list and facilities before and after just about every event.
+
+Notice i reduced TIME_LIMIT from 1000 to 5.  It STILL produces a LOT of output!
+
+The difference between version 9 and version 10 is that here in version 10 we
+illustrate the use of a function which reduces the amount of unnecessary
+output.  That function is Facility::ShowIdle.  Its primary purpose is to omit
+from snapshot output all those facilities which are idle.  By default, show
+idle is ON.  You can change it to OFF, to reduce the amount of unnecessary
+output.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+const TIME_LIMIT = 5;
+
+Facility * queue = NULL;
+
+// fn prototype declarations; (can be omitted if fn definitions come before
+// main; that is, if you like pascal style)
+
+  void KickOff  (void);
+  void Arrive   (void);
+  void RqstSrvr (void);
+  void RlsSrvr  (void);
+
+
+int main ()
+  {
+  Facility::ShowIdle (NO);
+  queue = new Facility ("queue");
+  new Future (LINKED, KickOff, "Start the simulation", EXECUTE_THIS_FN,
+              YES, // want snapshots
+              INTERACTIVE);
+  Future::ReportStats ();
+  return 0;
+  }
+
+
+
+/*=============================================================================
+Event routines
+-----------------------------------------------------------------------------*/
+
+void KickOff ()
+  {
+  Token customer (1);
+  Future::Schedule (Arrive, 0.0, customer, "Arrival");
+  }
+
+
+void Arrive ()
+  {
+  Token customer = Future::CurrentToken ();
+  Future::UpdateArrivals ();
+  Future::Schedule (RqstSrvr, 0.0, customer, "Request");
+
+  if (Future::SimTime() < TIME_LIMIT)
+    {
+    customer.Id (customer.Id() + 1);
+    Future::Schedule (Arrive, 2.0, customer, "Arrive");
+    }
+  else
+    {
+    Future::FELdrain ();
+    cout << "Terminating simulation from Arrive()\n";
+    }
+  }
+
+void RqstSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  if (queue->Request (customer) == FREE)
+    {
+    double sample = expntl (2.0);
+    Future::Schedule (RlsSrvr, sample, customer, "Release");
+    }
+  }
+
+void RlsSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  int who = customer.Id();
+  queue->Release (who);
+  Future::UpdateDepartures ();
+  }
+
+// end ssq
+

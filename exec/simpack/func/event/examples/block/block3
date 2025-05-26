@@ -1,0 +1,169 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/block (formerly blocking.c in simpack):
+version 3.
+
+The following code was ported from SimPack's "blocking.c".  The simulation
+style of the code below is "semiautomatic, event_routine".  The API is ooAPI.
+See readme.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+enum EventID {UNUSED, GENERATE_PARTS, REQUEST_ACC, BLOCK_ACC, RELEASE_ACC,
+  REQUEST_LATHE, BLOCK_LATHE, RELEASE_LATHE, REQUEST_INSPECTOR,
+  RELEASE_INSPECTOR};
+
+const NUM_PARTS = 100;
+
+void GenerateParts      (void);
+void RequestAccumulator (void);
+void BlockAccumulator   (void);
+void ReleaseAccumulator (void);
+void RequestLathe       (void);
+void BlockLathe         (void);
+void ReleaseLathe       (void);
+void RequestInspector   (void);
+void ReleaseInspector   (void);
+
+Facility * accumulator, * lathe, * inspector;
+Boolean acc_waiting, lathe_waiting;
+int acc_waiting_id, lathe_waiting_id;
+int count_parts = NUM_PARTS;
+
+int main ()
+  {
+  new Future (LINKED);
+
+  accumulator = new Facility ("ACC");
+  lathe       = new Facility ("LATHE");
+  inspector   = new Facility ("INSPECTOR");
+
+  Token tkn;
+  for (int ii=1; ii <= NUM_PARTS; ii++)
+    {
+    tkn.Id (ii);
+    Future::Schedule (GenerateParts, 0.0, tkn);
+    }
+
+  while (count_parts > 0)
+    {
+    Estatus es = Future::Dispatch();
+    if (es.rtncod != ES_OK) break;
+    }
+
+  cout << "Costs for Part Processing\n" << setprecision(2);
+  cout. setf (ios::showpoint);
+  cout. setf (ios::fixed, ios::floatfield);
+
+  float cost_part_gen = float(NUM_PARTS) * 0.40;
+  cout << "Cost for part generation: $" << cost_part_gen << '\n';
+
+  float cost_labor_server1 = lathe->InuseTime()     / 3600.0 * 15.50;
+  cout << "Cost of labor for server 1: $" << cost_labor_server1 << '\n';
+
+  float cost_labor_server2 = inspector->InuseTime() / 3600.0 * 14.00;
+  cout << "Cost of labor for server 2: $" << cost_labor_server2 << '\n';
+
+  float total_cost = cost_part_gen + cost_labor_server1 + cost_labor_server2;
+  cout << "Total Cost is $" << total_cost << '\n';
+
+  Future::ReportStats();
+  cout << "\n\n";
+  return 0;
+  }
+
+/*=============================================================================
+Event routines:
+-----------------------------------------------------------------------------*/
+
+void GenerateParts ()
+  {
+  Token tkn = Future::CurrentToken ();
+  Future::UpdateArrivals ();
+  Future::Schedule (RequestAccumulator, 0.0, tkn);
+  }
+
+void RequestAccumulator ()
+  {
+  Token tkn = Future::CurrentToken ();
+  FacStatus rtncod = accumulator->Request (tkn);
+  if (rtncod == FREE)
+    Future::Schedule (BlockAccumulator, 2.0, tkn);
+  }
+
+void BlockAccumulator ()
+  {
+  Token tkn = Future::CurrentToken ();
+  acc_waiting_id = tkn.Id();
+  acc_waiting = ! lathe->FQempty ();
+  if ( ! acc_waiting )
+    Future::Schedule (ReleaseAccumulator, 0.0, tkn);
+  }
+
+void ReleaseAccumulator ()
+  {
+  Token tkn = Future::CurrentToken ();
+  acc_waiting = FALSE;
+  accumulator->Release (tkn.Id());
+  Future::Schedule (RequestLathe, 0.0, tkn);
+  }
+
+void RequestLathe ()
+  {
+  Token tkn = Future::CurrentToken ();
+  if (lathe->Request (tkn) == FREE)
+    Future::Schedule (BlockLathe, normal(120.0,3.0), tkn);
+  }
+
+void BlockLathe ()
+  {
+  Token tkn = Future::CurrentToken ();
+  lathe_waiting_id = tkn.Id();
+  if (inspector->FQlength () <= 3)
+    {
+    lathe_waiting = FALSE;
+    Future::Schedule (ReleaseLathe, 0.0, tkn);
+    }
+  else
+    lathe_waiting = TRUE;
+  }
+
+void ReleaseLathe ()
+  {
+  Token tkn = Future::CurrentToken ();
+  lathe_waiting = FALSE;
+  lathe->Release (tkn.Id());
+  if (acc_waiting)
+    {
+    tkn.Id (acc_waiting_id);
+    Future::Schedule (ReleaseAccumulator, 0.0, tkn);
+    }
+  Future::Schedule (RequestInspector, 0.0, tkn);
+  }
+
+void RequestInspector ()
+  {
+  Token tkn = Future::CurrentToken ();
+  FacStatus rtncod = inspector->Request (tkn);
+  if (rtncod == FREE)
+    Future::Schedule (ReleaseInspector, normal(15.0,1.0), tkn);
+  }
+
+void ReleaseInspector ()
+  {
+  Token tkn = Future::CurrentToken ();
+  inspector->Release (tkn.Id());
+  if (lathe_waiting)
+    {
+    tkn.Id (lathe_waiting_id);
+    Future::Schedule (ReleaseLathe, 0.0, tkn);
+    }
+  count_parts--;
+  Future::UpdateDepartures ();
+  }
+
+

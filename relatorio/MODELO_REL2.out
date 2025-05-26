@@ -1,0 +1,12 @@
+
+                             smpl SIMULATION REPORT
+
+
+ MODEL:  MODELO_REL2                                          TIME: 1000000.004
+                                                          INTERVAL:  949999.983
+
+                           MEAN BUSY     MEAN QUEUE        OPERATION COUNTS
+ FACILITY          UTIL.     PERIOD        LENGTH     RELEASE   PREEMPT   QUEUE
+ CS_1             0.8002455  0.0400061     3.1907775    19002928         0 15204955
+ CS_2             0.4001684  0.0500066     0.2658479     7602190         0 3039791
+

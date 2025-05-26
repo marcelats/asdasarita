@@ -1,0 +1,85 @@
+
+MINIGPSS COMPILER
+-----------------
+
+This is a scaled down version of the GPSS Simulation Programming Language
+which has been implemented in C. This compiler came from a senior thesis
+project completed by David Bloom at the University of Florida. The language 
+is called 'minigpss' and is flexible in that YACC and LEX have been used 
+to build the minigpss compiler. This means that extensions or changes in 
+syntax are very straightforward should the experimenter wish to construct 
+a special purpose simulation language to fit one particular application area.
+
+MINIGPSS uses SimPack's C queuing library to compile a GPSS model
+description into C code which implements event scheduling. Most
+discrete event simulation packages will use event scheduling
+even if the language is 'process oriented'. In our terminology,
+the event scheduling C routines are treated as an "assembly" language
+for process languages such as MINIGPSS.  
+
+NOTE: MINIGPSS is far from being a full fledged version of the
+complete GPSS language. In the spirit of SimPack, MINIGPSS is meant only
+as "seed" simulation software that permits the serious simulationists
+to homebrew their own simulation languages (or extend the GPSS language)
+by using the architecture of MINIGPSS as an example. Note also, that
+MINIGPSS is a full-fledged compiler - not simply an interpreter (slow!)
+for the GPSS language.
+
+For an example, cd to the 'gpfiles' sub-directory, and try:
+
+%gpss < barbershop.g
+
+(barbershop.g is the MINIGPSS model)
+
+Here is the general architecture of the MINIGPSS architecture.
+Note that program.g is the actual MINIGPSS source code.
+
+
+
+
+
+                        MINI-GPSS System Description 
+  
+
+        token.l   :     input to lex  (scanner specification)
+        parse.y   :     input to yacc (parser specification) 
+        lex.yy.c  :     "C" generated code for scanner
+        y.tab.c   :     "C" generated code for parser
+        queuing.c :     simulation routines (simpack)
+        main.c    :     simulation event handler
+        error.c   :     error handler for parser
+        simgen.c  :     "C" generated code for simulation
+        gp        :     MINI-GPSS executable
+        program.g :     MINI-GPSS source file
+
+
+                ||                      ||
+                ||                      ||
+              token.l                 parse.y
+                ||       ===========    ||
+                \/       ||       ||    ||
+           ===========   ||       \/    \/
+           |   lex   |   ||     ==============
+           ===========   ||     |    yacc    |                    ||
+                ||       ||     ==============                  main.c
+                ||       ||           ||         ||        ||     ||
+             lex.yy.c    ||           ||         ||        ||     ||
+                ||       ||         y.tab.c    error.c  queuing.c ||   
+                ===========           ||         ||        ||     ||
+                                      \/         \/        \/     \/
+                                  ===================================
+                   ||             |         cc compiler             |
+                   ||             ===================================
+                program.g                      ||
+                   ||      ====================== 
+                   ||      || 
+                   \/      || 
+               ========================
+               |     gp (executable)  |
+               ========================
+                        ||
+                   ==============
+                   ||          ||
+                   \/          \/
+                simulation  simgen.c
+                 output 

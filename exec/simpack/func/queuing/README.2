@@ -1,0 +1,92 @@
+The file merged.c contains the code necessary for the implementation of nine
+data structures for use in the SimPack queuing library.  To use these methods,
+one must call init_simpack() with one of the following keywords:
+LINKED   : for linked list operation (old method)
+HEAP     : for heap operation (old method)
+CALENDAR : for calendar queues (old method)
+HENRIK   : for Henrikson's algorithm
+INOMIAL  : for binomial forests
+LEFTIST  : for leftist trees
+PAGODA   : for pagodas
+PAIR     : for paired heaps
+SKEWDN   : for skewed heaps with a top down approach
+SKEWUP   : for skewed heaps with a bottom up approach
+SPLAY    : for splay trees (self-adjusting binary search trees)
+TWOLIST  : for twolist implementation
+
+This keyword can be binary or'ed with REMOVE_DUPLICATES as before.  Of these
+methods, LINKED, HEAP, and CALENDAR remain unchanged, except for a bug fix to
+the HEAP operations.  The others are coded in the files as follows:
+  merged.c  : enqueue, dequeue, initialize, and arbitrary delete for methods
+  mytypes.h : header file for merged.c
+
+In order to build the queuing.o object file with the new structures, place
+the merged.c and mytypes.h files in the same directory as the new queuing.c
+and queuing.h files, and make the queuing.o file the same way as before.
+
+The data structure will be used for the future event list only, and all methods
+*should* yield the same results, with the only difference being the amount of
+time and the amount of space the computer needs to run the simulation.  Some
+methods are better than others for certain probability distributions of future
+events.  The only changes necessary to any code written to work for the old
+Simpack should be the modification of the constant used when calling init_
+simpack, and if the old methods are still desired, no change should be
+necessary at all.
+
+The code in merged.c was both created and ported.  The functions initialize,
+enqueue, and dequeue were ported over from the Pascal source code from Douglas
+W. Jones received from him upon request.  His source was used in his article
+"An Empirical Comparison of Priority-Queue and Event-Set Implementations",
+Communications of the ACM, April 1986, pp. 300-311.  Most of this was ported 
+using a pascal to C translator written by Samuel H. Smith for the IBM PC
+(TPC version 1.4). The translated code was then cleaned up and non-standard
+constructs were manually ported. 
+The functions for arbitrary deletion were written from scratch, after research
+into each method when it was difficult to understand the base code.  For 
+complete information concerning the methods, implementation, and sources,
+see the included file README.article
+
+IMPORTANT NOTES!!!
+1) The PAGODA will yield unpredictable results if preemption is used with non-
+unique keys.  This stems from the necessity of knowing if a node is a left or
+right child before it can be arbitrarily deleted.  If preemption is not used,
+or the keys are unique, this will not cause a problem.
+2) The structures for Henrikson's and binomial forests do not lend themselves
+easily to arbitrary deletion, therefore the method used is to mark the node
+as deletable, and when a dequeue is called, if the node retrieved is so marked,
+it is discarded and the next one retrieved.  This effectively turns the worst
+case of Henrikson's dequeue from O(1) to O(n), and binomial forest from O(lg n)
+to O(nlgn).  However, these cases will rarely be reached, and the slowdown due 
+to this implementation should not cause problems.
+3) The TWOLIST data structure relies on a delta value which increments the 
+threshhold of the sorted part of the list.  In Jones' original source code, the
+value is modified according to a formula, but in practice, I found that this 
+greatly (as in orders of magnitude) slowed down this method, so manual tuning
+of this value may be needed. (See commented out adjustment line in tdequeue()).
+
+Please send bug fixes, bug reports, comments, etc. to 
+fishwick@fish.cis.ufl.edu  and/or  dh1@thunder.cis.ufl.edu
+
+--Daniel M. Hay
+
+
+
+
+MODIFICATIONS AND/OR BUG FIXES
+
+10/22/93
+1.  Fixed bug in yswap.  Old versions of C mistook the second asterik as
+part of an assignment operator =*.  Parenthesis should take care of that.
+2.  Modifed the dequeue and rmqueue operations to free the memory of the
+nodes they are returning the ITEM from.  Should have been done before but
+I overlooked it the first time around.
+3.  Added function end_simpack which cleans up any still-allocated memory
+used by the facilities or the future event lists.
+4.  Added constant RESEED which may be binary or'ed with the init_simpack
+flags (like REMOVE_DUPLICATES).  Used to reset the random number stream.
+This allows for someone to run multiple iterations of the simulation
+(calling init_simpack at the start, and end_simpack at the end) and 
+encounter the same random number stream.  Useful for running the same
+simulation over a number of different data structures, or for seeing how
+changing a non-random element of a simulation will affect a specific
+simulation.

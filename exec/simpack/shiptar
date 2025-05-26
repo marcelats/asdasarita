@@ -1,0 +1,120 @@
+
+date
+echo 'About to build a compressed tar for SimPack3'
+echo 'Note: first step will be a make clean'
+echo -n 'Shall we build new files? [y/n/q] '
+read ansa
+echo ' '
+
+if ( [ "$ansa" = "q" -o "$ansa" = "Q" ] ) then
+  echo 'Quitting at your request.'
+  echo 'Have a nice day.'
+  exit 1
+  fi
+
+
+
+
+if ( [ "$ansa" = "y" -o "$ansa" = "Y" ] ) then
+  echo 'About to make clean'
+  make clean
+  echo 'Make Sim++ headers read-only ...'
+  (cd func/event/include; chmod 444 *)
+  echo 'Make Sim++ source code read-only ...'
+  (cd func/event/src; chmod 444 *)
+  echo 'make all files world-readable'
+  chmod -R o+r '*'
+  echo 'make all subdirectories world-executable'
+  find . -type d -name "*" -exec chmod o+x {} \;
+  echo 'Move up to parent'
+  cd ..
+  echo 'Create tar ...'
+
+
+  if ( [ -f SimPack3.tar -o -f SimPack3.tar.Z ] ) then
+
+    ls -l SimPack3.tar*
+    echo -n 'Previous version exists.  Overwrite? [y/n/q] '
+    read ansa
+    echo ' '
+
+    if ( [ "$ansa" = "q" -o "$ansa" = "Q" ] ) then
+      echo 'Quitting at your request.'
+      echo 'Have a nice day.'
+      exit 2
+      fi
+
+    fi # end if previous version already exists
+
+
+  if ( [ "$ansa" = "y" -o "$ansa" = "Y" ] ) then
+    tar -cvf SimPack3.tar simpack
+    ls -l SimPack3.tar
+    echo 'Compress tar ...'
+    compress SimPack3.tar
+    echo 'SimPack Version 3 compressed tar file has been created.'
+    echo '--------------------------------'
+    echo 'No zip file until further notice'
+    echo '--------------------------------'
+#   echo 'Now for the .zip:'
+#   zip -r SimPack3 simpack
+#   date
+#   echo 'zip is done.'
+#   ls -l SimPack3.zip
+
+    cp -p simpack/SimPack.doc SimPack3.doc
+    fi
+
+  else
+    echo 'Answer to build was NO.'
+    echo 'Going up to parent ...'
+    cd ..
+
+  fi # end if we want to build and compress tar
+
+echo ' '
+echo 'This is what we have now:'
+ls -l SimPack3.tar.Z
+# ls -l SimPack3.zip
+ls -l SimPack3.doc
+echo ' '
+echo 'About to copy the files above to the ftp site'
+echo -n 'Copy files listed above to ftp site [y/n] ?'
+read ansa
+echo ' '
+
+if ( [ "$ansa" = "q" -o "$ansa" = "Q" ] ) then
+  echo 'Quitting at your request.'
+  echo 'Have a nice day.'
+  exit 2
+  fi
+
+if ( [ "$ansa" = "y" -o "$ansa" = "Y" ] ) then
+  echo 'Copying ...'
+
+  if ( [ -f SimPack3.tar.Z ] ) then
+    cp -p SimPack3.tar.Z /cis/ftp/pub/simdigest/tools
+    echo 'Compressed tar was copied to ftp site.'
+  else
+    echo 'compressed tar not found'
+    fi
+
+  if ( [ -f SimPack3.zip ] ) then
+    cp -p SimPack3.zip /cis/ftp/pub/simdigest/tools
+    echo 'SimPack3.zip was copied to ftp site.'
+  else
+    echo 'no zip'
+    fi
+
+  if ( [ -f SimPack3.doc ] ) then
+    cp -p SimPack3.doc /cis/ftp/pub/simdigest/tools
+    echo 'SimPack3.doc was copied to ftp site.'
+  else
+    echo 'doc not found'
+    fi
+
+  fi
+
+ls -l /cis/ftp/pub/simdigest/tools/SimPack3*
+echo 'simpack/shiptar is done.'
+date

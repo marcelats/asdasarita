@@ -1,0 +1,51 @@
+
+                                   LICENSE
+
+    Sim++ (Version 1.01), a software toolkit for event scheduling and queuing 
+    model simulations, developed at the CISE Department, University of 
+    Florida, Gainesville FL  USA, is the property of Paul Fishwick and 
+    Robert Cubert, copyright (c) 1995.  Title to and ownership of Sim++ 
+    remains in Paul Fishwick and Robert Cubert.
+
+    Sim++ is copyrighted by its authors with the exception of
+    certain packages built by others to work in conjunction with SimPack
+    (a related product) which are distributed with Sim++ and which bear 
+    attributions identifying those other authors.
+
+    You are granted a nonexclusive License to use Sim++ in
+    accordance with the provisions of the GNU General Public License,
+    version 2 (or at your option any later version), which is hereby
+    incorporated by reference.  The GNU General Public License is published
+    by the Free Software Foundation.  A copy of the GNU License appears in
+    the same directory as this license, under the filename ``License.gnu".
+    The GNU license is also available from Free Software Foundation, Inc., 
+    675 Massachusetts Avenue, Cambridge MA 02139 USA.
+
+    In a nutshell, you are free to use Sim++ for research, teaching,
+    or private purposes, but you must not sell, lease, rent, or otherwise
+    convey any interest in Sim++, except that you may redistribute Sim++
+    as long as any redistribution is free of charge
+    and includes all original source code and accompanying documentation, 
+    as well as this license.  If you 
+    modify Sim++ and/or incorporate it into another software product, 
+    distribution of any such derived product must be under the same terms 
+    and conditions as those in this Sim++ License.
+
+    Source code as used above means all header files (.h) and all C++
+    program files, as well as all makefiles, shell scripts, and, for the
+    DOS environment, all bat files.  Documentation as used above means the
+    Sim++ manual as well as all readme files.
+
+    You may terminate your Sim++ license at any time by erasing all
+    copies of all files in your possession which constitute the
+    Sim++ distribution, and by erasing all copies of all files in
+    your possession which constitute any derived product(s).  We may
+    terminate your license upon notice, in the event that you violate its
+    terms and conditions.
+
+    Sim++ is distributed in the hope that it will be useful, but
+    without any warranty, and without any implied warranty of
+    merchantability or fitness for a particular purpose.
+    Under no circumstances shall the owners of Sim++ be liable to any
+    person for any indirect, special, incidental, or consequential
+    damages arising from the use or misuse of this software.

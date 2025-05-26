@@ -1,0 +1,31 @@
+Future constructed: Sat May 27 12:19:36 1995
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 4772.291443
+Total System Arrivals: 508
+Total System Departures: 500
+
+System Wide Statistics
+----------------------
+NOTE: facility 1 'CPU' has 1 busy server(s)
+NOTE: facility 2 'disk' has 1 busy server(s)
+System Utilization: 78.8%
+Arrival Rate: 0.106448, Throughput: 0.104771
+Mean Service Time per Token: 7.525242
+Mean # of Tokens in System: 9.000000    Largest FEL size was 9
+Mean Residence Time for each Token: 85.901246
+
+Facility Statistics
+-------------------
+F 1 (CPU): Idle: 18.3%, Util: 81.7%, Preemptions: 127, LongestQ: 8
+F 2 (disk): Idle: 20.8%, Util: 79.2%, Preemptions: 0, LongestQ: 7
+F 3 (disk): Idle: 12.0%, Util: 88.0%, Preemptions: 0, LongestQ: 5
+F 4 (disk): Idle: 29.3%, Util: 70.7%, Preemptions: 0, LongestQ: 5
+F 5 (disk): Idle: 25.4%, Util: 74.6%, Preemptions: 0, LongestQ: 6
+
+
+class 0 tour time = 93.01
+class 1 tour time = 72.73

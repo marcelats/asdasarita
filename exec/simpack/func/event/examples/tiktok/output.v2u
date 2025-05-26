@@ -1,0 +1,1003 @@
+Future constructed: Mon May 29 11:25:59 1995
+Constructed Heap, capacity 50000.
+Time:  0: 0: 0
+Time:  0: 0: 1
+Time:  0: 0: 2
+Time:  0: 0: 3
+Time:  0: 0: 4
+Time:  0: 0: 5
+Time:  0: 0: 6
+Time:  0: 0: 7
+Time:  0: 0: 8
+Time:  0: 0: 9
+Time:  0: 0:10
+Time:  0: 0:11
+Time:  0: 0:12
+Time:  0: 0:13
+Time:  0: 0:14
+Time:  0: 0:15
+Time:  0: 0:16
+Time:  0: 0:17
+Time:  0: 0:18
+Time:  0: 0:19
+Time:  0: 0:20
+Time:  0: 0:21
+Time:  0: 0:22
+Time:  0: 0:23
+Time:  0: 0:24
+Time:  0: 0:25
+Time:  0: 0:26
+Time:  0: 0:27
+Time:  0: 0:28
+Time:  0: 0:29
+Time:  0: 0:30
+Time:  0: 0:31
+Time:  0: 0:32
+Time:  0: 0:33
+Time:  0: 0:34
+Time:  0: 0:35
+Time:  0: 0:36
+Time:  0: 0:37
+Time:  0: 0:38
+Time:  0: 0:39
+Time:  0: 0:40
+Time:  0: 0:41
+Time:  0: 0:42
+Time:  0: 0:43
+Time:  0: 0:44
+Time:  0: 0:45
+Time:  0: 0:46
+Time:  0: 0:47
+Time:  0: 0:48
+Time:  0: 0:49
+Time:  0: 0:50
+Time:  0: 0:51
+Time:  0: 0:52
+Time:  0: 0:53
+Time:  0: 0:54
+Time:  0: 0:55
+Time:  0: 0:56
+Time:  0: 0:57
+Time:  0: 0:58
+Time:  0: 0:59
+Time:  0: 1: 0
+Time:  0: 1: 1
+Time:  0: 1: 2
+Time:  0: 1: 3
+Time:  0: 1: 4
+Time:  0: 1: 5
+Time:  0: 1: 6
+Time:  0: 1: 7
+Time:  0: 1: 8
+Time:  0: 1: 9
+Time:  0: 1:10
+Time:  0: 1:11
+Time:  0: 1:12
+Time:  0: 1:13
+Time:  0: 1:14
+Time:  0: 1:15
+Time:  0: 1:16
+Time:  0: 1:17
+Time:  0: 1:18
+Time:  0: 1:19
+Time:  0: 1:20
+Time:  0: 1:21
+Time:  0: 1:22
+Time:  0: 1:23
+Time:  0: 1:24
+Time:  0: 1:25
+Time:  0: 1:26
+Time:  0: 1:27
+Time:  0: 1:28
+Time:  0: 1:29
+Time:  0: 1:30
+Time:  0: 1:31
+Time:  0: 1:32
+Time:  0: 1:33
+Time:  0: 1:34
+Time:  0: 1:35
+Time:  0: 1:36
+Time:  0: 1:37
+Time:  0: 1:38
+Time:  0: 1:39
+Time:  0: 1:40
+Time:  0: 1:41
+Time:  0: 1:42
+Time:  0: 1:43
+Time:  0: 1:44
+Time:  0: 1:45
+Time:  0: 1:46
+Time:  0: 1:47
+Time:  0: 1:48
+Time:  0: 1:49
+Time:  0: 1:50
+Time:  0: 1:51
+Time:  0: 1:52
+Time:  0: 1:53
+Time:  0: 1:54
+Time:  0: 1:55
+Time:  0: 1:56
+Time:  0: 1:57
+Time:  0: 1:58
+Time:  0: 1:59
+Time:  0: 2: 0
+Time:  0: 2: 1
+Time:  0: 2: 2
+Time:  0: 2: 3
+Time:  0: 2: 4
+Time:  0: 2: 5
+Time:  0: 2: 6
+Time:  0: 2: 7
+Time:  0: 2: 8
+Time:  0: 2: 9
+Time:  0: 2:10
+Time:  0: 2:11
+Time:  0: 2:12
+Time:  0: 2:13
+Time:  0: 2:14
+Time:  0: 2:15
+Time:  0: 2:16
+Time:  0: 2:17
+Time:  0: 2:18
+Time:  0: 2:19
+Time:  0: 2:20
+Time:  0: 2:21
+Time:  0: 2:22
+Time:  0: 2:23
+Time:  0: 2:24
+Time:  0: 2:25
+Time:  0: 2:26
+Time:  0: 2:27
+Time:  0: 2:28
+Time:  0: 2:29
+Time:  0: 2:30
+Time:  0: 2:31
+Time:  0: 2:32
+Time:  0: 2:33
+Time:  0: 2:34
+Time:  0: 2:35
+Time:  0: 2:36
+Time:  0: 2:37
+Time:  0: 2:38
+Time:  0: 2:39
+Time:  0: 2:40
+Time:  0: 2:41
+Time:  0: 2:42
+Time:  0: 2:43
+Time:  0: 2:44
+Time:  0: 2:45
+Time:  0: 2:46
+Time:  0: 2:47
+Time:  0: 2:48
+Time:  0: 2:49
+Time:  0: 2:50
+Time:  0: 2:51
+Time:  0: 2:52
+Time:  0: 2:53
+Time:  0: 2:54
+Time:  0: 2:55
+Time:  0: 2:56
+Time:  0: 2:57
+Time:  0: 2:58
+Time:  0: 2:59
+Time:  0: 3: 0
+Time:  0: 3: 1
+Time:  0: 3: 2
+Time:  0: 3: 3
+Time:  0: 3: 4
+Time:  0: 3: 5
+Time:  0: 3: 6
+Time:  0: 3: 7
+Time:  0: 3: 8
+Time:  0: 3: 9
+Time:  0: 3:10
+Time:  0: 3:11
+Time:  0: 3:12
+Time:  0: 3:13
+Time:  0: 3:14
+Time:  0: 3:15
+Time:  0: 3:16
+Time:  0: 3:17
+Time:  0: 3:18
+Time:  0: 3:19
+Time:  0: 3:20
+Time:  0: 3:21
+Time:  0: 3:22
+Time:  0: 3:23
+Time:  0: 3:24
+Time:  0: 3:25
+Time:  0: 3:26
+Time:  0: 3:27
+Time:  0: 3:28
+Time:  0: 3:29
+Time:  0: 3:30
+Time:  0: 3:31
+Time:  0: 3:32
+Time:  0: 3:33
+Time:  0: 3:34
+Time:  0: 3:35
+Time:  0: 3:36
+Time:  0: 3:37
+Time:  0: 3:38
+Time:  0: 3:39
+Time:  0: 3:40
+Time:  0: 3:41
+Time:  0: 3:42
+Time:  0: 3:43
+Time:  0: 3:44
+Time:  0: 3:45
+Time:  0: 3:46
+Time:  0: 3:47
+Time:  0: 3:48
+Time:  0: 3:49
+Time:  0: 3:50
+Time:  0: 3:51
+Time:  0: 3:52
+Time:  0: 3:53
+Time:  0: 3:54
+Time:  0: 3:55
+Time:  0: 3:56
+Time:  0: 3:57
+Time:  0: 3:58
+Time:  0: 3:59
+Time:  0: 4: 0
+Time:  0: 4: 1
+Time:  0: 4: 2
+Time:  0: 4: 3
+Time:  0: 4: 4
+Time:  0: 4: 5
+Time:  0: 4: 6
+Time:  0: 4: 7
+Time:  0: 4: 8
+Time:  0: 4: 9
+Time:  0: 4:10
+Time:  0: 4:11
+Time:  0: 4:12
+Time:  0: 4:13
+Time:  0: 4:14
+Time:  0: 4:15
+Time:  0: 4:16
+Time:  0: 4:17
+Time:  0: 4:18
+Time:  0: 4:19
+Time:  0: 4:20
+Time:  0: 4:21
+Time:  0: 4:22
+Time:  0: 4:23
+Time:  0: 4:24
+Time:  0: 4:25
+Time:  0: 4:26
+Time:  0: 4:27
+Time:  0: 4:28
+Time:  0: 4:29
+Time:  0: 4:30
+Time:  0: 4:31
+Time:  0: 4:32
+Time:  0: 4:33
+Time:  0: 4:34
+Time:  0: 4:35
+Time:  0: 4:36
+Time:  0: 4:37
+Time:  0: 4:38
+Time:  0: 4:39
+Time:  0: 4:40
+Time:  0: 4:41
+Time:  0: 4:42
+Time:  0: 4:43
+Time:  0: 4:44
+Time:  0: 4:45
+Time:  0: 4:46
+Time:  0: 4:47
+Time:  0: 4:48
+Time:  0: 4:49
+Time:  0: 4:50
+Time:  0: 4:51
+Time:  0: 4:52
+Time:  0: 4:53
+Time:  0: 4:54
+Time:  0: 4:55
+Time:  0: 4:56
+Time:  0: 4:57
+Time:  0: 4:58
+Time:  0: 4:59
+Time:  0: 5: 0
+Time:  0: 5: 1
+Time:  0: 5: 2
+Time:  0: 5: 3
+Time:  0: 5: 4
+Time:  0: 5: 5
+Time:  0: 5: 6
+Time:  0: 5: 7
+Time:  0: 5: 8
+Time:  0: 5: 9
+Time:  0: 5:10
+Time:  0: 5:11
+Time:  0: 5:12
+Time:  0: 5:13
+Time:  0: 5:14
+Time:  0: 5:15
+Time:  0: 5:16
+Time:  0: 5:17
+Time:  0: 5:18
+Time:  0: 5:19
+Time:  0: 5:20
+Time:  0: 5:21
+Time:  0: 5:22
+Time:  0: 5:23
+Time:  0: 5:24
+Time:  0: 5:25
+Time:  0: 5:26
+Time:  0: 5:27
+Time:  0: 5:28
+Time:  0: 5:29
+Time:  0: 5:30
+Time:  0: 5:31
+Time:  0: 5:32
+Time:  0: 5:33
+Time:  0: 5:34
+Time:  0: 5:35
+Time:  0: 5:36
+Time:  0: 5:37
+Time:  0: 5:38
+Time:  0: 5:39
+Time:  0: 5:40
+Time:  0: 5:41
+Time:  0: 5:42
+Time:  0: 5:43
+Time:  0: 5:44
+Time:  0: 5:45
+Time:  0: 5:46
+Time:  0: 5:47
+Time:  0: 5:48
+Time:  0: 5:49
+Time:  0: 5:50
+Time:  0: 5:51
+Time:  0: 5:52
+Time:  0: 5:53
+Time:  0: 5:54
+Time:  0: 5:55
+Time:  0: 5:56
+Time:  0: 5:57
+Time:  0: 5:58
+Time:  0: 5:59
+Time:  0: 6: 0
+Time:  0: 6: 1
+Time:  0: 6: 2
+Time:  0: 6: 3
+Time:  0: 6: 4
+Time:  0: 6: 5
+Time:  0: 6: 6
+Time:  0: 6: 7
+Time:  0: 6: 8
+Time:  0: 6: 9
+Time:  0: 6:10
+Time:  0: 6:11
+Time:  0: 6:12
+Time:  0: 6:13
+Time:  0: 6:14
+Time:  0: 6:15
+Time:  0: 6:16
+Time:  0: 6:17
+Time:  0: 6:18
+Time:  0: 6:19
+Time:  0: 6:20
+Time:  0: 6:21
+Time:  0: 6:22
+Time:  0: 6:23
+Time:  0: 6:24
+Time:  0: 6:25
+Time:  0: 6:26
+Time:  0: 6:27
+Time:  0: 6:28
+Time:  0: 6:29
+Time:  0: 6:30
+Time:  0: 6:31
+Time:  0: 6:32
+Time:  0: 6:33
+Time:  0: 6:34
+Time:  0: 6:35
+Time:  0: 6:36
+Time:  0: 6:37
+Time:  0: 6:38
+Time:  0: 6:39
+Time:  0: 6:40
+Time:  0: 6:41
+Time:  0: 6:42
+Time:  0: 6:43
+Time:  0: 6:44
+Time:  0: 6:45
+Time:  0: 6:46
+Time:  0: 6:47
+Time:  0: 6:48
+Time:  0: 6:49
+Time:  0: 6:50
+Time:  0: 6:51
+Time:  0: 6:52
+Time:  0: 6:53
+Time:  0: 6:54
+Time:  0: 6:55
+Time:  0: 6:56
+Time:  0: 6:57
+Time:  0: 6:58
+Time:  0: 6:59
+Time:  0: 7: 0
+Time:  0: 7: 1
+Time:  0: 7: 2
+Time:  0: 7: 3
+Time:  0: 7: 4
+Time:  0: 7: 5
+Time:  0: 7: 6
+Time:  0: 7: 7
+Time:  0: 7: 8
+Time:  0: 7: 9
+Time:  0: 7:10
+Time:  0: 7:11
+Time:  0: 7:12
+Time:  0: 7:13
+Time:  0: 7:14
+Time:  0: 7:15
+Time:  0: 7:16
+Time:  0: 7:17
+Time:  0: 7:18
+Time:  0: 7:19
+Time:  0: 7:20
+Time:  0: 7:21
+Time:  0: 7:22
+Time:  0: 7:23
+Time:  0: 7:24
+Time:  0: 7:25
+Time:  0: 7:26
+Time:  0: 7:27
+Time:  0: 7:28
+Time:  0: 7:29
+Time:  0: 7:30
+Time:  0: 7:31
+Time:  0: 7:32
+Time:  0: 7:33
+Time:  0: 7:34
+Time:  0: 7:35
+Time:  0: 7:36
+Time:  0: 7:37
+Time:  0: 7:38
+Time:  0: 7:39
+Time:  0: 7:40
+Time:  0: 7:41
+Time:  0: 7:42
+Time:  0: 7:43
+Time:  0: 7:44
+Time:  0: 7:45
+Time:  0: 7:46
+Time:  0: 7:47
+Time:  0: 7:48
+Time:  0: 7:49
+Time:  0: 7:50
+Time:  0: 7:51
+Time:  0: 7:52
+Time:  0: 7:53
+Time:  0: 7:54
+Time:  0: 7:55
+Time:  0: 7:56
+Time:  0: 7:57
+Time:  0: 7:58
+Time:  0: 7:59
+Time:  0: 8: 0
+Time:  0: 8: 1
+Time:  0: 8: 2
+Time:  0: 8: 3
+Time:  0: 8: 4
+Time:  0: 8: 5
+Time:  0: 8: 6
+Time:  0: 8: 7
+Time:  0: 8: 8
+Time:  0: 8: 9
+Time:  0: 8:10
+Time:  0: 8:11
+Time:  0: 8:12
+Time:  0: 8:13
+Time:  0: 8:14
+Time:  0: 8:15
+Time:  0: 8:16
+Time:  0: 8:17
+Time:  0: 8:18
+Time:  0: 8:19
+Time:  0: 8:20
+Time:  0: 8:21
+Time:  0: 8:22
+Time:  0: 8:23
+Time:  0: 8:24
+Time:  0: 8:25
+Time:  0: 8:26
+Time:  0: 8:27
+Time:  0: 8:28
+Time:  0: 8:29
+Time:  0: 8:30
+Time:  0: 8:31
+Time:  0: 8:32
+Time:  0: 8:33
+Time:  0: 8:34
+Time:  0: 8:35
+Time:  0: 8:36
+Time:  0: 8:37
+Time:  0: 8:38
+Time:  0: 8:39
+Time:  0: 8:40
+Time:  0: 8:41
+Time:  0: 8:42
+Time:  0: 8:43
+Time:  0: 8:44
+Time:  0: 8:45
+Time:  0: 8:46
+Time:  0: 8:47
+Time:  0: 8:48
+Time:  0: 8:49
+Time:  0: 8:50
+Time:  0: 8:51
+Time:  0: 8:52
+Time:  0: 8:53
+Time:  0: 8:54
+Time:  0: 8:55
+Time:  0: 8:56
+Time:  0: 8:57
+Time:  0: 8:58
+Time:  0: 8:59
+Time:  0: 9: 0
+Time:  0: 9: 1
+Time:  0: 9: 2
+Time:  0: 9: 3
+Time:  0: 9: 4
+Time:  0: 9: 5
+Time:  0: 9: 6
+Time:  0: 9: 7
+Time:  0: 9: 8
+Time:  0: 9: 9
+Time:  0: 9:10
+Time:  0: 9:11
+Time:  0: 9:12
+Time:  0: 9:13
+Time:  0: 9:14
+Time:  0: 9:15
+Time:  0: 9:16
+Time:  0: 9:17
+Time:  0: 9:18
+Time:  0: 9:19
+Time:  0: 9:20
+Time:  0: 9:21
+Time:  0: 9:22
+Time:  0: 9:23
+Time:  0: 9:24
+Time:  0: 9:25
+Time:  0: 9:26
+Time:  0: 9:27
+Time:  0: 9:28
+Time:  0: 9:29
+Time:  0: 9:30
+Time:  0: 9:31
+Time:  0: 9:32
+Time:  0: 9:33
+Time:  0: 9:34
+Time:  0: 9:35
+Time:  0: 9:36
+Time:  0: 9:37
+Time:  0: 9:38
+Time:  0: 9:39
+Time:  0: 9:40
+Time:  0: 9:41
+Time:  0: 9:42
+Time:  0: 9:43
+Time:  0: 9:44
+Time:  0: 9:45
+Time:  0: 9:46
+Time:  0: 9:47
+Time:  0: 9:48
+Time:  0: 9:49
+Time:  0: 9:50
+Time:  0: 9:51
+Time:  0: 9:52
+Time:  0: 9:53
+Time:  0: 9:54
+Time:  0: 9:55
+Time:  0: 9:56
+Time:  0: 9:57
+Time:  0: 9:58
+Time:  0: 9:59
+Time:  0:10: 0
+Time:  0:10: 1
+Time:  0:10: 2
+Time:  0:10: 3
+Time:  0:10: 4
+Time:  0:10: 5
+Time:  0:10: 6
+Time:  0:10: 7
+Time:  0:10: 8
+Time:  0:10: 9
+Time:  0:10:10
+Time:  0:10:11
+Time:  0:10:12
+Time:  0:10:13
+Time:  0:10:14
+Time:  0:10:15
+Time:  0:10:16
+Time:  0:10:17
+Time:  0:10:18
+Time:  0:10:19
+Time:  0:10:20
+Time:  0:10:21
+Time:  0:10:22
+Time:  0:10:23
+Time:  0:10:24
+Time:  0:10:25
+Time:  0:10:26
+Time:  0:10:27
+Time:  0:10:28
+Time:  0:10:29
+Time:  0:10:30
+Time:  0:10:31
+Time:  0:10:32
+Time:  0:10:33
+Time:  0:10:34
+Time:  0:10:35
+Time:  0:10:36
+Time:  0:10:37
+Time:  0:10:38
+Time:  0:10:39
+Time:  0:10:40
+Time:  0:10:41
+Time:  0:10:42
+Time:  0:10:43
+Time:  0:10:44
+Time:  0:10:45
+Time:  0:10:46
+Time:  0:10:47
+Time:  0:10:48
+Time:  0:10:49
+Time:  0:10:50
+Time:  0:10:51
+Time:  0:10:52
+Time:  0:10:53
+Time:  0:10:54
+Time:  0:10:55
+Time:  0:10:56
+Time:  0:10:57
+Time:  0:10:58
+Time:  0:10:59
+Time:  0:11: 0
+Time:  0:11: 1
+Time:  0:11: 2
+Time:  0:11: 3
+Time:  0:11: 4
+Time:  0:11: 5
+Time:  0:11: 6
+Time:  0:11: 7
+Time:  0:11: 8
+Time:  0:11: 9
+Time:  0:11:10
+Time:  0:11:11
+Time:  0:11:12
+Time:  0:11:13
+Time:  0:11:14
+Time:  0:11:15
+Time:  0:11:16
+Time:  0:11:17
+Time:  0:11:18
+Time:  0:11:19
+Time:  0:11:20
+Time:  0:11:21
+Time:  0:11:22
+Time:  0:11:23
+Time:  0:11:24
+Time:  0:11:25
+Time:  0:11:26
+Time:  0:11:27
+Time:  0:11:28
+Time:  0:11:29
+Time:  0:11:30
+Time:  0:11:31
+Time:  0:11:32
+Time:  0:11:33
+Time:  0:11:34
+Time:  0:11:35
+Time:  0:11:36
+Time:  0:11:37
+Time:  0:11:38
+Time:  0:11:39
+Time:  0:11:40
+Time:  0:11:41
+Time:  0:11:42
+Time:  0:11:43
+Time:  0:11:44
+Time:  0:11:45
+Time:  0:11:46
+Time:  0:11:47
+Time:  0:11:48
+Time:  0:11:49
+Time:  0:11:50
+Time:  0:11:51
+Time:  0:11:52
+Time:  0:11:53
+Time:  0:11:54
+Time:  0:11:55
+Time:  0:11:56
+Time:  0:11:57
+Time:  0:11:58
+Time:  0:11:59
+Time:  0:12: 0
+Time:  0:12: 1
+Time:  0:12: 2
+Time:  0:12: 3
+Time:  0:12: 4
+Time:  0:12: 5
+Time:  0:12: 6
+Time:  0:12: 7
+Time:  0:12: 8
+Time:  0:12: 9
+Time:  0:12:10
+Time:  0:12:11
+Time:  0:12:12
+Time:  0:12:13
+Time:  0:12:14
+Time:  0:12:15
+Time:  0:12:16
+Time:  0:12:17
+Time:  0:12:18
+Time:  0:12:19
+Time:  0:12:20
+Time:  0:12:21
+Time:  0:12:22
+Time:  0:12:23
+Time:  0:12:24
+Time:  0:12:25
+Time:  0:12:26
+Time:  0:12:27
+Time:  0:12:28
+Time:  0:12:29
+Time:  0:12:30
+Time:  0:12:31
+Time:  0:12:32
+Time:  0:12:33
+Time:  0:12:34
+Time:  0:12:35
+Time:  0:12:36
+Time:  0:12:37
+Time:  0:12:38
+Time:  0:12:39
+Time:  0:12:40
+Time:  0:12:41
+Time:  0:12:42
+Time:  0:12:43
+Time:  0:12:44
+Time:  0:12:45
+Time:  0:12:46
+Time:  0:12:47
+Time:  0:12:48
+Time:  0:12:49
+Time:  0:12:50
+Time:  0:12:51
+Time:  0:12:52
+Time:  0:12:53
+Time:  0:12:54
+Time:  0:12:55
+Time:  0:12:56
+Time:  0:12:57
+Time:  0:12:58
+Time:  0:12:59
+Time:  0:13: 0
+Time:  0:13: 1
+Time:  0:13: 2
+Time:  0:13: 3
+Time:  0:13: 4
+Time:  0:13: 5
+Time:  0:13: 6
+Time:  0:13: 7
+Time:  0:13: 8
+Time:  0:13: 9
+Time:  0:13:10
+Time:  0:13:11
+Time:  0:13:12
+Time:  0:13:13
+Time:  0:13:14
+Time:  0:13:15
+Time:  0:13:16
+Time:  0:13:17
+Time:  0:13:18
+Time:  0:13:19
+Time:  0:13:20
+Time:  0:13:21
+Time:  0:13:22
+Time:  0:13:23
+Time:  0:13:24
+Time:  0:13:25
+Time:  0:13:26
+Time:  0:13:27
+Time:  0:13:28
+Time:  0:13:29
+Time:  0:13:30
+Time:  0:13:31
+Time:  0:13:32
+Time:  0:13:33
+Time:  0:13:34
+Time:  0:13:35
+Time:  0:13:36
+Time:  0:13:37
+Time:  0:13:38
+Time:  0:13:39
+Time:  0:13:40
+Time:  0:13:41
+Time:  0:13:42
+Time:  0:13:43
+Time:  0:13:44
+Time:  0:13:45
+Time:  0:13:46
+Time:  0:13:47
+Time:  0:13:48
+Time:  0:13:49
+Time:  0:13:50
+Time:  0:13:51
+Time:  0:13:52
+Time:  0:13:53
+Time:  0:13:54
+Time:  0:13:55
+Time:  0:13:56
+Time:  0:13:57
+Time:  0:13:58
+Time:  0:13:59
+Time:  0:14: 0
+Time:  0:14: 1
+Time:  0:14: 2
+Time:  0:14: 3
+Time:  0:14: 4
+Time:  0:14: 5
+Time:  0:14: 6
+Time:  0:14: 7
+Time:  0:14: 8
+Time:  0:14: 9
+Time:  0:14:10
+Time:  0:14:11
+Time:  0:14:12
+Time:  0:14:13
+Time:  0:14:14
+Time:  0:14:15
+Time:  0:14:16
+Time:  0:14:17
+Time:  0:14:18
+Time:  0:14:19
+Time:  0:14:20
+Time:  0:14:21
+Time:  0:14:22
+Time:  0:14:23
+Time:  0:14:24
+Time:  0:14:25
+Time:  0:14:26
+Time:  0:14:27
+Time:  0:14:28
+Time:  0:14:29
+Time:  0:14:30
+Time:  0:14:31
+Time:  0:14:32
+Time:  0:14:33
+Time:  0:14:34
+Time:  0:14:35
+Time:  0:14:36
+Time:  0:14:37
+Time:  0:14:38
+Time:  0:14:39
+Time:  0:14:40
+Time:  0:14:41
+Time:  0:14:42
+Time:  0:14:43
+Time:  0:14:44
+Time:  0:14:45
+Time:  0:14:46
+Time:  0:14:47
+Time:  0:14:48
+Time:  0:14:49
+Time:  0:14:50
+Time:  0:14:51
+Time:  0:14:52
+Time:  0:14:53
+Time:  0:14:54
+Time:  0:14:55
+Time:  0:14:56
+Time:  0:14:57
+Time:  0:14:58
+Time:  0:14:59
+Time:  0:15: 0
+Time:  0:15: 1
+Time:  0:15: 2
+Time:  0:15: 3
+Time:  0:15: 4
+Time:  0:15: 5
+Time:  0:15: 6
+Time:  0:15: 7
+Time:  0:15: 8
+Time:  0:15: 9
+Time:  0:15:10
+Time:  0:15:11
+Time:  0:15:12
+Time:  0:15:13
+Time:  0:15:14
+Time:  0:15:15
+Time:  0:15:16
+Time:  0:15:17
+Time:  0:15:18
+Time:  0:15:19
+Time:  0:15:20
+Time:  0:15:21
+Time:  0:15:22
+Time:  0:15:23
+Time:  0:15:24
+Time:  0:15:25
+Time:  0:15:26
+Time:  0:15:27
+Time:  0:15:28
+Time:  0:15:29
+Time:  0:15:30
+Time:  0:15:31
+Time:  0:15:32
+Time:  0:15:33
+Time:  0:15:34
+Time:  0:15:35
+Time:  0:15:36
+Time:  0:15:37
+Time:  0:15:38
+Time:  0:15:39
+Time:  0:15:40
+Time:  0:15:41
+Time:  0:15:42
+Time:  0:15:43
+Time:  0:15:44
+Time:  0:15:45
+Time:  0:15:46
+Time:  0:15:47
+Time:  0:15:48
+Time:  0:15:49
+Time:  0:15:50
+Time:  0:15:51
+Time:  0:15:52
+Time:  0:15:53
+Time:  0:15:54
+Time:  0:15:55
+Time:  0:15:56
+Time:  0:15:57
+Time:  0:15:58
+Time:  0:15:59
+Time:  0:16: 0
+Time:  0:16: 1
+Time:  0:16: 2
+Time:  0:16: 3
+Time:  0:16: 4
+Time:  0:16: 5
+Time:  0:16: 6
+Time:  0:16: 7
+Time:  0:16: 8
+Time:  0:16: 9
+Time:  0:16:10
+Time:  0:16:11
+Time:  0:16:12
+Time:  0:16:13
+Time:  0:16:14
+Time:  0:16:15
+Time:  0:16:16
+Time:  0:16:17
+Time:  0:16:18
+Time:  0:16:19
+Time:  0:16:20
+Time:  0:16:21
+Time:  0:16:22
+Time:  0:16:23
+Time:  0:16:24
+Time:  0:16:25
+Time:  0:16:26
+Time:  0:16:27
+Time:  0:16:28
+Time:  0:16:29
+Time:  0:16:30
+Time:  0:16:31
+Time:  0:16:32
+Time:  0:16:33
+Time:  0:16:34
+Time:  0:16:35
+Time:  0:16:36
+Time:  0:16:37
+Time:  0:16:38
+Time:  0:16:39
+Time:  0:16:40

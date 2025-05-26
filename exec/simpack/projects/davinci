@@ -1,0 +1,121 @@
+From usenet.cis.ufl.edu!eng.ufl.edu!ukma!darwin.sura.net!math.ohio-state.edu!jussieu.fr!univ-lyon1.fr!ghost.dsi.unimi.it!batcomputer!cornell!bounce-bounce Wed Apr  6 21:27:29 EDT 1994
+Article: 1954 of comp.os.linux.announce
+Newsgroups: comp.os.linux.announce
+Path: usenet.cis.ufl.edu!eng.ufl.edu!ukma!darwin.sura.net!math.ohio-state.edu!jussieu.fr!univ-lyon1.fr!ghost.dsi.unimi.it!batcomputer!cornell!bounce-bounce
+From: mfr@informatik.Uni-Bremen.DE (Michael Froehlich)
+Subject: Graph Visualization System daVinci V1.3 available
+Message-ID: <1994Apr5.151922.4361@cs.cornell.edu>
+Followup-To: comp.os.linux.announce
+Keywords: graphs, graph drawing, trees, daVinci
+Sender: mdw@cs.cornell.edu (Matt Welsh)
+Reply-To: mfr@informatik.Uni-Bremen.DE (Michael Froehlich)
+Organization: University of Bremen
+Date: Tue, 5 Apr 1994 15:19:22 GMT
+Approved: linux-announce@tc.cornell.edu (Matt Welsh)
+Lines: 103
+
+------------------------------------------------------------------------
+    Announcement: Graph Visualization System daVinci V1.3 available:
+------------------------------------------------------------------------
+
+March 30, 1994 (Bremen, Germany) -- The daVinci project of the Institute 
+for Formal Methods  in Software Engineering  at the University of Bremen 
+announces  the new release V1.3  of the  interactive graph visualization 
+system daVinci. daVinci is an universal, generic visualization system of 
+high quality for directed graphs which are very common in todays appli-
+cations,  e. g. file systems,  module dependencies,  dataflows, document 
+structures, networks, etc.
+
+The most important new features of daVinci V1.3 are:
+
+    	- PostScript interface for printing and exporting graphs in
+    	  Encapsulated PostScript format (EPSF).
+	- Support of cyclic graphs and graphs with multiple or self-
+	  refering edges.
+	- Support of different graphical objects (box, ellipse,
+	  circle, rhombus) for the visualization of graph nodes.
+	- Support of different font families and font styles for the
+	  visualization of graph nodes. The font size can be set 
+	  globally for a visualization at runtime.
+	- New graph editor for creating daVinci graphs interactively. 
+	  The graph editor is an external tool which has to be connected
+	  to daVinci's application interface for tool communication.
+	- Availability of PC version (with Linux).
+	  
+daVinci visualizes  a directed graph from an ASCII  term representation,  
+considering readability  qualities like  minimization of  edge crossings 
+and bends.  The visualization is interactive,  i. e. nodes and edges can 
+be  selected,  they can be  moved for fine-tuning  to improve  the graph  
+image,  subgraphs can be hidden temporarily for abstraction, the display
+scale can be modified steplessly, etc.
+
+daVinci provides  an application interface  for the communication with a 
+graph administrating program.  This interface offers commands for trans-
+mitting  graphs,  creating menus,  calling  user dialogs  or controlling 
+daVinci.  A connected  application  is informed  about  events  like the  
+user selection of graph nodes, menus etc. By using daVinci's application 
+interface,  an arbitrary application is able to offer  the user a visual 
+view to graphs without losing control of the graph structure.
+
+------------------------------------------------------------------------
+
+Until now, daVinci has been distributed to more than 600 users  all over 
+the world like MIT, ETH Zuerich,  the Universities of Alberta, Bordeaux, 
+Delft, San Diego, Nancy, Oregon, Purdue,  Toronto, Washington as well as 
+Adobe, AT&T,  BASF, Chevron,  DEC, Dupont, Ericsson, Intel, Kodak, Moto-
+rola,  NASA, Nokia,  Panasonic,  Siemens, Sony, Sun Microsystems,  Texas 
+Instruments, Toshiba, Xerox and many more.
+
+------------------------------------------------------------------------
+
+daVinci is an OPEN LOOK application and is delivered as a binary for Sun 
+SPARC  workstations  (with SunOS 4.1.x  and Solaris 2.x)  or PC's  (with 
+Linux). daVinci needs the public available XView libraries.  The minimal 
+hardware configuration  should be a  Sun SPARCstation SLC. In principle,
+the system can be ported to each UNIX platform which is supported by the 
+public available  OPEN LOOK toolkit XView,  e.g. Apple Macintosh (A/UX), 
+DECstation  (Ultrix),  HP 9000/7xx  (HP-UX),  IBM  RS6000 (AIX)  or  SGI 
+(Irix). daVinci is available free of charge for non-profit use. Any com-
+mercial  exploitation  of this software  is prohibitted  without the ex-
+plicit authorization  of the  daVinci project.  You  can get  daVinci by 
+anonymous ftp from:
+	
+	ftp.Uni-Bremen.DE (134.102.228.9) 
+	in the directory /pub/graphics/daVinci
+	
+or from the US mirror
+
+	wuarchive.wustl.edu (128.252.135.4)
+	in the directory /graphics/graphics/packages/daVinci
+
+In this directory, there are files (compressed with gzip) with different 
+distributions for each supported platform (SunOS 4.1.x, Sun Solaris 2.x, 
+Linux).  The contents of each  distribution are the same,  except of the 
+binaries. Each distribution covers the documentation, graph examples and 
+tools.  In the file info.ps (resp. info.txt), more detailed informations 
+about daVinci can be found.  In directory 'binaries_only',  one can find 
+the distributions without the documentation and examples.  
+
+The interactive graph visualization system daVinci has been developed at 
+the  Institute for  Formal Methods  in Software Engineering  at the Uni-
+versity  of Bremen, headed by  Prof. Dr. Bernd Krieg-Brueckner.  The au-
+thors of daVinci are  Michael Froehlich and  Mattias Werner. daVinci was 
+implemented in the pure functional language ASpecT which has been devel-
+oped at the  University  of  Bremen also.  The OPEN LOOK  user interface  
+of daVinci was implemented using the toolkit XView. 
+
+To  contact the  daVinci project,  to report bugs,  to subscribe  to the 
+daVinci mailing list  or to suggest new features, write by e-mail to:
+
+	daVinci@Informatik.Uni-Bremen.DE
+
+-- 
+  _ _  __ __	
+ | | ||  |  |	Dipl.-Inform. Michael Froehlich
+ | | ||  |  |   University of Bremen
+ | | ||_ |__|	FB3 - Institute for Formal Methods in Software Engineering
+ | | ||  |\	PO-Box 330440, D-28334 Bremen, Germany
+ | | ||  | \	Tel.: x49 421 218-4228 
+ | | ||  |  \   e-mail: mfr@Informatik.Uni-Bremen.DE
+
+

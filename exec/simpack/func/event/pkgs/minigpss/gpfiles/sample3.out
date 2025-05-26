@@ -1,0 +1,23 @@
+Reading Source mini-GPSS File
+no syntax errors detected
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 345.450989
+Total System Arrivals: 50
+Total System Completions: 50
+
+System Wide Statistics
+----------------------
+System Utilization: 17.1%
+Arrival Rate: 0.144738, Throughput: 0.144738
+Mean Service Time per Token: 1.183760
+Mean # of Tokens in System: 0.493176
+Mean Residence Time for each Token: 3.407365
+
+Facility Statistics
+-------------------
+F 1 (Line1): Idle: 99.5%, Util:  0.5%, Preemptions: 0
+F 2 (Line2): Idle: 66.2%, Util: 33.8%, Preemptions: 0

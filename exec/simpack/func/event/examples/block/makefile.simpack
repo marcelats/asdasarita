@@ -1,0 +1,15 @@
+
+block: block.o ../queuing/queuing.o
+	@echo 'Link the block application'
+	@echo ' '
+	cc -o block block.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	ls -l block
+	date
+
+block.o: block.c
+	@echo 'Compile block simpack application'
+	cc -c -o block.o block.c
+	ls -l block.o
+	@echo ' '
+
+

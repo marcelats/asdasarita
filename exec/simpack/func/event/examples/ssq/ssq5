@@ -1,0 +1,91 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/ssq version 5 (formerly q1.c in ssq directory in SimPack):
+-------------------------------------------------------------------------------
+The following code was ported from SimPack's "q1.c".
+This program simulates a single server queue.
+
+The simulation style of the code below is "manual, event_id".  The code is
+c++.  The API is ooAPI.
+
+This code is baseline for other versions, in the sense that it takes NO
+snapshots.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+enum EventId {ARRIVAL, REQUEST_SERVER, RELEASE_SERVER};
+const TIME_LIMIT = 1000;
+
+Facility * queue = NULL;
+
+// fn prototype declarations; (can be omitted if fn definitions come before
+// main; that is, if you like pascal style)
+
+  void Arrive   (void);
+  void RqstSrvr (void);
+  void RlsSrvr  (void);
+
+
+int main ()
+  {
+  new Future (LINKED);
+  queue = new Facility ("queue");
+
+  Token customer (1);
+  Future::Schedule (ARRIVAL, 0.0, customer);
+
+  while (Future::SimTime() < TIME_LIMIT)
+    {
+    Estatus es = Future::NextEvent ();
+    switch(es.event_id)
+      {
+      case ARRIVAL       : Arrive ();   break;
+      case REQUEST_SERVER: RqstSrvr (); break;
+      case RELEASE_SERVER: RlsSrvr ();  break;
+      default            : ErrXit (1, "bad event_id");
+      }
+    } // end while
+
+  Future::ReportStats ();
+  return 0; // pacify compiler
+  } // end main
+
+
+
+/*=============================================================================
+Event routines
+-----------------------------------------------------------------------------*/
+
+void Arrive ()
+  {
+  Token customer = Future::CurrentToken ();
+  Future::UpdateArrivals ();
+  Future::Schedule (REQUEST_SERVER, 0.0, customer);
+  customer.Id (customer.Id() + 1);
+  Future::Schedule (ARRIVAL, 2.0, customer);
+  }
+
+void RqstSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  if (queue->Request (customer) == FREE)
+    {
+    double sample = expntl (2.0);
+    Future::Schedule (RELEASE_SERVER, sample, customer);
+    }
+  }
+
+void RlsSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  int who = customer.Id();
+  queue->Release (who);
+  Future::UpdateDepartures ();
+  }
+
+// end ssq
+

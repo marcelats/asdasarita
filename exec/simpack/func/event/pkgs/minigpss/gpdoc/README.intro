@@ -1,0 +1,96 @@
+
+                                                                     
+
+ 
+                             MINI-GPSS Introduction 
+
+           The syntax to a MINI-GPSS program can be found in the user
+
+        manual under MINI-GPSS Program syntax.  As stated previously,
+
+        MINI-GPSS is a subset of the GPSS programming language.  The
+
+        reason for this approach is that GPSS has been around for 
+
+        many years, and that way someone with knowledge of GPSS would
+
+        not have to relearn an entirely new language.  In using MINI-GPSS,
+
+        the user begins by writing a program in MINI-GPSS.  This file will
+
+        be used as the input file to the simulation processor.  The processor
+
+        takes the input file and checks the program for proper syntax.
+
+        If the program is legal, The processor runs the simulation as well
+
+        as generating "C" equivalent code to the simulation. If a syntax
+
+        error is found, the processor will indicate where the error is, and
+
+        the program will terminate. 
+ 
+           Programming in MINI-GPSS is very simple, which makes it an
+
+        excellent tool for learning the concepts of discrete event 
+
+        simulation.  The student can spend more time learning the   
+
+        concepts, and less time worrying about the details of        
+
+        implementing the simulation.  Moreover, by having access to the
+
+        "C" generated code, the student can see the way the simulation 
+
+        is implemented. 
+
+        In implementing MINI-GPSS, There are four major tasks involved.  
+
+        First, a scanner must be written to read in the input file.  This 
+
+        scanner must recognize all program constructs, identifiers, and  
+
+        literals.  Any time it recognizes one of these items, or tokens, 
+
+        it must return the corresponding token to the calling program.
+
+        Secondly, a parser must be written which interfaces the scanner
+
+
+
+
+
+
+
+
+
+
+                                                                        
+
+
+        and checks for proper program syntax.  The parser also builds two 
+
+        data structures which contains revelant data from the input file. 
+
+        Thirdly, a simulation event handler must be written that performs 
+
+        the simulation according to the created data structures.  Lastly,
+
+        a code generator must be written, which generates "C" equivalent 
+
+        code to the simulation.
+
+
+
+       
+
+
+
+
+
+
+
+
+
+        
+

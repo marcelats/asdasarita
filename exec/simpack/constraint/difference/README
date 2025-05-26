@@ -1,0 +1,16 @@
+
+This contains two versions of the logistic equation (or quadratic system)
+and a bifurcation parameter plot.
+
+The equations are difference equations. There are two ways of coding
+difference equations: 
+
+ (1) break down the equations to first order form just as for 
+     differential equations. Look at 'log1' and 'log2' for an 
+     example of this approach.
+
+ (2) Use a circular queue. See 'diff1' which is the same as
+     'log1' except that a circular queue is used. 
+
+
+For the bifurcation plot, plot the points as points (not using lines).

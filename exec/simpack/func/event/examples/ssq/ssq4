@@ -1,0 +1,83 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/ssq version 4 (formerly q1.c in ssq directory in SimPack):
+-------------------------------------------------------------------------------
+The following code was ported from SimPack's "q1.c".
+This program simulates a single server queue.
+
+The simulation style of the code below is "manual, event_id".  The API is cAPI.
+
+Enabling snapshots with trace_visual() sometimes produces a deluge of output;
+so much that it sometimes becomes impractical to use trace-visual(), and some
+alternative is needed.  Also, sometimes, things go fine up to a certain point,
+and it is a pain to step and step and step thru the simulation output to get to
+that point.
+
+We have an alternative, which is output on demand (instead of at every
+command).  See trace_eventlist() and trace_facility() below.  The examples may
+not be very meaningful, but they do serve to illustrate the capability.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+#define ARRIVAL 1
+#define REQUEST_SERVER 2
+#define RELEASE_SERVER 3
+main()
+  {
+    int event,queue_id,i,iteration;
+    TOKEN customer;
+    double sample;
+
+    customer.attr[0] = 1;
+    init_simpack(LINKED);
+    queue_id = create_facility("queue",1);
+    schedule(ARRIVAL,0.0,customer);
+    iteration = 0;
+    while (sim_time()< 5.0)
+      {
+        next_event(&event,&customer);
+        /* printf("%d %f\n",iteration,sim_time()); */
+        iteration++;
+        switch(event)
+          {
+          case ARRIVAL:
+              update_arrivals();
+              schedule(REQUEST_SERVER,0.0,customer);
+              customer.attr[0] += 1;
+              schedule(ARRIVAL,2.0,customer);
+              if (customer.attr[0] == 4)
+                {
+                cout << "***********************\n";
+/* ==> */       trace_eventlist ();
+                cout << "***********************\n\n";
+                }
+              break;
+          case REQUEST_SERVER:
+              if (request(queue_id,customer,0) == FREE) {
+                sample = expntl(2.0);
+                schedule(RELEASE_SERVER,sample,customer);
+              }
+              else
+                {
+                cout << "++++++++++++++++++++++++\n";
+/* ==> */       trace_facility (queue_id);
+                cout << "++++++++++++++++++++++++\n\n";
+                }
+              break;
+          case RELEASE_SERVER:
+              release(queue_id,customer);
+              update_completions();
+              break;
+          }
+      }
+   report_stats();
+  return 0; // pacify compiler
+  } /* end main() */
+
+
+
+

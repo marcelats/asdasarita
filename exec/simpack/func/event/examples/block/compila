@@ -1,0 +1,9 @@
+BIB=../../olb
+
+DEPEND="$BIB/event.o $BIB/facility.o $BIB/flist.o $BIB/future.o $BIB/service.o"
+DEPEND="$DEPEND $BIB/token.o $BIB/util.o $BIB/estatus.o"
+
+echo $BIB
+echo $DEPEND
+
+g++ -I../../include -o block1 block1.C $DEPEND

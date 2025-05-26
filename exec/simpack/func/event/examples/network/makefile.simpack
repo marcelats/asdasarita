@@ -1,0 +1,15 @@
+
+network: network.o ../queuing/queuing.o
+	@echo 'Link the network application'
+	@echo ' '
+	cc -o network network.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	ls -l network
+	date
+
+network.o: network.c
+	@echo 'Compile network simpack application'
+	cc -c -o network.o network.c
+	ls -l network.o
+	@echo ' '
+
+

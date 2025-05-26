@@ -1,0 +1,141 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/network
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+                         +----------+---------+---------+---------+---.
+                         |          |         |         |         |
+                      cpudisk     block     tiktok     ssq     network
+                                                                  ^
+                                                                  ^
+You are here  = = = = = = = = = = = = = = = = = = = = = = = = = = /
+
+-------------------------------------------------------------------------------
+
+DESCRIPTION OF APPLICATION:
+
+This code is used to simulate a bi-directional network of nodes.
+It uses a purely static routing scheme for messages. Each message
+starts at a node and has a fixed path of arbitrary length through
+a set of adjacent nodes. Each node has as many transceivers as it
+has in-links from other nodes connected to it. Each transceiver
+is modeled as a resource (facility) that contains a queue if
+messages are waiting. The input file to 'network' is organized as follows:
+
+
+#nodes time-for-node
+adjacency matrix specifying connectivity
+#messages
+length-1 message 1 route
+length-2 message 2 route
+...
+
+
+Note that the adjacency matrix specifies connectivity and the link
+time for each link in the network. Node numbers start at zero.
+
+
+Imagine the following network:
+
+            0
+           / \     3
+          /   \   /
+         /     \ /
+        1-------2
+
+Note that there are 4 nodes (0,1,2,3) and 8 transceivers (0-1,
+1-0,0-2,2-0,1-2,2-1,2-3,3-2). Imagine that there are two messages
+to be routed and we want to simulate the network to study the
+network load. Let each node take 2 units of processing time, and
+let the links take 1 unit of time each.
+We can now create a file called "ournet.dat" containing the following:
+
+4 2.0
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+2
+4 0 1 2 3
+3 3 2 0
+
+We can then simulate the system by:
+
+%network < ournet.dat
+
+note: there are FIVE input data files.  i only tried the first of them
+(net1.dat).  i ran the simpack version and produced output.v0u.  then ran the
+sim++ version, producing output.v1d (under dos).  Finally, ran sim++ version
+under unix, producing output.v1u.
+
+-------------------------------------------------------------------------------
+
+Unlike some of the4 other example code directories, this directory doe NOT have
+as much detail in it; nor does it have a stepwise evolution of various
+simulation styles.  i feel that has been adequately covered in the more
+complete earllier examples, eg, cpudisk or ssq.
+
+There are only 2 versions of source code here for network:  version 0 is the
+original simpack version.  version1 is the sim++ version using the cAPI (not
+the ooAPI).  here are the changes i had to make to get from version 0 to 1.  As
+usual, the changes have nothing to do with sim++ per se.
+-------------------------------------------------------------------------------
+
+changes made from simpack code to sim++ code:
+
+1.removed directory-specific location of queuing.h
+2.added #include <stdio.h>
+3.variable "event" was initialized twice (typo?), removed the 2d one, ok.
+4.Function 'proc_event' should have a prototype -- provided one, ok.
+5.Function 'report_nodes' should have a prototype -- provided one, ok.
+6.Style of function definition is now obsolete -- changed dfn of proc_event, ok.
+7.mismatch in redecl of 'report_nodes()' -- changed dfn to return void, ok.
+8.added return 0 in main.
+
+after the changes above, code compiled without warning or error.
+
+when i ran it, unix results agreed with simpack output EXCEPT in 2 instances:
+
+  1. simpack code showed 1 departure, sim++ showed 0 departures.
+     i was unable to locate any calls to update_completions() in the simpack code,
+     so i don't know how the simpack code got 1 completion -- this is an open
+     question.
+
+  2. usage of facility 13 differs by 1/10 of 1%:
+
+      simpack: F 13 (tr): Idle: 81.2%, Util: 18.8%, Preemptions: 0
+      sim++:   F 13 (tr): Idle: 81.3%, Util: 18.8%, Preemptions: 0, LongestQ: 0
+
+dos results differed in apparently the way a final digit is rounded in certain
+fractions, which can be seen by comparing output.v1u with outout.v1d.
+Differences are not material.
+
+-------------------------------------------------------------------------------
+readme               explanatory text file (this file)
+network0             simpack source code
+makefile.simpack     translates simpack version
+network1             sim++ source code, modified as explained above, using
+                      cAPI, so looks very similar to simpack code
+translat             translates sim++ version under unix
+makefile              ditto (invoked by translat above)
+translat.bat         translates sim++ version using Borland Turbo c++ under dos
+                      or os2
+net1.dat             input files.  the way you use them is
+net2.dat              network < net1.dat
+net3.dat              or
+net4.dat              network < net1.dat > output.xxx
+net5.dat
+
+output.v0u           simpack output file
+output.v1d           sim++ dos output file
+output.v1u           sim++ unix output file
+
+

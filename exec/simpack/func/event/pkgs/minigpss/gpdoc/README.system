@@ -1,0 +1,184 @@
+
+                                                                      
+
+ 
+                             MINI-GPSS System Description 
+
+           In Designing MINI-GPSS, I found it easy to break the coding
+
+        up into four sub-programs or phases.  The four subprograms    
+
+        include a scanner, a parser, a simulation event handler, and a
+
+        code generator.
+
+           The first sub-program is the scanner which reads in the file
+
+        token by token, and returns each token it encounters to the 
+
+        parser.  The scanner is implemented using a  tool called
+
+        lex.  Lex has its own programming language in which you can 
+
+        specify what what you would like to recognize as tokens.  As
+
+        each token is recognized, you can insert actions to be performed.
+
+        The actions to be performed are written in "C" and are also in the 
+
+        scanner specification.  In the file token.l, I wrote the scanner
+
+        specification.   Lex generated "C" code for the scanner by         
+
+        invoking the command 'lex token.l'  at the unix prompt.  The "C"
+
+        generated code is in the file lex.yy.c.  The function which     
+
+        returns the current token is called yylex.
+
+           The second sub-program is the parser which interfaces with the
+
+        scanner (by calling the function yylex) to check a program for
+
+        proper syntax.  The syntax to a MINI-GPSS program can be found in
+
+        the user manual under MINI-GPSS Program Syntax.  The parser was
+
+        implemented by using a tool called yacc.  Yacc has its own 
+
+        programming language for specifying how you would like you program
+
+        parsed.  Here too, you can insert actions to be performed as each
+
+        item is parsed.   In the file parse.y, I wrote the parser 
+
+        specification.   Yacc generated "C" code for the parser by         
+
+
+
+
+
+
+
+
+
+
+                                                                        
+
+
+        invoking the command 'yacc parse.y' at the unix prompt.  The "C"
+
+        generated code for the parser is in the file y.tab.c.  The program
+
+        is parsed by calling the function yyparse.  The error handler
+
+        for any syntax error encounered is located in the file error.c.
+
+        If there are no syntax errors, 0 is returned from yyparse.       
+
+        Otherwise, 1 is returned from yyparses, yyerror is called, and
+
+        the program terminates.  The error handler gives a description of
+
+        the error and the line where the error is located.  The parser, 
+
+        when checking syntax, creates two data structures with all pertinent 
+
+        information that the simulation event handler needs. 
+
+           The third sub-program is the simulation event handler which gets
+
+        its input from the data structures that are produced by the parser.
+
+        The data structures are explained under MINI-GPSS Data Structures.
+
+        In implementing the simulation, I used a tool called Simpack.
+
+        Simpack handles many features of discrete event simulation.
+
+        Some of Simpacks's routines include: init_simpack, schedule,  
+
+        create_facility, next_event, release, request, update_arrivals, 
+
+        update_completions, and report_stats.  The procedure init_simpack  
+
+        starts simpack.  The function create_facility creates a facility and
+
+        returns the facility id.  The procedure schedule, schedules an event
+
+        to occur at the given time.  The procedure next_event causes the next
+
+        event to occur and it increments the time to the time of the event.
+
+        The function request, requests a facility, and return the status of 
+
+        the server.  The procedure release, releases the server, and changes
+
+        the status of the server to free.  The procedure update_arrivals
+
+        increments the count of the number of arrivals.  The procedure
+
+        update_completions, increments the count of the number of  
+
+        completions.  The procedure report_stats gives the simulation
+
+
+
+
+
+
+
+
+
+
+                                                                       
+
+
+        statistics.  There are four events that each token entering the
+
+        system may engage in.  When a token first enters the system, it 
+
+        is scheduled to first ARRIVE. In the ARRIVE phase, the next
+
+        arrival is generated according to the inter-arrival time from the
+
+        data structure. Also, the count of the number arrivals is 
+
+        incremented and the token can now be scheduled to request a 
+
+        facility. In the REQUEST phase, the token waits on the queue    
+
+        until the server becomes free.  When the server becomes free,
+
+        it enters the SERVICE phase.  In the SERVICE phase, the service
+
+        time is initiated according to the service time in the data        
+
+        structure.  After the token is served, It enters the DEPART phase.
+
+        In this phase, the server is released, and if it is ready to leave
+
+        the system, the completion count is incremented.  There are two
+
+        additional phases a token can enter, but only if there is branching
+
+        involved. These two phases BR_ARR and BR_DEP are special cases of
+
+        the ARRIVE and DEPART phase, and are only entered when the data
+
+        structure has a value of 1 for the transfer field, as described
+
+        in MINI-GPSS Data Structures.  This event handler keeps generating
+
+        tokens until a certain time has been reached, or a certain number
+
+        of tokens have been served as specified in the data structre.
+
+           The last sub-program is the code generator.  The data structures 
+
+        and the simulation handler are hard coded into the file.  The 
+
+        file simgen.c is created which duplicates the simulation when it is
+
+        compiled and executed. 
+

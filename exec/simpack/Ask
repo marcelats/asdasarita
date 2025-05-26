@@ -1,0 +1,29 @@
+
+while ( [ "$1" != "" ] ) do
+
+  echo ' '
+  echo "About to show you the $1"
+  echo 'Your options are:'
+  echo ' '
+  echo "  A = I have seen $1 and accept its terms and conditions"
+  echo "  R = I reject $1"
+  echo "  S = Show me $1 and ask me again after i have read it"
+  read ansa
+
+  if ( [ "$ansa" = "a" -o "$ansa" = "A" ] ) then
+    echo 'We can proceed with installation of SimPack3'
+    exit 0
+    fi
+
+  if ( [ "$ansa" = "r" -o "$ansa" = "R" ] ) then
+    echo 'You cannot use SimPack3'
+    echo 'Have a nice day'
+    exit 1
+    fi
+  
+  if ( [ "$ansa" = "s" -o "$ansa" = "S" ] ) then
+    echo "Here is $1:"
+    more $1
+    fi
+
+  done # end while

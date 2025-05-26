@@ -1,0 +1,24 @@
+
+You have requested to receive the SimPack simulation toolkit by mail.
+As many as 16 or 17 files will be mailed to you by this program. Please 
+do the following as you receive the files:
+
+1) Save the message in a file by the SAME NAME as found in the
+   SUBJECT line. This is important since it is possible that you
+   can receive files out of order even though they are sent in
+   sequence.
+2) Strip off the mail header from each mail file.
+3) Concatenate all of the files that you receive (using the Unix
+   command 'cat' for example) to form one large file.
+4) Follow the instructions at the head of the large file.
+
+
+Paul A. Fishwick               E-Mail: fishwick@cis.ufl.edu
+Dept. of Computer Science      Phone & FAX: (904) 392-1414
+University of Florida         
+CSE 301, Gainesville, FL 32611              
+
+
+
+
+

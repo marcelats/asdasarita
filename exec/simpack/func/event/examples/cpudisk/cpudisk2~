@@ -1,0 +1,104 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+cpudisk.cpp version 2
+-------------------------------------------------------------------------------
+This program has substantially the same logic as the program cpudisk.c which
+used the simpack c-language API.  The differences are (1) this program is
+written in c++; and (2) it uses the sim++ ooAPI.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+const int n0 = 6;         // no. class 0 tasks
+const int n1 = 3;         // no. class 1 tasks
+const int nt = n0+n1;     // total no. of tasks
+const int NUM_DISKS = 4;
+const double DISK_MEAN_TIME = 30.0;
+const double DISK_STDEV     =  2.5;
+const double CPU_MEAN_TIMES [2] = {10.0, 5.0};  // task_classes are 0 and 1
+
+enum EventTypes {UNUSED, BEGIN_TOUR, REQUEST_CPU, RELEASE_CPU,
+                 REQUEST_DISK, RELEASE_DISK};
+
+struct token
+  {
+  int cls;         /* task's class (& priority) */
+  int un;          /* disk for current IO req.  */
+  double ts;       /* tour start time stamp     */
+  };
+
+int main()
+  {
+  int counts [2] = {0, 0};
+  double elapsed_times [2] = {0.0, 0.0};
+  token task [nt+1];
+  for (int ii=1; ii <= nt; ii++) task[ii].cls = (ii > n0 ? 1 : 0);
+  new Future (LINKED);
+  Facility * cpu = new Facility ("CPU", 1);
+  Facility * disk [NUM_DISKS+1];
+  for (ii=1; ii <= NUM_DISKS; ii++) disk [ii] = new Facility ("disk", 1);
+  Token a_token;
+  for (ii=1; ii <= nt; ii++)
+    { a_token.Id (ii); Future::Schedule (BEGIN_TOUR, 0.0, a_token); }
+  int nts = 500; // no. of tours to simulate
+  while (nts > 0) // ye olde main while loop
+    {
+    Estatus es = Future::NextEvent ();
+    a_token = es.token;
+    token * tptr = & task [a_token.Id()];
+    int task_class;
+    double now;
+    switch (es.event_id)
+      {
+      case BEGIN_TOUR:
+        tptr->ts = Future::SimTime();
+        Future::Schedule (REQUEST_CPU, 0.0, a_token);
+        Future::UpdateArrivals();
+        break;
+      case REQUEST_CPU:
+        task_class = tptr->cls;
+        if (cpu->Preempt (a_token, task_class) == FREE)
+          {
+          double rn = expntl (CPU_MEAN_TIMES [task_class] );
+          Future::Schedule (RELEASE_CPU, rn, a_token);
+          }
+        break;
+      case RELEASE_CPU: // release cpu, select disk
+        cpu->Release (a_token.Id() );
+        tptr->un = random (1, NUM_DISKS);
+        Future::Schedule (REQUEST_DISK, 0.0, a_token);
+        break;
+      case REQUEST_DISK:
+        if (disk[tptr->un]->Request (a_token, 0) == FREE)
+          {
+          double rn = erlang (DISK_MEAN_TIME, DISK_STDEV);
+          Future::Schedule (RELEASE_DISK, rn, a_token);
+          }
+        break;
+      case RELEASE_DISK: // release disk, end tour
+        disk[tptr->un]->Release(a_token.Id() );
+        task_class = tptr->cls;
+        now = Future::SimTime();
+        elapsed_times [task_class] += now - tptr->ts;
+        tptr->ts = now;
+        (counts [task_class]) ++;
+        Future::UpdateDepartures();
+        Future::Schedule (BEGIN_TOUR, 0.0, a_token);
+        nts --;
+        break;
+      default:
+        cout << "PULLED SOMETHING UNEXPECTED OUT OF THE HAT!\n";
+      } //end ye olde "case statement"
+    } // end ye olde "main while loop"
+  Future::ReportStats();
+  cout << "\n\n" << setprecision(2)
+       << "class 0 tour time = " << elapsed_times [0] / counts [0] << '\n'
+       << "class 1 tour time = " << elapsed_times [1] / counts [1] << '\n';
+  return 0;
+  }
+
+// end cpudisk.cpp
+

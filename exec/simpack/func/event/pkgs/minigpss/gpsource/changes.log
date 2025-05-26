@@ -1,0 +1,29 @@
+Date	Change
+====	=====
+11/94	Reworked grammar to allow more flexible ordering of statements 
+        in a mini-gpss program.  
+
+        Added unconditional transfer and both-mode transfer to permit
+        more flexible branching.
+
+        Added RVNORM, RVEXPO, RVUNI, and RVERL to permit sampling from random
+        variate normal, exponential, uniform, and erlang distributions.  These
+        may be used with GENERATE and ADVANCE constructs to vary inter-arrival
+        times and service times, respectively.
+
+        Modified grammar to permit verbose labeling of statements.  Labels may
+        preface all statements except Advance and Generate statements.  Future
+        work may entail branching to any label in a GPSS program.
+
+        Added the PRIORITY construct to allow modification of an entity's 
+        priority.  This construct may be used after a GENERATE construct and/or
+        before a QUEUE construct.
+
+        Modified grammar to permit a GENERATE construct to follow a TRANSFER
+        construct to allow more flexible networks to be created in mini-gpss.
+
+        Future work may entail modifying the grammar to permit any sequence of
+        statements to follow another.  Current implementation enforces a 
+        relatively narrow sequence of statements to precede/suceed each other.
+        Summary queue statistics and more detailed facility utilization reports
+        are others areas for further work.

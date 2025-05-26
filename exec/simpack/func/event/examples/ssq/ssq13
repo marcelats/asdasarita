@@ -1,0 +1,119 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/ssq version 13 (formerly q1.c in ssq directory in SimPack):
+-------------------------------------------------------------------------------
+The following code was ported from SimPack's "q1.c".
+This program simulates a single server queue.
+
+The simulation style of the code below is "automatic, event_routine".
+The code is c++.  The API is ooAPI.
+
+Sometimes setting up snapshots in the Future constructor is just too much.
+We get swamped with output.  Instead, an alternative is to produce snapshots on
+demand only, instead of after every event.
+
+This version illustrates automatic snapshots over a very narrow time interval.
+See comments and code in RlsSrvr() below.  This version illustrates the use of
+Future::SnapshotFlag(), which turns automatic snapshot mode ON and OFF.
+
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+const TIME_LIMIT = 1000;
+
+Facility * queue = NULL;
+
+// fn prototype declarations; (can be omitted if fn definitions come before
+// main; that is, if you like pascal style)
+
+  void KickOff  (void);
+  void Arrive   (void);
+  void RqstSrvr (void);
+  void RlsSrvr  (void);
+
+
+int main ()
+  {
+  Facility::ShowIdle (NO);
+  queue = new Facility ("queue");
+  new Future (LINKED, KickOff, "Start the simulation", EXECUTE_THIS_FN);
+  Future::ReportStats ();
+  return 0;
+  }
+
+
+
+/*=============================================================================
+Event routines
+-----------------------------------------------------------------------------*/
+
+void KickOff ()
+  {
+  Token customer (1);
+  Future::Schedule (Arrive, 0.0, customer, "Arrival");
+  }
+
+
+void Arrive ()
+  {
+  Token customer = Future::CurrentToken ();
+  Future::UpdateArrivals ();
+  Future::Schedule (RqstSrvr, 0.0, customer, "Rqst  ");
+
+  if (Future::SimTime() < TIME_LIMIT)
+    {
+    customer.Id (customer.Id() + 1);
+    Future::Schedule (Arrive, 2.0, customer, "Arrive");
+    }
+  else
+    {
+    Future::FELdrain ();
+    cout << "Terminating simulation from Arrive()\n";
+    }
+  }
+
+void RqstSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  if (queue->Request (customer) == FREE)
+    {
+    double sample = expntl (2.0);
+    Future::Schedule (RlsSrvr, sample, customer, "Rls   ");
+    }
+
+  }
+
+void RlsSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  int who = customer.Id();
+  queue->Release (who);
+  Future::UpdateDepartures ();
+
+  // Here we turn snapshots ON for an interval of simulation time.
+  // This differs from the earlier example in that snapshots will be
+  // automatic, rather than on demand, so nowhere will you see calls
+  // to Future::Snapshot().
+
+  // The actual time of the last snapshot may be later than 971 because
+  // the feature is deselected the next time we release a server AND the
+  // time is after 971.
+
+  // snapshots will be in BATCH mode -- they just stream out (without waiting
+  // for you to press [Enter] after each one).  They can be in INTERACTIVE mode
+  // if you call Future::Interactive (ON) below.
+
+  double now = Future::SimTime();
+  if (now > 970 && now < 971 && ! Future::SnapshotFlag() )
+    Future::SnapshotFlag (ON);
+  else if (Future::SnapshotFlag() )
+    Future::SnapshotFlag (OFF);
+
+  }
+
+// end ssq
+

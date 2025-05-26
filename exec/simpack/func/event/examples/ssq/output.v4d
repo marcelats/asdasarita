@@ -1,0 +1,46 @@
+Future constructed: Mon May 29 13:58:32 1995
+***********************
+FEL is Linked  contains 3 elements at time: 4.0
+It has been as large as 3 elements so far.
+        +-----+  +-----+  +-----+
+Token   |    3|  |    2|  |    4|
+Time  <=|  4.0|<=|  4.8|<=|  6.0|
+Event   |    2|  |    3|  |    1|
+        +-----+  +-----+  +-----+
+***********************
+
+++++++++++++++++++++++++
+## FACILITY  1 (queue):  1 server(s),  1 busy.
+Server detail: ( 0) TK   2 PR  0 
+Display Linked 'queue' queue contains 1 elements at time: 4.0
+It has been as large as 1 elements so far.
+        +-----+
+Token   |    3|
+Time  <=|  4.0|
+Event   |    2|
+        +-----+
+
+------------------------------------------------------------
+++++++++++++++++++++++++
+
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 6.000000
+Total System Arrivals: 4
+Total System Departures: 2
+
+System Wide Statistics
+----------------------
+NOTE: facility 1 'queue' has 1 busy server(s)
+System Utilization: 85.8%
+Arrival Rate: 0.666667, Throughput: 0.333333
+Mean Service Time per Token: 2.575437
+Mean # of Tokens in System: 0.990857    Largest FEL size was 3
+Mean Residence Time for each Token: 2.972571
+
+Facility Statistics
+-------------------
+F 1 (queue): Idle: 14.2%, Util: 85.8%, Preemptions: 0, LongestQ: 1

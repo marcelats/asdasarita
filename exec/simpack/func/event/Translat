@@ -1,0 +1,42 @@
+
+echo ' '
+echo 'Sim++ is the property of Paul A. Fishwick and Robert M. Cubert,'
+echo 'copyright (c) 1995; see License in root directory of the distribution,'
+echo 'which is simpack/func/event.'
+echo ' '
+
+if ( [ "$1" = "rm" -o "$1" = "-rm" ] ) then
+  echo 'Removing all object files in Sim++ Object Library ...'
+  cd olb
+  rm -f *.o
+  echo ' '
+  echo 'Done Removing.'
+  echo ' '
+  exit 0
+  fi
+
+echo 'About to Build Sim++ Object Library ...'
+date
+(cd src; chmod 600 *)
+Trans1 calendar
+Trans1 capifac
+Trans1 capifut
+Trans1 capiran
+Trans1 event
+Trans1 estatus
+Trans1 facility
+Trans1 flist
+Trans1 future
+Trans1 heap
+Trans1 leftist
+Trans1 linked
+Trans1 service
+Trans1 token
+Trans1 util
+Trans1 vlist
+(cd src; chmod 444 *)
+
+echo ' '
+echo 'simpack/func/event/Translat is done.'
+echo ' '
+date

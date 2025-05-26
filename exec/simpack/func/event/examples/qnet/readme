@@ -1,0 +1,177 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/qnet
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+               +----------+---------+---------+---------+---------+---...
+               |          |         |         |         |         |
+            cpudisk     block     tiktok     ssq     network     qnet
+                                                                  ^
+                                                                  ^
+You are here  = = = = = = = = = = = = = = = = = = = = = = = = = = /
+
+-------------------------------------------------------------------------------
+
+DESCRIPTION OF APPLICATION (from simpack's README file):
+
+QNET is a queuing network simulator that takes as its input
+the topology (and node information) of a queuing network.
+To run the program, we need to create a data file. For a single
+server queue, for instance, we create the following file:
+
+4 1000.0
+0 gen 2.0
+1 request queue-1 1 expon 5.0 0.0
+2 release
+3 sink
+0 0   1 1
+1 1 0 1 2
+2 1 1 1 3
+3 1 2 0
+
+The format of the file is as follows:
+
+  # of blocks, end time to stop simulation.
+  A list of the blocks with their specifications.
+    For GEN blocks, we need the interarrival time.
+    For REQUEST blocks, we need a queue name, \# of servers,
+        type of distribution for service, and the distribution parameters.
+    For a FORK block we need the number of fork
+        tines along with a probability value that each tine will be taken
+        (probabilities must add to 1.0).
+  A list of the blocks with their inputs and outputs (net structure).
+    Each line contains the following: block number, number of inputs,
+    inputs, number of outputs, outputs.
+
+There are six kinds of blocks available for modeling using
+the queuing network simulator: gen, request, release, join, fork
+and sink. A combination request/release connection is used
+to simulate the behavior of a queue/facility. In the input file
+above, there are 4 blocks.
+
+If we have a cpu/disk system where there is a single CPU and two disks
+then we can represent the system using the data file shown below.
+Each entity is a job that arrives at the CPU, takes a certain amount of
+time, and then requests access to either disk1 or disk2 using the
+distribution specified by the probability attached to each arc. In this
+case, we have specified a distribution of 50% for each disk.
+
+9 1000.0
+0 gen 2.0
+1 request cpu 1 expon 2.0 0.0
+2 release
+3 fork 2 0.5 0.5
+4 request disk1 1 expon 30.0 0.0
+5 release
+6 request disk2 1 expon 40.5 0.0
+7 release
+8 sink
+0 0     1 1
+1 1 0   1 2
+2 1 1   1 3
+3 1 2   2 4 6
+4 1 3   1 5
+5 1 4   1 8
+6 1 3   1 7
+7 1 6   1 8
+8 2 4 6 0
+
+-------------------------------------------------------------------------------
+
+Two input data files are apparently provided with the code: they are q.dat and
+cpudisk.dat.  i used for testing ONLY q.dat.  The original sipack version of
+the code was tested with q,dat as input, and the output was saved in
+output.v0u.  The command used was
+
+    qnet < q.dat > output.v0u
+
+The way i got the original simpack code was to copy it form simpack and then to
+use my own makefile (see makefile.simpack).
+
+-------------------------------------------------------------------------------
+
+CHANGES NECESSARY TO GET CODE TO RUN UNDER sim++:
+
+1. Remove directory-specific location of queuing.h.
+2. include <stdio.h>.
+3. Added fn prototype declaration for Function 'read_network'
+4. changed return type of read_network to void.
+5. Added fn prototype declaration for Function 'process_block'
+6. added return 0 at end of main().
+7. Revised Style of function definition which was obsolete
+
+PROBLEM:
+
+Something in this code uses facility #0.  It was a convention under simpack
+that facility id's ranged from 1..n, NOT for 0 to n-1.  The progran stops as a
+safety measure.
+
+i put diagnostic output statements into the source and have included the output
+below.  As can be seen, appears we found a (gasp) BUG in the application, in
+which a release is attempted for a non-existent facility (facility 0).
+
+sim++ caught this.  Here's the output, compare with source code:
+
+    Future constructed: Sun Jun 04 15:06:24 1995
+    Constructed Heap, capacity 100.
+    Back from read_network
+    for loop, i=0
+    end for loop, i=0
+    for loop, i=1
+
+    creating facility
+    i=1 name of facility='queue-1' number_of_servers=1 fac_id=1
+
+    end for loop, i=1
+    for loop, i=2
+    end for loop, i=2
+    for loop, i=3
+    end for loop, i=3
+    for loop has ended, about to enter while loop
+    event_id=0, about to call process_block()
+    event_id=1, about to call process_block()
+    case is REQUEST. token id=1 facility_id = 1
+    event_id=0, about to call process_block()
+    event_id=1, about to call process_block()
+    case is REQUEST. token id=1 facility_id = 1
+    event_id=2, about to call process_block()
+    case is RELEASE. token id=1 facility_id = 1
+    event_id=1, about to call process_block()
+    case is REQUEST. token id=1 facility_id = 1
+    event_id=2, about to call process_block()
+    case is RELEASE. token id=2 facility_id = 0
+    Facility #0
+    FATAL ERROR #9043 Bad facility_id
+
+-------------------------------------------------------------------------------
+
+12 Files in this directory:
+
+readme               explanatory text file (this file)
+qnet0                simpack source code
+makefile.simpack     translates simpack version
+qnet1                sim++ source code, modified as explained above, using
+                      cAPI, so looks very similar to simpack code
+translat             translates sim++ version under unix
+makefile              ditto (invoked by translat above)
+translat.bat         translates sim++ version using Borland Turbo c++ under dos
+                      or os2
+q.dat                input files.  the way you use them is
+cpudisk.dat            qnet < q.dat
+                      or
+                       qnet < q.dat > output.vxx
+
+
+output.v0u           simpack output file
+output.v1d           sim++ dos output file
+output.v1u           sim++ unix output file
+
+

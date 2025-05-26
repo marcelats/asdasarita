@@ -1,0 +1,463 @@
+Sections in this E-Mail:
+
+A) Publications on SimPack
+B) SimPack Software Availability
+C) Mailing List for SimPack
+D) Outline of Book on Simulation with SimPack Information
+
+
++-----------------------+
+|PUBLICATIONS ON SIMPACK|
++-----------------------+
+
+1) Paul A. Fishwick.
+   ``Simulation Model Design and Execution: Building Digital
+   Worlds.'' Prentice Hall, January 1995. ISBN 013-098609-7.
+   In-Stock Date: January 17, 1995. Prentice Hall Phone 
+   Number: (800) 947-7700
+
+   For the Introductory Chapter (1) see the following:
+   Electronic Access: http://www.cis.ufl.edu/~fishwick. Within
+   this document, you can peruse a hypermedia form of the
+   chapter.
+
+   ** For more information on this book, see the last section in this
+   email. **
+
+2) Paul A. Fishwick.
+   ``Simpack: Getting Started with Simulation Programming in C and C++''
+   In 1992 Winter Simulation Conference, December 1992, Arlington, VA,
+   pp. 154 - 162.
+
+   Electronic Access: http://www.cis.ufl.edu/~fishwick. Within this
+   document, pick publications "By Year" under 1992.
+
+3) Robert M. Cubert and Paul A. Fishwick
+   "Sim++: Version 1.0"
+   
+   Sim++ is the new revised and extended version of the queuing library
+    in the older SimPack.
+   The Postscript file is located in simpack/func/event/doc/simpp.ps
+
++--------------------------+
+|LATEST VERSION OF SOFTWARE|
++--------------------------+
+
+HOW TO GET SOFTWARE:
+
+WWW: http://www.cis.ufl.edu/~fishwick/simpack/simpack.html
+
+FTP: ftp.cis.ufl.edu (cd to pub/simdigest/tools, specify 'binary'
+     get SimPack3.tar.Z for Unix or SimPack3.zip for PCs).
+
+If you get SimPack.tar.Z, we suggest that you also get SimPack3.doc,
+which will talk you through installation.
+
+INFORMATION ON VERSION 3.01:
+
+The new version is SimPack version 3.01 (SimPack3).  This is a minor
+revision of SimPack version 3.0, intended to remove some compilation
+problems due to compiler dialect issues.
+
+One major new component of SimPack version 3.0 was Sim++ version 1.0,
+which replaced simpack/func and all subdirectories thereof.  The code
+of Sim++ has been revised, reflecting compiler dialect issues as
+mentioned previously.  Sim++ version 1.01 is included as part of
+SimPack version 3.01.
+
+There is a manual in postscript format for Sim++.  It is over 60 pages
+in length.  It's located in simpack/func/event/doc, and is recommended
+reading.  The manual for version 1.0 is still current for version 1.01
+of the Sim++ software.
+
+Sim++ Version 1.01, a software toolkit for event scheduling and queuing 
+model simulations, was developed at the CISE Department, University of 
+Florida, Gainesville FL  USA, is the property of Paul Fishwick and 
+Robert Cubert, copyright (c) 1995.  See License.
+
+Sim++ can be used with C code or C++ code, but you MUST have a C++ compiler.
+Sim++ is g++ compliant.  It also runs under Borland Turbo C++ under DOS,
+Windows, or OS2 (in the last 2 cases as a DOS app).
+
+The SimPack software is currently being overhauled to use C++ exclusively;
+however, it will still be possible to use C programs, as before, to access
+the C++ routines.  Sim++ is the first step in this direction.
+We will keep you abreast on these developments.
+
+FYI: There is a new System Dynamics Tool available (see below).
++++++++
+
+
+
+
+
+                       S I M P A C K
+           C-based Simulation "Seed" Tool Package
+           Copyright (C) 1995  Paul A. Fishwick
+                   (READ file COPYRIGHT)
+                       VERSION 3.01
+                     (August 10, 1995)
+
+
+
+  SimPack is a collection of C tools (routines and programs) for 
+computer simulation. The purpose of SimPack is to provide people
+with a "starting point" for simulating a system. The intention
+is that people will view what exists as a template (or "seed")
+and then "grow a simulation program." SimPack tools have been
+used for two years of teaching computer simulation at the under-
+graduate (senior) and graduate levels. Also, many people have taken 
+the basic tools and created more complex research applications with 
+lots of options specific to a particular area.
+
+...SimPack is copyright, and re-distribution is granted so long...
+...as SimPack is not sold. Users of SimPack use the..
+...tools at their own risk. See the License file for further
+...information.
+
+-------------------------------------------------------------------
+INSTALL: To install, just type 'make all' after unpacking all 
+directories and sub-directories.
+
+DOCUMENTATION: The documentation is located within README files
+within each sub-directory.
+
+CONTENTS: 
+
+1. multimodel: Multimodel and Combined modeling
+   1.1 combined: discrete event and continuous
+       "Simulation of a cashier with a moving belt for groceries"
+   1.2 boiling water multimodel
+2. dec: Declarative modeling
+   2.1 fsa: finite state automata with timed states
+   2.2 markov: Markov model with timed states
+   2.3 petri: timed petri net simulator
+   2.4 warehouse: Inventory problem for a warehouse
+3. constraint: Constraint modeling
+   3.1 difference : Difference equation modeling
+       3.1.1 log1: Logistic equation (first order)
+       3.1.2 log2: Logistic equation (second order)
+       3.1.3 diff1: Circular queue simulation method on log1 
+       3.1.4 bifurc: Bifurcation analysis on log1
+   3.2 differential: Differential equation modeling
+       3.2.1 deq: Equation parser and solver
+       3.2.2 integrate: Sample Euler and RK4 integrations
+   3.3 delay differential equation such as the Mackey-Glass
+4. func: Functional modeling
+
+   4.1 queuing (old queuing library):
+   4.2 event (models using event scheduling):
+       Contains SIM++ module for queuing and facility handling
+       4.2.1 pkgs: Xsimcode and MiniGPSS (small GPSS subset compiler)
+       4.2.2 Examples:
+             4.2.2.1 tiktok: discrete event model of a clock
+             4.2.2.2 ssq: single server queue simulation with graphical tracing
+             4.2.2.3 cpudisk: 1CPU/4Disk discrete event simulation
+             4.2.2.4 gas: two methods of simulating gas/molecule dynamics
+             4.2.2.5 airport: baggage and passport queues
+             4.2.2.6 logic: digital logic simulator with nominal gate delays
+             4.2.2.7 network: communications network simulator
+             4.2.2.8 route: optimal route network simulator
+             4.2.2.9 block: example showing the use of blocking in facilities
+             4.2.2.10 pulse: Pulse process
+             4.2.2.11 qnet: general queuing network simulator
+   4.3 slice (models using time slicing):
+       4.3.1 block: block simulator (ala CSMP)
+       4.3.2 sdsmt: X window System Dynamics Toolkit using Tk/Tcl
+
+
++------------------------+
+|MAILING LIST FOR SIMPACK|
++------------------------+
+
+1. To subscribe: mail majordomo@cis.ufl.edu
+   In the body of the text to mail, say: subscribe simpack
+
+2. To send e-mail to everyone on the list do: mail simpack@cis.ufl.edu
+   with your message.
+
+3. Other commands include:
+
+    subscribe  simpack [<address>]
+    unsubscribe simpack [<address>]
+    which [<address>]
+    who simpack
+    info simpack
+    index simpack
+    get simpack
+    lists
+    help
+    end
+
++-------------------+
+|NEW SIMULATION BOOK|
++-------------------+
+
+BOOK: Simulation Model Design & Execution: Building Digital Worlds
+AUTHOR: Paul Fishwick 
+PUBLISHER: Prentice Hall 
+PHONE: (800) 947-7700
+ISBN: 013-098609-7
+DATE: January 1995
+
+This book focusses on model design (using an extension of object-oriented 
+design -- called multimodeling) and algorithms for serial and parallel 
+model execution. The SimPack simulation toolkit is also discussed and a
+chapter is devoted to using SimPack programs. The Introduction Chapter, 
+with embedded figures, in online in World Wide Web (WWW) format in my 
+home page. This chapter will give you a good idea of the book's content 
+and philosophy. You will need to use a WWW client program such as Mosaic, 
+Netscape, Cello or Lynx to view the chapter. My home page is:
+
+http://www.cis.ufl.edu/~fishwick
+
+Book Table of Contents
+
+Brief Version
+-------------
+
+1 Introduction 
+2 Foundations 
+3 Conceptual Modeling 
+4 Declarative Modeling 
+5 Functional Modeling 
+6 Constraint Modeling 
+7 Spatial Modeling 
+8 Multimodeling 
+9 Parallel & Distributed Simulation 
+10 SimPack Toolkit 
+
+Long Version
+------------
+
+1 Introduction 
+1.1 Overview 
+1.2 Types of Simulation 
+1.3 The Simulation Process 
+1.3.1 Phases 
+1.3.2 Model Engineering 
+1.4 Approach 
+1.4.1 Philosophy 
+1.4.2 Comparisons with Other Simulation Methods 
+1.4.3 For the Student 
+1.4.4 For the Instructor 
+1.5 Role of Simulation 
+1.6 Modeling Example 
+1.7 Object Oriented Model Design 
+1.8 Book Organization 
+1.9 How and Where to Use this Book 
+1.10 Exercises 
+1.11 Projects 
+1.11.1 How to do Re-Search 
+1.11.2 Where to find Information for the Projects? 
+1.11.3 Some Projects to Start Off 
+1.12 Further Reading 
+1.13 Software 
+1.13.1 SimPack Simulation Toolkit 
+1.13.2 Other Software and Online Simulation Information 
+
+2 Foundations 
+2.1 Overview 
+2.2 Model Design 
+2.2.1 Data: The Observables 
+2.2.2 Model Components 
+2.2.3 Model Definition & Basic Categories 
+2.3 Serial Model Execution 
+2.3.1 Time Slicing 
+2.3.2 Basic Event Scheduling 
+2.3.3 Structured Event Scheduling 
+2.4 Behavioral Modeling 
+2.5 Financial Applications 
+2.6 Exercises 
+2.7 Projects 
+2.8 Further Reading 
+
+3 Conceptual Modeling 
+3.1 Overview 
+3.2 Text to Object Translation 
+3.2.1 Nouns and Pronouns 
+3.2.2 Adjectives and Adverbs 
+3.2.3 Verbs 
+3.2.4 Prepositions 
+3.2.5 Conjunctions 
+3.3 Picture to Object Translation 
+3.3.1 Sketches: No Explicit Rules 
+3.3.2 Conceptual Graphs: Some Explicit Rules 
+3.3.3 Schematics: All Explicit Rules 
+3.4 Mapping Conceptual Models to C++ Code 
+3.4.1 Class Structure 
+3.4.2 Methods and Message Passing 
+3.5 Exercises 
+3.6 Projects 
+3.7 Further Reading 
+3.8 Software 
+
+4 Declarative Modeling 
+4.1 Overview 
+4.2 State-Based Approach 
+4.2.1 Deterministic Automata 
+4.2.2 Nondeterministic Automata 
+4.2.3 Production-Based Models 
+4.3 Event-Based Approach 
+4.3.1 Finite Event Automata 
+4.3.2 Keyframe Animation 
+4.3.3 Augmented Event Graphs 
+4.4 Hybrid State-Event Methods 
+4.4.1 State-Event Graphs 
+4.4.2 Inventory Control 
+4.4.3 Petri Networks 
+4.5 Exercises 
+4.6 Projects 
+4.7 Further Reading 
+4.8 Software 
+
+5 Functional Modeling 
+5.1 Overview 
+5.2 Function-Based Approach 
+5.2.1 Block Models 
+5.2.2 Automatic Vehicle Control 
+5.2.3 Coupled Water Tanks 
+5.2.4 Encoding Functional Network Structure 
+5.2.5 Digital Logic Circuits 
+5.2.6 Queuing Models 
+5.3 Variable-Based Approach 
+5.3.1 Signal Flow Graphs 
+5.3.2 Kinetic Graphs 
+5.3.3 Pulse Processes 
+5.3.4 System Dynamics 
+5.3.5 Compartmental Modeling 
+5.4 Exercises 
+5.5 Projects 
+5.6 Further Reading 
+5.7 Software 
+
+6 Constraint Modeling 
+6.1 Overview 
+6.2 Equation Based Approach 
+6.2.1 Discrete Delays in C 
+6.2.2 Fibonacci Growth 
+6.2.3 Difference Equation Coding with Circular Queues 
+6.2.4 Canonical Form Difference Equations 
+6.2.5 Differential Equation Algorithms 
+6.2.6 Predator/Prey Ecological Model 
+6.2.7 Ballistics 
+6.2.8 Harmonic Motion 
+6.2.9 Chaotic Behavior: The Lorenz System 
+6.2.10 Mathematical Expression Handling 
+6.2.11 Delay Differential Equations 
+6.3 Graph Based Approach 
+6.3.1 Electrical Networks 
+6.3.2 Bond Graphs 
+6.4 Exercises 
+6.5 Projects 
+6.6 Further Reading 
+6.7 Software 
+
+7 Spatial Modeling 
+7.1 Overview 
+7.2 Space-Based Approach 
+7.2.1 Overview 
+7.2.2 Percolation 
+7.2.3 Cellular Automata 
+7.2.4 Ising Models 
+7.2.5 Partial Differential Equations 
+7.3 Entity-Based Approach 
+7.3.1 Overview 
+7.3.2 L-Systems 
+7.3.3 Gas Dynamics with Time Slicing 
+7.3.4 Gas Dynamics with Discrete Events 
+7.3.5 Planetary Orbital Mechanics 
+7.3.6 Particle System Algorithms 
+7.3.7 Rigid Body Mechanics 
+7.4 Exercises 
+7.5 Projects 
+7.6 Further Reading 
+7.7 Software 
+
+8 Multimodeling 
+8.1 Overview 
+8.2 Aggregation & Decomposition 
+8.3 Abstraction & Refinement 
+8.4 Abstraction as Homomorphic Simplification 
+8.5 Refining Aggregate Vectors 
+8.6 Discontinuity and Integration 
+8.7 Refining Declarative and Functional Models 
+8.8 Pendulum Phase Space 
+8.9 The Two Jug System 
+8.10 The Dining Philosophers Revisited 
+8.11 Industrial Plant Control 
+8.12 Boiling Liquids 
+8.12.1 Overview 
+8.12.2 Two Homogeneous Refinements 
+8.12.3 A Heterogeneous Refinement 
+8.12.4 Execution Results 
+8.12.5 Question Answering and Choice of Model 
+8.13 Refining Petri Nets 
+8.13.1 Two Flasks of Boiling Water 
+8.13.2 Robot Operations 
+8.14 Exercises 
+8.15 Projects 
+8.16 Further Reading 
+8.17 Software 
+
+9 Parallel & Distributed Simulation 
+9.1 Overview 
+9.2 Architecture Styles 
+9.3 Suitable Model Types for Parallelization 
+9.4 Functional Models 
+9.4.1 Causality 
+9.4.2 Synchronous Method 
+9.4.3 Conservative Asynchronous Method 
+9.4.4 Optimistic Asynchronous Method 
+9.5 Spatial Models 
+9.5.1 Space Based Approach 
+9.5.2 Entity-Based Approach 
+9.6 Exercises 
+9.7 Projects 
+9.8 Further Reading 
+
+10 SimPack Toolkit 
+10.1 Overview 
+10.2 Copyright and License 
+10.3 Event Scheduling 
+10.4 Declarative Model Simulators 
+10.4.1 FSA Simulator 
+10.4.2 Markov Simulator 
+10.4.3 Temporal Logic Simulator 
+10.4.4 Timed Petri Net Simulator 
+10.5 Functional Model Simulators 
+10.5.1 Time Slicing Block Simulator 
+10.5.2 A Clock 
+10.5.3 Digital Logic Network Simulator 
+10.5.4 Queuing Model Library 
+10.5.5 Grocery Store I 
+10.5.6 Grocery Store II 
+10.5.7 Single Server System 
+10.5.8 CPU/Disk System 
+10.5.9 Sample Traces for the CPU/Disk Problem 
+10.5.10 Blocking in Queuing Networks 
+10.5.11 General Network Simulator 
+10.5.12 Communications Network Simulator 
+10.5.13 Pulse Processes 
+10.5.14 Optimal Path Route Simulator 
+10.5.15 A Mini GPSS Compiler 
+10.5.16 Xsimcode 
+10.6 Constraint Models 
+10.6.1 Difference Equations 
+10.6.2 Ordinary Differential Equations 
+10.6.3 Delay Differential Equations 
+10.7 Spatial Models 
+10.7.1 Gas Dynamics 
+10.7.2 Diffusion 
+
+Paul A. Fishwick               E-Mail: fishwick@cis.ufl.edu
+Dept. of Computer Science      Phone & FAX: (904) 392-1414
+University of Florida          WWW: http://www.cis.ufl.edu/~fishwick
+CSE 301, Gainesville, FL 32611              
+
+
+
+
+
+
+

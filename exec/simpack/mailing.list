@@ -1,0 +1,26 @@
+
+We have a new mailing list for simpack. I suggest that all questions and
+ideas on simpack be sent to this automated list. You will need to
+subscribe first. 
+
+Do: mail majordomo@cis.ufl.edu
+
+And then do one of the following messages (note: <address> refers to
+your e-mail address):
+
+    subscribe  simpack [<address>]
+    unsubscribe simpack [<address>]
+    which [<address>]
+    who simpack
+    info simpack
+    index simpack
+    get simpack
+    lists
+    help
+    end
+
+To send e-mail to everyone on the list do: mail simpack@cis.ufl.edu
+with your message
+
+-paul
+

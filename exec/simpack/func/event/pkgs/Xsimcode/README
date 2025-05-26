@@ -1,0 +1,112 @@
+
+                       - NOTICE - 
+
+Xsimcode Source code is owned by Brian Harrington (c) 1991 
+Simpack source code is owned by Paul Fishwick (c) 1990
+They may be freely distributed for non-profit use. 
+----------------------------------------------------------------
+
+Xsimcode release 1.4: readme.doc file
+Brian Harrington
+University of Florida
+October 24, 1991
+
+
+USER INTERFACE HINTS
+====================
+Xsimcode's interface provides four "buttons" at the top of the
+screen.  These are the file, options, draw and translate menus. 
+Below the buttons is a status line.  The status line gives the user
+feedback on each operation.  Check the status line after each
+operation.  Below the status line is a large blank area, called the
+"pad".   The "pad" is the user's drawing pad.  The model is
+displayed on the pad.
+
+*** Clicking on an empty spot on the pad gives the ADD menu.  You
+can add a facility, generic block or a routing point.
+
+*** Clicking on an occupied spot on the pad gives the EDIT menu. 
+You can change the settings of an element, delete or get
+information about the element.
+
+To create a model, add elements to the screen.  Elements must be
+linked together to show the flow of tokens through the system. 
+There are five types of elements: arrivals, processes, fan-in
+routing points, fan-out routing points and sinks.  Each model has
+only one arrival point and one sink.  Processes may be grouped
+together with a pair of fan-in and fan-out routing points.  A fan-
+out routing point sends its token to one of several possible
+facilities.  The varied destinations of the tokens are brought into
+a single stream with a fan-in routing point.
+ 
+**** Elements must be linked together to show the flow of tokens
+through the system.  If the system is not completely linked
+Xsimcode will crash. *****
+
+MENUS
+=====
+
+Xsimcode's user interface provides six menus.  Four of these menus-
+-the file menu, the options menu, the draw menu and the translation
+menu--have pull down lists.  The user should click the mouse and
+continue to hold down the mouse button until the appropriate option
+is highlighted.  Releasing the mouse button selects a menu item. 
+Each pull-down menu item generates a dialog box.  A dialog box may
+ask the user to type in input.  Move the mouse within the dialog
+box.  Use <control>D or backspace to delete any unnecessary
+characters and type the input in the box.  Do not press return. 
+Just select the appropriate button in the box.  Most dialog boxes
+with input have an "OK" and "CANCEL" button.  Some dialog boxes do
+not ask for input.  Simply select the appropriate button. 
+
+The add and modify menus lead to a dialog box with several buttons. 
+After you have selected the appropriate option, another dialog box
+will appear.  This box, like those used by the pull down menu, may
+or may not ask for input.  Use it the same way as the dialog boxes
+called by the pull-down menu.
+
+  File               Options                                Draw               
+
+  New                File Name                              Connect            
+  Load               Run Time                               Disconnect          
+  Save               Departure                              Grid               
+  Save As            Mode                                   Refresh
+  Quit               Report
+                     Trace Data Struct
+                     Trace Event List
+                     Trace Facility
+
+
+
+          Modify                                          Add
+
+          Delete                                          Facility           
+          Edit                                            Fan-In
+                   Name                                   Fan-Out
+                   Number of Servers                      Generic
+                   Priority
+                   Initial Count
+                   Distribution
+                   Parameter 1
+                   Parameter 2
+                   Parameter 3
+
+          Menu options in Xsimcode.                   
+
+The parameters of individual elements can be changed using the edit menu. The
+model parameters can be changed from the options menu.  See Simpack's
+documentation for information on Simpack options.  However, all options have
+defaults, so a user does need to change anything to create a working model.
+
+TRANSLATION TO C
+================
+  
+Users can save their model (and all its parameters) at any time. "Save" 
+saves the model to the current directory under the current name.  "Save As" 
+allows the name to be changed prior to saving the file. The filename will 
+end in .sim.
+
+When the model is complete, it can be translated to C by pressing the translate
+button.  The default filename is "model.c"  The file is written to the current 
+directory. To run the simulation, the user would exit Xsimcode, perform
+a "make model" and run the model executable.

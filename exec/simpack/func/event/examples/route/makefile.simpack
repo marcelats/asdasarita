@@ -1,0 +1,16 @@
+
+route: route.o ../queuing/queuing.o
+	       @echo 'Link the route application'
+	       @echo ' '
+	       cc -o route route.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	       ls -l route
+	       date
+
+route.o: route.c
+	       @echo 'Compile route simpack application'
+	       cc -c -o route.o route.c
+	       ls -l route.o
+	       @echo ' '
+
+
+

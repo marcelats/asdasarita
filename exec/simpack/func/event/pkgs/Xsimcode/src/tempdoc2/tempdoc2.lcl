@@ -1,0 +1,3 @@
+\BodyNewPage % (don't force new right page between front and body.)
+
+\def\titlepagestart{\advance\vsize by 1in} % increase height of title page only

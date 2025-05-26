@@ -1,0 +1,670 @@
+test 3.3.1 Model initialization
+Future constructed: Sat Jul 15 14:30:17 1995
+Constructed Heap, capacity 50000.
+end test 3.3.1
+test 3.3.2 Snapshots
+first interactive
+Snapshots ALWAYS ON
+Interactive mode is ENABLED
+then batch
+Snapshots ALWAYS ON
+Interactive mode is DISABLED
+end test 3.3.2
+TEST 3.3.3 Event scheduling
+-------------------------------------------------------------
+Simulation snapshot at time:   0.0
+Title: BEFORE SCHEDULE Event ''  Inter-Time   3.4  Token 0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 0    Remove duplicates? No
+Departures:               0    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 0.0
+It has been as large as 0 elements so far.
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   0.0
+Title: AFTER SCHEDULE Event ''  Inter-Time   3.4  Token 0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 0    Remove duplicates? No
+Departures:               0    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 0.0
+It has been as large as 1 elements so far.
+        +-----+
+Token   |    0|
+Time  <=|  3.4|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+end test 3.3.3
+test 3.3.4 Event occurrence
+-------------------------------------------------------------
+Simulation snapshot at time:   0.0
+Title: BEFORE NEXT_EVENT.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 0    Remove duplicates? No
+Departures:               0    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 0.0
+It has been as large as 1 elements so far.
+        +-----+
+Token   |    0|
+Time  <=|  3.4|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER NEXT_EVENT  Event  0  Token   0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 0    Remove duplicates? No
+Departures:               0    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+Done with 3.3.4 test
+test 3.3.5 The simulation time
+3.3.5 test, now = 3.4
+end test 3.3.5
+test 3.3.6 Turnstile into the simulation
+first without returning a value
+second time returning a value
+3.3.6 test, count = 2
+end test 3.3.6
+test 3.3.7 Turnstile out of the simulation
+first without returning a value
+second time returning a value
+3.3.7 test, count = 2
+end test 3.3.7
+test 3.3.8 Look at Future Event List
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+end test 3.3.8
+test 3.3.9 Size of Future Event List
+End 3.3.9 test
+Begin 3.3.10 test Cancel next event of a certain class
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE SCHEDULE Event ''  Inter-Time     0  Token 0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER SCHEDULE Event ''  Inter-Time     0  Token 0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |    0|
+Time  <=|  3.4|
+Event   |    1|
+        +-----+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE CANCEL_EVENT  Event  1.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |    0|
+Time  <=|  3.4|
+Event   |    1|
+        +-----+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER CANCEL_EVENT  Event  1  Token   0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+End 3.3.10 test
+test 3.3.11 Cancel future event involving a certain token id
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE CANCEL_TOKEN  Token 17.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER CANCEL_TOKEN  Event -1  Token  17.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+Unable to cancel token 17
+End 3.3.11 test
+Begin 3.3.12 test Report statistics
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 3.400000
+Total System Arrivals: 2
+Total System Departures: 2
+
+System Wide Statistics
+----------------------
+NOTE: Facility statistics were not calculated because no facilities exist.
+System Utilization: 0.0%
+Arrival Rate: 0.588235, Throughput: 0.588235
+Mean Service Time per Token: 0.000000
+Mean # of Tokens in System: 0.000000    Largest FEL size was 1
+Mean Residence Time for each Token: 0.000000
+
+Facility Statistics
+-------------------
+End 3.3.12 test
+Begin 3.4.1 test Creating a facility
+End 3.4.1 test
+Begin 3.3.12 test #2
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 3.400000
+Total System Arrivals: 2
+Total System Departures: 2
+
+System Wide Statistics
+----------------------
+System Utilization: 0.0%
+Arrival Rate: 0.588235, Throughput: 0.588235
+Mean Service Time per Token: 0.000000
+Mean # of Tokens in System: 0.000000    Largest FEL size was 1
+Mean Residence Time for each Token: 0.000000
+
+Facility Statistics
+-------------------
+F 1 (skycap): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 2 (skycap): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 3 (skycap): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 4 (ticket agent): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+End 3.3.12 test #2
+Begin test 3.4.2 Requesting service
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE REQUEST  Facility  3  Token  17  Priority  0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER REQUEST  Facility  3  Token  17  Priority  0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE SCHEDULE Event ''  Inter-Time   2.5  Token 17.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 0 elements at time: 3.4
+It has been as large as 1 elements so far.
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER SCHEDULE Event ''  Inter-Time   2.5  Token 17.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |   17|
+Time  <=|  5.9|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+End test 3.4.2
+Begin test 3.4.3 Preemption
+tkn.attr[0] = 0
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE PREEMPT  Facility  4  Token  17  Priority  2.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |   17|
+Time  <=|  5.9|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER PREEMPT  Facility  4  Token  17  Priority  2.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |   17|
+Time  <=|  5.9|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  2 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+End test 3.4.3
+Begin test 3.4.4 Releasing a server
+Let's try to release skycap [2]:
+whose facility # is 3
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE RELEASE  Facility  3  Token  17.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |   17|
+Time  <=|  5.9|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  2 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER RELEASE  Facility  3  Token  17.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |   17|
+Time  <=|  5.9|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  2 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+End test 3.4.4
+Begin test 3.4.5 Status of a facility
+status of tkt_agent is FREE
+End test 3.4.5
+Begin test 3.4.6 Length of a facility's queue
+token id = 22
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: BEFORE REQUEST  Facility  4  Token  22  Priority  0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |   17|
+Time  <=|  5.9|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  1 busy.
+Server detail: ( 0) TK  17 PR  2 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: AFTER REQUEST  Facility  4  Token  22  Priority  0.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 2    Remove duplicates? No
+Departures:               2    Snapshots Always On
+Tokens in system:         0    Ranmark: On 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Heap  contains 1 elements at time: 3.4
+It has been as large as 1 elements so far.
+        +-----+
+Token   |   17|
+Time  <=|  5.9|
+Event   |    2|
+        +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  2 busy.
+Server detail: ( 0) TK  17 PR  2 ( 1) TK  22 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+rtncod = 0
+End test 3.4.6
+Begin test 3.4.7 Provide inuse-time statistic
+bt = 0
+End test 3.4.7
+begin test 3.4.8 Display a facility
+## FACILITY  4 (ticket agent):  4 server(s),  2 busy.
+Server detail: ( 0) TK  17 PR  2 ( 1) TK  22 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+End test 3.4.8
+begin test 3.5.1 Stream
+value = 1
+end test 3.5.1
+begin test 3.5.2 ranf
+ranf_value = 0.562459
+end test 3.5.2
+begin test 3.5.3 seed
+Ik = -1, n = 4
+seed returned 640830765
+end test 3.5.3
+begin test 3.5.4 uniform
+a = 1.000000, b = 2.000000
+uniform returned 1.247305
+end test 3.5.4
+begin test 3.5.5 random
+i = 1, n = 17
+random returned 8
+end test 3.5.5
+begin test 3.5.6 negative exponential
+x = 1.234500
+expntl returned 1.101374
+end test 3.5.6
+begin test 3.5.7 erlang
+x = 1.000000, s = 0.500000
+erlang returned 0.520111
+end test 3.5.7
+begin test 3.5.8 hyperexponential
+x = 0.500000, s = 1.000000
+hyperx returned 0.144458
+end test 3.5.8
+begin test 3.5.9 triangular
+a (on left) = 1.000000, b (on right) = 3.000000, c (mode) = 2.000000
+triang returned 1.642596
+end test 3.5.9
+begin test 3.5.10 normal
+x = 1.000000, s = 0.250000
+normal returned 0.949621
+end test 3.5.10
+end test cAPI

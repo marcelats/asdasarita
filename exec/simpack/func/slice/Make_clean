@@ -1,0 +1,19 @@
+#! /bin/csh -f
+echo ' '
+echo '-----------------------------------------------------------------------'
+echo ' '
+echo 'sdsmt is Tcl/Tk, so nothing to clean.'
+echo ' '
+echo '-----------------------------------------------------------------------'
+echo ' '
+echo 'About to clean block ...'
+(cd block; make clean)
+echo ' '
+echo '-----------------------------------------------------------------------'
+echo ' '
+echo 'About to clean pulse ...'
+(cd pulse; make clean)
+echo ' '
+echo '-----------------------------------------------------------------------'
+echo 'simpack/func/slice/Make_clean is done'
+date

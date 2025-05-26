@@ -1,0 +1,14 @@
+
+if ( [ "$1" = "" ] ) then
+  echo 'missing command line parameter'
+  exit 1
+  fi
+
+COMPILER="g++ -Iinclude -c -o"
+LINKER="g++ -o"
+
+cp -p src/$1.cpp $1.C
+echo $COMPILER olb/$1.o $1.C
+$COMPILER olb/$1.o $1.C
+rm $1.C
+

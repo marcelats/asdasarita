@@ -1,0 +1,40 @@
+17 3 228 284 Contacts 18
+
+1 4 368 380 {Total Population} 2
+
+3 4 384 290 {Fraction of Contacts Becoming Sick} 4
+
+5 4 596 270 {Duration of Disease} 6
+
+7 1 181 160 Susceptibles 8
+
+9 1 381 160 {Sick Population} 10
+
+11 1 581 161 {Recovered Population} 12
+
+13 2 284 160 Infection 14
+
+15 2 482 160 Cure 16
+
+19 7 277 234 17 13
+
+20 6 551 160 15 11
+
+21 6 329 160 13 9
+
+23 7 159 250 7 17
+
+24 7 492 246 5 15
+
+61 6 238 160 7 13
+
+25 7 422 203 9 15
+
+26 6 438 160 9 15
+
+27 7 302 245 3 13
+
+28 7 338 207 9 13
+
+29 7 265 371 1 17
+

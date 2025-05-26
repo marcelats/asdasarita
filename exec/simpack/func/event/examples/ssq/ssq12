@@ -1,0 +1,144 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/ssq version 12 (formerly q1.c in ssq directory in SimPack):
+-------------------------------------------------------------------------------
+The following code was ported from SimPack's "q1.c".
+This program simulates a single server queue.
+
+The simulation style of the code below is "automatic, event_routine".
+The code is c++.  The API is ooAPI.
+
+Sometimes setting up snapshots in the Future constructor is just too much.
+We get swamped with output.  Instead, an alternative is to produce snapshots on
+demand only, instead of after every event.
+
+This version illutrates selective snapshots.
+
+  * See Future::Snapshot(), which displays future event list and ALL
+    faciliities,
+
+  * Facility::FlistDisplay(), which displays ALL facilities; and
+
+  * Facility::FacDisplay(), which displays a single facility (for example,
+    queue->FacDisplay() displays the "queue" facility.
+
+In this program there's no difference bwtween Facility::FlistDisplay() and Facility::FacDisplay()
+because there's only ONE facility!
+
+Also, the examples are a little contrived but i hope they serve to illustrate
+how you use selective snapshots -- the actual criteria for using them in
+your own programs are, of course, up to you.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+const TIME_LIMIT = 1000;
+
+Facility * queue = NULL;
+
+// fn prototype declarations; (can be omitted if fn definitions come before
+// main; that is, if you like pascal style)
+
+  void KickOff  (void);
+  void Arrive   (void);
+  void RqstSrvr (void);
+  void RlsSrvr  (void);
+
+
+int main ()
+  {
+  Facility::ShowIdle (NO);
+  queue = new Facility ("queue");
+  new Future (LINKED, KickOff, "Start the simulation", EXECUTE_THIS_FN);
+  Future::ReportStats ();
+  return 0;
+  }
+
+
+
+/*=============================================================================
+Event routines
+-----------------------------------------------------------------------------*/
+
+void KickOff ()
+  {
+  Token customer (1);
+  Future::Schedule (Arrive, 0.0, customer, "Arrival");
+  }
+
+
+void Arrive ()
+  {
+  Token customer = Future::CurrentToken ();
+  Future::UpdateArrivals ();
+  Future::Schedule (RqstSrvr, 0.0, customer, "Rqst  ");
+
+  // Selective snapshot:
+  int cusnum = customer.Id();
+  Boolean hundredth = cusnum / 100 * 100 == cusnum;
+  if (Future::SimTime() > 900 && queue->FQlength () < 8 && hundredth)
+    {
+    Future::Interactive (ON);
+    Future::Snapshot ("Checkpoint 1");
+    }
+
+  if (Future::SimTime() < TIME_LIMIT)
+    {
+    customer.Id (customer.Id() + 1);
+    Future::Schedule (Arrive, 2.0, customer, "Arrive");
+    }
+  else
+    {
+    Future::FELdrain ();
+    cout << "Terminating simulation from Arrive()\n";
+    }
+  }
+
+void RqstSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  if (queue->Request (customer) == FREE)
+    {
+    double sample = expntl (2.0);
+    Future::Schedule (RlsSrvr, sample, customer, "Rls   ");
+    }
+  else
+    {
+    double now = Future::SimTime();
+    if (now > 760 && now < 765 & queue->FQlength() == 8)
+      {
+      cout << "++++++++++++++++++++++++++++++++++++++++++\n";
+      cout << "Facility status report for ALL facilities:\n";
+      cout << "++++++++++++++++++++++++++++++++++++++++++\n";
+      Facility::FlistDisplay (INTERACTIVE); // or BATCH
+      cout << "++++++++++++++++++++++++++++++++++++++++++\n";
+      }
+    }
+
+  }
+
+void RlsSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  int who = customer.Id();
+  queue->Release (who);
+  Future::UpdateDepartures ();
+
+  int ql = queue->FQlength ();
+  double now = Future::SimTime();
+
+  if (ql == 7 && now > 970 && now < 972)
+      {
+      cout << "############################################\n";
+      cout << "Facility status report for facility 'queue':\n";
+      queue->FacDisplay (INTERACTIVE); // or BATCH
+      cout << "############################################\n";
+      }
+
+  }
+
+// end ssq
+

@@ -1,0 +1,21 @@
+Future constructed: Fri Jan  3 03:53:28 2003
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 100000001.336017
+Total System Arrivals: 79995306
+Total System Departures: 79995305
+
+System Wide Statistics
+----------------------
+System Utilization: 80.0%
+Arrival Rate: 0.799953, Throughput: 0.799953
+Mean Service Time per Token: 1.000127
+Mean # of Tokens in System: 3.996533    Largest FEL size was 3
+Mean Residence Time for each Token: 4.995960
+
+Facility Statistics
+-------------------
+F 1 (CS_1): Idle: 20.0%, Util: 80.0%, Preemptions: 0, LongestQ: 71

@@ -1,0 +1,6 @@
+{Bir} {Bir = Pop*0.03} {Birth} {1}
+
+{Dea} {Dea = Pop *0.02} {Death} {1}
+
+{Pop} {Pop = Pop(t-1) -Dea +Bir} {Population} {3}
+

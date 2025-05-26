@@ -1,0 +1,32 @@
+
+echo ' '
+echo 'SimPack3 is the property of Paul A. Fishwick,'
+echo 'copyright (c) 1995; see License in root directory of the distribution,'
+echo 'which is simpack.'
+echo ' '
+
+echo -n 'Create SimPack Time-Slice Functional Model Packages [y/n]?'
+read ansa
+echo ' '
+if ( [ "$ansa" = "y" ] ) then
+  echo 'Creating SimPack Time-Slice Functional Model Packages ...'
+  echo ' '
+  echo '----------------------------------------------------------------------'
+  echo ' '
+  echo 'sdsmt: Tcl/Tk -- nothing to make'
+  echo ' '
+  echo '----------------------------------------------------------------------'
+  echo 'block package:'
+  echo ' '
+  (cd block; make all)
+  echo ' '
+  echo '----------------------------------------------------------------------'
+  echo 'pulse package:'
+  echo ' '
+  (cd pulse; make)
+  echo ' '
+  echo '----------------------------------------------------------------------'
+  echo 'simpack/func/slice/Make_all is done.'
+  fi
+
+date

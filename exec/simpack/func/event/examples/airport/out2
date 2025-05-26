@@ -1,0 +1,163 @@
+begin test code fragments for ooAPI in Sim++ manual
+Test 4.3.3 constructor
+Future constructed: Sat Jul 15 20:22:00 1995
+end test 4.3.3
+test 4.3.1 Introduction
+now = 0
+end test 4.3.1
+test 4.3.5 event scheduling
+1st: event-id
+2nd: event-routine
+end test 4.3.5
+test 4.3.6 event occurrence
+semiautomatic method
+-----------------------------------------------------------
+Event Status Block:
+ event routine description: ''
+ return code: ES_NO_FN
+ time: 0
+-----------------------------------------------------------
+end semiautomatic method, start 1st example of manual method
+PULLED SOMETHING UNEXPECTED OUT OF THE HAT!
+end 1st example manual method, start 2d example of manual method
+end 2d example of manual method
+end test 4.3.6
+test 4.3.7 latching onto the current event
+end test 4.3.7
+test 4.3.8 information about future event list (FEL)
+Not heap
+Light load
+FEL is empty
+Draining future event list containing 0 items
+end test 4.3.8
+test 4.3.9 cancelling future events
+Unable to cancel token 7
+es.rtncod = -1
+end test 4.3.9
+test 4.3.10 looking at the simulation clock
+now = 3.4
+end test 4.3.10
+test 4.3.11 recording arrivals and departures
+update arrivals with returned value
+return value = 1
+update departures without returning anything
+end test 4.3.11
+test 4.3.12 display info about the simulation -- snapshots
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: Checkpoint delta.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 1    Remove duplicates? No
+Departures:               1    Snapshots On Demand
+Tokens in system:         0    Ranmark: Off
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Linked  contains 0 elements at time: 3.4
+It has been as large as 2 elements so far.
+------------------------------------------------------------
+end test 4.3.12
+test 4.4.2 facility constructor
+end test 4.4.2
+test 4.4.4 requesting service
+Susie is about to walk up to ticket agents
+return code from Request was 0
+Frank is about to choose a skycap at random
+Frank chose skycap 1
+return code from Request was 0
+-------------------------------------------------------------
+Simulation snapshot at time:   3.4
+Title: After test 4.4.4 requesting service.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Arrivals:                 1    Remove duplicates? No
+Departures:               1    Snapshots On Demand
+Tokens in system:         0    Ranmark: Off
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+FEL is Linked  contains 2 elements at time: 3.4
+It has been as large as 2 elements so far.
+        +-----+  +-----+
+Token   |   41|  |   38|
+Time  <=|  4.6|<=|  6.8|
+Event   |    2|  |    4|
+        +-----+  +-----+
+------------------------------------------------------------
+## FACILITY  1 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  2 (skycap):  1 server(s),  1 busy.
+Server detail: ( 0) TK  41 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  3 (skycap):  1 server(s),  0 busy.
+Server detail: ( 0) TK   0 PR  0 
+Display Linked 'skycap' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+## FACILITY  4 (ticket agent):  4 server(s),  1 busy.
+Server detail: ( 0) TK  38 PR  0 ( 1) TK   0 PR  0 ( 2) TK   0 PR  0 ( 3) TK   0 PR  0 
+Display Linked 'ticket agent' queue contains 0 elements at time: 3.4
+It has been as large as 0 elements so far.
+
+------------------------------------------------------------
+end test 4.4.4
+test 4.4.5 preemption
+Preempt returned 0
+end test 4.4.5
+test 4.4.6 Releasing a server
+end test 4.4.6
+test 4.4.7 ascertaining facility usage
+ticket agent inuse = 0
+total elapsed time = 3.4
+Facility in use 0% of the time
+end test 4.4.7
+test 4.4.8 reporting facility status
+ticket agent(s) free
+end test 4.4.8
+test 4.4.9 ascertaining length of a facility's priority q
+Zelda will fly on Acme Airlines
+done with Zelda.  Now let's see whcih skycap has shortest q
+skycap 0 has shortest line
+end test 4.4.9
+test 4.4.10 reporting emptiness of q
+Empty!
+end test 4.4.10
+test 4.4.3 Destructor
+about to delete array of skycaps
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 0 items
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 0 items
+done with skycaps, about to delete tkt_agent
+WARNING: facility destructor not supported in this release
+Draining facility queue containing 0 items
+done with tkt_agent
+end test 4.4.3
+end test ooAPI
+WARNING: future destructor not supported in this release
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 3.400000
+Total System Arrivals: 1
+Total System Departures: 1
+
+System Wide Statistics
+----------------------
+NOTE: Facility statistics were not calculated because no facilities exist.
+System Utilization: 0.0%
+Arrival Rate: 0.294118, Throughput: 0.294118
+Mean Service Time per Token: 0.000000
+Mean # of Tokens in System: 0.000000    Largest FEL size was 3
+Mean Residence Time for each Token: 0.000000
+
+Facility Statistics
+-------------------
+Draining future event list containing 3 items

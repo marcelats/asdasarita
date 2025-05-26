@@ -1,0 +1,74 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/tiktok (formerly ticktock.c in clock directory in simpack):
+version 3.
+
+The following code was ported from SimPack's "ticktock.c".  The simulation
+style of the code below is "semiautomatic, event_routine".  The API is ooAPI.
+See readme.
+
+This program consists of three independent event chains.  This program
+simulates a clock using discrete event simulation.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+enum EventId {SECONDS, MINUTES, HOURS};
+const MAX_TIME = 1000;
+
+void SecondsFn (void);
+void MinutesFn (void);
+void HoursFn   (void);
+
+int seconds = 0, minutes = 0, hours = 0;
+
+int main()
+  {
+  new Future (HEAP);
+
+  Token tick;
+  Future::Schedule (SecondsFn,    0.0, tick);
+  Future::Schedule (MinutesFn,   60.0, tick);
+  Future::Schedule (HoursFn,   3600.0, tick);
+
+  while (Future::SimTime() < MAX_TIME)
+    {
+    Estatus es = Future::Dispatch ();
+    if (es.rtncod != ES_OK) break;
+    }
+  return 0;
+  }
+
+/*=============================================================================
+Event routines:
+-----------------------------------------------------------------------------*/
+
+void SecondsFn ()
+  {
+  Token tick;
+  cout << "Time: " << setw(2) << hours   << ':'
+                   << setw(2) << minutes << ':'
+                   << setw(2) << seconds << '\n';
+  seconds = (seconds+1) % 60;
+  Future::Schedule (SecondsFn, 1.0, tick);
+  } // end fn
+
+void MinutesFn ()
+  {
+  Token tick;
+  minutes = (minutes+1) % 60;
+  Future::Schedule (MinutesFn, 60.0, tick);
+  }
+
+void HoursFn ()
+  {
+  Token tick;
+  hours = (hours+1) % 12;
+  Future::Schedule (HoursFn, 3600.0, tick);
+  }
+
+// end tiktok
+

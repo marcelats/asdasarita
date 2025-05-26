@@ -1,0 +1,78 @@
+CC=	gcc
+EXEC=	Xsimcode
+LOCAL_LIBRARIES=	XawClientLibs -lm
+HEADERS=	modeller.h
+
+SRCS =	init.c \
+	file.c \
+	fileMenu.c  \
+	go.c \
+	optMenu.c \
+	padMenu.c \
+	drawMenu.c  \
+	event.c \
+	list.c  \
+	utility.c
+
+OBJS=	init.o	\
+	file.o \
+	fileMenu.o  \
+	go.o \
+	optMenu.o \
+	padMenu.o \
+	drawMenu.o  \
+	event.o \
+	list.o	\
+	utility.o
+
+AllTarget(Xsimcode)
+
+NormalProgramTarget(Xsimcode, ${OBJS}, , ${LOCAL_LIBRARIES}, )
+
+
+#QUEUING= ../../../../queuing
+#SHEADERS=	${QUEUING}/queuing.h
+#SIM=		${QUEUING}/queuing.c
+#SOBJECT=	${QUEUING}/queuing.o
+
+#
+# 950728 modification by robert cubert as part of SimPack3
+#
+# The default name of the Xsimcode model is "model.sim", which
+# Xsimcode will translate to "model.c".  You then have to "make"
+# the executable file "model".  Here's an example of how:
+
+SIMPACK2QUEUING= ../../../../queuing
+SIMPACK2LIBS= -lcurses -ltermcap -lm
+
+model: model.o
+	cc -o model model.o ${SIMPACK2QUEUING}/queuing.o ${SIMPACK2LIBS}
+	@echo 'model.c has linked'
+
+model.o: model.c
+	cc -I${SIMPACK2QUEUING} -c -o model.o model.c
+	@echo 'model.c has compiled'
+
+clean_model:
+	rm -f model model.o 
+	@echo 'model has been cleaned out'
+
+# The above example supposes that you went to the directory where Xsimcode's
+# executable is located, and then did "make model".  
+
+#   If you are in a
+#   different directory, you'll need to resolve the symbol SIMPACK2QUEUING
+#   differently.  In the compile step, SIMPACK2QUEUING is needed in order to 
+#   locate headers (eg, queuing.h).  In the link step, SIMPACK2QUEUING is 
+#   needed to locate the machine language or binary version of the queuing 
+#   library.
+
+#   If you have a different file name, everything works as above: just
+#   string substitute the new file name for "model" in your makefile.
+
+# WARNING: Use ONLY cc to compile and link.  Do NOT use gcc.  If you do, 
+# everything makes, but something about parameter passing does not work right
+# (probably because of lack of function prototype declarations for
+# functions such as "schedule").
+
+# End modification 950728

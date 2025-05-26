@@ -1,0 +1,168 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+cpudisk.cpp version 5
+-------------------------------------------------------------------------------
+This program has substantially the same logic as the program cpudisk.c which
+used the simpack c-language API.  The differences are (1) this program is
+written in c++; (2) it uses the sim++ ooAPI; (3) the code is functionally
+divided into event routines; (4) event categories are identified by event
+routines, not as enum or int event_id's; (5) "ye olde case statement" is gone
+from the "main while loop"; (6) semiautomatic simulation style, in which
+occurrence and execution of the next event are atomic.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+const int n0 = 6;         // no. class 0 tasks
+const int n1 = 3;         // no. class 1 tasks
+const int nt = n0+n1;     // total no. of tasks
+const int NUM_DISKS = 4;
+const double DISK_MEAN_TIME = 30.0;
+const double DISK_STDEV     =  2.5;
+const double CPU_MEAN_TIMES [2] = {10.0, 5.0};  // task_classes are 0 and 1
+
+struct token
+  {
+  int cls;         /* task's class (& priority) */
+  int un;          /* disk for current IO req.  */
+  double ts;       /* tour start time stamp     */
+  };
+
+
+
+/*=============================================================================
+Fn prototype declarations for event routines:
+-----------------------------------------------------------------------------*/
+
+void BeginTour         (void);
+void RequestCPU        (void);
+void RlsCPU_SelectDisk (void);
+void RequestDisk       (void);
+void RlsDisk_EndTour   (void);
+
+
+
+/*=============================================================================
+Some symbols become global in order to be available to event routines.
+-----------------------------------------------------------------------------*/
+
+token task [nt+1];
+int nts = 500;                // # of tours to simulate
+int counts [2] = {0, 0};
+double elapsed_times [2] = {0.0, 0.0};
+Facility * cpu = NULL;
+Facility * disk [NUM_DISKS+1];
+
+
+
+/*=============================================================================
+Main program.  After initialization is "main while loop".  main while loop is
+controlled by nts.  nts is initialized above.  nts is decremented in
+RlsDisk_EndTour().  Main while loop ends when nts reaches 0.  At each iteration
+of "main while loop", the next event is fetched and then whatever event routine
+it identifies, that event routine is called:  ye olde case statement is gone
+from the main while loop.
+-----------------------------------------------------------------------------*/
+
+int main()
+  {
+  for (int ii=1; ii <= nt; ii++) task[ii].cls = (ii > n0 ? 1 : 0);
+  new Future (LINKED);
+  cpu = new Facility ("CPU", 1);
+  for (int ii=1; ii <= NUM_DISKS; ii++) disk [ii] = new Facility ("disk", 1);
+  Token a_token; // temporary used to put things across API
+  for (int ii=1; ii <= nt; ii++)
+    {
+    a_token.Id (ii);
+    Future::Schedule (BeginTour, 0.0, a_token, "Begin tour");
+    }
+  Estatus es;  // event status block: contains token, return code, etc
+  while (nts > 0) // ye olde main while loop
+    {
+    es = Future::Dispatch();
+    if (es.rtncod != ES_OK) { es.ES_Display(); break; }
+    }
+  Future::ReportStats();
+  cout << "\n\n" << setprecision(2)
+       << "class 0 tour time = " << elapsed_times [0] / counts [0] << '\n'
+       << "class 1 tour time = " << elapsed_times [1] / counts [1] << '\n';
+  return 0;
+  }
+
+/*=============================================================================
+-----------------------------------------------------------------------------*/
+
+void BeginTour ()
+  {
+  Token a_token = Future::CurrentToken();
+  token * tptr = & task [a_token.Id()];
+  tptr->ts = Future::SimTime();
+  Future::Schedule (RequestCPU, 0.0, a_token, "Request CPU");
+  Future::UpdateArrivals();
+  }
+
+/*=============================================================================
+-----------------------------------------------------------------------------*/
+
+void RequestCPU ()
+  {
+  Token a_token = Future::CurrentToken();
+  token * tptr = & task [a_token.Id()];
+  int task_class = tptr->cls;
+  if (cpu->Preempt (a_token, task_class) == FREE)
+    {
+    double rn = expntl (CPU_MEAN_TIMES [task_class] );
+    Future::Schedule (RlsCPU_SelectDisk, rn, a_token, "Rls CPU, Select disk");
+    }
+  }
+
+/*=============================================================================
+-----------------------------------------------------------------------------*/
+
+void RlsCPU_SelectDisk ()
+  {
+  Token a_token = Future::CurrentToken();
+  token * tptr = & task [a_token.Id()];
+  cpu->Release (a_token.Id() );
+  tptr->un = random (1, NUM_DISKS);
+  Future::Schedule (RequestDisk, 0.0, a_token, "Request a disk");
+  }
+
+/*=============================================================================
+-----------------------------------------------------------------------------*/
+
+void RequestDisk ()
+  {
+  Token a_token = Future::CurrentToken();
+  token * tptr = & task [a_token.Id()];
+  if (disk[tptr->un]->Request(a_token, 0) == FREE)
+    {
+    double rn = erlang (DISK_MEAN_TIME, DISK_STDEV);
+    Future::Schedule (RlsDisk_EndTour, rn, a_token,
+      "Release disk, end tour, start next tour");
+    }
+  }
+
+/*=============================================================================
+-----------------------------------------------------------------------------*/
+
+void RlsDisk_EndTour ()
+  {
+  Token a_token = Future::CurrentToken();
+  token * tptr = & task [a_token.Id()];
+  disk[tptr->un]->Release (a_token.Id() );
+  int task_class = tptr->cls;
+  double now = Future::SimTime();
+  elapsed_times [task_class] += now - tptr->ts;
+  tptr->ts = now;
+  (counts [task_class]) ++;
+  Future::UpdateDepartures();
+  Future::Schedule (BeginTour, 0.0, a_token, "Begin tour");
+  nts --;
+  }
+
+// end cpudisk.cpp
+

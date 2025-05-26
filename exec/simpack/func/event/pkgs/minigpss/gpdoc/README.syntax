@@ -1,0 +1,148 @@
+                             MINI-GPSS Program Syntax
+  
+	===============================================================
+	{}      Enclosed items which may be repeated zero or more times
+	()      Enclosed items occur one time
+        ^()     Means "any item but enclosed item(s) "
+	.       Means "end of syntax definition "
+	::=     Means "is defined as "
+	|       Means "or "
+	[$1-$2] Means "any character  >= $1 and <= $2 "  
+	===============================================================
+        program   ::=   remarks sim-st remarks sto-blk. 
+        sto-blk   ::=   (sto-st remarks sto-blk) | prog-blk. 
+        prog-blk  ::=   gen-st spaces pri-st tra-blk remarks opt-prog.
+        prog-blk2 ::=   serv-blk remarks opt-prog.
+        tra-blk   ::=   fac-blk | (remarks tra-st opt-nwl space spaces 
+		     opt-par) | (remarks tra-st2 opt-nwl space spaces
+		     opt-par NEWLINE space spaces opt-par) | (remarks
+		     tra-st3 opt-nwl space spaces opt-par).
+	opt-par	  ::=   (gen-st spaces pri-st tra-blk) | tra-blk.
+	opt-nwl	  ::=	NEWLINE | space.
+        opt-prog  ::=   prog-blk | prog-blk2 | opt-sta.
+        rel-blk   ::=   (rel-st remarks new-f) | ter-st.
+        lev-blk   ::=   (lev-st remarks new-f) | ter-st.
+        opt-sta   ::=   (sta-st remarks opt-sta) | end-st.
+        serv-blk  ::=   (que-st remarks sei-st remarks dep-st adv-serv1)|
+                    (que-st remarks ent-st remarks dep-st adv-serv2).
+        fac-pt    ::=   (pri-st spaces que-st remarks sei-st remarks 
+		    dep-st adv-serv1)|
+                    	(pri-st spaces que-st remarks ent-st remarks 
+		    dep-st adv-serv2)|
+                    rel-blk.
+        fac-blk   ::=   (remarks adv-st fac-blk) | (remarks fac-pt).
+        new-f     ::=   ter-st | new-f-blk.
+        new-f-blk ::=   serv-blk | (adv-st remarks new-f-blk).
+        adv-serv1 ::=   (remarks adv-st adv-serv1) | (remarks rel-blk).
+        adv-serv2 ::=   (remarks adv-st adv-serv2) | (remarks lev-blk).
+        sim-st    ::=   SIMULATE end-rmks. 
+        sto-st    ::=   STORAGE IDENTIFIER spaces COMMA spaces number end-rmks.
+        tra-st    ::=   tra-st-lab DOT number spaces COMMA spaces COMMA 
+		    spaces IDENTIFIER end-rmks.
+	tra-st-lab::=	(TRANSFER space spaces number) |
+                    (IDENTIFIER space spaces TRANSFER space spaces number).
+	tra-st2	  ::=	tra-st2-lab spaces IDENTIFIER end-rmks.
+	tra-st2-lab::=	(TRANSFER space spaces COMMA) |
+		    (IDENTIFIER space spaces TRANSFER space spaces COMMA).
+	tra-st3	  ::=	tra-st3-lab spaces COMMA spacesCOMMA spaces 
+		    IDENTIFIER end-rmks.
+        tra-st3-lab::=  (TRANSFER space spaces BOTH) | 
+		    (IDENTIFIER space spaces TRANSFER space spaces BOTH).
+        que-st    ::=   (QUEUE space spaces IDENTIFIER end-rmks) | (IDENTIFIER
+                     space spaces QUEUE space spaces IDENTIFIER end-rmks).
+        gen-st    ::=   (GENERATE space opt-pms NEWLINE) |
+			(GENERATE space spaces RVNORM spaces LPAREN spaces
+			  opt-pms spaces RPAREN  opt-nwl) |
+			(GENERATE space spaces RVEXPO spaces LPAREN spaces
+                          opt-pms spaces RPAREN opt-nwl) |
+			(GENERATE space spaces RVUNI spaces LPAREN spaces
+                          opt-pms spaces RPAREN opt-nwl) |
+			(GENERATE space spaces RVERL spaces LPAREN spaces
+                          opt-pms spaces RPAREN opt-nwl).
+	sei-st	  ::= 	sei-st-lab end-rmks.
+        sei-st    ::=   (SEIZE space spaces IDENTIFIER) |
+		    (IDENTIFIER space spaces SEIZE space spaces IDENTIFIER).
+	ent-st	  ::=	ent-st-lab end-rmks.
+        ent-st-lab::=   (ENTER space spaces IDENTIFIER) |
+		    (IDENTIFIER space spaces ENTER space spaces IDENTIFIER).
+	lev-st	  ::=	lev-st-lab end-rmks.
+        lev-st-lab::=   (LEAVE space spaces IDENTIFIER) |
+		    (IDENTIFIER space spaces LEAVE space spaces IDENTIFIER).
+	dep-st	  ::=	dep-st-lab end-rmks.
+        dep-st    ::=   (DEPART space spaces IDENTIFIER) | 
+		    (IDENTIFIER space spaces DEPART space spaces IDENTIFIER).
+	rel-st    ::=	rel-st-lab end-rmks.	
+        rel-st-lab::=   (RELEASE space spaces IDENTIFIER) |
+                    (IDENTIFIER space spaces RELEASE space spaces IDENTIFIER).
+        sta-st    ::=   START space spaces number end-rmks.
+	ter-st	  ::=	(ter-st-lab1 NEWLINE) | ter-st-lab2.
+        ter-st-lab1::=  (TERMINATE space opt-num NEWLINE) | 
+		    (IDENTIFIER space spaces TERMINATE space opt-num).
+	ter-st-lab2::=	(TERMINATE NEWLINE) |
+		    (IDENTIFIER space spaces TERMINATE NEWLINE).
+	pri-st	  ::=	PRIORITY space spaces number NEWLINE | null.
+        end-st    ::=   END end-rmks.
+        adv-st    ::=   (ADVANCE space opt-pms NEWLINE)| (ADVANCE NEWLINE)|
+			(ADVANCE space spaces RVNORM spaces LPAREN spaces
+                          opt-pms spaces RPAREN opt-nwl) |
+                        (ADVANCE space spaces RVEXPO spaces LPAREN spaces
+                          opt-pms spaces RPAREN opt-nwl) |
+                        (ADVANCE space spaces RVUNI spaces LPAREN spaces
+                          opt-pms spaces RPAREN opt-nwl) |
+                        (ADVANCE space spaces RVERL spaces LPAREN spaces
+                          opt-pms spaces RPAREN opt-nwl).
+	IDENTIFIER::=   letter{letter|num}.
+	ENTER     ::=   ("E"|"e")("N"|"n")("T|"t")("E"|"e")("R"|"r").   
+	STORAGE   ::=   ("S"|"s")("T"|"t")("O"|"o")("R"|"r")("A"|"a")
+                    ("G"|"g")("E"|"e")(space spaces)("S"|"s")("$").
+	TRANSFER  ::=    ("T"|"t")("R"|"r")("A"|"a")("N"|"n")("S"|"s")
+                   ("F"|"f")("E"|"e")("R"|"r").
+	LEAVE     ::=   ("L"|"l")("E"|"e")("A"|"a")("V|"v")("E"|"e").    
+	GENERATE  ::=   ("G"|"g")("E"|"e")("N"|"n")("E"|"e")("R"|"r")
+                   ("A"|"a")("T"|"t")("E"|"e").    
+	SIMULATE  ::=   ("S"|"s")("I"|"i")("M"|"m")("U"|"u")("L"|"l") 
+                   ("A"|"a")("T"|"t")("E"|"e").    
+	RELEASE   ::=   ("R"|"r")("E"|"e")("L"|"l")("E"|"e")("A"|"a")
+                   ("S"|"s")("E"|"e").    
+	START     ::=   ("S"|"s")("T"|"t")("A"|"a")("R"|"r")("T"|"t"). 
+	END       ::=   ("E"|"e")("N"|"n")("D"|"d").   
+	QUEUE     ::=   ("Q"|"q")("U"|"u")("E"|"e")("U"|"u")("E"|"e"). 
+	SEIZE     ::=   ("S"|"s")("E"|"e")("I"|"i")("Z"|"z")("E"|"e"). 
+	DEPART    ::=   ("D"|"d")("E"|"e")("P"|"p")("A"|"a")("R"|"r") 
+                   ("T"|"t").  
+	ADVANCE   ::=   ("A"|"a")("D"|"d")("V"|"v")("A"|"a")("N"|"n")
+                   ("C"|"c")("E"|"e").   
+	TERMINATE ::=   ("T"|"t")("E"|"e")("R"|"r")("M"|"m")("I"|"i")
+                   ("N"|"n")("A"|"a")("T"|"t")("E"|"e").
+        RVNORM    ::=   ("R"|"r")("V"|"v")("N"|"n")("O"|"o")("R"|"r")("M"|"m")
+        RVEXPO    ::=   ("R"|"r")("V"|"v")("E"|"e")("X"|"x")("P"|"p")("O"|"o")
+        RVUNI     ::=   ("R"|"r")("V"|"v")("U"|"u")("N"|"n")("I"|"i")
+        RVERL     ::=   ("R"|"r")("V"|"v")("E"|"e")("R"|"r")("L"|"l")
+        BOTH      ::=   ("B"|"b")("O"|"o")("T"|"t")("H"|"h")
+        LPAREN    ::=   "("
+        RPAREN    ::=   ")"  
+	number    ::=   ["0"-"9"].
+	letter    ::=   (["A"-"Z"]|["a"-"z"]).
+	COMMA     ::=   ",".
+	COMMENT   ::=   "*".
+	DOT       ::=   ".".
+	NEWLINE   ::=   "\n".
+        anytext   ::=   vistoken anytext | null.
+	vistoken  ::=	anyst | BLANK | DIGIT.
+	anyst	  ::=	anylet | COMMA.
+	anylet	  ::= 	ADVANCE | COMMENT | DEPART | DOT | END | ENTER |
+		     FILLER | LEAVE | GENERATE | IDENTIFIER | QUEUE |
+		     RELEASE | SEIZE | SIMULATE | START | STORAGE |
+		     TERMINATE | TRANSFER.
+        note      ::=   (space anytext) | null.
+        end-rmks  ::=   note NEWLINE. 
+        opt-num   ::=   (space opt-num) | (anyst note)| number note | null.
+        opt-pms   ::=   (space opt-pms) | (anyst note)| params | null.
+        params    ::=   number opt-pm2. 
+        opt-pm2   ::=   (space opt-pm2) | (anylet note) |
+                    (COMMA spaces number note)| null.
+        remark    ::=   COMMENT anytext | null.
+        remarks   ::=   (remark NEWLINE remarks) | (space remarks) | null.
+	space     ::=   BLANK.
+	spaces    ::=   space spaces | null.
+        null      ::=   .

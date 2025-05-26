@@ -1,0 +1,15 @@
+# compila
+#
+
+BIB="../../olb"          # Localizacao da biblioteca Sim++
+
+DEPEND="$BIB/calendar.o $BIB/capifac.o $BIB/capifut.o $BIB/capiran.o $BIB/estatus.o"
+DEPEND="$DEPEND $BIB/event.o $BIB/facility.o $BIB/flist.o $BIB/future.o $BIB/heap.o"
+DEPEND="$DEPEND $BIB/leftist.o $BIB/linked.o $BIB/service.o $BIB/token.o $BIB/util.o $BIB/vlist.o"
+
+echo Compilando $1...
+
+rm cpudisk
+cp $1 cpudisk.cpp
+
+g++ -I../../include -o cpudisk cpudisk.cpp $DEPEND

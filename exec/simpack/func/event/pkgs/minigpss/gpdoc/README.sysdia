@@ -1,0 +1,49 @@
+
+
+
+
+                        MINI-GPSS System Description 
+  
+
+        token.l   :     input to lex  (scanner specification)
+        parse.y   :     input to yacc (parser specification) 
+        lex.yy.c  :     "C" generated code for scanner
+        y.tab.c   :     "C" generated code for parser
+        queuing.c :     simulation routines (simpack)
+        main.c    :     simulation event handler
+        error.c   :     error handler for parser
+        simgen.c  :     "C" generated code for simulation
+        gp        :     MINI-GPSS executable
+        program.g :     MINI-GPSS source file
+
+
+                ||                      ||
+                ||                      ||
+              token.l                 parse.y
+                ||       ===========    ||
+                \/       ||       ||    ||
+           ===========   ||       \/    \/
+           |   lex   |   ||     ==============
+           ===========   ||     |    yacc    |                    ||
+                ||       ||     ==============                  main.c
+                ||       ||           ||         ||        ||     ||
+             lex.yy.c    ||           ||         ||        ||     ||
+                ||       ||         y.tab.c    error.c  queuing.c ||   
+                ===========           ||         ||        ||     ||
+                                      \/         \/        \/     \/
+                                  ===================================
+                   ||             |         cc compiler             |
+                   ||             ===================================
+                program.g                      ||
+                   ||      ====================== 
+                   ||      || 
+                   \/      || 
+               ========================
+               |     gp (executable)  |
+               ========================
+                        ||
+                   ==============
+                   ||          ||
+                   \/          \/
+                simulation  simgen.c
+                 output 

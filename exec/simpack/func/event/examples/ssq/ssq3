@@ -1,0 +1,71 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/ssq version 3 (formerly q1.c in ssq directory in SimPack):
+-------------------------------------------------------------------------------
+The following code was ported from SimPack's "q1.c".
+This program simulates a single server queue.
+
+The simulation style of the code below is "manual, event_id".  The API is cAPI.
+This version has snapshots enabled in INTERACTIVE mode, meaning that output is
+presented a screenful at a time, and you must type keystroke(s) before output
+will continue.  This is a suitable way to see what is going on in detail inside
+the simulation, one event at a time.  See readme.
+
+Caution:  redirecting output to a file with INTERACTIVE snapshots enabled will
+cause the program to appear to "hang", when in fact it is awaiting keyboard
+input.  You do not know that because the prompt has been redirected with the
+rest of the output to a file.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+#define ARRIVAL 1
+#define REQUEST_SERVER 2
+#define RELEASE_SERVER 3
+main()
+  {
+    int event,queue_id,i,iteration;
+    TOKEN customer;
+    double sample;
+
+    customer.attr[0] = 1;
+    init_simpack(LINKED);
+    trace_visual (INTERACTIVE);
+    queue_id = create_facility("queue",1);
+    schedule(ARRIVAL,0.0,customer);
+    iteration = 0;
+    while (sim_time()< 5.0)
+      {
+        next_event(&event,&customer);
+        /* printf("%d %f\n",iteration,sim_time()); */
+        iteration++;
+        switch(event)
+          {
+          case ARRIVAL:
+              update_arrivals();
+              schedule(REQUEST_SERVER,0.0,customer);
+              customer.attr[0] += 1;
+              schedule(ARRIVAL,2.0,customer);
+              break;
+          case REQUEST_SERVER:
+              if (request(queue_id,customer,0) == FREE) {
+                sample = expntl(2.0);
+                schedule(RELEASE_SERVER,sample,customer);
+              }
+              break;
+          case RELEASE_SERVER:
+              release(queue_id,customer);
+              update_completions();
+              break;
+          }
+      }
+   report_stats();
+  return 0; // pacify compiler
+  } /* end main() */
+
+
+
+

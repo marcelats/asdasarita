@@ -1,0 +1,72 @@
+
+There are 3 programs in this directory:
+
+ (1) Finite State Automata Simulation (fsa)
+ (2) Semi-Markov Model Simulation (markov)
+ (3) Pulse Process Simulation (pulse)
+
+(1) FSA
+
+This will provide you with statistics given a finite state machine.
+The input to FSA is a file formatted as follows:
+
+#states
+time-state-1 time-state-2 ...
+state transition table
+label-for-state-1
+label-for-state-2
+...
+length-of-control-string control-string
+
+As an example, consider a simple grocery store simulation where we
+get into a car and drive to the store, park, and then walk into the
+store. We will create an FSA for this process:
+
+ 0                      0                      0                      0
+ --                     --                     --                     --
+|  |                   |  |                   |  |                   |  |
+ \ v   1                \ v    1               \ v     1              \ v
+   o -------------------> o v------------------> o -------------------> o
+ (state 0)             (state 1)              (state 2)             (state 3)  
+ IN_HOUSE              IN_CAR                 IN_LOT                IN_STORE
+
+
+We need to assign times to each transition and state. We will let each
+state take the following amount of time:
+
+State      Time
+
+IN_HOUSE   60 minutes
+IN_CAR      5 minutes
+IN_LOT      2 minutes
+IN_STORE   45 minutes
+
+Now, we need to provide this automaton with an input (or "control")
+string to "drive" the simulation: So, we give it an input of "111"
+which should take it from IN_HOUSE to IN_STORE and all states in-between.
+
+To try out this simulation do:
+
+%make fsa
+%fsa < groc.dat
+
+
+For examples of a simulation of a five state automaton representing
+a simulation of the dining philosophers, try:
+
+%fsa < dp.dat
+
+or
+
+%fsa < dp2.dat
+
+
+SUGGESTED READING
+
+"Introduction to Automata Theory, Languages and Computation" by
+John E. Hopcroft and Jeffrey D. Ullman, Addison Wesley, 1979.
+
+"System Theory: A Unified State-Space Approach to Continuous and
+Discrete Systems" by Padulo and Arbib, Hemisphere Publishing Co,
+Washington, DC., 1974.
+

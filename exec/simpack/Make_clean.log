@@ -1,0 +1,110 @@
+Leaving .cshrc
+native!rmc      ttyp2   Jul 28 21:56    (tuna.cis.ufl.edu)
+native:1% fishrmc;cd simpack
+/amd/rock/export/homes12/fishwick/rmc
+Fri Jul 28 21:56:11 EDT 1995
+native:2% make clean
++---------------------------------------+
+|     SimPack version 3.0 (SimPack3)    |
+|           is the property of          |
+|          Dr. Paul A. Fishwick         |
+|   Copyright (c) 1995.  See License.   |
++---------------------------------------+
+date
+Fri Jul 28 21:56:16 EDT 1995
+Begin cleaning
+find . -name '*~' -exec rm {} \;
+(cd func; Make_clean)
+Remove Simpack2.x queuing library object file ...
+Remove Sim++ ...
+Remove Sim++ Object Library:
+Remove Sim++ Example Code Executable
+ 
+Sim++ Version 1.0 is the property of Paul Fishwick and Robert Cubert,
+copyright (c) 1995; see License in root directory of the distribution,
+which is simpack/func/event.
+ 
+ 
+Removing all translation byproducts from Sim++ program examples ...
+ 
+Removing files created during translation of cpudisk ...
+Done.
+Removing files (if any) created during translation of block ...
+Done.
+Removing files (if any) created during translation of tiktok ...
+Done.
+Removing files (if any) created during translation of ssq ...
+Done.
+Removing files (if any) created during translation of iterate ...
+Done.
+Removing files (if any) created during translation of logic ...
+Done.
+Removing files (if any) created during translation of network ...
+Done.
+Removing files (if any) created during translation of qnet ...
+Done.
+Removing files (if any) created during translation of route ...
+Done.
+ 
+Done Removing.
+ 
+Remove SimPack Functional Model Packages:
+(cd gpsource; rm -f *.o)
+(cd gpfiles; rm -f gpss)
+Done with minigpss, on to Xsimcode
+rm -f Xsimcode
+rm -f *.CKP *.ln *.BAK *.bak *.o core errs ,* *~ *.a .emacs_* tags TAGS make.log MakeOut  *.Dat "#"*
+rm -f model model.o
+model has been cleaned out
+/bin/rm -f *.o model examp1 examp2 examp3 big_test combined1
+simpack/func/event/Make_clean is done.
+Fri Jul 28 21:56:23 EDT 1995
+Remove SimPack3 Time-Slice Functional Model Packages ...
+ 
+-----------------------------------------------------------------------
+ 
+sdsmt is Tcl/Tk, so nothing to clean.
+ 
+-----------------------------------------------------------------------
+ 
+About to clean block ...
+rm -f *.o monorail1 monorail2 monorail3 block
+ 
+-----------------------------------------------------------------------
+ 
+About to clean pulse ...
+rm -f pulse
+ 
+-----------------------------------------------------------------------
+simpack/func/slice/Make_clean is done
+Fri Jul 28 21:56:24 EDT 1995
+simpack/func/Make_clean is done.
+Fri Jul 28 21:56:24 EDT 1995
+(cd dec; make clean)
+(cd fsa;make clean)
+rm -f fsa *.o
+(cd markov; make clean)
+rm -f markov *.o
+(cd petri; make clean)
+rm -f petri *.o
+(cd warehouse; make clean)
+rm -f warehouse *.o
+(cd multimodel; make clean)
+rm -f combined combined2 bwater *.o
+(cd constraint; make clean)
+(cd delaydiff; make clean)
+rm -f *.o delaydiff
+(cd difference; make clean)
+rm -f *.o bifurc diff1 log1 log2
+(cd differential/deq; make clean)
+rm -rf contsim order1 dump.plot dump.in dump.c dump *.o
+(cd differential/integrate; make clean)
+rm -f conte contrk lorenz silnikov vibration *.o
+(cd spatial/gas; make clean)
+rm -rf gas1 gas2 *.o
+Calculating kb of space used by SimPack3...
+5411    .
+(Should be around 5400 kb)
+Simpack Version 3.0 has been cleaned.
+date
+Fri Jul 28 21:56:29 EDT 1995

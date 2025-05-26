@@ -1,0 +1,112 @@
+950728 simpack/Readme
+Robert Cubert
+
+How to get and install SimPack3:
+
+    # English statements such as this one begin with a pound-sign, 
+    such as the one at the beginning of the previous line, and are
+    used to indicate procedures the details of which you provide, 
+    or to provide helpful info or hints.  Such statements may continue for
+    several lines, as this one does, but will end with a blank line.
+    Everything ELSE below is a Unix command and should be typed as shown.
+    (Such Unix commands do NOT begin with a pound-sign.)  See, for example, 
+    the first such command ("date") below.
+
+    # Log into a Unix system.
+
+    date
+
+    # Choose an appropriate directory in which you wish to locate simpack
+    and change directory to the directory you chose.  SimPack3 will 
+    install everything under its own (relative) root directory, which
+    will have the name "simpack", and which will be created automatically as
+    a subdirectory of the directory you have chosen. So if your home
+    directory is, say, "~fred", and you change directory to your home 
+    directory to do the SimPack3 install, you'll end up with a directory 
+    "~fred/simpack", under which all of SimPack3 will be installed.  You
+    need NOT create the simpack directory.  It gets created automatically
+    as part of the procedure below.  The ONLY files that will end up in
+    "~fred" in this example are:
+        (1) the SimPack3 "tar", which you may optionally
+            move or remove after its contents have been extracted
+            (discussed further below); and,
+        (2) SimPack3.doc (this file), which you may also remove during
+            or after installation, as it also appears as the file 
+            "Readme" in the simpack root.
+
+    ftp ftp.cis.ufl.edu
+
+    # When prompted for userid, respond with
+
+        anonymous
+
+    # When prompted for a password, respond with your complete internet 
+    userid, which is something like whoever@xxx.yyy.zzz.
+
+    binary
+    cd pub/simdigest/tools
+    get SimPack3.tar.Z
+
+    # May take awhile depending on how skinny your wire is and how heavy
+    the traffic is.  SimPack3.tar.Z as you receive it (a compressed tar)
+    weighs in at just over 1.4 MB.
+
+    get SimPack3.doc
+
+    # SimPack3.doc is THIS document you are reading.
+
+    bye
+    ls -l
+    uncompress SimPack3.tar.Z
+
+    # Uncompress takes under a minute on my system.
+
+    ls -l
+
+    # After you uncompress, SimPack3.tar is 5 MB, and SimPack3.tar.Z
+    is gone.
+
+    tar -xvf SimPack3.tar
+
+    # Extraction takes about 1 minute on my system.  You may wish to keep the
+    tar or, to save space, you may remove it at this point.
+
+    ls -l
+
+    # In the directory you have chosen you will see the tar file (unless
+    you just removed it to save space) PLUS you will see the root directory
+    of SimPack3, which is named simpack.
+
+    cd simpack
+    du -s .
+
+    # Code extracted from tar: 4.9 MB (will show as something like "4862  ."
+    in the output of the du command above.
+
+    make all
+
+    # "make all" takes about 6 minutes.
+    Code after make all: 13.3 MB
+    See Make_all.log in simpack root, either BEFORE you make all, to
+    see what to expect, or AFTER make all, to compare with our results.
+
+    # "make clean" takes about 20 seconds.  Takes you back to what you
+    got from us and extracted from tar.  If you added any source code
+    it will not be deleted, but all object files will be deleted, as
+    will all backup files (*~), etc.  See Make_clean.log in simpack 
+    root, BEFORE you make clean, to know what to expect.
+    
+    # See Shiptar.log.  Among other things, it'll list the contents of
+    the tar by filename (including path) and size.  It's our packing list.
+
+    # There are formal manuals in postscript form as well as many readme
+    files.  You can locate these with
+
+        find . -name '*.ps' -print
+        find . -name 'README' -print
+        find . -name 'Readme' -print
+        find . -name 'readme' -print
+
+    # The above may be a good place to start with SimPack3.  You may have a
+    better grasp of the theoretical framework if you also look through Dr.
+    Fishwick's book.

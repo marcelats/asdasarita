@@ -1,0 +1,48 @@
+
+Software
+--------
+(note: a file .gnuplot is present in this directory. This controls the
+gnuplot plotting facility)
+
+combined:  
+
+This program represents a combined simulation where there
+is a grocery store clerk with a food delivery belt. Discrete event
+routines are used to model inter-arrivals and server (i.e. clerk)
+time, and a simple continuous model is used to model a conveyor belt
+that operates at precisely 2 feet per time unit (using the differential
+equation x' = 2). The belt is 3 feet long. The information on the
+queuing routines is found in the 'queuing' subdirectory.
+
+
+bwater:
+
+This is the boiling water multimodel described in the paper:
+
+   Paul A. Fishwick and Bernard P. Zeigler.  ``A Multimodel Methodology
+   for Qualitative Model Engineering''.   ACM Transactions on Modelling
+   and Computer Simulation.  Volume 2, Issue 1, 1992, pp.  52 - 81.
+
+The simulation is of a six phase FSA controlling differential equation
+based systems.
+
+
+
+Suggested Usage
+---------------
+
+%combined
+
+--- see statistical summary ---
+
+%combined2 > combined2.pnts
+
+Use a plotting program, such as gnuplot to
+see the points.
+
+%bwater < bwater.in > bwater.out
+
+Use a plotting program, such as gnuplot to
+see the points.
+
+

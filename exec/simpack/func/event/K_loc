@@ -1,0 +1,41 @@
+The heart of Sim++ consists of its headers. which specify the
+Application Programming Interface, or API), located in 
+~fishwick/rmc/sim++/include:
+
+    ----   ------------
+      68   capi.h
+      91   event.h
+     130   facility.h
+      30   flist.h
+     212   future.h
+      70   queuing.h
+      57   token.h
+     379   vlist.h
+    ----   ------------
+    1037   total lines
+    ----   ------------
+
+and its source code, written in C++, located in 
+~fishwick/rmc/sim++/src:
+
+    ----   ------------
+     574   calendar.cpp
+     138   capifac.cpp
+     260   capifut.cpp
+     237   capiran.cpp
+      55   estatus.cpp
+      85   event.cpp
+     563   facility.cpp
+      65   flist.cpp
+     862   future.cpp
+     238   heap.cpp
+     390   leftist.cpp
+     347   linked.cpp
+     148   service.cpp
+     175   token.cpp
+      59   util.cpp
+     145   vlist.cpp
+    ----   ------------
+    4341   total lines
+    ----   ------------
+

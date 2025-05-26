@@ -1,0 +1,16 @@
+
+qnet: qnet.o ../queuing/queuing.o
+	       @echo 'Link the qnet application'
+	       @echo ' '
+	       cc -o qnet qnet.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	       ls -l qnet
+	       date
+
+qnet.o: qnet.c
+	       @echo 'Compile qnet simpack application'
+	       cc -c -o qnet.o qnet.c
+	       ls -l qnet.o
+	       @echo ' '
+
+
+

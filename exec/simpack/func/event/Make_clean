@@ -1,0 +1,13 @@
+
+echo 'Remove Sim++ Object Library:'
+(cd olb; rm -f *.o)
+echo 'Remove Sim++ Example Code Executable'
+(cd examples; translat -rm)
+echo 'Remove SimPack Functional Model Packages:'
+(cd pkgs/minigpss; make clean)
+echo 'Done with minigpss, on to Xsimcode'
+(cd pkgs/Xsimcode/src; make clean)
+(cd pkgs/Xsimcode/src; make clean_model)
+(cd pkgs/Xsimcode/examples; make clean)
+echo 'simpack/func/event/Make_clean is done.'
+date

@@ -1,0 +1,13 @@
+
+                             smpl SIMULATION REPORT
+
+
+ MODEL:  TESTEPAULO                                           TIME:    5003.989
+                                                          INTERVAL:    4750.899
+
+                           MEAN BUSY     MEAN QUEUE        OPERATION COUNTS
+ FACILITY          UTIL.     PERIOD        LENGTH     RELEASE   PREEMPT   QUEUE
+ FE               0.4390566  4.7952038     0.2342610         435         0     164
+ proc             0.5565789  3.0782888     0.7015094         859         0     492
+ DF               0.9975820 11.1778566     7.0634480         424         0     423
+

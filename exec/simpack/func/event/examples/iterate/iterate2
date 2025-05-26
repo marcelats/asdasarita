@@ -1,0 +1,117 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/iterate version 2 (adapted from ssq example program):
+-------------------------------------------------------------------------------
+The underlying ssq program was ported from SimPack's "q1.c".
+This program simulates a single server queue.
+
+The simulation style of the code below is "automatic, event_routine".
+The code is c++.  The API is ooAPI.
+
+This code is baseline for other versions, in the sense that it takes NO
+snapshots.
+
+The ssq program was then modified to illustrate how multiple samples of a
+simulation may be run in a single Sim++ program, and then the results may be 
+subjected to statistical analysis.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+const TIME_LIMIT = 1000;
+
+Facility * queue = NULL;
+
+// fn prototype declarations; (can be omitted if fn definitions come before
+// main; that is, if you like pascal style)
+
+  int GetArgs (int argc, char * argv [] );
+  void KickOff  (void);
+  void Arrive   (void);
+  void RqstSrvr (void);
+  void RlsSrvr  (void);
+
+
+int main (int argc, char * argv [] )
+  {
+  int limit = GetArgs (argc, argv);
+  for (int ii = 0; ii < limit; ii++)
+    {
+    queue = new Facility ("queue");
+    Future * future = new Future (LINKED, KickOff, "Start", EXECUTE_THIS_FN);
+    delete future;
+    delete queue;
+    }
+  return 0;
+  }
+
+
+
+/*=============================================================================
+Get loop limit from cmd line arg.  Use default if none specified.
+-----------------------------------------------------------------------------*/
+
+int GetArgs (int argc, char * argv [] )
+  {
+  if (argc < 2) return 1;
+  if (strlen(argv [1]) < 1) return 1;
+  istrstream stgstrm (argv[1]);
+  int loop_limit;
+  stgstrm >> loop_limit;
+  return loop_limit;
+  }
+
+
+
+/*=============================================================================
+Event routines
+-----------------------------------------------------------------------------*/
+
+void KickOff ()
+  {
+  Token customer (1);
+  Future::Schedule (Arrive, 0.0, customer, "Arrival");
+  }
+
+
+void Arrive ()
+  {
+  Token customer = Future::CurrentToken ();
+  Future::UpdateArrivals ();
+  Future::Schedule (RqstSrvr, 0.0, customer, "Request");
+
+  if (Future::SimTime() < TIME_LIMIT)
+    {
+    customer.Id (customer.Id() + 1);
+    Future::Schedule (Arrive, 2.0, customer, "Arrive");
+    }
+  else
+    {
+    Future::FELdrain ();
+    cout << "Terminating simulation from Arrive()\n";
+    }
+  }
+
+void RqstSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  if (queue->Request (customer) == FREE)
+    {
+    double sample = expntl (2.0);
+    Future::Schedule (RlsSrvr, sample, customer, "Release");
+    }
+  }
+
+void RlsSrvr ()
+  {
+  Token customer = Future::CurrentToken ();
+  int who = customer.Id();
+  queue->Release (who);
+  Future::UpdateDepartures ();
+  }
+
+// end ssq
+

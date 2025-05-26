@@ -1,0 +1,11 @@
+set term postscript eps
+set samples 100000
+set yrange [0:2.2]
+set xlabel "t"
+set ylabel "X"
+set nokey
+set data style lines
+set output "block.ps"
+plot "block.out"
+exit
+

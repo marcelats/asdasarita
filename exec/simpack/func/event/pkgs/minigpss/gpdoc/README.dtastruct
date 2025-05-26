@@ -1,0 +1,52 @@
+
+                                                                    
+
+ 
+                             MINI-GPSS Data Structures 
+
+        The following data structures are produced by the parser when
+       
+        it checks the MINI-GPSS source file for proper syntax.
+ 
+
+        =============       =============            ==================
+        |  prog[1]  |  ->   |  prog[2]  | -> ... ->  |  prog[MAXUNIT] |
+        =============       =============            ==================
+
+        =============       =============            ==================
+        |  fac[1]   |  ->   |  fac[2]   | -> ... ->  |  fac[MAXFAC]   |
+        =============       =============            ==================
+      
+        MAXUNIT = MAXFAC = 100
+
+
+        ===============================================================
+        |                         prog                                |
+        ===============================================================
+        | id          (integer)  facilty id                           |
+        | serve_time  (integer)  average service time                 |
+        | serve_range (integer)  service time variability             |
+        | inter_time  (integer)  average inter-arrival time           |
+        | inter_range (integer)  inter-arrival time variabbility      |
+        | transfer    (integer)  flag indicating branching            |
+        | queue_text  (char)     queue name text                      |
+        | serve_text  (char)     server name text                     |
+        | rel_text    (char)     release name text                    |
+        | dep_text    (char)     depart name text                     |
+        | quit_factor (integer)  termination count decrement          |
+        | percent     (integer)  statistical branch probability       |
+        | br_case1    (integer   prog number to branch to             |
+        | br_case2    (integer)  prog number to branch to             |
+        | br_end      (integer)  flag indicating end of branching     |
+        | parent      (integer)  flag indicating generate block       |
+        | pu_code     (integer)  next prog                            |
+        ===============================================================
+       
+        ===============================================================
+        |                         fac                                 |
+        ===============================================================
+        | id          (integer)  facilty id                           |
+        | unit        (integer)  prog accessing this facility         |
+        | num_servers (integer)  number of servers for facility       |
+        | name        (char)     facility name text                   |
+        ===============================================================

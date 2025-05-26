@@ -1,0 +1,17 @@
+
+INCL = ../queuing
+
+ssq: ssq.o ../queuing/queuing.o
+	@echo 'Link the ssq application'
+	@echo ' '
+	cc -o ssq ssq.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	ls -l ssq
+	date
+
+ssq.o: ssq.c
+	@echo 'Compile ssq simpack application'
+	cc -I${INCL} -c -o ssq.o ssq.c
+	ls -l ssq.o
+	@echo ' '
+
+

@@ -1,0 +1,273 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+examples/airport version 1
+-------------------------------------------------------------------------------
+This program simulates the arrival of passengers at an airport,
+whereupon they give their luggage to a skycap and then check in at the
+ticket counter.  Each skycap is a single-server facility, and has
+his/her own queue.  The ticket-counter, by contrast, is a multi-server
+facility, with a single queue.  These attributes match those typical
+of many real airport situations.
+
+The purpose of this program is to test code fragments which are
+examples in the Sim++ manual.  The code sequences below do not
+represent a sane attempt at a single simulation program; rather, it is
+a cut and paste FROM the manual, in sequential order, to ensure that
+all the code fragments presented there are free of syntax arrors, and
+actually run.  Please DON'T use this as an example of a simulation
+program, because it has NO overall semantics!
+
+Version 1 tests the cAPI portion of the manual; version 2 tests the
+ooAPI portion of the manual.
+-----------------------------------------------------------------------------*/
+
+#include "queuing.h"
+
+// 3.3.3 Event scheduling
+enum EventIds {ARRIVE, RQST_SKYCAP, RLS_SKYCAP, RQST_TKT_CHK, RLS_TKT_CHK};
+TOKEN tkn;
+
+int main ()
+  {
+  cout << "test 3.3.1 Model initialization\n";
+  // ONE of the following two statements MUST be commented out.  You
+  // can generate an error by uncommenting both, or by commenting both out.
+  //init_simpack (LEFTIST);
+  init_simpack (HEAP | RESEED_MASK);
+  cout << "end test 3.3.1\n";
+
+  cout << "test 3.3.2 Snapshots\n";
+  cout << "first interactive\n";
+  trace_visual (INTERACTIVE);
+  cout << "then batch\n";
+  trace_visual (BATCH);
+  cout << "end test 3.3.2\n";
+
+  cout << "TEST 3.3.3 Event scheduling\n";
+  schedule (RLS_SKYCAP, 3.4, tkn); 
+  cout << "end test 3.3.3\n";
+
+  cout << "test 3.3.4 Event occurrence\n";
+  int event;
+  TOKEN a_token;
+  int rtncod = next_event (&event, &a_token);
+  if (rtncod != ES_OK) exit(0);  
+  cout << "Done with 3.3.4 test\n";
+
+  cout << "test 3.3.5 The simulation time\n";
+  float now = sim_time();
+  cout << "3.3.5 test, now = " << now << '\n';
+  cout << "end test 3.3.5\n";
+
+  cout << "test 3.3.6 Turnstile into the simulation\n";
+  cout << "first without returning a value\n";
+  update_arrivals ();
+  cout << "second time returning a value\n";
+  int count = update_arrivals ();
+  cout << "3.3.6 test, count = " << count << '\n';
+  cout << "end test 3.3.6\n";
+
+  cout << "test 3.3.7 Turnstile out of the simulation\n";
+   {
+   cout << "first without returning a value\n";
+   update_completions ();
+   cout << "second time returning a value\n";
+   int count = update_completions ();
+   cout << "3.3.7 test, count = " << count << '\n';
+   }
+  cout << "end test 3.3.7\n";
+
+  cout << "test 3.3.8 Look at Future Event List\n";
+  trace_eventlist();  
+  cout << "end test 3.3.8\n";
+
+  cout << "test 3.3.9 Size of Future Event List\n";
+  if (trace_eventlist_size () > 4)
+    trace_eventlist();
+  cout << "End 3.3.9 test\n";
+
+  cout << "Begin 3.3.10 test Cancel next event of a certain class\n";
+  schedule (RQST_SKYCAP, 0.0, tkn); 
+  int token_id = cancel_event (RQST_SKYCAP);
+  if (token_id == NOT_FOUND)
+    ErrXit (94, "failed to cancel\n");
+  cout << "End 3.3.10 test\n";
+
+  cout << "test 3.3.11 Cancel future event involving a certain token id\n";
+   {
+   TOKEN tkn;
+   tkn.attr[0] = float (17); // cancel token #17
+   int event_id = cancel_token (tkn);                  
+   if (event_id == NOT_FOUND)
+     cout << "Unable to cancel token 17\n";           
+   cout << "End 3.3.11 test\n";
+   }
+
+  cout << "Begin 3.3.12 test Report statistics\n";
+  report_stats();
+  cout << "End 3.3.12 test\n";
+
+  cout << "Begin 3.4.1 test Creating a facility\n";
+  int skycap [3], tkt_agent;
+  for (int ii=0; ii < 3; ii++)
+    skycap [ii] = create_facility("skycap", 1);
+  tkt_agent = create_facility ("ticket agent", 4); 
+  cout << "End 3.4.1 test\n";
+
+  // Now let's try stats again -- this time we DO have some facilities
+  // altho -- they've received NO use.
+  // 3.3.12 Report statistics
+  cout << "Begin 3.3.12 test #2\n";  
+  report_stats();
+  cout << "End 3.3.12 test #2\n";
+  
+  cout << "Begin test 3.4.2 Requesting service\n";
+   {
+   TOKEN tkn;  tkn.attr [0] = float (17);
+   int rtncod = request (skycap[2], tkn, 0);
+   if (rtncod == FREE) schedule (RLS_SKYCAP, 2.5, tkn);      
+   }
+  cout << "End test 3.4.2\n";
+
+  cout << "Begin test 3.4.3 Preemption\n";
+  enum PassPri {COACH, BUSINESS_CLASS, FIRST_CLASS};
+  // can generate error in preempt if we fail to give token a nonzero id
+  cout << "tkn.attr[0] = " << tkn.attr[0] << "\n";
+  if (tkn.attr[0] == 0.0) tkn.attr[0] = 17.0;
+  int rc = preempt (tkt_agent, tkn, FIRST_CLASS);
+  cout << "End test 3.4.3\n";
+
+  cout << "Begin test 3.4.4 Releasing a server\n";
+  // comment out the fol stmt to generate an err in facility that detects
+  // a zero token id, which is an invalid value for a token id, because
+  // it's used to indicate idle servers.  Token constructor in auto mode
+  // starts with token id 1, so that's ok.
+  if (tkn.attr[0] == 0) tkn.attr[0] = 17; // the actual token has id 17
+  // comment out the following stmt to generate error in which facility
+  // notices that it can't release because it has no busy server
+  if (tkn.attr[1] == 0) tkn.attr[1] = 2; // the only busy skycap is 2
+  int which_skycap = int (tkn.attr[1]);
+  cout << "Let's try to release skycap [" << which_skycap << "]:\n";
+  cout << "whose facility # is " << skycap[which_skycap] << "\n";
+  release (skycap[which_skycap], tkn);
+  cout << "End test 3.4.4\n";
+
+  cout << "Begin test 3.4.5 Status of a facility\n";
+  char stg [11];
+    switch (status (tkt_agent) )
+    {
+    case FREE: strcpy (stg, "FREE"); break;
+    case BUSY: strcpy (stg, "BUSY"); break;
+    }                                               
+  cout << "status of tkt_agent is " << stg << "\n";
+  cout << "End test 3.4.5\n";
+
+  cout << "Begin test 3.4.6 Length of a facility's queue\n";
+  // Comment out the following line to cause error exit on duplicate token
+  // id to one already rcvg svc (token 17):
+  tkn.attr[0] = 22;
+  cout << "token id = " << tkn.attr[0] << '\n';
+  void TryAnotherAirline();
+  rtncod = 12345;
+  if (facility_size (tkt_agent) < 20)
+    rtncod = request (tkt_agent, tkn, 0);
+  else
+    TryAnotherAirline();
+  cout << "rtncod = " << rtncod << '\n';  
+  cout << "End test 3.4.6\n";
+
+  cout << "Begin test 3.4.7 Provide inuse-time statistic\n";
+  float bt = busy_time (skycap [2]);
+  cout << "bt = " << bt << "\n";
+  cout << "End test 3.4.7\n";
+
+  cout << "begin test 3.4.8 Display a facility\n";
+  trace_facility (tkt_agent);
+  cout << "End test 3.4.8\n";
+
+  cout << "begin test 3.5.1 Stream\n";
+  int value = stream (1);
+  cout << "value = " << value << "\n";
+  cout << "end test 3.5.1\n";
+
+  cout << "begin test 3.5.2 ranf\n";
+  double ranf_value = ranf();
+  cout. precision (6);
+  cout << "ranf_value = " << ranf_value << "\n";
+  cout << "end test 3.5.2\n";
+
+  cout << "begin test 3.5.3 seed\n";
+  long Ik = -1L;
+  int n = 4;
+  cout << "Ik = " << Ik << ", n = " << n << '\n';
+  long seed_value = seed (Ik, n);
+  cout << "seed returned " << seed_value << '\n';
+  cout << "end test 3.5.3\n";
+
+  cout << "begin test 3.5.4 uniform\n";
+  double a = 1.0, b = 2.0;
+  cout << "a = " << a << ", b = " << b << '\n';
+  double uniform_value = uniform (a, b);
+  cout << "uniform returned " << uniform_value << '\n';
+  cout << "end test 3.5.4\n";
+
+  cout << "begin test 3.5.5 random\n";
+  int i = 1;
+  n = 17;
+  cout << "i = " << i << ", n = " << n << '\n';
+  int random_value = random (i, n);
+  cout << "random returned " << random_value << '\n';
+  cout << "end test 3.5.5\n";
+
+  cout << "begin test 3.5.6 negative exponential\n";
+  double x = 1.2345;
+  cout << "x = " << x << '\n';
+  double expntl_value = expntl (x);
+  cout << "expntl returned " << expntl_value << '\n';
+  cout << "end test 3.5.6\n";
+
+  cout << "begin test 3.5.7 erlang\n";
+  x = 1.0;
+  double s = 0.5;
+  cout << "x = " << x << ", s = " << s << '\n';
+  double erlang_value = erlang (x, s);
+  cout << "erlang returned " << erlang_value << '\n';
+  cout << "end test 3.5.7\n";
+
+  cout << "begin test 3.5.8 hyperexponential\n";
+  // if you comment out the following line of code, you will be able to 
+  // generate an error.  if error exit is not taken, you get SQRT DOMAIN
+  // ERROR and a return value of NaN.
+  x = 0.5; s = 1.0;
+  cout << "x = " << x << ", s = " << s << '\n';
+  double hyperx_value = hyperx (x, s);
+  cout << "hyperx returned " << hyperx_value << '\n';
+  cout << "end test 3.5.8\n";  
+  
+  cout << "begin test 3.5.9 triangular\n";
+   {
+   double a = 1.0, b = 3.0, c = 2.0;
+   cout << "a (on left) = " << a << ", b (on right) = " << b 
+        << ", c (mode) = " << c << '\n';
+   double triang_value = triang (a, c, b);
+   cout << "triang returned " << triang_value << '\n';
+   }
+  cout << "end test 3.5.9\n"; 
+
+  cout << "begin test 3.5.10 normal\n";
+  x = 1.0; s = 0.25;
+  cout << "x = " << x << ", s = " << s << '\n';
+  double normal_value = normal (x, s);
+  cout << "normal returned " << normal_value << '\n';
+  cout << "end test 3.5.10\n";
+
+  cout << "end test cAPI\n";
+  }
+
+void TryAnotherAirline ()
+  {
+  cout << "trying another airline in 3.4.6 test\n";
+  }

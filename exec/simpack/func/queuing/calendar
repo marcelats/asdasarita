@@ -1,0 +1,47 @@
+Received:  from shark.mel.dit.csiro.au  by cis.ufl.edu (8.6.12/cis.ufl.edu)
+	id WAA08239; Tue, 18 Apr 1995 22:32:47 -0400
+Received: by shark.mel.dit.csiro.au id AA14064
+  (5.65c/IDA-1.4.4/DIT-1.3 for fishwick@cis.ufl.edu); Wed, 19 Apr 1995 12:32:35 +1000
+Date: Wed, 19 Apr 1995 12:32:35 +1000
+From: Ian Mathieson <Ian.Mathieson@mel.dit.csiro.au>
+Message-Id: <199504190232.AA14064@shark.mel.dit.csiro.au>
+To: fishwick@cis.ufl.edu
+Subject: Re: Version 2.5 available
+
+Paul,
+
+I have been using your calendar implementation from some time ago
+(2.22), and noticed a problem with new_cal_width() (in queuing.c), in
+that event ordering for simultaneous events is not kept invariant
+across the sampling process.  This prevents comparison of different
+queuing strategies (and makes debugging difficult).  The problem is
+still present in version 2.(2)5.
+
+The fix comes in two parts:
+
+1. new_cal_width() should restore the samples to the calendar in
+reverse order.
+
+2. This insertion should put the restored item ahead of any
+simultaneous events.  The current code seems to put it after the first
+simultaneous event, which may not match the behaviour of the other
+queue insertions.  You may need two calendar insert routines: (i) one
+to match the normal use of the other insert routines (insert after
+equal?), and (ii) insert before equal for use by new_cal_width().
+
+Another solution would be to have a non-removing sampling method, as
+long as the calendar queue is ordered the same as the other strategies.
+
+Given that you are rewriting the queuing library in C++, this would be 
+a good time to fix things.
+
+On the other hand, detecting, finding and fixing the problem makes an
+interesting class exercise.
+
+-- idm.
+
+Ian.Mathieson@dit.CSIRO.AU (Dr.)		Software Engineer
+CSIRO Division of Information Technology,	Distributed Systems
+723 Swanston Street,				(TEL) +61-3-282-2632
+Carlton, Victoria 3053, Australia.		(FAX) +61-3-282-2600
+

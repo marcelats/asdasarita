@@ -1,0 +1,8 @@
+{BR} {BR = 0.09} {Birth Rate} {0}
+
+{Dis} {Dis = (Pop/500)*(Pop/500)} {Disease} {1}
+
+{DR} {DR = Dis/Pop} {Death Rate} {1}
+
+{Pop} {Pop = Pop(t-1)*(1-DR+BR)} {Population} {3}
+

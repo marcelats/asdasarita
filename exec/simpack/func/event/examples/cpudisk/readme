@@ -1,0 +1,133 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/cpudisk
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+                                             +----------+----------+---...
+                                             |          |          |
+                                          cpudisk     block      tiktok
+                                             ^
+                                             ^
+You are here  = = = = = = = = = = = = = = = =^
+
+-------------------------------------------------------------------------------
+
+cpudisk represents the simulation of the following network composed
+of 1 CPU and 4 disks:
+
+
+    CPU -----------------> Disk 1 ---->|
+    ^           |                      |
+    |           |--------> Disk 2 ---->|
+    |           |                      |
+    |           |--------> Disk 3 ---->|
+    |           |                      |
+    |           |--------> Disk 4 ---->|
+    |                                  |
+    |<---------------------------------|
+
+There are 9 jobs that move through the system. A single job alternately
+accesses CPU and a disk many times -- this simulates the effect of
+a real program using these types of resources. Of the 9 jobs, there
+are 6 low priority jobs and 3 high priority jobs.
+
+-------------------------------------------------------------------------------
+
+cpudisk is one of several example programs provided with this release of sim++.
+There are several versions of the cpudisk program.  The users guide provides
+detailed information about these various versions and how to use them to help
+you learn about sim++.  Each version of the program begins with a brief
+description of how it differs from the other versions.
+
+  version 1 = essentially original simpack code, using sim++ cAPI
+  version 2 = c++ version using ooAPI
+  version 3 = 2 above + event routines
+  version 4 = 3 above + events characterized by event_routine vs event_id
+  version 5 = 4 above + semiautomatic style (atomic occurrence/execution)
+  version 6 = 4 above + automatic style (atomic occurrence/execution)
+
+Each of the versions above can be translated and run.  There is also a version
+numbered 0, which is NOT intended to be translated or run.  Version 0 is the
+simpack version of cpudisk.  It is present so you can compare it with version 1
+to see what exactly had to be changed to get it to translate without warnings
+or errors under sim++.
+
+In case you are interested (for example if you are porting code from simpack
+to sim++) here are the differences between versions 0 and 1:
+
+    1.  location of queuing.h is now specified by a compiler command line
+    switch (in translat and translat.bat) instead of in the source code.
+    If queuing.h HAPPENS to be in the right place on your system, you don't
+    need to make this change, but i recommend it.
+
+    2.  included <stdio.h>.  Apparently some compilers don't require this.
+    Borland Turbo C++ gives an error.  In g++, if you don't include
+    stdio.h, you get a warning:  "warning:  implicit declaration of
+    function `printf'".  My requirement is that code must compile free of
+    warnings or errors.  Hence i included <stdio.h> and recommend you do
+    too.  Under g++ your code will compile without making this change, so
+    in that environment it's optional.
+
+    3.  added a "return" statement.  Without it, Borland compiler produces
+    warning:  "Function should return a value in function main()".  g++
+    does not complain about the absence of a return statement, but it
+    doesn't hurt and is there for warning-free compile under dos.  Your
+    code will compile without making this change.
+
+So ALL the changes above have to do with portability between dos and unix, or
+the change from c to c++.  NONE has to do with sim++.  And ALL the changes are,
+to a degree, optional, depending on your environment and whether warnings
+bother you or not.
+
+There's a shell script named "translat" which will translate any of versions 1
+thru 6, producing as its output the executable "cpudisk", which you may then
+run.  "translat" uses a make file whose name is "makefile".
+
+The source code for version 1 is present as file name "cpudisk1".  "translat"
+copies it to "cpudisk.C" before invoking make.  Same idea for versions 2 thru
+6.
+
+There are 25 files in this directory.  Here's an annotated list of them:
+
+readme              provides info about the cpudisk example program
+
+cpudisk0            various versions of source code as explained above
+cpudisk1
+cpudisk2
+cpudisk3
+cpudisk4
+cpudisk5
+cpudisk6
+
+translat            selects and translates a version of the program under unix
+makefile
+
+translat.bat        selects and translates a version of program under dos or
+                     windows or os2
+
+makefile.simpack    translates the simpack version of cpudisk (version 0)
+
+output.v0u          output files.  the extension is of the form .vix, where
+output.v1d           i is the version number 1..6, and x is u for unix or
+output.v1u           d for dos
+output.v2d
+output.v2u
+output.v3d
+output.v3u
+output.v4d
+output.v4u
+output.v5d
+output.v5u
+output.v6d
+output.v6u
+
+=========================== end readme ========================================
+

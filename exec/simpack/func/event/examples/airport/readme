@@ -1,0 +1,47 @@
+/*=============================================================================
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see license in the root directory of the distribution.
+
+sim++/examples/airport/readme
+
+version 1: for  cAPI code fragments in Sim++ manual 
+version 2: for ooAPI code fragments in Sim++ manual
+-------------------------------------------------------------------------------
+
+The idea behind this simulation loosely resembles the arrival of
+passengers at an airport, whereupon they give their luggage to one of
+several skycaps and then check in at the ticket counter.  Each skycap
+is a single-server facility, and has his/her own queue.  The
+ticket-counter, by contrast, is a multi-server facility, with a single
+queue.  These attributes match those typical of many real airport
+situations.
+
+The purpose of this program is to test code fragments which are
+examples in the Sim++ manual.  The code sequences below do not
+represent a sane attempt at a single simulation program; rather, it is
+a cut and paste FROM the manual, almost entirely in sequential order
+as the examples appear in the manual.  The purpose here is solely to
+ensure that all the code fragments presented in the Sim++ manual are
+free of syntax errors, and actually run.  Please DON'T use either
+version of airport as an example of a simulation program, because it
+has NO overall semantics!  (There ARE over 30 complete example programs
+for you to peruse, please refer to them to gain an overall idea of
+how to use Sim++).
+
+Version 1 tests the cAPI portion of the manual; version 2 tests the
+ooAPI portion of the manual.
+
+To translate and run either version:
+
+    translat 1
+    airport > out
+    more out
+
+    translat 2
+    airport > out
+    more out
+
+Output for versions 1 and 2 have been saved as out1 and out2, respectively.
+
+-----------------------------------------------------------------------------*/

@@ -1,0 +1,7 @@
+set term postscript eps
+set yrange [-30:100]
+set xlabel "Time (s)"
+set ylabel "Speed of Cab B (m/s)"
+set samples 100000
+set nokey
+set data style lines

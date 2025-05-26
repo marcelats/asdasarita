@@ -1,0 +1,4 @@
+# Set up PubView for landscape work.
+pagesize 11in 8.5in
+magbase 765
+screenxy 18pt 1.5in

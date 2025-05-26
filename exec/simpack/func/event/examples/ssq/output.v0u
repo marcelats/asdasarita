@@ -1,0 +1,20 @@
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 1000.000000
+Total System Arrivals: 501
+Total System Completions: 494
+
+System Wide Statistics
+----------------------
+System Utilization: 97.7%
+Arrival Rate: 0.501000, Throughput: 0.494000
+Mean Service Time per Token: 1.976938
+Mean # of Tokens in System: 10.270474
+Mean Residence Time for each Token: 20.790434
+
+Facility Statistics
+-------------------
+F 1 (queue): Idle:  2.3%, Util: 97.7%, Preemptions: 0

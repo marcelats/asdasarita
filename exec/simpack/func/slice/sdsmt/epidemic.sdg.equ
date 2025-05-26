@@ -1,0 +1,18 @@
+{Con} {Con = TP/Sus} {Contacts} {2}
+
+{TP} {TP = 1000} {Total Population} {0}
+
+{FoCBS} {FoCBS = 0.05} {Fraction of Contacts Becoming Sick} {0}
+
+{Inf} {Inf = Con*FoCBS*SP } {Infection} {3}
+
+{RP} {RP = RP(t-1) +0.25*Cur} {Recovered Population} {2}
+
+{Cur} {Cur = SP/DoD} {Cure} {2}
+
+{DoD} {DoD = 10} {Duration of Disease} {0}
+
+{Sus} {Sus = Sus(t-1) -0.25*Inf} {Susceptibles} {2}
+
+{SP} {SP = SP(t-1) +0.25*(Inf-Cur)} {Sick Population} {3}
+

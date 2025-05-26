@@ -1,0 +1,19 @@
+
+echo ' '
+echo 'SimPack3 is the property of Paul A. Fishwick,'
+echo 'copyright (c) 1995; see License in root directory of the distribution,'
+echo 'which is simpack.'
+echo ' '
+
+echo 'About to create SimPack2.x Queuing Library ...'
+(cd queuing; make)
+echo 'Done creating SimPack2.x Queuing Library (or it was already current)'
+
+echo 'About to create Sim++ version 1.0 Event Model Tools ...'
+(cd event; Make_all)
+
+echo 'About to create SimPack3 Time-Slice Functional Model Packages ...'
+(cd slice; Make_all)
+
+echo 'simpack/func/Make_all is done.'
+date

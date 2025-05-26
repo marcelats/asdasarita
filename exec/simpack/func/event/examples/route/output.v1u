@@ -1,0 +1,57 @@
+about to call init_simpack()
+Future constructed: Sun Jun  4 16:20:19 1995
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 101.281591
+Total System Arrivals: 45
+Total System Departures: 42
+
+System Wide Statistics
+----------------------
+NOTE: facility 22 'tr' has 1 busy server(s)
+System Utilization: 7.1%
+Arrival Rate: 0.444306, Throughput: 0.414685
+Mean Service Time per Token: 0.170803
+Mean # of Tokens in System: 3.645681    Largest FEL size was 9
+Mean Residence Time for each Token: 8.791437
+
+Facility Statistics
+-------------------
+F 1 (tr): Idle: 80.3%, Util: 19.7%, Preemptions: 0, LongestQ: 1
+F 2 (tr): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 3 (tr): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 4 (tr): Idle: 88.2%, Util: 11.8%, Preemptions: 0, LongestQ: 1
+F 5 (tr): Idle: 90.1%, Util: 9.9%, Preemptions: 0, LongestQ: 0
+F 6 (tr): Idle: 94.1%, Util: 5.9%, Preemptions: 0, LongestQ: 1
+F 7 (tr): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 8 (tr): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 9 (tr): Idle: 96.1%, Util: 3.9%, Preemptions: 0, LongestQ: 0
+F 10 (tr): Idle: 94.1%, Util: 5.9%, Preemptions: 0, LongestQ: 0
+F 11 (tr): Idle: 88.2%, Util: 11.8%, Preemptions: 0, LongestQ: 0
+F 12 (tr): Idle: 82.2%, Util: 17.8%, Preemptions: 0, LongestQ: 1
+F 13 (tr): Idle: 92.1%, Util: 7.9%, Preemptions: 0, LongestQ: 0
+F 14 (tr): Idle: 96.1%, Util: 3.9%, Preemptions: 0, LongestQ: 0
+F 15 (tr): Idle: 82.2%, Util: 17.8%, Preemptions: 0, LongestQ: 1
+F 16 (tr): Idle: 92.1%, Util: 7.9%, Preemptions: 0, LongestQ: 1
+F 17 (tr): Idle: 100.0%, Util: 0.0%, Preemptions: 0, LongestQ: 0
+F 18 (tr): Idle: 90.1%, Util: 9.9%, Preemptions: 0, LongestQ: 0
+F 19 (tr): Idle: 98.0%, Util: 2.0%, Preemptions: 0, LongestQ: 0
+F 20 (tr): Idle: 92.1%, Util: 7.9%, Preemptions: 0, LongestQ: 0
+F 21 (tr): Idle: 92.1%, Util: 7.9%, Preemptions: 0, LongestQ: 0
+F 22 (tr): Idle: 96.2%, Util: 3.8%, Preemptions: 0, LongestQ: 0
+
+----------------
+NODE Utilization
+----------------
+
+Node 0 Utilization is 6.6%
+Node 1 Utilization is 7.2%
+Node 2 Utilization is 2.0%
+Node 3 Utilization is 3.3%
+Node 4 Utilization is 12.5%
+Node 5 Utilization is 9.9%
+Node 6 Utilization is 3.9%
+Node 7 Utilization is 6.5%

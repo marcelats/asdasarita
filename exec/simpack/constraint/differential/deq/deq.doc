@@ -1,0 +1,132 @@
+
+
+
+DEQ(1)             USER COMMANDS               DEQ(1)
+
+
+
+NAME
+     deq - ordinary differential equation solver
+
+DESCRIPTION
+     deq is a graphics tool for the investigation  of  dif-
+     ferential equations.  The program is interactive, asking for
+     either a system of first-order equations or  a  higher-order
+     equation, as well as the time constraints and initial condi-
+     tions.  The equation or system of equations is parsed and  a
+     new  c source file is generated, which then must be compiled
+     and run.  The resulting generated data is finally piped into
+     grtool.   Thus, a path to grtool must be available from your
+     current directory.
+
+STARTUP
+     deq
+
+PROMPTS
+     deq will prompt you for the necessary  information  in
+     the following format:
+
+          Which do you want to enter, a (S)ystem of 1st-order
+
+                          or a (H)igher-order equation.
+
+          Enter 's' or 'h': s
+
+          Enter dimension of system: 3
+
+          x[1]' = 10.0*(-x[1]+x[2])
+
+          x[2]' = 28.0*x[1]-x[2]-x[1]*x[3]
+
+          x[3]' = -2.66666666 * x[3] + x[1] * x[2]
+
+          Enter initial conditions.
+
+          x[0] = 5.0
+
+          x[1] = 5.0
+
+          x[2] = 5.O
+
+          Enter another set of initial conditions? (y/n) n
+
+          start time = 0
+
+          end time = 20
+
+          time step size = 0.01
+
+          Plot what vs. what?
+
+
+
+Sun Release 4.0     Last change: 22 June 1990                   1
+
+
+
+
+
+
+DEQ(1)             USER COMMANDS               DEQ(1)
+
+
+
+          x-axis (t or x[i]): x[1]
+
+          y-axis (t, x[i], or a): x[2]
+
+
+     This is the famous Lorenz euations  with  an  attractor.  In
+     this  example,  the x[i]s are related only in the way speci-
+     fied. But in a higher-order equation, x[i] indicates the  i-
+     th derivative of x and x[0] = x.  Depending on the degree of
+     the equation, a number  of  initial  conditions  are  taken.
+     Note  that you can provide more than one set of initial con-
+     ditions.  They will be plotted on the same plot.
+
+     The following c functions are supported:
+            sin, cos, tan, asin, acos, atan, atan2, sinh,
+            cosh, tanh, exp, log, log10, pow, sqrt, fabs.
+
+     The symbol '^' can also be used to indicate the power  func-
+     tion.
+
+
+Internals:
+     First, the equation is parsed and transformed into a  system
+     of  first-order  equations  (if  it  is  not already in that
+     form.)  Then this system of equations is piped into  another
+     parser,  which  actually  generates the c source code.  This
+     code is compiled and run, generating the raw data, which  is
+     finally  piped  into  grtool  to  come up with a plot of the
+     solution.  The batch file  will  keep  you  abreast  of  the
+     status of this process.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sun Release 4.0     Last change: 22 June 1990                   2
+
+
+

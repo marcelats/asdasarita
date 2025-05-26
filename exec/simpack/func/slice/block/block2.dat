@@ -1,0 +1,8 @@
+7 6 50.0
+0 const 0.8
+1 const 2.0
+2 mult 0 5
+3 sub 1 2
+4 sub 3 6
+5 int 4 1.0
+6 int 5 1.0

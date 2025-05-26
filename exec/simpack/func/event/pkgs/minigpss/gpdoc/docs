@@ -1,0 +1,688 @@
+
+                            
+
+ 
+                             MINI-GPSS Abstract
+
+           MINI-GPSS is a discrete event system simulation processor.  
+
+        The language, MINI-GPSS, is a subset of the GPSS (which stands 
+
+        for General Purpose Simulation System) programming language.   
+
+        GPSS was specifically designed for discrete event system     
+
+        simulation.  A discrete system is one in which changes states
+
+        at discrete points over time.  In the MINI-GPSS simulation model,
+
+        tokens or active entities enter the system at an arrival rate
+
+        over time.   When the tokens arrive, they are put on a queue     
+
+        until it is their turn to be served.   When the token is at the 
+
+        front of the queue, and the server is free, the token is removed
+
+        from the queue.   At this point, the status of the server now 
+
+        becomes busy, and work is performed by the server.  The amount of
+
+        time it takes to serve the token is known as the service time.
+
+        When the work is completed, the server releases the token, and the
+
+        server is free again, ready to serve more incoming tokens.  The
+
+        simulation continues in this manner until a certain time has been
+
+        reached, or a certain number of tokens have been served.  Thus,
+
+        a discrete event system consists of incoming active entities 
+
+        (tokens), the work performing resources (facilities), and changes in
+
+        some state of the system (events).
+
+                                                                    
+
+ 
+                             MINI-GPSS Data Structures 
+
+        The following data structures are produced by the parser when
+       
+        it checks the MINI-GPSS source file for proper syntax.
+ 
+
+        =============       =============            ==================
+        |  prog[1]  |  ->   |  prog[2]  | -> ... ->  |  prog[MAXUNIT] |
+        =============       =============            ==================
+
+        =============       =============            ==================
+        |  fac[1]   |  ->   |  fac[2]   | -> ... ->  |  fac[MAXFAC]   |
+        =============       =============            ==================
+      
+        MAXUNIT = MAXFAC = 100
+
+
+        ===============================================================
+        |                         prog                                |
+        ===============================================================
+        | id          (integer)  facilty id                           |
+        | serve_time  (integer)  average service time                 |
+        | serve_range (integer)  service time variability             |
+        | inter_time  (integer)  average inter-arrival time           |
+        | inter_range (integer)  inter-arrival time variabbility      |
+        | transfer    (integer)  flag indicating branching            |
+        | queue_text  (char)     queue name text                      |
+        | serve_text  (char)     server name text                     |
+        | rel_text    (char)     release name text                    |
+        | dep_text    (char)     depart name text                     |
+        | quit_factor (integer)  termination count decrement          |
+        | percent     (integer)  statistical branch probability       |
+        | br_case1    (integer   prog number to branch to             |
+        | br_case2    (integer)  prog number to branch to             |
+        | br_end      (integer)  flag indicating end of branching     |
+        | parent      (integer)  flag indicating generate block       |
+        | pu_code     (integer)  next prog                            |
+        ===============================================================
+       
+        ===============================================================
+        |                         fac                                 |
+        ===============================================================
+        | id          (integer)  facilty id                           |
+        | unit        (integer)  prog accessing this facility         |
+        | num_servers (integer)  number of servers for facility       |
+        | name        (char)     facility name text                   |
+        ===============================================================
+
+                                                                                
+
+
+                        
+  
+
+                   ==============================
+                   |  MINI-GPSS Source Program  |        
+                   ============================== 
+                                ||
+                                ||
+                                \/
+                   ==============================
+                   |          Scanner           |        
+                   ============================== 
+                                ||
+                                ||
+                                \/
+                   ==============================
+                   |          Parser            |        
+                   ============================== 
+                                ||
+                                ||
+                                \/
+                   .............................. 
+                   .         Produces           .        
+        ===========.           Data             .===========
+        ||         .         Structures         .         ||
+        ||         ..............................         ||
+        \/                                                \/
+   =============                                    ==============
+   |   Code    |                                    | Simulation | 
+   | Generator |                                    |   Event    |
+   =============                                    |  Handler   |
+                                                    ==============
+                                                          ||
+                                                          ||
+                                                          \/
+                                                   .................
+                                                   .  Simulation   . 
+                                                   .    Output     .
+                                                   .................
+
+
+
+                                                                     
+
+ 
+                             MINI-GPSS Introduction 
+
+           The syntax to a MINI-GPSS program can be found in the user
+
+        manual under MINI-GPSS Program syntax.  As stated previously,
+
+        MINI-GPSS is a subset of the GPSS programming language.  The
+
+        reason for this approach is that GPSS has been around for 
+
+        many years, and that way someone with knowledge of GPSS would
+
+        not have to relearn an entirely new language.  In using MINI-GPSS,
+
+        the user begins by writing a program in MINI-GPSS.  This file will
+
+        be used as the input file to the simulation processor.  The processor
+
+        takes the input file and checks the program for proper syntax.
+
+        If the program is legal, The processor runs the simulation as well
+
+        as generating "C" equivalent code to the simulation. If a syntax
+
+        error is found, the processor will indicate where the error is, and
+
+        the program will terminate. 
+ 
+           Programming in MINI-GPSS is very simple, which makes it an
+
+        excellent tool for learning the concepts of discrete event 
+
+        simulation.  The student can spend more time learning the   
+
+        concepts, and less time worrying about the details of        
+
+        implementing the simulation.  Moreover, by having access to the
+
+        "C" generated code, the student can see the way the simulation 
+
+        is implemented. 
+
+        In implementing MINI-GPSS, There are four major tasks involved.  
+
+        First, a scanner must be written to read in the input file.  This 
+
+        scanner must recognize all program constructs, identifiers, and  
+
+        literals.  Any time it recognizes one of these items, or tokens, 
+
+        it must return the corresponding token to the calling program.
+
+        Secondly, a parser must be written which interfaces the scanner
+
+
+
+
+
+
+
+
+
+
+                                                                        
+
+
+        and checks for proper program syntax.  The parser also builds two 
+
+        data structures which contains revelant data from the input file. 
+
+        Thirdly, a simulation event handler must be written that performs 
+
+        the simulation according to the created data structures.  Lastly,
+
+        a code generator must be written, which generates "C" equivalent 
+
+        code to the simulation.
+
+
+
+       
+
+
+
+
+
+
+
+
+
+        
+
+
+                                                                      
+
+
+                      MINI-GPSS Program Constructs Descriptions
+
+       
+            Advance : This statement increments the simulation clock by
+                     
+                      the time specified.
+
+           Generate : This statement creates an inter-arrival time.
+          
+           Queue    : This statement allows a transaction to enter
+             
+                      a queue of a particular facility.
+
+           Seize    : This statement reserves a (single) server of a
+   
+                      particular facility for a transaction.
+
+           Enter    : This statement reserves (multiple) servers of a
+
+                      particular facility for a transaction.
+
+           Storage  : This statement defines the number of servers for
+                    
+                      a particular facility.  It is only used when a
+            
+                      facility has multiple servers.
+               
+           Depart   : This statement allows the transaction to leave a
+                  
+                      particular queue when the server is free.
+
+           Release  : This statement frees a (single) server of a 
+                      
+                      particular facility.    
+
+           Leave    : This statement frees a server of a particular
+                      
+                      facility. This statement is used  only when 
+                    
+                      the facility has multiple servers.
+
+           Transfer : This statement is used for branching.    
+          
+           Start    : This statement defines the termination count.
+
+           Terminate: This statement decrements the termination count.    
+
+           Simulate : All programs must begin with this statement.
+
+           End      : All programs must end with this statement.
+
+           *        : Any line that begins with this symbol is
+                     
+                      ignored by the compiler.
+          -------------------------------------------------------
+
+          MINI-GPSS PROGRAMS ARE NOT CASE SENSITIVE.
+
+          
+
+                                                                    
+
+ 
+                             MINI-GPSS References 
+
+        [1] M.H. MacDougall, Simulating Computer Systems: Techniques    
+
+           and Tools, Massachusetts Institute of Technology, 1987.
+
+        [2] Sun Microsystems, Lex: A Lexical Analyzer Generator, 1986.   
+
+        [3] Sun Microsystems, Yacc: Yet Another Compiler-Compiler, 1986.   
+
+        [4] T.M. O'Donavan, GPSS Simulation Made Simple, University 
+
+           College, 1979.
+                             MINI-GPSS Program Syntax
+  
+	===============================================================
+	{}      Enclosed items which may be repeated zero or more times
+	()      Enclosed items occur one time
+        ^()     Means "any item but enclosed item(s) "
+	.       Means "end of syntax definition "
+	::=     Means "is defined as "
+	|       Means "or "
+	[$1-$2] Means "any character  >= $1 and <= $2 "  
+	===============================================================
+        program   ::=   remarks sim-st remarks sto-blk. 
+        sto-blk   ::=   (sto-st remarks sto-blk) | prog-blk. 
+        prog-blk  ::=   gen-st tra-blk remarks opt-prog.
+        prog-blk2 ::=   serv-blk remarks opt-prog.
+        tra-blk   ::=   fac-blk | (remarks tra-blk fac-blk).
+        opt-prog  ::=   prog-blk | prog-blk2 | opt-sta.
+        rel-blk   ::=   (rel-st remarks new-f) | ter-st.
+        lev-blk   ::=   (lev-st remarks new-f) | ter-st.
+        opt-sta   ::=   (sta-st remarks opt-sta) | end-st.
+        serv-blk  ::=   (que-st remarks sei-st remarks dep-st adv-serv1)|
+                    (que-st remarks ent-st remarks dep-st adv-serv2).
+        fac-pt    ::=   (que-st remarks sei-st remarks dep-st adv-serv1)|
+                    (que-st remarks ent-st remarks dep-st adv-serv2)|
+                    rel-blk.
+        fac-blk   ::=   (remarks adv-st fac-blk) | (remarks fac-pt).
+        new-f     ::=   ter-st | new-f-blk.
+        new-f-blk ::=   serv-blk | (adv-st remarks new-f-blk).
+        adv-serv1 ::=   (remarks adv-st adv-serv1) | (remarks rel-blk).
+        adv-serv2 ::=   (remarks adv-st adv-serv2) | (remarks lev-blk).
+        sim-st    ::=   simulate end-rmks. 
+        sto-st    ::=   storage ident blanks comma blanks num end-rmks.
+        tra-st    ::=   transfer blank blanks number dot number blanks
+                    comma blanks comma blanks ident end-rmks.
+        que-st    ::=   (queue blank blanks ident end-rmks) | (ident
+                     blank blanks queue blank blanks ident end-rmks).
+        gen-st    ::=   generate blank opt-pms newline.
+        sei-st    ::=   seize blank blanks ident end-rmks.
+        ent-st    ::=   enter blank blanks ident end-rmks.
+        lev-st    ::=   leave blank blanks ident end-rmks.
+        dep-st    ::=   depart blank blanks ident end-rmks.
+        rel-st    ::=   release blank blanks ident end-rmks.
+        sta-st    ::=   start blank blanks digit end-rmks.
+        ter-st    ::=   (terminate blank opt-num newline) | (terminate
+                    newline).
+        end-st    ::=   end end-rmks.
+        adv-st    ::=   (advance blank opt-pms newline)| (advance 
+                    newline).
+	ident     ::=   letter{letter|num}.
+	enter     ::=   ("E"|"e")("N"|"n")("T|"t")("E"|"e")("R"|"r").   
+	storage   ::=   ("S"|"s")("T"|"t")("O"|"o")("R"|"r")("A"|"a")
+                    ("G"|"g")("E"|"e")(blank blanks)("S"|"s")("$").
+	transfer  ::=    ("T"|"t")("R"|"r")("A"|"a")("N"|"n")("S"|"s")
+                   ("F"|"f")("E"|"e")("R"|"r").
+	leave     ::=   ("L"|"l")("E"|"e")("A"|"a")("V|"v")("E"|"e").    
+	generate  ::=   ("G"|"g")("E"|"e")("N"|"n")("E"|"e")("R"|"r")
+                   ("A"|"a")("T"|"t")("E"|"e").    
+	simulate  ::=   ("S"|"s")("I"|"i")("M"|"m")("U"|"u")("L"|"l") 
+                   ("A"|"a")("T"|"t")("E"|"e").    
+	release   ::=   ("R"|"r")("E"|"e")("L"|"l")("E"|"e")("A"|"a")
+                   ("S"|"s")("E"|"e").    
+	start     ::=   ("S"|"s")("T"|"t")("A"|"a")("R"|"r")("T"|"t"). 
+	end       ::=   ("E"|"e")("N"|"n")("D"|"d").   
+	queue     ::=   ("Q"|"q")("U"|"u")("E"|"e")("U"|"u")("E"|"e"). 
+	sieze     ::=   ("S"|"s")("E"|"e")("I"|"i")("Z"|"z")("E"|"e"). 
+	depart    ::=   ("D"|"d")("E"|"e")("P"|"p")("A"|"a")("R"|"r") 
+                   ("T"|"t").  
+	advance   ::=   ("A"|"a")("D"|"d")("V"|"v")("A"|"a")("N"|"n")
+                   ("C"|"c")("E"|"e").   
+	terminate ::=   ("T"|"t")("E"|"e")("R"|"r")("M"|"m")("I"|"i")
+                   ("N"|"n")("A"|"a")("T"|"t")("E"|"e").
+	num       ::=   ["0"-"9"].
+	letter    ::=   (["A"-"Z"]|["a"-"z"]).
+	digit     ::=   num{num}.
+	comma     ::=   ",".
+	comm      ::=   "*".
+	dot       ::=   ".".
+	newline   ::=   "\n".
+        anytext   ::=   {^(newline)}.
+        note      ::=   blank anytext
+        end-rmks  ::=   note newline 
+        opt-num   ::=   (blank opt-num) | (^(newline|blank|digit) note)|
+                    digit note | null.
+        opt-pms   ::=   (blank opt-pms) | (^(newline|blank|digit) note)|
+                    params | null.
+        params    ::=   digit opt-pm2. 
+        opt-pm2   ::=   (blank opt-pm2) | (^(newline|blank|digit) note) |
+                    (comma blanks digit note)| null.
+        remark    ::=   comm anytext | null.
+        remarks   ::=   (remark newline remarks) | (space remarks) |
+                    null.
+	blank     ::=   " ".
+	blanks    ::=   {blank}.
+        null      ::=   .
+
+
+
+
+                        MINI-GPSS System Description 
+  
+
+        token.l   :     input to lex  (scanner specification)
+        parse.y   :     input to yacc (parser specification) 
+        lex.yy.c  :     "C" generated code for scanner
+        y.tab.c   :     "C" generated code for parser
+        queuing.c :     simulation routines (simpack)
+        main.c    :     simulation event handler
+        error.c   :     error handler for parser
+        simgen.c  :     "C" generated code for simulation
+        gp        :     MINI-GPSS executable
+        program.g :     MINI-GPSS source file
+
+
+                ||                      ||
+                ||                      ||
+              token.l                 parse.y
+                ||       ===========    ||
+                \/       ||       ||    ||
+           ===========   ||       \/    \/
+           |   lex   |   ||     ==============
+           ===========   ||     |    yacc    |                    ||
+                ||       ||     ==============                  main.c
+                ||       ||           ||         ||        ||     ||
+             lex.yy.c    ||           ||         ||        ||     ||
+                ||       ||         y.tab.c    error.c  queuing.c ||   
+                ===========           ||         ||        ||     ||
+                                      \/         \/        \/     \/
+                                  ===================================
+                   ||             |         cc compiler             |
+                   ||             ===================================
+                program.g                      ||
+                   ||      ====================== 
+                   ||      || 
+                   \/      || 
+               ========================
+               |     gp (executable)  |
+               ========================
+                        ||
+                   ==============
+                   ||          ||
+                   \/          \/
+                simulation  simgen.c
+                 output 
+
+                                                                      
+
+ 
+                             MINI-GPSS System Description 
+
+           In Designing MINI-GPSS, I found it easy to break the coding
+
+        up into four sub-programs or phases.  The four subprograms    
+
+        include a scanner, a parser, a simulation event handler, and a
+
+        code generator.
+
+           The first sub-program is the scanner which reads in the file
+
+        token by token, and returns each token it encounters to the 
+
+        parser.  The scanner is implemented using a  tool called
+
+        lex.  Lex has its own programming language in which you can 
+
+        specify what what you would like to recognize as tokens.  As
+
+        each token is recognized, you can insert actions to be performed.
+
+        The actions to be performed are written in "C" and are also in the 
+
+        scanner specification.  In the file token.l, I wrote the scanner
+
+        specification.   Lex generated "C" code for the scanner by         
+
+        invoking the command 'lex token.l'  at the unix prompt.  The "C"
+
+        generated code is in the file lex.yy.c.  The function which     
+
+        returns the current token is called yylex.
+
+           The second sub-program is the parser which interfaces with the
+
+        scanner (by calling the function yylex) to check a program for
+
+        proper syntax.  The syntax to a MINI-GPSS program can be found in
+
+        the user manual under MINI-GPSS Program Syntax.  The parser was
+
+        implemented by using a tool called yacc.  Yacc has its own 
+
+        programming language for specifying how you would like you program
+
+        parsed.  Here too, you can insert actions to be performed as each
+
+        item is parsed.   In the file parse.y, I wrote the parser 
+
+        specification.   Yacc generated "C" code for the parser by         
+
+
+
+
+
+
+
+
+
+
+                                                                        
+
+
+        invoking the command 'yacc parse.y' at the unix prompt.  The "C"
+
+        generated code for the parser is in the file y.tab.c.  The program
+
+        is parsed by calling the function yyparse.  The error handler
+
+        for any syntax error encounered is located in the file error.c.
+
+        If there are no syntax errors, 0 is returned from yyparse.       
+
+        Otherwise, 1 is returned from yyparses, yyerror is called, and
+
+        the program terminates.  The error handler gives a description of
+
+        the error and the line where the error is located.  The parser, 
+
+        when checking syntax, creates two data structures with all pertinent 
+
+        information that the simulation event handler needs. 
+
+           The third sub-program is the simulation event handler which gets
+
+        its input from the data structures that are produced by the parser.
+
+        The data structures are explained under MINI-GPSS Data Structures.
+
+        In implementing the simulation, I used a tool called Simpack.
+
+        Simpack handles many features of discrete event simulation.
+
+        Some of Simpacks's routines include: init_simpack, schedule,  
+
+        create_facility, next_event, release, request, update_arrivals, 
+
+        update_completions, and report_stats.  The procedure init_simpack  
+
+        starts simpack.  The function create_facility creates a facility and
+
+        returns the facility id.  The procedure schedule, schedules an event
+
+        to occur at the given time.  The procedure next_event causes the next
+
+        event to occur and it increments the time to the time of the event.
+
+        The function request, requests a facility, and return the status of 
+
+        the server.  The procedure release, releases the server, and changes
+
+        the status of the server to free.  The procedure update_arrivals
+
+        increments the count of the number of arrivals.  The procedure
+
+        update_completions, increments the count of the number of  
+
+        completions.  The procedure report_stats gives the simulation
+
+
+
+
+
+
+
+
+
+
+                                                                       
+
+
+        statistics.  There are four events that each token entering the
+
+        system may engage in.  When a token first enters the system, it 
+
+        is scheduled to first ARRIVE. In the ARRIVE phase, the next
+
+        arrival is generated according to the inter-arrival time from the
+
+        data structure. Also, the count of the number arrivals is 
+
+        incremented and the token can now be scheduled to request a 
+
+        facility. In the REQUEST phase, the token waits on the queue    
+
+        until the server becomes free.  When the server becomes free,
+
+        it enters the SERVICE phase.  In the SERVICE phase, the service
+
+        time is initiated according to the service time in the data        
+
+        structure.  After the token is served, It enters the DEPART phase.
+
+        In this phase, the server is released, and if it is ready to leave
+
+        the system, the completion count is incremented.  There are two
+
+        additional phases a token can enter, but only if there is branching
+
+        involved. These two phases BR_ARR and BR_DEP are special cases of
+
+        the ARRIVE and DEPART phase, and are only entered when the data
+
+        structure has a value of 1 for the transfer field, as described
+
+        in MINI-GPSS Data Structures.  This event handler keeps generating
+
+        tokens until a certain time has been reached, or a certain number
+
+        of tokens have been served as specified in the data structre.
+
+           The last sub-program is the code generator.  The data structures 
+
+        and the simulation handler are hard coded into the file.  The 
+
+        file simgen.c is created which duplicates the simulation when it is
+
+        compiled and executed. 
+
+
+                            
+
+ 
+                             MINI-GPSS User Manual
+
+        (1)  Creating a MINI-GPSS program 
+
+            Write a MINI-GPSS simulation program.  The syntax to a     
+
+            MINI-GPSS program is described under the section
+
+            MINI-GPSS Program Syntax.
+
+        (2)  Executing the MINI-GPSS simulator 
+
+            The file that you created in (1) is the source-file.
+
+            Type at the system prompt:
+
+                 gp < source-file 
+             
+             At this point, if there are syntax errors the simulator
+
+             will specify the error and the line where the error
+
+             is located.  If there are no syntax errors, the simulator
+
+             will produce the simulation output and will generate
+
+             "C" equivalent code to the simulation.  The "C" generated
+
+             code is located in the file simgen.c.  To compile simgen.c,
+
+             type at the system prompt:
+
+                 cc -o simgen simgen.c queuing.o -lm -lcurses -ltermcap 
+
+             To run the executable (simgen), type at the system prompt:
+
+                 simgen 
+               
+           

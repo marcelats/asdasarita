@@ -1,0 +1,17 @@
+calendar.o
+capifac.o
+capifut.o
+capiran.o
+estatus.o
+event.o
+facility.o
+flist.o
+future.o
+heap.o
+leftist.o
+linked.o
+Readme*
+service.o
+token.o
+util.o
+vlist.o

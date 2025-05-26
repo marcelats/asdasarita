@@ -1,0 +1,8 @@
+This program runs multiple simulations for an inventory problem
+where a mining company sends mineral shipments to a product
+oriented company. There is a warehouse where the shipments are
+stored until the product company orders more. The objective
+is to minimize the time spent for the material containers inside
+the warehouse.
+
+

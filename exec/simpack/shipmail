@@ -1,0 +1,18 @@
+#! /bin/csh -f
+#
+# ship 'shar' files via mail to an address
+# use this to distribute SimPack to colleagues
+# at the UNIX prompt do:
+# %ship joe@someaddress.org
+#
+(cd .. ; shar simpack > total.simpack)
+mv ../total.simpack .
+split -1600 total.simpack simpack
+rm -f total.simpack
+/usr/ucb/mail -s "SimPack by Mail" $argv[1] < shipmail.info
+foreach i(`ls simpack*`) 
+  /usr/ucb/mail -s "$i"  $argv[1] < $i
+  echo shipped: $i to $argv[1]
+end
+rm -f simpack*
+

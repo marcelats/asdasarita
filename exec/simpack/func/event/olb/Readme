@@ -1,0 +1,16 @@
+
+   Sim++ version 1.0 is the property of Paul A. Fishwick and Robert M. Cubert,
+   copyright (c) 1995; see License in the root directory of the distribution,
+   which is simpack/func/event.
+
+This directory contains the object files which form the Sim++ object library.
+The object files in this directory are the ONLY files you need to make a part
+of your executable code, in order to use Sim++.
+
+The files in this directory are the runtime support you need when your code 
+calls functions in either of Sim++'s two APIs (cAPI and/or ooAPI).
+
+The files in this directory should be created once, when you install Sim++,
+either as a standalone product, or as part of SimPack3.
+
+Then you can just use them over and over in all applications you write.

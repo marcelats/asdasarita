@@ -1,0 +1,47 @@
+
+This simulates a time Petri network composed of places and transitions.
+Transitions can take time while places do not take time. The simulator
+builds an 'outset' table first to reduce the iterative lookup for
+transitions that can fire. Note the following input file format:
+
+#transitions #places #time
+time #input-places i-place-0 i-place-1 .. #output-places o-place-0 ...
+time #input-places i-place-0 i-place-1 .. #output-places o-place-0 ...
+...
+#tokens-in-place-0 #tokens-in-place-1 ...
+
+#time specifies the number of iterations to be simulated.
+The included file 'phil.dat' is the network for the dining philosophers 
+which has 10 transitions and 15 places. Note that place numbers start
+at zero. Consider the following Petri net:
+
+
+0 ------           | 
+  |    |           |         2 ------
+  | ** |---------->|           |    |
+  |    |           |---------->|    |
+  |    |     |---->|           |    |
+  ------     |     |           |    |
+             |                 ------
+1 ------     |
+  |    |     |
+  | *  |------
+  |    |
+  |    |
+  ------
+
+
+Here is the input file for this net:
+
+1 3 1
+1.0 2 0 1 1 2
+2 1 0
+
+Now try: %petri < thisfile
+
+
+SUGGESTED READING:
+
+"Petri Net Theory and the Modeling of Systems" by James L. Peterson, 
+Prentice Hall, 1981.
+

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Main-Class: frames.JanelaRedes
+
+Name: frames/
+Sealed: true
+
+Name: ASDA/
+Sealed: true
+
+Name: gerador/
+Sealed: true
+
+Name: graph/
+Sealed: true
+
+Name: avaliador/
+Sealed: true
+

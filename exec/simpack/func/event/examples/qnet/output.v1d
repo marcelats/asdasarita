@@ -1,0 +1,30 @@
+Future constructed: Sun Jun 04 15:11:00 1995
+Constructed Heap, capacity 100.
+Back from read_network
+for loop, i=0
+end for loop, i=0
+for loop, i=1
+
+creating facility
+i=1 name of facility='queue-1' number_of_servers=1 fac_id=1
+
+end for loop, i=1
+for loop, i=2
+end for loop, i=2
+for loop, i=3
+end for loop, i=3
+for loop has ended, about to enter while loop
+event_id=0, about to call process_block()
+event_id=1, about to call process_block()
+case is REQUEST. token id=1 facility_id = 1
+event_id=0, about to call process_block()
+event_id=1, about to call process_block()
+case is REQUEST. token id=1 facility_id = 1
+event_id=2, about to call process_block()
+case is RELEASE. token id=1 facility_id = 1
+event_id=1, about to call process_block()
+case is REQUEST. token id=1 facility_id = 1
+event_id=2, about to call process_block()
+case is RELEASE. token id=2 facility_id = 0
+Facility #0
+FATAL ERROR #9043 Bad facility_id

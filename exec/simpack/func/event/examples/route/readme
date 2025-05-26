@@ -1,0 +1,291 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/route
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+     +----------+---------+---------+---------+---------+----------+
+     |          |         |         |         |         |          |
+  cpudisk     block     tiktok     ssq     network     qnet      route
+                                                                   ^
+                                                                   ^
+You are here  = = = = = = = = = = = = = = = = = = = = = = = = = = =/
+
+-------------------------------------------------------------------------------
+
+DESCRIPTION OF APPLICATION (from simpack's README file):
+
+MODEL of PACKET ROUTING PROTOCOL
+===============+++++++==========
+
+By Hyun Park
+December 10, 1992
+
+
+
+This code is used to simulate a subset of Routing
+Management Protocol (RMP) which is used in Inter-Switching System Interface
+(ISSI) of Switched Multimegabit Data Service (SMDS).
+
+1. Shortest Path Routing
+
+The shortest path routing algorithm is widely used in many forms because
+it is simple and easy to understand. The concept shortest path deserves
+some explanation. One way of measuring path length is the number of hops.
+Using this metric, the paths 012 and 014 in Fig. 1 are equally long.
+Another metric is the geographic distance in kilometers, in which case
+012 is clearly much longer than 014 (assuming the figure is drawn to scale).
+
+However, many other metrics are also possible. For example, each are could be
+labeled with the mean queuing and transmission delay for a standard test
+packet as determined by hourly or daily test runs. With this graph labeling,
+the shortest path is the fastest path, rather than the pathe with the
+fewest arcs or kilometers.
+
+Several algorithms for computing the shortest path between two nodes of a
+graph are known. This one is due to Dijkstra(1959). Each node is labeled with
+its distance from the source node along the best known path.
+Initially, no paths are known, so all nodes are labeled with infinity.
+As the algorithm proceeds and paths are found, the labels may change,
+reflecting better paths. A label may be either tentative or permanent.
+Initially all labels are tentative. When it is discovered that a label
+represents the shortest possible path from the source to that node,
+it is made permanent and never changed thereafter.
+
+
+                             7
+               (1)---------------------(2)
+               / \                     / \
+            2 /   \2                 3/   \3
+             /     \        2        /     \
+           (0)     (4)-------------(5)     (3)
+             \     /                 \      /
+             6\   /1                 2\    /2
+               \ /          4          \  /
+               (6)----------------------(7)
+
+
+                 Figure 1. Sample Network
+
+
+2. Adjacency
+
+The following matrix shows the connectivity between nodes and
+metrics of all the links connecting nodes. Any non-zero number indicates
+the existence of direct link between two nodes and the value represents the
+metric of the link. The following is the topology of the example network
+shown in Fig. 1:
+
+0.0 2.0 0.0 0.0 0.0 0.0 6.0 0.0
+2.0 0.0 7.0 0.0 2.0 0.0 0.0 0.0
+0.0 7.0 0.0 3.0 0.0 3.0 0.0 0.0
+0.0 0.0 3.0 0.0 0.0 0.0 0.0 2.0
+0.0 2.0 0.0 0.0 0.0 2.0 1.0 0.0
+0.0 0.0 3.0 0.0 2.0 0.0 0.0 2.0
+6.0 0.0 0.0 0.0 1.0 0.0 0.0 4.0
+0.0 0.0 0.0 2.0 0.0 2.0 4.0 0.0
+
+
+3. Packet Generator
+
+Each message is generated from the message generator according to the input
+data regarding to the nature of the packets. This will include the interarrival
+time distribution of packets, the source address distribution, destination
+address distribution,and the parameters like mean or minimum and maximum values.
+
+The source and destination address distribution is by default the uniform
+integer distribution ranging from the smallest node number
+to the largest node number. The packet interarrival time
+distribution can be given as an input such as exponential, uniform,
+erlang, or normal and the packets are generated according to the
+given distribution type and mean and/or range values.
+
+
+4. Input & Output
+
+Following is the format of input file:
+
+simulation-time #nodes node-processing-time
+adjacency matrix specifying connectivity of network
+packet-interarrival-time-distribution mean-value(or low range) (high range)
+
+The simulation run is initiated by "route < inputfile" and
+the folllowing is the sample input file for the example network in Fig. 1:
+
+100.0 8 2.0
+0.0 2.0 0.0 0.0 0.0 0.0 6.0 0.0
+2.0 0.0 7.0 0.0 2.0 0.0 0.0 0.0
+0.0 7.0 0.0 3.0 0.0 3.0 0.0 0.0
+0.0 0.0 3.0 0.0 0.0 0.0 0.0 2.0
+0.0 2.0 0.0 0.0 0.0 2.0 1.0 0.0
+0.0 0.0 3.0 0.0 2.0 0.0 0.0 2.0
+6.0 0.0 0.0 0.0 1.0 0.0 0.0 4.0
+0.0 0.0 0.0 2.0 0.0 2.0 4.0 0.0
+
+Following is a sample output when the input shown above is used:
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 100.061264
+Total System Arrivals: 18
+Total System Completions: 16
+
+System Wide Statistics
+----------------------
+System Utilization:  2.4%
+Arrival Rate: 0.179890, Throughput: 0.159902
+Mean Service Time per Token: 0.149668
+Mean # of Tokens in System: 1.329356
+Mean Residence Time for each Token: 8.313566
+
+Facility Statistics
+-------------------
+F 1 (tr): Idle: 91.6%, Util:  8.4%, Preemptions: 0
+F 2 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 3 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 4 (tr): Idle: 93.7%, Util:  6.3%, Preemptions: 0
+F 5 (tr): Idle: 98.0%, Util:  2.0%, Preemptions: 0
+F 6 (tr): Idle: 98.0%, Util:  2.0%, Preemptions: 0
+F 7 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 8 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 9 (tr): Idle: 96.0%, Util:  4.0%, Preemptions: 0
+F 10 (tr): Idle: 98.0%, Util:  2.0%, Preemptions: 0
+F 11 (tr): Idle: 94.0%, Util:  6.0%, Preemptions: 0
+F 12 (tr): Idle: 98.0%, Util:  2.0%, Preemptions: 0
+F 13 (tr): Idle: 96.0%, Util:  4.0%, Preemptions: 0
+F 14 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 15 (tr): Idle: 92.0%, Util:  8.0%, Preemptions: 0
+F 16 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 17 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 18 (tr): Idle: 98.0%, Util:  2.0%, Preemptions: 0
+F 19 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+F 20 (tr): Idle: 98.0%, Util:  2.0%, Preemptions: 0
+F 21 (tr): Idle: 96.0%, Util:  4.0%, Preemptions: 0
+F 22 (tr): Idle: 100.0%, Util:  0.0%, Preemptions: 0
+
+----------------
+NODE Utilization
+----------------
+
+Node 0 Utilization is 2.8%
+Node 1 Utilization is 2.8%
+Node 2 Utilization is 0.7%
+Node 3 Utilization is 2.0%
+Node 4 Utilization is 4.0%
+Node 5 Utilization is 2.7%
+Node 6 Utilization is 0.7%
+Node 7 Utilization is 2.0%
+
+You can notice there are some transceivers which show zero utilization due
+to the high link metrics.
+
+-------------------------------------------------------------------------------
+
+Original code was translated with makefile.simpack.
+Then was run with
+
+    route < d1e > output.v0u
+
+Changes necessary to get code to compile without warnigns or errors:
+
+1. remove specific directory from location of queuing.h
+2. include <stdio.h>
+3. event is an int.  it was declared twice.  removed 1 of them, now ok.
+4. return 0 at end of main().
+5. fn proc_event() needs a prototype declaration, now ok.
+6. fn report_nodes() needs a prototype declaration, now ok.
+7. ShortestPath () declaration was obsolete, fixed, ok.
+8. proc_event () declaration was obsolete, fixed, ok.
+9. changed return type of report_nodes() to void, now ok.
+
+compiled & linked ok under turbo c++
+but g++ gave the following:
+
+    Compile route example program:
+    g++ -I../../include -c -o route.o route.C
+    route.C: In function `void  ShortestPath (int, int, int)':
+    route.C:151: warning: float or double assigned to integer data type
+
+10. used equivalent of a "cast" to put float into int (see detailed analysis
+below).
+
+the statement in question is
+
+    min = state[i].length;
+
+min is declared int and is previosly set to INFINITY which is #defined as 1000
+
+state is declared as:
+
+    struct NodeLabel state[NODES];
+
+where NODES is #defines as 20 and the struct NodeLabel is defined as:
+
+    struct NodeLabel {
+        int predecessor;
+        float length;
+        int labl;
+    };
+
+so sure enough, he's trying to put a float into an int.  Now let's see what
+value he's putting into that int.  Not a problem -- the values i saw all ranged
+from about 1 to 12.
+
+-------------------------------------------------------------------------------
+
+PROBELM UNDER TURBO C++
+
+"Abnormal program termination"
+
+Happened IMMEDIATELY when execution began.
+
+Turns out storage allocation was too big for turbo c++ to handle.
+
+changed
+
+  //#define MESSAGES 1000
+
+to
+
+  #define MESSAGES 100
+
+and it works ok.
+
+To facilitate comparison, i also tested with 100 messages under unix, altho
+i suspect unix would have NO problem with 1000 messages.
+
+-------------------------------------------------------------------------------
+
+16 Files in this directory:
+
+readme               explanatory text file (this file)
+route0               simpack source code
+makefile.simpack     translates simpack version
+route1               sim++ source code, modified as explained above, using
+                      cAPI, so looks very similar to simpack code
+translat             translates sim++ version under unix
+makefile              ditto (invoked by translat above)
+translat.bat         translates sim++ version using Borland Turbo c++ under dos
+                      or os2
+d1e                  input files.  the way you use them is
+d1u                    route < d1e
+d2a                   or
+d2e                    route < d1e > output.vxx
+d2u
+d3e
+d3l
+d3u
+
+output.v0u           simpack output file
+output.v1d           sim++ dos output file
+output.v1u           sim++ unix output file
+
+

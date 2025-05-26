@@ -1,0 +1,61 @@
+sim++ spring 95
+robert cubert <rmc@cis.ufl.edu>  cis6905 with Dr Paul Fishwick
+CISE Dept, Univ of Florida, Gnsvl FL USA
+readme for examples/iterate
+
+-------------------------------------------------------------------------------
+
+                                sim++
+                                 |
+           +----------+----------+-----------+----------+
+           |          |          |           |          |
+          doc      include      src         olb      examples
+                                                        |
+               +----------+---------+---------+---------+---------+---...
+               |          |         |         |         |         |
+            cpudisk     block     tiktok     ssq     network    iterate
+                                                                  ^
+                                                                  ^
+You are here  = = = = = = = = = = = = = = = = = = = = = = = = = = /
+
+-------------------------------------------------------------------------------
+
+There are two versions of the same program in this directory: version 1 uses
+the cAPI; version 2 uses the ooAPI.  Both are equivalent in their effect.
+
+The program is the ssq example, but modified to perform repeated simulations.
+Each iteration provides different output, because it is baased on a pseudo-
+random sequence.  After performing multiple iterations, the output can be
+subjected to statistical analysis, and statistical inferences may be drawn.
+
+Iteration involves (for cAPI) using end_simpack(); or (for ooAPI) using
+destructors for Future and all facilities.
+
+WARNING: the iteration feature is NOT officially supported yet, altho it
+appears to work after limited testing.  The reason it is not supported is that
+we need to overload the assignment operator for classes which contain
+dynamically-allocated data; otherwise, orphaned pointers can cause failures
+due to unpredictable side-effects which are VERY difficult to diagnose.  There
+was not time to write the needed methods and test adequately prior to release.
+The code is included so that you can use this feature if you wish.  As long as
+you do not use assignment (=) to copy Future or Facility objects, it will
+probably work ok.
+
+-------------------------------------------------------------------------------
+
+To build one of the two examples:
+
+    "translat 1" to build the cAPI version
+    "translat 2" to build the cAPI version
+
+After you translate, run the program with a command line parameter to specify
+the number of iterations, eg,
+
+    iterate 10
+
+or
+
+    iterate 100 > out.100
+
+-------------------------------------------------------------------------------
+

@@ -1,0 +1,10 @@
+{LM} {LM = 0.001*Lar} {Larvae Maturing} {1}
+
+{Bir} {Bir = 10*But} {Births} {1}
+
+{Dea} {Dea = 0.1} {Deaths} {0}
+
+{But} {But = But(t-1)*(1-Dea)+LM} {Butterflies} {3}
+
+{Lar} {Lar = Lar(t-1)+Bir-LM} {Larvae} {3}
+

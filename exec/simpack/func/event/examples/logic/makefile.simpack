@@ -1,0 +1,16 @@
+
+logic: logic.o ../queuing/queuing.o
+	       @echo 'Link the logic application'
+	       @echo ' '
+	       cc -o logic logic.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	       ls -l logic
+	       date
+
+logic.o: logic.c
+	       @echo 'Compile logic simpack application'
+	       cc -c -o logic.o logic.c
+	       ls -l logic.o
+	       @echo ' '
+
+
+

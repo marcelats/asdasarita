@@ -1,0 +1,188 @@
+#!/usr/local/bin/wish -f
+#=========================================================================
+#
+#	Program: System Dynamics Simulation Modeling Tools
+#	Author: Tsae-Feng Yu
+#	Date: Dec. 2 1994
+#	
+#
+# 	This is the entry point of the System Dynamics Simulation Modeling 
+#	Tools. The user manual will detail how to use the tools to do
+#	system dynamics simulation modeling.
+#
+#=========================================================================
+
+set auto_path "./ $auto_path"
+wm title . "System Dynamics Simulation Modeling Tools"
+wm geometry . +50+50
+
+#-------------------------------------------------------
+# Some global variable declarations.
+# obj_flg : show whether obj array has been initialized
+#-------------------------------------------------------
+global obj label_flg first_time
+set mode 0
+set obj_flg 0   
+set label_flg 0
+set c .plate.right.board
+set xy .menu.position
+set can_x 0 
+set can_y 0
+set grid_mode 0
+set ok_flg 0
+set load_equ_flg 0
+set exec_equ_flg 0
+set first_time 1
+set appFileName "unnamed.sdg"
+set enter_flg 0
+set selected_id -1
+
+#-------------------------------------------------------
+# The following two frame widgets are the bases of the 
+# interface.
+#-------------------------------------------------------
+
+frame .menu -relief raised -borderwidth 1
+frame .plate -relief raised -borderwidth 1
+
+pack .menu -side top -fill x
+pack .plate -side bottom -expand yes -fill both
+
+#-------------------------------------------------------
+#	File Menu buttons 
+#-------------------------------------------------------
+
+menubutton .menu.button -text " File " -menu .menu.button.m \
+    -underline 1
+menu .menu.button.m
+.menu.button.m add command -label "New" -command "do_new" -underline 0
+.menu.button.m add command -label "Load" -command "do_load" -underline 0
+.menu.button.m add command -label "Save" -command "do_save" \
+    -underline 0
+.menu.button.m add command -label "Save As" -command "do_save_as" \
+    -underline 5
+.menu.button.m add command -label "Delete" -command "do_delete" -underline 0 
+.menu.button.m add command -label "Quit" -command "destroy ." \
+    -underline 0
+
+#-------------------------------------------------------
+#	Help Menu buttons 
+#-------------------------------------------------------
+menubutton .menu.help -text " Help " -menu .menu.help.m \
+    -underline 1
+menu .menu.help.m
+.menu.help.m add command -label "Introduction" -command "help_intro" \
+	-underline 0
+.menu.help.m add command -label "How to Create Flow Graph" \
+	-command "help_flow_graph" -underline 0
+.menu.help.m add command -label "How to Generate Equations" \
+	-command "help_equ" -underline 0
+.menu.help.m add command -label "How to Execute the Model" \
+	-command "help_exec" -underline 0
+.menu.help.m add command -label "About ..." \
+	-command "help_about" -underline 0
+
+#-------------------------------------------------------
+#	mouse position and file name labels
+#-------------------------------------------------------
+label .menu.position -text "X:$can_x Y:$can_y" -relief raised
+label .menu.fname -text "File name: unnamed.sdg" -relief raised
+pack .menu.button .menu.help -side left 
+pack .menu.fname .menu.position -side right
+
+#-------------------------------------------------------
+#	The following two frame widgets contain editing
+#	icons and drawing canvas.
+#-------------------------------------------------------
+frame .plate.left
+frame .plate.right
+pack .plate.left .plate.right -side left 
+
+radiobutton .plate.left.b1 -bitmap @./XBM/level.xbm \
+            -variable letters -command "set_level $c"
+radiobutton .plate.left.b2 -bitmap @./XBM/rate.xbm \
+            -variable letters -command "set_rate $c"
+radiobutton .plate.left.b3 -bitmap @./XBM/aux.xbm \
+            -variable letters -command "set_aux $c"
+radiobutton .plate.left.b4 -bitmap @./XBM/const.xbm \
+            -variable letters -command "set_const $c"
+radiobutton .plate.left.b5 -bitmap @./XBM/source.xbm \
+            -variable letters -command "set_source $c"
+radiobutton .plate.left.b6 -bitmap @./XBM/flow.xbm \
+            -variable letters -command "set_flow $c"
+radiobutton .plate.left.b7 -bitmap @./XBM/celink.xbm \
+            -variable letters -command "set_celink $c"
+radiobutton .plate.left.b8 -bitmap @./XBM/move.xbm \
+            -variable letters -command "set_move $c"
+radiobutton .plate.left.b9 -bitmap @./XBM/delete.xbm \
+            -variable letters -command "set_delete $c"
+radiobutton .plate.left.b10 -bitmap @./XBM/edit.xbm \
+            -variable letters -command "set_edit $c"
+button .plate.left.b11 -bitmap @./XBM/undo.xbm -padx 16 -command "puts 11"
+button .plate.left.b12 -bitmap @./XBM/equ.xbm -padx 16 -command "equ_generation"
+button .plate.left.b13 -bitmap @./XBM/exec.xbm -padx 16 -command "equ_execution"
+button .plate.left.b14 -bitmap @./XBM/grid0.xbm -padx 16 -command "grid_select"
+
+pack .plate.left.b1 .plate.left.b2 .plate.left.b3 .plate.left.b4 \
+	.plate.left.b5 .plate.left.b6 .plate.left.b7 .plate.left.b8 \
+	.plate.left.b9 .plate.left.b10 .plate.left.b12 \
+	.plate.left.b13 .plate.left.b14 -side top -expand yes
+
+canvas .plate.right.board -scrollregion {0c 0c 40c 40c} \
+	 -relief raised -width 800 -height 500 \
+        -xscroll ".plate.right.hscroll set" -yscroll ".plate.right.vscroll set"
+scrollbar .plate.right.vscroll  -relief sunken \
+	-command ".plate.right.board yview"
+scrollbar .plate.right.hscroll -orient horiz -relief sunken \
+	-command ".plate.right.board xview"
+pack .plate.right.vscroll -side right -fill y
+pack .plate.right.hscroll -side bottom -fill x
+pack .plate.right.board -expand yes -fill both
+
+#-------------------------------------------------------
+#	Event binding
+#-------------------------------------------------------
+$c bind object <Any-Enter> "$c itemconfig current"
+$c bind label <Any-Enter> "set_enter $c"
+$c bind label <Any-Leave> "set_leave $c"
+bind $c <Motion> "update_pos $c %x %y"
+bind $c <B1-Motion> {moving $c %x %y
+	update_pos $c %x %y}
+bind $c <ButtonRelease-1> "move_end $c %x %y"
+bind .plate.left.b14 <2> {incr_grid_mode}
+bind .plate.left.b14 <3> {decr_grid_mode}
+bind $c <3> { if {$label_flg == 1} {
+		  hide_s_rectangle $c
+		} else {
+		  show_s_rectangle $c
+		}
+	    }
+bind $c <2> { set oldmode $mode
+		if {$mode != 8} {
+		  set mode 8
+		}
+		draw_pos $c %x %y
+	    }
+bind $c <ButtonRelease-2> {move_end $c %x %y
+			     if {$oldmode != 8} {
+			       set mode $oldmode
+			     }
+			  }
+bind $c <B2-Motion> { moving $c %x %y
+		 	update_pos $c %x %y}
+
+bind $c <1> "draw_pos $c %x %y"
+
+#bind . <Any-FocusIn> {
+#    if {("%d" == "NotifyVirtual") && ("%m" == "NotifyNormal")} {
+#	focus .menu
+#    }
+#}
+
+#-------------------------------------------------------
+# 	The procedure is to decide the position of 
+#	displayed widget 
+#-------------------------------------------------------
+proc dpos w {
+    wm geometry $w +300+300
+}

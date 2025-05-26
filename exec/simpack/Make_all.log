@@ -1,0 +1,458 @@
+Leaving .cshrc
+native!rmc      ttyp2   Jul 28 21:46    (tuna.cis.ufl.edu)
+native:1% fishrmc
+/amd/rock/export/homes12/fishwick/rmc
+Fri Jul 28 21:46:45 EDT 1995
+native:2% cd simpack
+native:3% make all
++---------------------------------------+
+|     SimPack version 3.0 (SimPack3)    |
+|           is the property of          |
+|          Dr. Paul A. Fishwick         |
+|   Copyright (c) 1995.  See License.   |
++---------------------------------------+
+ 
+About to show you the License
+Your options are:
+ 
+  A = I have seen License and accept its terms and conditions
+  R = I reject License
+  S = Show me License and ask me again after i have read it
+a
+We can proceed with installation of SimPack3
+ 
+About to show you the License.gnu
+Your options are:
+ 
+  A = I have seen License.gnu and accept its terms and conditions
+  R = I reject License.gnu
+  S = Show me License.gnu and ask me again after i have read it
+a
+We can proceed with installation of SimPack3
+date
+Fri Jul 28 21:47:05 EDT 1995
+Begin making
+(cd func; Make_all)
+ 
+SimPack3 is the property of Paul A. Fishwick,
+copyright (c) 1995; see License in root directory of the distribution,
+which is simpack.
+ 
+About to create SimPack2.x Queuing Library ...
+cc -c -o queuing.o queuing.c
+Done creating SimPack2.x Queuing Library (or it was already current)
+About to create Sim++ version 1.0 Event Model Tools ...
+ 
+Sim++ is the property of Paul A. Fishwick and Robert M. Cubert,
+copyright (c) 1995; see license in root directory of the distribution,
+which is simpack/func/event.
+The License for Sim++ is separate from the SimPack3 License.
+About to show you the License
+Your options are:
+ 
+  A = I have seen License and accept its terms and conditions
+  R = I reject License
+  S = Show me License and ask me again after i have read it
+a
+We can proceed with installation of SimPack3
+Create Sim++ Version 1.0 Object Library [y/n]?y
+ 
+Creating Sim++ Version 1.0 Object Library ...
+ 
+Sim++ is the property of Paul A. Fishwick and Robert M. Cubert,
+copyright (c) 1995; see License in root directory of the distribution,
+which is simpack/func/event.
+ 
+About to Build Sim++ Object Library ...
+Fri Jul 28 21:47:17 EDT 1995
+g++ -Iinclude -c -o olb/calendar.o calendar.C
+g++ -Iinclude -c -o olb/capifac.o capifac.C
+g++ -Iinclude -c -o olb/capifut.o capifut.C
+g++ -Iinclude -c -o olb/capiran.o capiran.C
+g++ -Iinclude -c -o olb/event.o event.C
+g++ -Iinclude -c -o olb/estatus.o estatus.C
+g++ -Iinclude -c -o olb/facility.o facility.C
+g++ -Iinclude -c -o olb/flist.o flist.C
+g++ -Iinclude -c -o olb/future.o future.C
+g++ -Iinclude -c -o olb/heap.o heap.C
+g++ -Iinclude -c -o olb/leftist.o leftist.C
+g++ -Iinclude -c -o olb/linked.o linked.C
+g++ -Iinclude -c -o olb/service.o service.C
+g++ -Iinclude -c -o olb/token.o token.C
+g++ -Iinclude -c -o olb/util.o util.C
+g++ -Iinclude -c -o olb/vlist.o vlist.C
+ 
+simpack/func/event/Translat is done.
+ 
+Fri Jul 28 21:48:12 EDT 1995
+Done.
+Create Sim++ Example Code Executables [y/n] ?y
+ 
+Creating Sim++ Example Code Executables ...
+ 
+Sim++ Version 1.0 is the property of Paul Fishwick and Robert Cubert,
+copyright (c) 1995; see License in root directory of the distribution,
+which is simpack/func/event.
+ 
+ 
+Build (version 1 of) ALL Sim++ Program Examples ...
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile cpudisk example program:
+g++ -I../../include -c -o cpudisk.o cpudisk.C
+ 
+command line to link cpudisk is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o cpudisk cpudisk.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o cpudisk cpudisk.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile block example program:
+g++ -I../../include -c -o block.o block.C
+ 
+command line to link block is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o block block.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o block block.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile tiktok example program:
+g++ -I../../include -c -o tiktok.o tiktok.C
+ 
+command line to link tiktok is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o tiktok tiktok.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o tiktok tiktok.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile ssq example program:
+g++ -I../../include -c -o ssq.o ssq.C
+ 
+command line to link ssq is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o ssq ssq.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o ssq ssq.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile iterate example program:
+g++ -I../../include -c -o iterate.o iterate.C
+ 
+command line to link iterate is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o iterate iterate.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o iterate iterate.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile logic example program:
+g++ -I../../include -c -o logic.o logic.C
+ 
+command line to link logic is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o logic logic.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o logic logic.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile network example program:
+g++ -I../../include -c -o network.o network.C
+ 
+command line to link network is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o network network.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o network network.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile qnet example program:
+g++ -I../../include -c -o qnet.o qnet.C
+ 
+command line to link qnet is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o qnet qnet.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o qnet qnet.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+/////////////////////////////////////////////////////////
+//// Sim++ version 1.0 is the property of            ////
+//// Paul A. Fishwick and Robert M. Cubert           ////
+//// - - - - - - - - - - - - - - - - - - - - - - - - ////
+//// copyright (c) 1995; see license in the root     ////
+//// directory of the distribution.                  ////
+/////////////////////////////////////////////////////////
+ 
+Compile route example program:
+g++ -I../../include -c -o route.o route.C
+ 
+command line to link route is too wide for screen, so state it
+below on several lines for your information:
+  g++ -o route route.o
+  ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o
+  ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o
+  ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o
+  ../../olb/vlist.o
+  ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o
+  -lm
+ 
+g++ -o route route.o ../../olb/event.o ../../olb/facility.o ../../olb/flist.o ../../olb/future.o ../../olb/service.o ../../olb/token.o ../../olb/util.o ../../olb/estatus.o ../../olb/capifac.o ../../olb/capifut.o ../../olb/capiran.o ../../olb/vlist.o ../../olb/calendar.o ../../olb/heap.o ../../olb/linked.o ../../olb/leftist.o -lm
+ 
+ 
+Done Building Sim++ Program Examples.
+ 
+Done.
+Create SimPack Event Model Packages [y/n]?y
+ 
+Creating SimPack Functional Model Packages ...
+ 
+----------------------------------------------------------------------
+ 
+minigpss package:
+ 
+ Note 1: expect a warning:
+         parse.y: 7: NIL redefined
+ 
+(cd gpsource; make)
+cc  -I../../../../queuing -o ../gpfiles/gpss main.c ../../../../queuing/queuing.o -ll -lm -lcurses \
+                    -ltermcap 
+parse.y: 7: NIL redefined
+ 
+----------------------------------------------------------------------
+Xsimcode package:
+ 
+Note 2: expect a warning in init.c:
+        init.c:66: warning: initialization of ``outerWindow" makes
+        integer from pointer t...
+ 
+Note 3: expect a warning in utility.c:
+        In function ``setCursor":
+        utility.c:297: warning: comparison between pointer and integer
+ 
+mv Makefile Makefile.bak
+imake -DUseInstalled -DUseInstalledMotif -I/local/lib/X11/config
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  init.c
+init.c:66: warning: initialization of `outerWindow' makes integer from pointer without a cast
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  file.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  fileMenu.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  go.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  optMenu.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  padMenu.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  drawMenu.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  event.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  list.c
+gcc -O -pipe   -I/local/include  -DSTRINGS_ALIGNED -DNO_REGEX -DNO_ISDIR -DUSE_RE_COMP -DNO_REGCOMP -DUSE_GETWD -DNO_MEMMOVE -DNO_ALLOCA -DBOGUS_MB_MAX -DNO_CONST     -target sun4 -c  utility.c
+utility.c: In function `setCursor':
+utility.c:297: warning: comparison between pointer and integer
+rm -f Xsimcode
+gcc -o Xsimcode  init.o  file.o  fileMenu.o   go.o  optMenu.o  padMenu.o  drawMenu.o   event.o  list.o   utility.o -O -pipe  -L/local/lib  -lXaw -lXmu -lXt -lXext  -lX11 -lm     
+cc -I../../../../queuing -c -o model.o model.c
+model.c has compiled
+cc -o model model.o ../../../../queuing/queuing.o -lcurses -ltermcap -lm
+model.c has linked
+cc -I../../../../queuing -c -o model.o model.c
+cc -o model model.o ../../../../queuing/queuing.o -lcurses -ltermcap -lm
+cc -I../../../../queuing -c -o examp1.o examp1.c
+cc -o examp1 examp1.o ../../../../queuing/queuing.o -lcurses -ltermcap -lm
+cc -I../../../../queuing -c -o examp2.o examp2.c
+cc -o examp2 examp2.o ../../../../queuing/queuing.o -lcurses -ltermcap -lm
+cc -I../../../../queuing -c -o examp3.o examp3.c
+cc -o examp3 examp3.o ../../../../queuing/queuing.o -lcurses -ltermcap -lm
+cc -I../../../../queuing -c -o big_test.o big_test.c
+cc -o big_test big_test.o ../../../../queuing/queuing.o -lcurses -ltermcap -lm
+cc -I../../../../queuing -c -o cont1.o cont1.c
+cc -I../../../../queuing -c -o combined1.o combined1.c
+cc -o combined1 cont1.o combined1.o ../../../../queuing/queuing.o -lcurses -ltermcap -lm
+ 
+----------------------------------------------------------------------
+simpack/func/event/Make_all is done.
+Fri Jul 28 21:50:44 EDT 1995
+About to create SimPack3 Time-Slice Functional Model Packages ...
+ 
+SimPack3 is the property of Paul A. Fishwick,
+copyright (c) 1995; see License in root directory of the distribution,
+which is simpack.
+ 
+Create SimPack Time-Slice Functional Model Packages [y/n]?y
+ 
+Creating SimPack Time-Slice Functional Model Packages ...
+ 
+----------------------------------------------------------------------
+ 
+sdsmt: Tcl/Tk -- nothing to make
+ 
+----------------------------------------------------------------------
+block package:
+ 
+cc -o block block.c -lcurses -ltermcap -lm
+cc -o monorail1 monorail1.c -lcurses -ltermcap -lm
+cc -o monorail2 monorail2.c -lcurses -ltermcap -lm
+cc -o monorail3 monorail3.c -lcurses -ltermcap -lm
+ 
+----------------------------------------------------------------------
+pulse package:
+ 
+cc -o pulse pulse.c  -lm
+ 
+----------------------------------------------------------------------
+simpack/func/slice/Make_all is done.
+Fri Jul 28 21:50:51 EDT 1995
+simpack/func/Make_all is done.
+Fri Jul 28 21:50:51 EDT 1995
+Unconditionally make the rest of SimPack3:
+Declarative ...
+(cd dec; make all)
+(cd fsa;make)
+cc -o fsa fsa.c -lm
+(cd markov; make)
+cc -o markov markov.c  ../../func/queuing/queuing.o -lcurses -ltermcap -lm
+(cd petri; make)
+cc -o petri petri.c ../../func/queuing/queuing.o -lcurses -ltermcap -lm
+(cd warehouse; make)
+cc -o warehouse warehouse.c ../../func/queuing/queuing.o -lcurses -ltermcap -lm
+Multimodel ...
+(cd multimodel; make all)
+cc -o combined combined.c ../func/queuing/queuing.o -lcurses -ltermcap -lm
+cc -o bwater bwater.c -lm
+Constraint ...
+(cd constraint; make all)
+(cd delaydiff; make all)
+gcc -o delaydiff delaydiff.c -lm
+(cd difference; make all)
+cc -o bifurc bifurc.c -lm
+cc -o log2 log2.c -lm 
+(cd differential/deq; make all)
+cc contsim.c -o contsim -lm
+gcc order1.c -o order1
+(cd differential/integrate; make all)
+cc -o conte conte.c -lm
+cc -o contrk contrk.c -lm
+cc -o lorenz lorenz.c -lm
+cc -o silnikov silnikov.c -lm
+cc -o vibration vibration.c  -lm
+Spatial ...
+(cd spatial/gas; make all)
+cc -o gas1 gas1.c -lcurses -ltermcap -lm
+cc -o gas2 gas2.c ../../func/queuing/queuing.o -lcurses -ltermcap -lm
+The make has completed,
+now calculate kb of space used by SimPack3...
+13381   .
+(Should be around 13000 kb, depending on compiler & linker)
+Simpack Version 3.0 has been made.
+date
+Fri Jul 28 21:51:14 EDT 1995

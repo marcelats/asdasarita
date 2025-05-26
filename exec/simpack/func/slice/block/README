@@ -1,0 +1,8 @@
+Slice is a simple example of a block diagram simulator -- not unlike
+the old CSMP program for continuous simulation. The input file format
+is as follows:
+
+#-of-blocks   output-block  time-for-simulation
+block0-num  block-type  block-input(s)  parameters(if any)
+block1-num  ............
+. . . .

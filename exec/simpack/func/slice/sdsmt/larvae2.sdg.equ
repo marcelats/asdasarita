@@ -1,0 +1,12 @@
+{BDR} {BDR = 0.5*(But/500)} {Butterfly Death Rate} {1}
+
+{LM} {LM = .05*Lar} {Larvae Maturing} {1}
+
+{Bir} {Bir = 5*But} {Births} {1}
+
+{LDR} {LDR = .5*Lar} {Larvae Death Rate} {1}
+
+{But} {But = But(t-1)*(1-BDR)+LM} {Butterflies} {3}
+
+{Lar} {Lar = Lar(t-1)-LDR+Bir-LM} {Larvae} {4}
+

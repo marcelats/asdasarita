@@ -1,0 +1,39 @@
+FYI: For a program that accepts equations in standard form and then
+plots results, see the 'deq' sub-directory.
+
+NOTE: You should have a plotting package with these programs. gnuplot
+and xvgr are freely available. For UNIX, in general, you should look at
+the 'plot' and 'graph' man pages. See further information in the 'deq'
+subdirectory on how to obtain xvgr and gnuplot.
+----------------------------
+
+The routines in this directory are for simulating differential equations.
+'conte' and 'contrk' are for simulating the following equation:
+
+
+x''' + x' = 2
+with initial conditions x(0)=x'(0)=x''(0)=1
+
+using Euler's method and Runge-Kutta (RK) (order 4) to numerically integrate
+the systems. To see a graph, try:
+
+%contrk > dump.plot
+%gnuplot
+
+
+Note that the equation is written in routine 'state()' and the
+initial conditions are in 'init_conditions()'. The equation(s) you
+want to simulate are placed in first order form first.
+
+---------------------------------------------------------------------------
+The remaining programs all use RK4 for integration. Plot the trajectories
+as previously shown:
+
+1. The Lorenz System - a chaotic attractor in phase space
+
+2. Lotka Volterra predator prey model
+
+3. Vibration - forced linear vibrations (wave packets). A time series plot.
+
+4. Silnikov - homoclinic orbits in phase space.
+

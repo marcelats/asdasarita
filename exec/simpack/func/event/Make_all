@@ -1,0 +1,70 @@
+
+echo ' '
+echo 'Sim++ is the property of Paul A. Fishwick and Robert M. Cubert,'
+echo 'copyright (c) 1995; see license in root directory of the distribution,'
+echo 'which is simpack/func/event.'
+echo 'The License for Sim++ is separate from the SimPack3 License.'
+Ask License
+if ( [ -f REJECT ] ) then
+  echo 'You cannot proceed with Sim++ because you have rejected the terms and'
+  echo 'conditions of the Sim++ License.'
+  rm REJECT
+  echo -n 'Press [enter] key to proceed with the rest of SimPack3: ' 
+  read ansa
+  echo ' '
+  exit 1
+  fi
+
+echo -n 'Create Sim++ Object Library [y/n]?'
+read ansa
+echo ' '
+if ( [ "$ansa" = "y" ] ) then
+  echo 'Creating Sim++ Object Library ...'
+  Translat 
+  echo 'Done.'
+  fi
+
+echo -n 'Create Sim++ Example Code Executables [y/n] ?'
+read ansa
+echo ' '
+if ( [ "$ansa" = "y" ] ) then
+  echo 'Creating Sim++ Example Code Executables ...'
+  (cd examples; translat)
+  echo 'Done.'
+  fi
+
+echo -n 'Create SimPack Event Model Packages [y/n]?'
+read ansa
+echo ' '
+if ( [ "$ansa" = "y" ] ) then
+  echo 'Creating SimPack Functional Model Packages ...'
+  echo ' '
+  echo '----------------------------------------------------------------------'
+  echo ' '
+  echo 'minigpss package:'
+  echo ' '
+  echo ' Note 1: expect a warning:'
+  echo '         parse.y: 7: NIL redefined'
+  echo ' '
+  (cd pkgs/minigpss; make all)
+  echo ' '
+  echo '----------------------------------------------------------------------'
+  echo 'Xsimcode package:'
+  echo ' '
+  echo 'Note 2: expect a warning in init.c:'
+  echo '        init.c:66: warning: initialization of ``outerWindow" makes'
+  echo '        integer from pointer t...'
+  echo ' '
+  echo 'Note 3: expect a warning in utility.c:'
+  echo '        In function ``setCursor":'
+  echo '        utility.c:297: warning: comparison between pointer and integer'
+  echo ' '
+  (cd pkgs/Xsimcode/src; xmkmf; make)
+  (cd pkgs/Xsimcode/src; make model)
+  (cd pkgs/Xsimcode/examples; make all)
+  echo ' '
+  echo '----------------------------------------------------------------------'
+  echo 'simpack/func/event/Make_all is done.'
+  fi
+
+date

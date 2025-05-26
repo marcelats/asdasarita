@@ -1,0 +1,94 @@
+                         SIMPACK PROJECT IDEAS
+                         ---------------------
+
+Want SimPack to do something that it does not do now? Please ask
+your students to contribute programs that are written on top of
+SimPack (or that change SimPack in reasonable ways). Here are
+some possible project ideas. Please send your own ideas, and I
+will add them to this file.
+
+0) All projects will be improved by creating the proper user interfaces
+   and documentation. A good graphical user interface (GUI) builder 
+   makes creating interfaces very convenient. Tk/Tcl is one such
+   package, and its free (of course!). On the other hand, many programs 
+   should be created so that they can be run without a GUI. If the
+   program requires graphics output, use a GUI. Otherwise stick with
+   a plain text interface. If you can create your program to operate
+   in either way, so much the better. As far as documentation, you should
+   have an online Postscript document. Some documents can be translated
+   into HTML for World Wide Web (WWW) access if that is appropriate.
+   Usually, for WWW pages, you will want to create a "mini document"
+   with text, images (from the execution of your program), audio and
+   video (if appropriate). This means that your primary, full length,
+   documentation is output in Postscript and a shorter, but informational,
+   hypermedia document is placed on WWW.
+   
+1) Build a general graph building package under X windows which can
+   be used to build models based on graph structures. Xsimcode is
+   an example of a program whose graph nodes are servers, joins and
+   splits, and whose arcs are transitions among nodes. The topology
+   of an Xsimcode graph is translated into C/C++ SimPack code (from
+   the queuing library) and then executed. It was not built
+   upon a program permitting graph based drawing, and so it is not very
+   flexible for expanding to other graph-based models such as Petri
+   nets, logic nets and finite state automata. We need a more flexible
+   method that builds upon a program that allows the user to construct
+   a graph (preferably using arbitrary icons for nodes). The graph
+   definition (i.e. topology) can be translated into C/C++ SimPack code.
+   
+   Use libraries included with Tk/Tcl to create this kind of program.
+   Sample Projects using the generic graph editor:
+  
+   A) Systems Dynamics graph simulator.
+   B) Logic gate simulator.
+   C) Functional (i.e. block) model simulator.
+   D) Petri net simulator.
+   E) Bond graph simulator.
+   F) Compartmental model simulator.
+
+2) The C version of SimPack is currently up to date. The C++ version
+   is not as complete as the C version, and it contains an older version
+   of the Queueing library. Create a C++ version of SimPack. This should
+   be done by redesigning the SimPack routines to design and use objects
+   where they are appropriate, rather than to simply "make the C version
+   compile under C++." The queuing C++ library needs work in this regard.
+
+3) Build an interactive debugger for various simulation programs and
+   utilities. For 'queuing.c', for instance, build an 'xdbx' type of
+   graphical user interface debugger that allows users to watch and
+   change simulation variables. Look at the visual trace model which
+   can be set when using the routine calls 'trace_visual(INTERACTIVE)'
+   and 'trace_visual(BATCH)'. Use Tk/Tcl for the GUI builder.
+
+4) Build an equation editor using a formal grammar. Yacc/Lex (or Bison/Flex)
+   should be used to construct the parser. The allowable equations can
+   be ODEs or maybe even PDEs. DEQ (in SimPack) was a start toward this
+   goal. I asked the student to use Yacc/Lex, but he used a top down
+   parser of his own making. The translation semantics need to be
+   expanded to allow for more flexible equation entry.
+
+5) MINI-GPSS: expand this so that it is a full fledge GPSS implementation,
+   instead of only a small subset. It is built upon Yacc/Lex and so it has
+   a good foundation.
+
+6) Build a simple X based simulator for PDEs. This tool will show
+   scalar and vector fields as they change over time. Allow different
+   methods for entering the equations: coordinate-specific notation or
+   vector. Let the user enter forces and different methods of flux
+   (diffusive,convective,1/R^2) interactively over a grid.
+
+7) Make it easy to construct distributed simulations using distributed
+   object oriented techniques. There are some toolkits in C++ that
+   make it easier to build distributed programs. One of these toolkits
+   can be integrated with SimPack code.
+
+8) Build a freeware equivalent of the commercial game "The Incredible 
+   Machine (TIM)". TIM allows the user to pick components from storage 
+   bins. Components are varying from bowling balls, fans, and electric 
+   motors to balloons, trampolines and walls. Each of these components
+   is built to perform certain functions. Balloons rise when time starts;
+   balls fall and fans move most objects in front of them. If the work 
+   is done on a fast machine, make it work with 3D objects in a 3D
+   environment. Allow for flexible objects with springs in this
+   program. Then it will have some of the characteristics of Xtinkertoy,
+   but will be greatly expanded.

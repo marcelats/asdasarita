@@ -1,0 +1,15 @@
+
+tiktok: tiktok.o ../queuing/queuing.o
+	@echo 'Link the tiktok application'
+	@echo ' '
+	cc -o tiktok tiktok.o ../queuing/queuing.o -lm -lcurses -ltermcap
+	ls -l tiktok
+	date
+
+tiktok.o: tiktok.c
+	@echo 'Compile tiktok simpack application'
+	cc -c -o tiktok.o tiktok.c
+	ls -l tiktok.o
+	@echo ' '
+
+

@@ -1,0 +1,63 @@
+
+                                                                      
+
+
+                      MINI-GPSS Program Constructs Descriptions
+
+       
+            Advance : This statement increments the simulation clock by
+                     
+                      the time specified.
+
+           Generate : This statement creates an inter-arrival time.
+          
+           Queue    : This statement allows a transaction to enter
+             
+                      a queue of a particular facility.
+
+           Seize    : This statement reserves a (single) server of a
+   
+                      particular facility for a transaction.
+
+           Enter    : This statement reserves (multiple) servers of a
+
+                      particular facility for a transaction.
+
+           Storage  : This statement defines the number of servers for
+                    
+                      a particular facility.  It is only used when a
+            
+                      facility has multiple servers.
+               
+           Depart   : This statement allows the transaction to leave a
+                  
+                      particular queue when the server is free.
+
+           Release  : This statement frees a (single) server of a 
+                      
+                      particular facility.    
+
+           Leave    : This statement frees a server of a particular
+                      
+                      facility. This statement is used  only when 
+                    
+                      the facility has multiple servers.
+
+           Transfer : This statement is used for branching.    
+          
+           Start    : This statement defines the termination count.
+
+           Terminate: This statement decrements the termination count.    
+
+           Simulate : All programs must begin with this statement.
+
+           End      : All programs must end with this statement.
+
+           *        : Any line that begins with this symbol is
+                     
+                      ignored by the compiler.
+          -------------------------------------------------------
+
+          MINI-GPSS PROGRAMS ARE NOT CASE SENSITIVE.
+
+          

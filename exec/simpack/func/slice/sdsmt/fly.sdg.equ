@@ -1,0 +1,12 @@
+{FB} {FB = Fli *0.1} {Flies Birth} {1}
+
+{LD} {LD = 0.04*Liz+ Liz- 0.01*Fli } {Lizards Death} {2}
+
+{FD} {FD = Fli *0.05+Liz *5} {Flies Death} {2}
+
+{LB} {LB = Liz *0.05} {Lizards Birth} {1}
+
+{Liz} {Liz = Liz(t-1) +LB -LD} {Lizards} {3}
+
+{Fli} {Fli = Fli(t-1) +FB-FD} {Flies} {3}
+

@@ -1,0 +1,30 @@
+Future constructed: Sun May 28 09:51:45 1995
+Costs for Part Processing
+Cost for part generation: $40.00
+Cost of labor for server 1: $51.61
+Cost of labor for server 2: $5.81
+Total Cost is $97.42
+
++---------------------------+
+| SimPack SIMULATION REPORT |
++---------------------------+
+
+Total Simulation Time: 12003.251196
+Total System Arrivals: 100
+Total System Departures: 100
+
+System Wide Statistics
+----------------------
+System Utilization: 70.0%
+Arrival Rate: 0.008331, Throughput: 0.008331
+Mean Service Time per Token: 84.065780
+Mean # of Tokens in System: 50.436326    Largest FEL size was 100
+Mean Residence Time for each Token: 6053.998844
+
+Facility Statistics
+-------------------
+F 1 (ACC): Idle:  2.2%, Util: 97.8%, Preemptions: 0, LongestQ: 99
+F 2 (LATHE): Idle:  0.1%, Util: 99.9%, Preemptions: 0, LongestQ: 1
+F 3 (INSPECTOR): Idle: 87.6%, Util: 12.4%, Preemptions: 0, LongestQ: 0
+
+

@@ -1,0 +1,45 @@
+
+                            
+
+ 
+                             MINI-GPSS Abstract
+
+           MINI-GPSS is a discrete event system simulation processor.  
+
+        The language, MINI-GPSS, is a subset of the GPSS (which stands 
+
+        for General Purpose Simulation System) programming language.   
+
+        GPSS was specifically designed for discrete event system     
+
+        simulation.  A discrete system is one in which changes states
+
+        at discrete points over time.  In the MINI-GPSS simulation model,
+
+        tokens or active entities enter the system at an arrival rate
+
+        over time.   When the tokens arrive, they are put on a queue     
+
+        until it is their turn to be served.   When the token is at the 
+
+        front of the queue, and the server is free, the token is removed
+
+        from the queue.   At this point, the status of the server now 
+
+        becomes busy, and work is performed by the server.  The amount of
+
+        time it takes to serve the token is known as the service time.
+
+        When the work is completed, the server releases the token, and the
+
+        server is free again, ready to serve more incoming tokens.  The
+
+        simulation continues in this manner until a certain time has been
+
+        reached, or a certain number of tokens have been served.  Thus,
+
+        a discrete event system consists of incoming active entities 
+
+        (tokens), the work performing resources (facilities), and changes in
+
+        some state of the system (events).

@@ -1,0 +1,71 @@
+Received:  from ianit825.ian.ge.cnr.it  by cis.ufl.edu (8.6.10/cis.ufl.edu)
+	id JAA20112; Mon, 3 Apr 1995 09:05:47 -0400
+Received: by ianit825.ian.ge.cnr.it (16.6/HP-UX/16.2 - RB940221)
+	id AA01900; Mon, 3 Apr 95 15:02:14 +0200
+Date: Mon, 3 Apr 95 15:02:14 +0200
+From: lino@ian.ge.cnr.it (Nicola Bianchi)
+Message-Id: <9504031302.AA01900@ianit825.ian.ge.cnr.it>
+To: fishwick@cis.ufl.edu
+Subject: SDSMT
+Cc: yu@cis.ufl.edu, bianchi@ian.ge.cnr.it
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+
+First of all, I would say that I have really appreciated
+your endeavour to developing SDSMT.
+I'm an old System Dynamics practitioner, but, working
+within a Centre for the History of Technology, the
+history of SD has become my first job (and software
+aspects play an important part).
+Unfortunately, I don't have a X-Windows machine in order
+to test SDSMT. Browsing your manual and the source code, 
+it would seem that some classical and important features 
+as DELAY or TABLE, are not included in SDSMT. Do you think 
+of developing further the package?
+I would inform you that there is a discussion list in System
+Dynamics <system-dynamics@world.std.com> at the listserver
+<majordomo@world.std.com>, where you could send the SDSMT
+announcement. [Also, there are lists in Learning Organizations
+(<learning-org@world.std.com>, listserver: <majordomo>) and
+in Business Process Reengineering (<bpr-l@duticai.twi.tudelft.nl>,
+listserver: <listserv>) where languages such as STELLA or iThink
+are often mentioned, even though the main interest is not on 
+software tools].
+Problably, software vendors could be not very happy for this
+"intrusion", but my opinion (see pag.495-501 in "Computer-Based 
+Management of Complex Systems", eds. P.M.Milling and E.O.K.Zahn,
+Springer-Verlag, Berlin - New York, 1989) is that System Dynamics
+methodology has not spread enough even cause of the lack of a
+public domain software; and, during the Stuttgart Conference,
+I tried to demonstrate that a growth in the SD field due to
+public domain software would increase also the billing of the
+software houses.
+To be exact, SDSMT is not the first p.d. software in SD.
+I'm speaking of NDTRAN, developed at the University of 
+Notre Dame by I.J.Uhran and W.I.Davisson at the end of the 
+seventies ["IEEE Transactions on Systems, Man and Cybernetics",
+vol. SMC-14, no. 6, Nov-Dec. 1984, pag. 837-846]. But those 
+are days of difficult communications. The package has been 
+released to SHARE (IBM), DECUS (DEC), HUE (Harris) and EXUG 
+(Honeywell), but never I have found it quoted, neither, now, I 
+can locate it in the Net. If you succeed, please, let me 
+know.
+Finally, I would like to submit you (and eventually discuss,
+notwithstanding my faulty English) the need of software tools
+for simulation and modeling. I'm thinking to inter-languages
+(or, better, dialects) translators, generators of diagrams
+(causal, stock&flow, etc.) from the model equations (inverting
+the present trend of modeling), etc. I think that interpreters
+such as (TK-)TCL or PERL are cut out for this work. 
+I recognize that I'm proposing only a way to by-pass one of the 
+fundamental questions (standards and lingua franca) in modeling
+and simulation, but, not considering near a general consent, we
+should think to patch up our disciplines.
+
+Thanks for your attention.
+Best regards,
+
+Nicola BIANCHI
+CNR - Centre for the History of Technology
+Genoa, Italy
+
