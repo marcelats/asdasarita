@@ -296,6 +296,15 @@ public class Desenho extends JLabel{
             System.out.println(par[0] + " -> " + par[1]);
         }
     }
+	catch (Exception e){	
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(
+					null,
+					"Arquivo inv�lido ou incompat�vel!",
+					"ASDA - Erro na abertura do arquivo",
+					JOptionPane.ERROR_MESSAGE);
+			throw e;
+		}
 }
 
 
@@ -325,7 +334,7 @@ public class Desenho extends JLabel{
 			
 			//in.close();
 
-		} catch (Exception e){	
+		/*} catch (Exception e){	
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(
 					null,
@@ -342,7 +351,7 @@ public class Desenho extends JLabel{
 			this.height = graph.getNode(0).getImage().getIconHeight();
 		}
 		this.repaint();
-	}
+	}*/
 	
 	 /**
 	  * Guarda a posi��o do n� de origem da liga��o.
