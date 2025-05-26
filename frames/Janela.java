@@ -54,9 +54,9 @@ import graph.ProcessoLogicoParSMPL;
 
 /**
  * 
- * @author André Felipe Rodrigues - correção de diversos erros
- * 						e adição de diversas funcionalidades
- * @author Thais Souza Aiza (concepção inicial)
+ * @author Andr  Felipe Rodrigues - corre  o de diversos erros
+ * 						e adi  o de diversas funcionalidades
+ * @author Thais Souza Aiza (concep  o inicial)
  */
 
 public class Janela extends JFrame implements ActionListener{
@@ -65,7 +65,7 @@ public class Janela extends JFrame implements ActionListener{
 	
 	String filename = null;
 	
-	private String currentDir; // diretório corrente da aplicação
+	private String currentDir; // diret rio corrente da aplica  o
 	
 
 	
@@ -102,8 +102,8 @@ public class Janela extends JFrame implements ActionListener{
 	
 	private AvaliadorNivelUmB avalia = new AvaliadorNivelUmB();	
 	
-	private JToolBar toolBar;	// barra de ferramente que tem botões novo, salvar, etc
-	protected JPanel tools;		// painél que têm os botões para adicionar componentes do modelo de simulação
+	private JToolBar toolBar;	// barra de ferramente que tem bot es novo, salvar, etc
+	protected JPanel tools;		// pain l que t m os bot es para adicionar componentes do modelo de simula  o
 	
 	private UsuarioCadastro userInfo;
 	
@@ -129,7 +129,7 @@ public class Janela extends JFrame implements ActionListener{
 		{
 			String val = JOptionPane.showInputDialog(
 					this,
-					"Digite o tipo de linguagem - POSSÍVEIS:\n" +
+					"Digite o tipo de linguagem - POSS VEIS:\n" +
 					"SMPL SMPLX ParSMPL SIMPACK SIMPACK2",
 					"Escolha de Linguagem",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -250,7 +250,7 @@ public class Janela extends JFrame implements ActionListener{
 						System.exit(0);
 					// YES - salva e sai do programa
 					// NO - Apenas sai do programa
-					// CANCEL - não faz nada		
+					// CANCEL - n o faz nada		
 				}
 			});
 			
@@ -272,7 +272,7 @@ public class Janela extends JFrame implements ActionListener{
 		
 		menu.add(menuParametrizarModelo);
 
-		menuParametrizar = new JMenuItem("Processos Lógicos");
+		menuParametrizar = new JMenuItem("Processos L gicos");
 	
 		if ( (userInfo!=null) && (userInfo.getLinguagem().equals("ParSMPL")))
 		{
@@ -297,7 +297,7 @@ public class Janela extends JFrame implements ActionListener{
 		menuItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 		//		imprimirGraph(d.graph);
-				if (avalia.verificaValoresMinimos(d.graph)) // verifica os valores mínimos para gerar um programa de simulação
+				if (avalia.verificaValoresMinimos(d.graph)) // verifica os valores m nimos para gerar um programa de simula  o
 				{
 					Gerador gerador;
 					
@@ -311,19 +311,19 @@ public class Janela extends JFrame implements ActionListener{
 																		
 						JOptionPane.showMessageDialog(
 								null,
-								"Código gerado com sucesso!!!",
+								"C digo gerado com sucesso!!!",
 								"ASDA",
 								JOptionPane.INFORMATION_MESSAGE);
 					}
 					else if ( (userInfo != null) && (userInfo.getLinguagem().equals("ParSMPL")))
 					{
 						gerador = new GeradorParSMPL(d.graph);
-						gerador.leGabarito(null); // não precisa passar gabarito, o gerador é quem controla
+						gerador.leGabarito(null); // n o precisa passar gabarito, o gerador   quem controla
 						
 						filename = gerador.getFilename();
 						JOptionPane.showMessageDialog(
 									null,
-									"Código gerado com sucesso!!!",
+									"C digo gerado com sucesso!!!",
 									"ASDA",
 									JOptionPane.INFORMATION_MESSAGE
 									);
@@ -339,7 +339,7 @@ public class Janela extends JFrame implements ActionListener{
 												
 						JOptionPane.showMessageDialog(
 								null,
-								"Código gerado com sucesso!!!",
+								"C digo gerado com sucesso!!!",
 								"ASDA",
 								JOptionPane.INFORMATION_MESSAGE);
 					}
@@ -353,7 +353,7 @@ public class Janela extends JFrame implements ActionListener{
 												
 						JOptionPane.showMessageDialog(
 								null,
-								"Código gerado com sucesso!!!",
+								"C digo gerado com sucesso!!!",
 								"ASDA",
 								JOptionPane.INFORMATION_MESSAGE);
 					}
@@ -367,7 +367,7 @@ public class Janela extends JFrame implements ActionListener{
 												
 						JOptionPane.showMessageDialog(
 								null,
-								"Código gerado com sucesso!!!",
+								"C digo gerado com sucesso!!!",
 								"ASDA",
 								JOptionPane.INFORMATION_MESSAGE);
 					}
@@ -376,7 +376,7 @@ public class Janela extends JFrame implements ActionListener{
 			}
 		});
 		
-		menuItem = new JMenuItem("Gerar Executável", KeyEvent.VK_X);
+		menuItem = new JMenuItem("Gerar Execut vel", KeyEvent.VK_X);
 		menu.add(menuItem);
 		menuItem.addActionListener(new ActionListener(){	
 			public void actionPerformed(ActionEvent e){
@@ -388,7 +388,7 @@ public class Janela extends JFrame implements ActionListener{
 				if (d.graph == null)
 					JOptionPane.showMessageDialog(
 							null,
-							"Modele algo e gere o código antes de executar!",
+							"Modele algo e gere o c digo antes de executar!",
 							"ASDA - erro",
 							JOptionPane.ERROR_MESSAGE );
 				else
@@ -400,7 +400,7 @@ public class Janela extends JFrame implements ActionListener{
 						if (!fsrc.exists())
 							JOptionPane.showMessageDialog(
 									null,
-									"Gere o código fonte primeiro",
+									"Gere o c digo fonte primeiro",
 									"ASDA - ERRO",
 									JOptionPane.ERROR_MESSAGE );
 						else
@@ -416,12 +416,12 @@ public class Janela extends JFrame implements ActionListener{
 								" exec/smpl/smpl.c exec/smpl/rand.c exec/smpl/bmeans.c -lm";
 							try
 							{
-								// Aqui é executada a compilação
-								// Observação: sempre compila-se também os fontes do SMPL
-								// isso é bom para não dar conflitos entre códigos objetos de compiladores diferentes
+								// Aqui   executada a compila  o
+								// Observa  o: sempre compila-se tamb m os fontes do SMPL
+								// isso   bom para n o dar conflitos entre c digos objetos de compiladores diferentes
 							    Process p = Runtime.getRuntime().exec(cmd);			    
 								p.waitFor();
-						    	//  terminada a compilação
+						    	//  terminada a compila  o
 								// manda executar o programa
 						    	Process p2 = Runtime.getRuntime().exec(
 						    			"./exec/tmp/" + d.graph.getNomeModelo() );
@@ -435,11 +435,11 @@ public class Janela extends JFrame implements ActionListener{
 						    	if (f.exists())
 						    		f.renameTo(f2 );	
 						    	
-						    	// agora é só visualizar o relatório
+						    	// agora   s  visualizar o relat rio
 						    	JOptionPane.showMessageDialog(
 						    			null,
-						    			"Compilação e execução do programa com sucesso",
-						    			"ASDA - Módulo Executor",
+						    			"Compila  o e execu  o do programa com sucesso",
+						    			"ASDA - M dulo Executor",
 						    			JOptionPane.INFORMATION_MESSAGE
 						    			);
 							    
@@ -449,7 +449,7 @@ public class Janela extends JFrame implements ActionListener{
 								eio.printStackTrace();	
 								JOptionPane.showMessageDialog(
 										null,
-										"Problemas ao gerar executável\n" +
+										"Problemas ao gerar execut vel\n" +
 										"certifique-se de estar no Linux e de ter um compilador C (cc)",
 										"ASDA - ERRO",
 										JOptionPane.ERROR_MESSAGE );
@@ -466,7 +466,7 @@ public class Janela extends JFrame implements ActionListener{
 						if (!fsrc.exists())
 							JOptionPane.showMessageDialog(
 									null,
-									"Gere o código fonte primeiro",
+									"Gere o c digo fonte primeiro",
 									"ASDA - ERRO",
 									JOptionPane.ERROR_MESSAGE );
 						else
@@ -479,7 +479,7 @@ public class Janela extends JFrame implements ActionListener{
 									Process pCopy = Runtime.getRuntime().exec(
 									"cp exec/simpack/strstream.h /usr/include/");
 									pCopy.waitFor();
-									// copia arquivo necessário para compilação
+									// copia arquivo necess rio para compila  o
 								}
 							
 								
@@ -492,12 +492,12 @@ public class Janela extends JFrame implements ActionListener{
 								System.getProperty("user.dir");
 								String cmd = "make -C exec/tmp/";
 							
-								// Aqui é executada a compilação
-								// Observação: sempre compila-se também os fontes do SMPL
-								// isso é bom para não dar conflitos entre códigos objetos de compiladores diferentes
+								// Aqui   executada a compila  o
+								// Observa  o: sempre compila-se tamb m os fontes do SMPL
+								// isso   bom para n o dar conflitos entre c digos objetos de compiladores diferentes
 							    Process p = Runtime.getRuntime().exec(cmd);			    
 								p.waitFor();
-						    	//  terminada a compilação
+						    	//  terminada a compila  o
 								// manda executar o programa
 						/*  TODO  	Process p2 = Runtime.getRuntime().exec(
 						    			"./exec/tmp/" + d.graph.getNomeModelo() );
@@ -511,11 +511,11 @@ public class Janela extends JFrame implements ActionListener{
 						    	if (f.exists())
 						    		f.renameTo(f2 );	
 						    	*/
-						    	// agora é só visualizar o relatório
+						    	// agora   s  visualizar o relat rio
 						    	JOptionPane.showMessageDialog(
 						    			null,
-						    			"Compilação e execução do programa com sucesso",
-						    			"ASDA - Módulo Executor",
+						    			"Compila  o e execu  o do programa com sucesso",
+						    			"ASDA - M dulo Executor",
 						    			JOptionPane.INFORMATION_MESSAGE
 						    			);
 							    
@@ -525,7 +525,7 @@ public class Janela extends JFrame implements ActionListener{
 								eio.printStackTrace();	
 								JOptionPane.showMessageDialog(
 										null,
-										"Problemas ao gerar executável\n" +
+										"Problemas ao gerar execut vel\n" +
 										"certifique-se de estar no Linux e de ter um compilador C (cc)",
 										"ASDA - ERRO",
 										JOptionPane.ERROR_MESSAGE );
@@ -547,7 +547,7 @@ public class Janela extends JFrame implements ActionListener{
 						if (!fsrc.exists())
 							JOptionPane.showMessageDialog(
 									null,
-									"Gere o código fonte primeiro",
+									"Gere o c digo fonte primeiro",
 									"ASDA - ERRO",
 									JOptionPane.ERROR_MESSAGE );
 						else
@@ -569,7 +569,7 @@ public class Janela extends JFrame implements ActionListener{
 							     {
 									JOptionPane.showMessageDialog(
 											null,
-											"Problemas ao gerar executável\n" +
+											"Problemas ao gerar execut vel\n" +
 											"certifique-se de estar no Linux e de ter um compilador C (cc)",
 											"ASDA - ERRO",
 											JOptionPane.ERROR_MESSAGE );
@@ -592,8 +592,8 @@ public class Janela extends JFrame implements ActionListener{
 							    		f.renameTo(f2 );
 							    	JOptionPane.showMessageDialog(
 							    			null,
-							    			"Compilação e execução do programa com sucesso",
-							    			"ASDA - Módulo Executor",
+							    			"Compila  o e execu  o do programa com sucesso",
+							    			"ASDA - M dulo Executor",
 							    			JOptionPane.INFORMATION_MESSAGE
 							    			);
 							}
@@ -602,7 +602,7 @@ public class Janela extends JFrame implements ActionListener{
 								eio.printStackTrace();	
 								JOptionPane.showMessageDialog(
 										null,
-										"Problemas ao gerar executável\n" +
+										"Problemas ao gerar execut vel\n" +
 										"certifique-se de estar no Linux e de ter um compilador C (cc)",
 										"ASDA - ERRO",
 										JOptionPane.ERROR_MESSAGE );
@@ -629,7 +629,7 @@ public class Janela extends JFrame implements ActionListener{
 		menu.setMnemonic(KeyEvent.VK_P);		
 		menuBar.add(menu);
 		
-		menuItem = new JMenuItem("Código");	
+		menuItem = new JMenuItem("C digo");	
 		menu.add(menuItem);
 		menuItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -662,7 +662,7 @@ public class Janela extends JFrame implements ActionListener{
 						{
 							JOptionPane.showMessageDialog(
 									null,
-									"O código ainda não foi gerado ou o código gerado não existe mais!!!\n" + 
+									"O c digo ainda n o foi gerado ou o c digo gerado n o existe mais!!!\n" + 
 									"Arquivo = " + filename,
 									"ASDA - Erro",
 									JOptionPane.ERROR_MESSAGE);	
@@ -692,7 +692,7 @@ public class Janela extends JFrame implements ActionListener{
 					else{
 						JOptionPane.showMessageDialog(
 								null,
-								"O código ainda não foi gerado ou o código gerado não existe mais!!!\n" + 
+								"O c digo ainda n o foi gerado ou o c digo gerado n o existe mais!!!\n" + 
 								"Arquivo = " + filename,
 								"ASDA - Erro",
 								JOptionPane.ERROR_MESSAGE);					
@@ -701,7 +701,7 @@ public class Janela extends JFrame implements ActionListener{
 			}
 		});
 		
-		menuItem = new JMenuItem("Relatório");	
+		menuItem = new JMenuItem("Relat rio");	
 		menu.add(menuItem);
 		menuItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -727,7 +727,7 @@ public class Janela extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e){
 				JOptionPane.showMessageDialog(
 						null,
-						"Ajuda ainda não disponível",
+						"Ajuda ainda n o dispon vel",
 						"Ajuda ASDA",
 						JOptionPane.INFORMATION_MESSAGE
 						);
@@ -740,10 +740,10 @@ public class Janela extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e){
 				JOptionPane.showMessageDialog(
 						null,
-						"ASDA - Ambiente de Simulação Distribuída Automático\n" +
-						"\nConcepção do ASDA: Sarita Mazzini Bruschi" +
-						"\nImplementação inicial do ambiente + Queueing Statecharts = Thais S. A." +
-						"\nDiversas melhorias no ambiente + Redes de Filas + \"Distruída Automático\" do ambiente: André Felipe Rodrigues",
+						"ASDA - Ambiente de Simula  o Distribu da Autom tico\n" +
+						"\nConcep  o do ASDA: Sarita Mazzini Bruschi" +
+						"\nImplementa  o inicial do ambiente + Queueing Statecharts = Thais S. A." +
+						"\nDiversas melhorias no ambiente + Redes de Filas + \"Distru da Autom tico\" do ambiente: Andr  Felipe Rodrigues",
 						"Sobre ASDA",
 						JOptionPane.PLAIN_MESSAGE
 						);
@@ -755,7 +755,7 @@ public class Janela extends JFrame implements ActionListener{
 		toolBar = new JToolBar();
 		toolBar.setBorderPainted(true);
 		toolBar.setAutoscrolls(true);
-		addButtons(toolBar);		// chama método de adicionar botões do tipo novo, salvar, etc
+		addButtons(toolBar);		// chama m todo de adicionar bot es do tipo novo, salvar, etc
 		
 		this.getContentPane().setLayout(new BorderLayout());
 		
@@ -814,7 +814,7 @@ public class Janela extends JFrame implements ActionListener{
 						{
 //							 YES - salva e sai do programa
 							// NO - Apenas sai do programa
-							// CANCEL - não faz nada
+							// CANCEL - n o faz nada
 							int n = JOptionPane.showConfirmDialog(
 									null,
 									"Deseja salvar o modelo?",
@@ -855,7 +855,7 @@ public class Janela extends JFrame implements ActionListener{
 		
 		
 		
-		/* quem herda precisa setar as configurações comentadas a seguir no construtor */
+		/* quem herda precisa setar as configura  es comentadas a seguir no construtor */
 		
 //		Adiciona barras de rolagem
 		
@@ -869,7 +869,7 @@ public class Janela extends JFrame implements ActionListener{
 		 
 		 this.setSize(650,550);
 		 
-		 this.setTitle("ASDA - Ambiente de Simulação Distribuída Automático");
+		 this.setTitle("ASDA - Ambiente de Simula  o Distribu da Autom tico");
 		 JFrameUtil.centraliza(this);
 		 this.setVisible(true);
 		 this.setDefaultCloseOperation(EXIT_ON_CLOSE);*/
@@ -928,15 +928,15 @@ public class Janela extends JFrame implements ActionListener{
 	*/
 	
 
-	/* PASSAR ESSE MÉTODO PARA O TOSTRING DA CLASSE GRAPH :-( */
+	/* PASSAR ESSE M TODO PARA O TOSTRING DA CLASSE GRAPH :-( */
 	public void imprimirGraph(Graph graph)
 	{
 		for (int i = 0 ; i < graph.getSize() ; i++)
 		{
-			System.out.println("Nó = " + graph.getNode(i).getNomeCentroServico() + " ID do nó = " + graph.getNode(i).getIdNo());
+			System.out.println("N  = " + graph.getNode(i).getNomeCentroServico() + " ID do n  = " + graph.getNode(i).getIdNo());
 			for (int j = 0; j < graph.getNode(i).getSize(); j++)
 			{
-				System.out.println("   Ligações = " + graph.getNode(i).getArc(j).getNodeB().getNomeCentroServico());
+				System.out.println("   Liga  es = " + graph.getNode(i).getArc(j).getNodeB().getNomeCentroServico());
 				
 			}
 		}
@@ -952,7 +952,7 @@ public class Janela extends JFrame implements ActionListener{
 	}
 	
 	/**
-	 * Método que limpa a janela para a criação de um novo modelo.
+	 * M todo que limpa a janela para a cria  o de um novo modelo.
 	 * @param e
 	 */
 	public void novoModelo(ActionEvent e){
@@ -969,7 +969,7 @@ public class Janela extends JFrame implements ActionListener{
 					absPath = null;
 					filename = null;
 					d.limpa();	
-					this.setTitle("ASDA - Ambiente de Simulação Distribuída Automático");			
+					this.setTitle("ASDA - Ambiente de Simula  o Distribu da Autom tico");			
 				}
 			} else if (n == JOptionPane.NO_OPTION) {
 				d.limpa();
@@ -977,7 +977,7 @@ public class Janela extends JFrame implements ActionListener{
 				filename = null;
 				buttonSalvar.setEnabled(false);
 				menuItemSalvar.setEnabled(false);
-				this.setTitle("ASDA - Ambiente de Simulação Distribuída Automático");
+				this.setTitle("ASDA - Ambiente de Simula  o Distribu da Autom tico");
 			}
 		}
 	}
@@ -1012,7 +1012,7 @@ public class Janela extends JFrame implements ActionListener{
 		if (absPath == null){
 			salvarComo(e);
 		}
-		else  // o arquivo já foi salvo
+		else  // o arquivo j  foi salvo
 		{
 			d.save(absPath ,d.graph.getNomeModelo(), userInfo);
 			d.isSave = true;
@@ -1047,7 +1047,7 @@ public class Janela extends JFrame implements ActionListener{
 		else{	
 			JOptionPane.showMessageDialog(
 					null,
-					"Não é possível salvar o modelo!!!",
+					"N o   poss vel salvar o modelo!!!",
 					"ASDA - Erro",
 					JOptionPane.ERROR_MESSAGE);			
 		}
@@ -1115,7 +1115,7 @@ public class Janela extends JFrame implements ActionListener{
 					
 					ParametrizaCS frame2 = new ParametrizaCS(d.graph,node,indice,node.getTipoNo(), userInfo);
 					
-					ImageIcon imagem = new ImageIcon("imgIcones/R1xi.gif"); // meio PIG-CODE - única maneira que encontrei
+					ImageIcon imagem = new ImageIcon("imgIcones/R1xi.gif"); // meio PIG-CODE -  nica maneira que encontrei
 					String aux2 = imagem.toString();
 					if (node.getImage().toString().equals(aux2))
 						frame2.numServidores.setEditable(true);
@@ -1141,13 +1141,13 @@ public class Janela extends JFrame implements ActionListener{
 			if(d.isDragabble(e.getX(),e.getY())){
 				this.cursorIsHand = true;
 				Cursor c = new Cursor(Cursor.HAND_CURSOR);
-				int indice = d.graph.getNodeIndex(e.getX(),e.getY()); // obtendo nó para tooltiptext
+				int indice = d.graph.getNodeIndex(e.getX(),e.getY()); // obtendo n  para tooltiptext
 				Node temp = d.graph.getNode(indice);
-				d.setToolTipText("<html><p><b>Nome do nó:</b> " + temp.getNomeCentroServico() + "</p>"
-						+ "<p><b>Média de serviço:</b> " + temp.getMedia() + "</p>"
-						+ "<p><b>Estatísticas: </b>" + "</p>"
+				d.setToolTipText("<html><p><b>Nome do n :</b> " + temp.getNomeCentroServico() + "</p>"
+						+ "<p><b>M dia de servi o:</b> " + temp.getMedia() + "</p>"
+						+ "<p><b>Estat sticas: </b>" + "</p>"
 						+ "<p>  Fila vazia =" + temp.getEstatisticaFilaVazia() + "</p>"
-						+ "<p>  Comprimento Máx/Min: " + temp.getComprimentoMaxMin() + "</p></html>"						
+						+ "<p>  Comprimento M x/Min: " + temp.getComprimentoMaxMin() + "</p></html>"						
 						);
 				
 						

@@ -4,10 +4,10 @@ import java.io.*;
 import javax.swing.ImageIcon;
 
 /**
- * Armazena os n�s, arcos e todas as informa��es do modelo. 
+ * Armazena os n s, arcos e todas as informa  es do modelo. 
  * @author Thais Souza Aiza
- * @author Andr� Felipe Rodrigues - dele��o e cria��o de alguns atributos
- * 			e corre��o do m�todo remove
+ * @author Andr  Felipe Rodrigues - dele  o e cria  o de alguns atributos
+ * 			e corre  o do m todo remove
  * @version 1.0
  *
  */
@@ -33,25 +33,25 @@ public class Graph implements Serializable{
 	 */
 	private String tamanhoBatch;
 	/**
-	 * N�mero m�ximo de entidades que poder�o ocorrer durante a simula��o
+	 * N mero m ximo de entidades que poder o ocorrer durante a simula  o
 	 */
 	private String numeroMaximoEntidades;
 
 
 	/**
-	 * Diz se o modelo � aberto ou fechado
+	 * Diz se o modelo   aberto ou fechado
 	 */
 	private String tipoModelo;
 	
 	/**
-	 * Armazena se o WarmUp � definido pelo usu�rio ou autom�tico
-	 * autom�tico = "automatico"
+	 * Armazena se o WarmUp   definido pelo usu rio ou autom tico
+	 * autom tico = "automatico"
 	 * definido = "definido"
 	 */
 	private String warmUp; 
 	/**
-	 * Armazena o tempo no qual todas as vari�veis ser�o resetadas.
-	 * Se o WarmUp � definido armazena o valor do WarmUp. 
+	 * Armazena o tempo no qual todas as vari veis ser o resetadas.
+	 * Se o WarmUp   definido armazena o valor do WarmUp. 
 	 */
 	private String tamWarmUp;
 	
@@ -62,7 +62,7 @@ public class Graph implements Serializable{
 
 
     /**
-     * Vetor que armazena os n�s do grafo.
+     * Vetor que armazena os n s do grafo.
      */
 	public Vector nodes = new Vector(0);
 	
@@ -90,7 +90,7 @@ public class Graph implements Serializable{
 		pLogicos = logicos;
 	}
 	/**
-	 * Adiciona o n�mero de clientes e o tempo de chegada ao vetor de chegadas.
+	 * Adiciona o n mero de clientes e o tempo de chegada ao vetor de chegadas.
 	 * @param chegada Um objeto do tipo <code>Chegada</code>.
 	 * @see Chegada#setNumeroClientes
 	 * @see Chegada#setTempoChegad	 
@@ -100,17 +100,17 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Configura o nome do modelo que identifica o modelo que foi especificado pelo usu�rio. � o mesmo nome que 
-	 * o usu�rio usou para salvar o modelo. � configurado autom�ticamente. 
-	 * @param nomeModelo Um valor <code>String</code> que compreende os caracteres alfanum�ricos.
+	 * Configura o nome do modelo que identifica o modelo que foi especificado pelo usu rio.   o mesmo nome que 
+	 * o usu rio usou para salvar o modelo.   configurado autom ticamente. 
+	 * @param nomeModelo Um valor <code>String</code> que compreende os caracteres alfanum ricos.
 	 */
 	public void setNomeModelo(String nomeModelo){
 		this.nomeModelo = nomeModelo;
 	}
 	
 	/**
-	 * Configura o tempo de execu��o.
-	 * @param tempoExecucao Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+	 * Configura o tempo de execu  o.
+	 * @param tempoExecucao Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
 	 */
 	public void setTempoExecucao(String tempoExecucao){
@@ -118,8 +118,8 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Configura o n�mero m�ximo de entidades.
-	 * @param numeroMaximoEntidades Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+	 * Configura o n mero m ximo de entidades.
+	 * @param numeroMaximoEntidades Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
 	 */
 	public void setNumeroMaximoEntidades(String numeroMaximoEntidades){
@@ -128,7 +128,7 @@ public class Graph implements Serializable{
 	
 	/**
 	 * Configura o tamanho do batch.
-	 * @param tamanhoBatch Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+	 * @param tamanhoBatch Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
 	 */
 	public void setTamanhoBatch(String tamanhoBatch){
@@ -136,16 +136,16 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Configura se o valor do WarmUp � definido pelo usu�rio ou autom�tico.
-	 * @param warmUp Um valor <code>String</code> que pode ser autom�tico ou definido.
+	 * Configura se o valor do WarmUp   definido pelo usu rio ou autom tico.
+	 * @param warmUp Um valor <code>String</code> que pode ser autom tico ou definido.
 	 */
 	public void setWarmUp(String warmUp){
 		this.warmUp = warmUp;
 	}
 
     /**
-     * Configura o valor do WarmUp quando o campo � definido pelo usu�rio. 
-     * @param tamWarmUp Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+     * Configura o valor do WarmUp quando o campo   definido pelo usu rio. 
+     * @param tamWarmUp Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
      */
 	public void setTamWarmUp(String tamWarmUp){
@@ -153,7 +153,7 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Configura o tipo do modelo. Se � aberto, fechado ou misto.
+	 * Configura o tipo do modelo. Se   aberto, fechado ou misto.
 	 * @param tipoModelo Um valor <code>String</code> que pode ser aberto, fechado ou misto.
 	 */
 	public void setTipoModelo(String tipoModelo){
@@ -161,7 +161,7 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Configura a <code>chegada</code>. Armazena os valores dos par�metros <code>numeroClientes</code>
+	 * Configura a <code>chegada</code>. Armazena os valores dos par metros <code>numeroClientes</code>
 	 * e <code>tempoChegada</code>.
 	 * @param numeroClientes Um valor <code>Integer</code> maior ou igual a 0 (zero).
 	 * @param tempoChegada Um valor <code>float</code> maior ou igual a 0 (zero).
@@ -172,8 +172,8 @@ public class Graph implements Serializable{
 	}		
 	
 	/**
-	 * Remove a posi��o selecionada no vetor de <code>chegadas</code>.
-	 * @param posicao Um valor <code>Integer</code> que indica a posi��o a ser removida do vetor.
+	 * Remove a posi  o selecionada no vetor de <code>chegadas</code>.
+	 * @param posicao Um valor <code>Integer</code> que indica a posi  o a ser removida do vetor.
 	 */
 	public void removeChegada(int posicao){
 		this.chegadas.remove(posicao);
@@ -181,15 +181,15 @@ public class Graph implements Serializable{
 	
 	/**
 	 * Retorna o nome do modelo.
-	 * @return Um valor <code>String</code> que compreende os caracteres alfanum�ricos.
+	 * @return Um valor <code>String</code> que compreende os caracteres alfanum ricos.
 	 */
 	public String getNomeModelo(){
 		return nomeModelo;
 	}
     
     /**
-     * Retorna o tempo de execu��o.
-     * @return Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+     * Retorna o tempo de execu  o.
+     * @return Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero). 
      */
 	public String getTempoExecucao(){
@@ -197,8 +197,8 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Retorna o n�mero de ciclos.
-	 * @return Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+	 * Retorna o n mero de ciclos.
+	 * @return Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
 	 */
 	public String getNumeroCiclos(){
@@ -206,8 +206,8 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Retorna o n�mero m�ximo de entidades.
-	 * @return Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+	 * Retorna o n mero m ximo de entidades.
+	 * @return Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
 	 */
 	public String getNumeroMaximoEntidades(){
@@ -216,7 +216,7 @@ public class Graph implements Serializable{
 	
 	/**
 	 * Retorna o tamanho do batch.
-	 * @return Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+	 * @return Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
 	 */
 	public String getTamanhoBatch(){
@@ -224,16 +224,16 @@ public class Graph implements Serializable{
 	}
 	
     /**
-     * Retorna se o campo WarmUp ser� definido pelo usu�rio ou autom�tico.
-     * @return Um valor <code>String</code> que pode ser definido ou autom�tico.
+     * Retorna se o campo WarmUp ser  definido pelo usu rio ou autom tico.
+     * @return Um valor <code>String</code> que pode ser definido ou autom tico.
      */
 	public String getWarmUp(){
 		return warmUp;
 	}
 
     /**
-     * Retorna o tamanho do WarmUp para o caso dele ser definido pelo usu�rio.
-     * @return Um valor <code>String</code> que compreende caracteres num�ricos maiores ou 
+     * Retorna o tamanho do WarmUp para o caso dele ser definido pelo usu rio.
+     * @return Um valor <code>String</code> que compreende caracteres num ricos maiores ou 
 	 * iguais a 0 (zero).
      */
 	public String getTamWarmUp(){
@@ -241,7 +241,7 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Retorna o tipo do modelo. O m�dulo avaliador n�vel 1B � quem determina o tipo do modelo.
+	 * Retorna o tipo do modelo. O m dulo avaliador n vel 1B   quem determina o tipo do modelo.
 	 * @return Um valor <code>String</code> que pode ser aberto, fechado ou misto.
 	 */
 	public String getTipoModelo(){
@@ -249,9 +249,9 @@ public class Graph implements Serializable{
 	}
     
     /**
-     * Retorna a <code>Chegada</code> armazenada no vetor de chegadas conforme a posi��o que 
-     * � passada.
-     * @param i Indica a posi��o no vetor de chegadas.
+     * Retorna a <code>Chegada</code> armazenada no vetor de chegadas conforme a posi  o que 
+     *   passada.
+     * @param i Indica a posi  o no vetor de chegadas.
      * @return Um objeto <code>Chegada</code>.
      */
 	public Chegada getChegada(int i){
@@ -267,7 +267,7 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Adiciona um n� ao vetor de n�s. O novo n� � sempre adicionado no final do vetor.
+	 * Adiciona um n  ao vetor de n s. O novo n    sempre adicionado no final do vetor.
 	 * @param node Um objeto <code>Node</code>.
 	 * @see Node
 	 */
@@ -276,8 +276,8 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Adiciona um n� ao vetor de n�s na posi��o indicada.
-	 * @param indice Posi��o em que o n� deve ser inserido no vetor de n�s. Um valor maior 
+	 * Adiciona um n  ao vetor de n s na posi  o indicada.
+	 * @param indice Posi  o em que o n  deve ser inserido no vetor de n s. Um valor maior 
 	 * ou igual a 0 (zero).
 	 * @param node Um objeto <code>Node</code>.
 	 * @see Node
@@ -288,8 +288,8 @@ public class Graph implements Serializable{
 	
 	
 	/**
-	 * Retorna o n� armazenado na posi��o desejada.
-	 * @param i Posi��o em que deseja recuperar as informa��es do n�.
+	 * Retorna o n  armazenado na posi  o desejada.
+	 * @param i Posi  o em que deseja recuperar as informa  es do n .
 	 * @return Um objeto <code>Node</code>.
 	 */
 	public Node getNode(int i){
@@ -298,7 +298,7 @@ public class Graph implements Serializable{
 	
 		
 	/**
-	 * Retorna o tamanho do vetor de n�s.
+	 * Retorna o tamanho do vetor de n s.
 	 * @return Um valor <code>Integer</code> maior ou igual a 0 (zero).
 	 */
 	public int getSize(){		
@@ -306,7 +306,7 @@ public class Graph implements Serializable{
 	}
 		
 	/**
-	 * Remove todos os n�s do vetor de n�s.
+	 * Remove todos os n s do vetor de n s.
 	 */
 	public void removeAllElements(){
 		this.nodes.removeAllElements();
@@ -315,19 +315,19 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Remove o elemento conforme o �ndice .
-	 * @param indice Posi��o em que se deseja remover o n�. Um valor <code>Integer</code> 
+	 * Remove o elemento conforme o  ndice .
+	 * @param indice Posi  o em que se deseja remover o n . Um valor <code>Integer</code> 
 	 * maior ou igual a 0 (zero).
 	 */
 	public void remove(int indice){	
-		// primeiro percorre todo o grafo procurando por liga��es a esse �ndice
+		// primeiro percorre todo o grafo procurando por liga  es a esse  ndice
 		
-		for (int i=0; i < getSize(); i++ ) // percorre n�s
+		for (int i=0; i < getSize(); i++ ) // percorre n s
 		{
 			Node temp = getNode(i);
-			for (int j = 0; j < temp.getSize(); j++) // percorre os arcos dos n�s
+			for (int j = 0; j < temp.getSize(); j++) // percorre os arcos dos n s
 			{
-				if (temp.getArc(j).getNodeB() == getNode(indice)) // se � a mesma refer�ncia
+				if (temp.getArc(j).getNodeB() == getNode(indice)) // se   a mesma refer ncia
 				{
 					temp.getArcs().remove(j);						  // remove o arco
 				}
@@ -338,9 +338,9 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Retorna o tipo do n� armazenado na posi��o indicada.
-	 * @param i Posi��o em que se deseja saber o tipo do n� armazenado.
-	 * @return O tipo do n�. Um valor <code>Integer</code> maior ou igual a 0 (zero).
+	 * Retorna o tipo do n  armazenado na posi  o indicada.
+	 * @param i Posi  o em que se deseja saber o tipo do n  armazenado.
+	 * @return O tipo do n . Um valor <code>Integer</code> maior ou igual a 0 (zero).
 	 */
 	public int getTipoNo(int i){
 		Node node = (Node)nodes.get(i);		
@@ -348,9 +348,9 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Retorna a identifica��o do n�.
-	 * @param i Posi��o em que se deseja saber a identifica��o do n� armazenado.
-	 * @return A identifica��o do n�. Um valor <code>Integer</code> maior ou igual a
+	 * Retorna a identifica  o do n .
+	 * @param i Posi  o em que se deseja saber a identifica  o do n  armazenado.
+	 * @return A identifica  o do n . Um valor <code>Integer</code> maior ou igual a
 	 * 0 (zero).
 	 */
 	public int getIdNo(int i){
@@ -374,10 +374,10 @@ public class Graph implements Serializable{
 	}
 	
 	/**
-	 * Retorna o modelo. Isto �, abre o modelo escolhido.
+	 * Retorna o modelo. Isto  , abre o modelo escolhido.
 	 * @param filename Nome do modelo a ser aberto.
 	 * @return Um objeto <code>Graph</code>.
-	 * @deprecated Agora quem tem controle sobre a abertura do modelo � a classe Desenho
+	 * @deprecated Agora quem tem controle sobre a abertura do modelo   a classe Desenho
 	 */
 	public Graph open(String filename){
 		
@@ -399,10 +399,10 @@ public class Graph implements Serializable{
 	}
 
 	/**
-	 * Recebe um nome para o modelo e salva a especifica��o do modelo.
-	 * @param filename Nome do modelo + .mod (extens�o).
-	 * @param nomeArquivo Nome do modelo - .mod (extens�o).
-	 * @deprecated Agora quem tem controle sobre o processo de salvar o modelo � a classe Desenho
+	 * Recebe um nome para o modelo e salva a especifica  o do modelo.
+	 * @param filename Nome do modelo + .mod (extens o).
+	 * @param nomeArquivo Nome do modelo - .mod (extens o).
+	 * @deprecated Agora quem tem controle sobre o processo de salvar o modelo   a classe Desenho
 	 */
 	public void save(String filename, String nomeArquivo){
 		

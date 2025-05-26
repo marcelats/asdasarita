@@ -19,9 +19,9 @@ import asda.UsuarioCadastro;
 
 
 /**
- * Classe que exibe o Frame para a parametrização do centro de serviço.
+ * Classe que exibe o Frame para a parametriza      o do centro de servi   o.
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues (algumas modificações)
+ * @author Andr    Felipe Rodrigues (algumas modifica      es)
  * @version 1.0
  */
 
@@ -69,28 +69,28 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 	Servico frame2;
 	
 	/**
-	 * Nó que está sendo parametrizado.
+	 * N    que est    sendo parametrizado.
 	 */
 	public Node no;
 	
 	
 	/**
-	 * Modelo que contém o recurso que está sendo parametrizado.
+	 * Modelo que cont   m o recurso que est    sendo parametrizado.
 	 */
 	public Graph graph;
 	
 	/**
-	 * Indica quais as ligações que o nó possui.
+	 * Indica quais as liga      es que o n    possui.
 	 */
 	public Arc arc;
 	
 	/**
-	 * Indica qual é o indíce do nó no vetor de nós.
+	 * Indica qual     o ind   ce do n    no vetor de n   s.
 	 */
 	public int indice;
 	
 	/**
-	 * Indica qual é o tipo de nó.
+	 * Indica qual     o tipo de n   .
 	 */
 	public int tipoNo;
 	
@@ -178,14 +178,14 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 					jComboBox.setSelectedIndex(-1);
 					JOptionPane.showMessageDialog(
 							null,
-							"Defina os processos lógicos da simulação primeiro!",
-							"Processos lógicos não definidos",
+							"Defina os processos l   gicos da simula      o primeiro!",
+							"Processos l   gicos n   o definidos",
 							JOptionPane.WARNING_MESSAGE);
 					setVisible(false);
 					dispose();					
 				}
 			}
-			else // senão não tem TID
+			else // sen   o n   o tem TID
 			{
 				jComboBox.setVisible(false);
 				jLabelTid.setVisible(false);
@@ -235,7 +235,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 			BorderFactory.createEtchedBorder(
 					Color.white,
 					new Color(151, 145, 140));
-		titledBorder2 = new TitledBorder(border2, "Distribuição");
+		titledBorder2 = new TitledBorder(border2, "Distribui      o");
 		border3 =
 			BorderFactory.createEtchedBorder(
 					Color.white,
@@ -247,12 +247,12 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 		border5 =
 			new TitledBorder(
 					BorderFactory.createEmptyBorder(),
-			"Estatísticas das filas");
+			"Estat   sticas das filas");
 		border6 =
 			BorderFactory.createEtchedBorder(
 					Color.white,
 					new Color(148, 145, 140));
-		titledBorder3 = new TitledBorder(border6, "Escolha do Próximo Recurso");
+		titledBorder3 = new TitledBorder(border6, "Escolha do Pr   ximo Recurso");
 		border7 =
 			new TitledBorder(
 					BorderFactory.createEmptyBorder(),
@@ -275,7 +275,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 		this.setResizable(false);
 		this.setSize(new Dimension(451, 383));
 		this.setState(Frame.NORMAL);
-		this.setTitle("Parametrizar Centro de Serviço");
+		this.setTitle("Parametrizar Centro de Servi   o");
 		jPanel1.setLayout(null);
 		jLabel1.setText("Nome");
 		jLabel1.setBounds(new Rectangle(11, 19, 39, 16));
@@ -298,10 +298,10 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 		
 		numFilas.setText("1");
 		numFilas.setBounds(new Rectangle(329, 46, 36, 23));
-		jLabel2.setText("Número de Servidores");
+		jLabel2.setText("N   mero de Servidores");
 		jLabel2.setBounds(new Rectangle(11, 49, 132, 16));
 		jLabel3.setBounds(new Rectangle(204, 49, 113, 16));
-		jLabel3.setText("Número de Filas");
+		jLabel3.setText("N   mero de Filas");
 		jPanel2.setFont(new java.awt.Font("Dialog", 1, 12));
 		jPanel2.setBorder(titledBorder1);
 		jPanel2.setBounds(new Rectangle(3, 177, 177, 111));
@@ -388,7 +388,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 		
 		
 		jButton4.setBounds(new Rectangle(70, 62, 92, 25));
-		jButton4.setText("Serviço");
+		jButton4.setText("Servi   o");
 		jButton4.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){				
 				servicoPerformed(e);
@@ -404,7 +404,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 		jRadioButton5.setText("Ciclo");
 		jRadioButton5.setBounds(new Rectangle(10, 59, 91, 23));
 		jButton5.setBounds(new Rectangle(128, 22, 90, 25));
-		jButton5.setText("Ligação");
+		jButton5.setText("Liga      o");
 		
 		if (no.isProb()){
 			jRadioButton4.setSelected(true);
@@ -481,7 +481,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 		titled =
 			BorderFactory.createTitledBorder(
 					borderParam,
-			"Distribuiçao de Serviço");*/
+			"Distribui   ao de Servi   o");*/
 		
 		//Registro de Listener para os CheckBoxs Parametro Analisado
 		tempoResposta.addItemListener(this);
@@ -656,7 +656,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 	}
 	
 	/**
-	 * Verifica se todos os parâmetros do recurso estão corretos.
+	 * Verifica se todos os par   metros do recurso est   o corretos.
 	 * @param e
 	 */
 	public void okPerformed(ActionEvent e) {
@@ -666,7 +666,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 		if (nomeCentroServico.getText().equals("")){
 			JOptionPane.showMessageDialog(
 					frame,
-					"Nome do Centro de Serviço é de preenchimento obrigatório!!!",
+					"Nome do Centro de Servi   o     de preenchimento obrigat   rio!!!",
 					"ASDA - Erro",
 					JOptionPane.ERROR_MESSAGE);
 			nomeCentroServico.grabFocus();			
@@ -675,9 +675,9 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 			/*if ((tempoResposta.isSelected() == false) 
 					&& (throughput.isSelected() == false)
 					&& (tamanhoFila.isSelected() == false)) {
-				JOptionPane.showMessageDialog( CHECAGEM DO PARAMETRO DESATIVA - PARAMETROS ANALISADOS AINDA NÃO IMPLEMENTADOS
+				JOptionPane.showMessageDialog( CHECAGEM DO PARAMETRO DESATIVA - PARAMETROS ANALISADOS AINDA N   O IMPLEMENTADOS
 						frame,
-						"Selecione pelo menos 1 parâmetro a ser analisado!!!",
+						"Selecione pelo menos 1 par   metro a ser analisado!!!",
 						"ASDA - Erro",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -686,7 +686,7 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 				no.setTempoResposta(varTempoResposta);
 				no.setThroughput(varThroughput);
 				no.setTamanhoFila(varTamanhoFila);
-				no.setNumServidores(numServidores.getText());  // sem tratamento de robustez (não pode digitar string)
+				no.setNumServidores(numServidores.getText());  // sem tratamento de robustez (n   o pode digitar string)
 				//no.setDistribuicaoServico("expntl");
 				no.setNumFilas(Integer.parseInt(numFilas.getText()));
 				
@@ -709,8 +709,8 @@ public class ParametrizaCS extends JFrame implements ItemListener {
 					if (graph.chegadas.size() == 0){
 						JOptionPane.showMessageDialog(
 								frame,
-								"Não esqueça de preencher a primeira chegada\n" +
-								"durante a parametrização do modelo!!!",
+								"N   o esque   a de preencher a primeira chegada\n" +
+								"durante a parametriza      o do modelo!!!",
 								"ASDA - Primeira chegada",
 								JOptionPane.INFORMATION_MESSAGE);
 						jButton3.grabFocus();

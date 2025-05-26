@@ -2,25 +2,25 @@ package frames;
 import java.awt.*;
 
 /**
- * Classe que desenha a seta que indica o sentido das ligações (arcos).
+ * Classe que desenha a seta que indica o sentido das liga    es (arcos).
  * @author Thais Souza Aiza
  * @version 1.0
  */
 public class DesenhaSeta {
     
     /**
-     * Altura da cabeça da seta.
+     * Altura da cabe  a da seta.
      */
     int al = 12;
     
     /**
-     * Largura da cabeça da seta.
+     * Largura da cabe  a da seta.
      */
     int aw = 10;
     
     
     /**
-     * Ponto onde a seta deve se encontrar com a cabeça da seta.
+     * Ponto onde a seta deve se encontrar com a cabe  a da seta.
      */
     int haw       = aw / 2;
     
@@ -48,7 +48,7 @@ public class DesenhaSeta {
     }
 
     /**
-     * Calcula os valores de x-y para a cabeça da seta.
+     * Calcula os valores de x-y para a cabe  a da seta.
      */
     public void calcValues(int x1, int y1, int x2, int y2) {
 
@@ -87,7 +87,7 @@ public class DesenhaSeta {
     }
 
     /**
-     * Calcula os valores x-y onde a direção não é paralela aos
+     * Calcula os valores x-y onde a dire    o n  o    paralela aos
      * eixos x ou y.
      */
     public void calcValuesQuad(int x1, int y1, int x2, int y2) {
@@ -128,7 +128,7 @@ public class DesenhaSeta {
 
     /**
      * Calcula as coordenatas: determina novas coordendas x-y dado uma coordenada x-y 
-     * inicial, a distância e a direção.
+     * inicial, a dist  ncia e a dire    o.
      */
     public void calcCoords(int index, int x, int y, double dist,
                            double dirn) {

@@ -16,7 +16,7 @@ import javax.swing.JToggleButton;
 import asda.UsuarioCadastro;
 
 /**
- * extensão da Classe janela para modelar modelos baseados em Queuing State Charts
+ * extens   o da Classe janela para modelar modelos baseados em Queuing State Charts
  * @author Thais Souza Aiza
  *
  */
@@ -97,7 +97,7 @@ public class JanelaQueuingStateCharts extends Janela {
 		
 		this.setSize(650,550);
 		
-		this.setTitle("ASDA - Ambiente de Simulação Distribuída Automático");
+		this.setTitle("ASDA - Ambiente de Simula      o Distribu   da Autom   tico");
 		JFrameUtil.centraliza(this);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -107,7 +107,7 @@ public class JanelaQueuingStateCharts extends Janela {
 	
 	void bPerformed(ActionEvent e){
 		
-		//Variáveis auxiliares
+		//Vari   veis auxiliares
 		ImageIcon img1 = new ImageIcon("img/T1.gif");
 		ImageIcon img2 = new ImageIcon("img/T2.gif");
 		ImageIcon img3 = new ImageIcon("img/T3.gif");
@@ -151,7 +151,7 @@ public class JanelaQueuingStateCharts extends Janela {
 				Toolkit.getDefaultToolkit().getBestCursorSize(selecionado.getIconWidth(),
 						selecionado.getIconHeight());
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(img, new Point(d.width/2, d.height/2),
-			"Símbolo");
+			"S   mbolo");
 			this.setCursor(c);
 		}
 		else this.release();
@@ -165,9 +165,9 @@ public class JanelaQueuingStateCharts extends Janela {
 	
 	
 	/**
-	 * Método para fácil inicialização do ambiente - para funcionar corretamente, precisa que
-	 * os ajustes já tenham sido feitos (como criar um usuário em tempo de código para determinar a
-	 * linguagem de simulação utilizada
+	 * M   todo para f   cil inicializa      o do ambiente - para funcionar corretamente, precisa que
+	 * os ajustes j    tenham sido feitos (como criar um usu   rio em tempo de c   digo para determinar a
+	 * linguagem de simula      o utilizada
 	 * @param args
 	 */
 	public static void main(String[] args) {

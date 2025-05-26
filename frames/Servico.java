@@ -18,7 +18,7 @@ import javax.swing.border.*;
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: </p>
  * @author Thaiz Souza Aiza
- * @author André Felipe Rodrigues - diversas modificações - reformulação
+ * @author Andr    Felipe Rodrigues - diversas modifica      es - reformula      o
  * @version 1.0
  */
 public class Servico extends JFrame {
@@ -300,7 +300,7 @@ public class Servico extends JFrame {
         jPanel1.add(jButton3, null);
         jPanel1.add(jButton4, null);
         
-		this.setTitle("Serviço");
+		this.setTitle("Servi   o");
 		this.setSize(new Dimension(338, 400));
 		this.setState(Frame.NORMAL); 
         
@@ -323,8 +323,8 @@ public class Servico extends JFrame {
   	  if (jTextFieldMedia.getText().equals("")) {
   		  JOptionPane.showMessageDialog(
   				  null,
-  				  "Digite a média para a distribuição",
-  				  "ASDA - Formulário Incompleto",
+  				  "Digite a m   dia para a distribui      o",
+  				  "ASDA - Formul   rio Incompleto",
   				  JOptionPane.ERROR_MESSAGE);
   		 return false;
   	  }
@@ -340,8 +340,8 @@ public class Servico extends JFrame {
   		  if (jTextFieldDesvio.getText().equals("")){
   			  JOptionPane.showMessageDialog(
   					  null,
-  					  "Digite o desvio padrão para a distribuição",
-  					  "ASDA - Formulário Incompleto",
+  					  "Digite o desvio padr   o para a distribui      o",
+  					  "ASDA - Formul   rio Incompleto",
   					  JOptionPane.ERROR_MESSAGE);
   			  return false;			  
   		  }	
@@ -353,8 +353,8 @@ public class Servico extends JFrame {
 				  {
 					  JOptionPane.showMessageDialog(
 							  this,
-							  "Desvio deve ser maior que média para hiperexponencial",
-							  "Valores inválidos",							  
+							  "Desvio deve ser maior que m   dia para hiperexponencial",
+							  "Valores inv   lidos",							  
 							  JOptionPane.INFORMATION_MESSAGE);
 					  return false;
 				  }
@@ -367,8 +367,8 @@ public class Servico extends JFrame {
 				  {
 					  JOptionPane.showMessageDialog(
 							  this,
-							  "Desvio deve ser menor que média para earlang",
-							  "Valores inválidos",							  
+							  "Desvio deve ser menor que m   dia para earlang",
+							  "Valores inv   lidos",							  
 							  JOptionPane.INFORMATION_MESSAGE);
 					  return false;
 				  }
@@ -381,8 +381,8 @@ public class Servico extends JFrame {
 				  {
 					  JOptionPane.showMessageDialog(
 							  this,
-							  "Desvio deve ser maior que a média para uniforme (média=limite inferior, desvio_padrão=limite_superior",
-							  "Valores inválidos",							  
+							  "Desvio deve ser maior que a m   dia para uniforme (m   dia=limite inferior, desvio_padr   o=limite_superior",
+							  "Valores inv   lidos",							  
 							  JOptionPane.INFORMATION_MESSAGE);
 					  return false;
 				  }
@@ -395,8 +395,8 @@ public class Servico extends JFrame {
   		  if (jTextFieldDesvio.getText().equals("")){
   			  JOptionPane.showMessageDialog(
   					  null,
-  					  "Digite o desvio padrão",
-  					  "ASDA - Formulário Incompleto",
+  					  "Digite o desvio padr   o",
+  					  "ASDA - Formul   rio Incompleto",
   					  JOptionPane.ERROR_MESSAGE);
   			  return false;			  
   		  }				  
@@ -410,21 +410,21 @@ public class Servico extends JFrame {
     	JFrame frame = null;
         	
     	if (jTextFieldMedia.getText().equals("")){
-    		JOptionPane.showMessageDialog(frame,"Digite a média de chegada na fonte!!!",
+    		JOptionPane.showMessageDialog(frame,"Digite a m   dia de chegada na fonte!!!",
     		"ASDA - Erro",
     		JOptionPane.ERROR_MESSAGE);
     		jTextFieldMedia.grabFocus();
     	}
     	else{
     		if (jTextFieldSeq.getText().equals("")){
-    			JOptionPane.showMessageDialog(frame,"Digite a seqüência de distribuição - 0-15)!!!",
+    			JOptionPane.showMessageDialog(frame,"Digite a seq      ncia de distribui      o - 0-15)!!!",
     			"ASDA - Erro",
     			JOptionPane.ERROR_MESSAGE);
     			jTextFieldSeq.grabFocus();    			
     		}
     		else
     			if ( (Integer.parseInt(jTextFieldSeq.getText()) < 0) || (Integer.parseInt(jTextFieldSeq.getText()) > 15) ){
-    				JOptionPane.showMessageDialog(frame,"Só pode ser um valor de 0 à 15",
+    				JOptionPane.showMessageDialog(frame,"S    pode ser um valor de 0     15",
     						"ASDA - Erro",
     						JOptionPane.ERROR_MESSAGE);
     						jTextFieldSeq.grabFocus();

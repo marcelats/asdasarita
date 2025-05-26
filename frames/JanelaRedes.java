@@ -18,12 +18,12 @@ import asda.UsuarioCadastro;
 /**
  * Classe que extende Janela e implementa as funcionalidades para modelagem
  * baseada na teoria de redes de filas
- * @author André Felipe Rodrigues
+ * @author Andr    Felipe Rodrigues
  *
  */
 public class JanelaRedes extends Janela {
 	
-	/* tipoNo de qualquer centro de serviço é o mesmo valor - tipoNo serve para o modulo avaliador */
+	/* tipoNo de qualquer centro de servi   o     o mesmo valor - tipoNo serve para o modulo avaliador */
 	
 	public JanelaRedes()
 	{
@@ -41,7 +41,7 @@ public class JanelaRedes extends Janela {
 			imagem[i] = new ImageIcon("IMG/r"+(i+1)+".gif");
 		}
 				
-		/* até button[5] o método bEntetyPerformed controla */
+		/* at    button[5] o m   todo bEntetyPerformed controla */
 		button[0] = new JToggleButton(imagem[0]);
 		button[0].setPreferredSize(new Dimension(40,button[0].getHeight()));
 		button[0].setToolTipText("Uma fila e um servidor");
@@ -53,7 +53,7 @@ public class JanelaRedes extends Janela {
 		
 		button[1] = new JToggleButton(imagem[1]);
 		button[1].setPreferredSize(new Dimension(40,button[1].getHeight()));
-		button[1].setToolTipText("Um fila e vários servidores");
+		button[1].setToolTipText("Um fila e v   rios servidores");
 		button[1].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				bEntityPerformed(e);
@@ -62,7 +62,7 @@ public class JanelaRedes extends Janela {
 		
 		button[2] = new JToggleButton(imagem[2]);
 		button[2].setPreferredSize(new Dimension(40,button[2].getHeight()));
-		button[2].setToolTipText("Várias filas e um servidor");
+		button[2].setToolTipText("V   rias filas e um servidor");
 		button[2].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				bEntityPerformed(e);
@@ -72,7 +72,7 @@ public class JanelaRedes extends Janela {
 		
 		button[3] = new JToggleButton(imagem[3]);
 		button[3].setPreferredSize(new Dimension(40,button[3].getHeight()));
-		button[3].setToolTipText("Várias filas e vários servidores");
+		button[3].setToolTipText("V   rias filas e v   rios servidores");
 		button[3].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				bEntityPerformed(e);
@@ -101,7 +101,7 @@ public class JanelaRedes extends Janela {
 				
 		button[6] = new JToggleButton(imagem[6]);
 		button[6].setPreferredSize(new Dimension(40,button[6].getHeight()));
-		button[6].setToolTipText("criar ligação entre centros de serviço");
+		button[6].setToolTipText("criar liga      o entre centros de servi   o");
 		button[6].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				arcoPerformed(e);		
@@ -110,7 +110,7 @@ public class JanelaRedes extends Janela {
 		
 		button[7] = new JToggleButton(imagem[7]);
 		button[7].setPreferredSize(new Dimension(40,button[7].getHeight()));
-		button[7].setToolTipText("Excluir centro de serviço");
+		button[7].setToolTipText("Excluir centro de servi   o");
 		button[7].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				limpaPerformed(e);				
@@ -125,7 +125,7 @@ public class JanelaRedes extends Janela {
 		
 		this.getContentPane().add(tools,BorderLayout.WEST);
 		
-		/*tentativa de usar scrollpane - não funcionando */
+		/*tentativa de usar scrollpane - n   o funcionando */
 		JScrollPane scrollPane =
 			new JScrollPane(d);
 		scrollPane.setBounds(2,1,500,200);		
@@ -136,7 +136,7 @@ public class JanelaRedes extends Janela {
 		
 		this.setSize(650,550);
 		
-		this.setTitle("ASDA - Ambiente de Simulação Distribuída Automático - Redes de Filas");
+		this.setTitle("ASDA - Ambiente de Simula      o Distribu   da Autom   tico - Redes de Filas");
 		JFrameUtil.centraliza(this);
 		this.setVisible(true);
 	}
@@ -161,25 +161,25 @@ public class JanelaRedes extends Janela {
 			if (e.getSource() == button[0])  // Uma fila um servidor
 			{
 				selecionado = imagemR1x1;
-				tipoNo = 2; // Centro de serviço
+				tipoNo = 2; // Centro de servi   o
 				
 
 			}
-			else if (e.getSource() == button[1]) // uma fila e vários servidores
+			else if (e.getSource() == button[1]) // uma fila e v   rios servidores
 			{
 				selecionado = imagemR1xi;
 				tipoNo = 2;
 				
 
 			}
-			else if(e.getSource() == button[2]) // várias filas e um servidor
+			else if(e.getSource() == button[2]) // v   rias filas e um servidor
 			{
 				selecionado = imagemRix1;
 				tipoNo = 2;
 				
 
 			}
-			else if(e.getSource() == button[3]) // várias filas e vários servidores
+			else if(e.getSource() == button[3]) // v   rias filas e v   rios servidores
 			{
 				selecionado = imagemRixi;
 				tipoNo = 2;
@@ -201,7 +201,7 @@ public class JanelaRedes extends Janela {
 				Toolkit.getDefaultToolkit().getBestCursorSize(selecionado.getIconWidth(),
 						selecionado.getIconHeight());
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(img, new Point(d.width/2, d.height/2),
-			"Símbolo");
+			"S   mbolo");
 			this.setCursor(c);
 		}
 		else this.release();

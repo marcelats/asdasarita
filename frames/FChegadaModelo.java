@@ -31,8 +31,8 @@ import javax.swing.border.Border;
 /**
  * Frame que configura <code>Chegada</code>.
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues - 
- * 			adição do combo box centro de serviço e alterações necessárias
+ * @author Andr    Felipe Rodrigues - 
+ * 			adi      o do combo box centro de servi   o e altera      es necess   rias
  * @version 1.0
  */
 
@@ -62,28 +62,28 @@ public class FChegadaModelo extends JFrame implements ActionListener{
   JButton apagar = new JButton(delete24);
   
   /**
-   * Variável auxiliar utilizada para indicar se a operação corrente já ocorreu.
-   * Operações: inserir e editar chegadas.
+   * Vari   vel auxiliar utilizada para indicar se a opera      o corrente j    ocorreu.
+   * Opera      es: inserir e editar chegadas.
    */
   private boolean ok = true;
 
   /**
-   * Modelo que está sendo parametrizado.
+   * Modelo que est    sendo parametrizado.
    */
   public Graph graph;
   
   /**
-   * Variável que indica a posição corrente do vetor de chegadas.
+   * Vari   vel que indica a posi      o corrente do vetor de chegadas.
    */
   private int posicao;
   
   /**
-   * Variável que indica a primeira posição do vetor de chegadas.
+   * Vari   vel que indica a primeira posi      o do vetor de chegadas.
    */
   private int minPosicao;
   
   /**
-   * Variável que indica a última posição do vetor de chegadas.
+   * Vari   vel que indica a    ltima posi      o do vetor de chegadas.
    */
   private int maxPosicao;
   
@@ -94,7 +94,7 @@ private JComboBox jComboBoxNode = null;
 
   /**
    * Contrutor da classe.
-   * @param graph Modelo que está sendo parametrizado.
+   * @param graph Modelo que est    sendo parametrizado.
    */
   public FChegadaModelo(Graph graph) {
   	
@@ -121,7 +121,7 @@ private JComboBox jComboBoxNode = null;
 		jLabelNode.setText("JLabel");
 
 		jLabelNode.setBounds(new java.awt.Rectangle(16,114,116,17));
-		jLabelNode.setText("Centro de serviço");
+		jLabelNode.setText("Centro de servi   o");
 		conversor = new int[graph.getSize()];
 		
 			
@@ -132,7 +132,7 @@ private JComboBox jComboBoxNode = null;
 
 		this.setTitle("Chegada");
 		jPanel1.setLayout(null);
-		jLabel1.setText("Número de Clientes");
+		jLabel1.setText("N   mero de Clientes");
 		jLabel1.setBounds(new Rectangle(14, 50, 121, 16));
 		jTextField1.setText("");
 		jTextField1.setBounds(new Rectangle(142, 47, 125, 22));
@@ -274,7 +274,7 @@ private JComboBox jComboBoxNode = null;
   }
   
   /**
-   * Método que exibe todas as chegadas em um componente jTextArea.   
+   * M   todo que exibe todas as chegadas em um componente jTextArea.   
    */  
   public void exibirChegadas(){
 
@@ -297,8 +297,8 @@ private JComboBox jComboBoxNode = null;
   }
     
   /**
-   * Método que retorna e exibe uma posição no vetor de chegadas.
-   * @param e Indica em qual componente ocorreu uma ação.
+   * M   todo que retorna e exibe uma posi      o no vetor de chegadas.
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void anteriorPerformed(ActionEvent e){
   	
@@ -319,8 +319,8 @@ private JComboBox jComboBoxNode = null;
   	
   }
   /**
-   * Método que avança e exibe uma posição no vetor de chegadas. 
-   * @param e Indica em qual componente ocorreu uma ação.
+   * M   todo que avan   a e exibe uma posi      o no vetor de chegadas. 
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void posteriorPerformed(ActionEvent e){
   	
@@ -342,8 +342,8 @@ private JComboBox jComboBoxNode = null;
   }
   
   /**
-   * Insere um objeto <code>Chegada<> na última posição do vetor de chegadas.
-   * @param e Indica em qual componente ocorreu uma ação.
+   * Insere um objeto <code>Chegada<> na    ltima posi      o do vetor de chegadas.
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void inserirPerformed(ActionEvent e){
   	
@@ -358,8 +358,8 @@ private JComboBox jComboBoxNode = null;
   }
   
   /**
-   * Método que salva um objeto <code>Chegada</code> no vetor de chegadas.
-   * @param e Indica em qual componente ocorreu uma ação.
+   * M   todo que salva um objeto <code>Chegada</code> no vetor de chegadas.
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void salvarPerformed(ActionEvent e){
 	
@@ -368,7 +368,7 @@ private JComboBox jComboBoxNode = null;
 	String novaLinha = "\n";
 		
   	if ((jTextField1.getText().equals("")) || (jTextField2.getText().equals(""))){
-		JOptionPane.showMessageDialog(frame,"Campo não pode ser nulo!!!",
+		JOptionPane.showMessageDialog(frame,"Campo n   o pode ser nulo!!!",
 			  "ASDA - Erro",
 			  JOptionPane.ERROR_MESSAGE);
 
@@ -399,7 +399,7 @@ private JComboBox jComboBoxNode = null;
 			Chegada aux1;
 			aux1 = (Chegada) graph.getChegada(ind);
 			if (Float.valueOf(jTextField2.getText()).floatValue() < aux1.getTempoChegada()){
-				JOptionPane.showMessageDialog(frame,"Tempo da Próxima Chegada Menor que o Valor Anterior!!!",
+				JOptionPane.showMessageDialog(frame,"Tempo da Pr   xima Chegada Menor que o Valor Anterior!!!",
 					  "ASDA - Erro",
 					  JOptionPane.ERROR_MESSAGE);
 					  jTextField2.setText("");
@@ -422,8 +422,8 @@ private JComboBox jComboBoxNode = null;
   }
   
   /**
-   * Método que apaga um objeto <code>Chegada</code> na posição selecionada.
-   * @param e Indica em qual componente ocorreu uma ação.
+   * M   todo que apaga um objeto <code>Chegada</code> na posi      o selecionada.
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void apagarPerformed(ActionEvent e){
   	graph.removeChegada(posicao);
@@ -437,8 +437,8 @@ private JComboBox jComboBoxNode = null;
   
 
   /**
-   * Método emite um aviso sonoro se o caracter digitado é diferente de um número, a tecla
-   * de back space, delete ou ponto. Remove o caracter digitado se ele não é o permitido. 
+   * M   todo emite um aviso sonoro se o caracter digitado     diferente de um n   mero, a tecla
+   * de back space, delete ou ponto. Remove o caracter digitado se ele n   o     o permitido. 
    * @param e Indica em qual componente ocorreu o ato de teclar.
    */ 
   void verificaDigito(KeyEvent e) {
@@ -454,7 +454,7 @@ private JComboBox jComboBoxNode = null;
   }
   
   /**
-   * Método que verifica se o número digitado é <code>float</code>.
+   * M   todo que verifica se o n   mero digitado     <code>float</code>.
    * @param e Indica qual componente perdeu o foco. 
    */
   public void verificaNumeroReal(FocusEvent e){
@@ -468,7 +468,7 @@ private JComboBox jComboBoxNode = null;
 			  Double.parseDouble(content);			   
 		  } catch (NumberFormatException nfe) {
 			  getToolkit().beep();
-			  JOptionPane.showMessageDialog(frame,"Número Inválido!!!",
+			  JOptionPane.showMessageDialog(frame,"N   mero Inv   lido!!!",
 			  "ASDA - Erro",
 			  JOptionPane.ERROR_MESSAGE);
 			  textField.requestFocus();				
@@ -478,8 +478,8 @@ private JComboBox jComboBoxNode = null;
   }
   
   /**
-   * Método que fecha o Frame se todas as operações foram encerradas.
-   * @param e Indica em qual componente ocorreu uma ação.
+   * M   todo que fecha o Frame se todas as opera      es foram encerradas.
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void okPerformed(ActionEvent e){
   	
@@ -490,7 +490,7 @@ private JComboBox jComboBoxNode = null;
 		dispose();		
 	}
 	else{
-		JOptionPane.showMessageDialog(frame,"Finalizar a inclusão!!!",
+		JOptionPane.showMessageDialog(frame,"Finalizar a inclus   o!!!",
 		"ASDA - Erro",
 		JOptionPane.ERROR_MESSAGE);
 		salvar.grabFocus();
@@ -500,7 +500,7 @@ private JComboBox jComboBoxNode = null;
   }  
   
   /**
-   * Método que fecha o Frame e cancela a operação que está acontecendo.
+   * M   todo que fecha o Frame e cancela a opera      o que est    acontecendo.
    * @param e
    */
   public void cancelPerformed(ActionEvent e){

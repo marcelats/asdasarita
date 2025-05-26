@@ -12,13 +12,13 @@ import asda.UsuarioCadastro;
 
 /**
  * Classe que conecta o ASDA ao banco de dados asda (MySQL) e verifica se 
- * o usuário é um usuário com permissões para usar a aplicação. Se o usuário 
- * possui está cadastrado o uso do ambiente é liberado conforme o tipo do usuário.
+ * o usu   rio     um usu   rio com permiss   es para usar a aplica      o. Se o usu   rio 
+ * possui est    cadastrado o uso do ambiente     liberado conforme o tipo do usu   rio.
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues
- * 			(diversas modificações, entre elas
- * 				criação do botão ajuda, do textfield para a senha do root MySQL,
- * 				abertura da janela de simulação de acordo com o tipo de usuário,
+ * @author Andr    Felipe Rodrigues
+ * 			(diversas modifica      es, entre elas
+ * 				cria      o do bot   o ajuda, do textfield para a senha do root MySQL,
+ * 				abertura da janela de simula      o de acordo com o tipo de usu   rio,
  * 				entre outros)
  * @version 1.0
  */
@@ -58,7 +58,7 @@ public class FrameAsda extends JFrame {
 		JOptionPane.showMessageDialog(null,"ClassNotFoundException:" + ex.getMessage() + 
 				"\n\nProblemas ao tentar abir org.qjt.mm.mysql.Driver\n" +
 				"Provavelmente deve ser algum problema com o MySQL Connector/J\n" +
-				"Tente Reinstalá-lo","ClassNotFoundException",JOptionPane.ERROR_MESSAGE);
+				"Tente Reinstal   -lo","ClassNotFoundException",JOptionPane.ERROR_MESSAGE);
 		System.err.print("ClassNotFoundException: ");
 		System.err.println(ex.getMessage());
 	}
@@ -72,12 +72,12 @@ public class FrameAsda extends JFrame {
 	}
   }
   /**
-   *  Inicialização dos componentes do frame
+   *  Inicializa      o dos componentes do frame
    */
   private void jbInit() throws Exception  {
 	jLabel = new JLabel();
 	jLabel.setBounds(new java.awt.Rectangle(33,122,111,24));
-	jLabel.setToolTipText("Senha root do MySQL instalado em sua máquina");
+	jLabel.setToolTipText("Senha root do MySQL instalado em sua m   quina");
 	jLabel.setText("Senha root MySQL");
 	contentPane = (JPanel) this.getContentPane();
 	contentPane.setLayout(borderLayout1);
@@ -91,11 +91,11 @@ public class FrameAsda extends JFrame {
 	jLabel1.setText("Entrada no Sistema");
 	jLabel1.setBounds(new Rectangle(88, 19, 111, 16));
 	jLabel2.setFont(new java.awt.Font("Dialog", 1, 12));
-	jLabel2.setToolTipText("Usuário da Simulação");
-	jLabel2.setText("Usuário");
+	jLabel2.setToolTipText("Usu   rio da Simula      o");
+	jLabel2.setText("Usu   rio");
 	jLabel2.setBounds(new Rectangle(33, 53, 47, 24));
 	jLabel3.setBounds(new Rectangle(34, 87, 47, 24));
-	jLabel3.setToolTipText("Senha do usuário da simulação");
+	jLabel3.setToolTipText("Senha do usu   rio da simula      o");
 	jLabel3.setText("Senha");
 	jLabel3.setFont(new java.awt.Font("Dialog", 1, 12));
 	jTextField1.setText("");
@@ -167,8 +167,8 @@ public class FrameAsda extends JFrame {
   
 
   /**
-   * Verifica se o usuário é um usuário cadastrado no ambiente e qual o tipo
-   * do usuário.
+   * Verifica se o usu   rio     um usu   rio cadastrado no ambiente e qual o tipo
+   * do usu   rio.
    * @param e Indica em qual componente ocorreu o ato de teclar.
    */
   public void okPerformed(ActionEvent e) {
@@ -177,20 +177,20 @@ public class FrameAsda extends JFrame {
 	  char[] tempSenhaMySQL = jPasswordField.getPassword();
 	  String senhaMySQL = new String(tempSenhaMySQL);
 	  	 
-	  /* obtendo conexão com o banco de dados */
+	  /* obtendo conex   o com o banco de dados */
 	  try {
 		  		  
 		  con = DriverManager.getConnection(url,"root", senhaMySQL);	
 		  
-		  System.out.println("Conexão com o banco foi estabelecida!");
+		  System.out.println("Conex   o com o banco foi estabelecida!");
 		  //con.close();
 	  }	  
 	  catch(SQLException exc) {
 		  JOptionPane.showMessageDialog(null,
-				"Problemas durante a conexão com o banco de dados MySQL\n" +
+				"Problemas durante a conex   o com o banco de dados MySQL\n" +
 		  		"Tente inicializar novamente o servidor de banco de dados\n" +
-		  		"e verifique se a senha esta correta, ou então, clique em ajuda\n" +
-		  		"e tente resolver o problema","Falha na conexão com o MySQL",JOptionPane.ERROR_MESSAGE);
+		  		"e verifique se a senha esta correta, ou ent   o, clique em ajuda\n" +
+		  		"e tente resolver o problema","Falha na conex   o com o MySQL",JOptionPane.ERROR_MESSAGE);
 		  
 		  System.err.println("SQLException:  "  + exc.getMessage());
 	  }
@@ -208,14 +208,14 @@ public class FrameAsda extends JFrame {
 	  
 		  
 		  Statement statement = con.createStatement();		  
-		  String checkQuery = "SELECT * FROM usuario WHERE tipo='S'"; // checagem da existência de super usuários
+		  String checkQuery = "SELECT * FROM usuario WHERE tipo='S'"; // checagem da exist   ncia de super usu   rios
 		  ResultSet rs = statement.executeQuery(checkQuery);	
 		  
 		  if (rs.next())
 		  {			  
 			  String query = "SELECT * FROM usuario " +
 			  					"WHERE nomeUsuario = '" +
-			  					nome + "'";	// procura do usuário digitado
+			  					nome + "'";	// procura do usu   rio digitado
 			  
 			  rs = statement.executeQuery(query);		  
 			  String senhaBanco="";			  
@@ -275,7 +275,7 @@ public class FrameAsda extends JFrame {
 			  else
 			  {
 				  Toolkit.getDefaultToolkit().beep();
-				  JOptionPane.showMessageDialog(null,"Usuário e/ou senha inválida!","Erro",JOptionPane.ERROR_MESSAGE);
+				  JOptionPane.showMessageDialog(null,"Usu   rio e/ou senha inv   lida!","Erro",JOptionPane.ERROR_MESSAGE);
 				  jTextField1.setText("");
 				  jPasswordField1.setText("");
 				  jTextField1.grabFocus();
@@ -330,15 +330,15 @@ private JButton getJButtonAjuda() {
 		jButtonAjuda.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				
-				String output = "Para entrar como super-usuário, apenas digite\n" +
-						"o nome do usuário e a senha.\n" +
-						"Para entrar como usuário de simulação, digite o nome\n" +
-						"do usuário e a senha cadastrada.\n" +
-						"\nPara ambos os casos será necessário a senha root do MySQL\n" +
-						"se não a tiver, obtenha com o admistrador do sistema.\n" +
-						"\nPrimeiro acesso? Então não há necessidade de usuário e senha,\n" +
+				String output = "Para entrar como super-usu   rio, apenas digite\n" +
+						"o nome do usu   rio e a senha.\n" +
+						"Para entrar como usu   rio de simula      o, digite o nome\n" +
+						"do usu   rio e a senha cadastrada.\n" +
+						"\nPara ambos os casos ser    necess   rio a senha root do MySQL\n" +
+						"se n   o a tiver, obtenha com o admistrador do sistema.\n" +
+						"\nPrimeiro acesso? Ent   o n   o h    necessidade de usu   rio e senha,\n" +
 						"apenas digite a senha root do MySQL e a janela de cadastro de novos\n" +
-						"usuários será aberta.";
+						"usu   rios ser    aberta.";
 				JOptionPane.showMessageDialog(null,output,"Ajuda",JOptionPane.INFORMATION_MESSAGE);
 				
 			/*	int opc = JOptionPane.showConfirmDialog(null,"Deseja recriar tentar criar o banco de dados" +

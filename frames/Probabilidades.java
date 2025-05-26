@@ -15,7 +15,7 @@ import java.awt.event.*;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Company: </p>
- * @author André Felipe Rodrigues - correções e implementação de métodos para robustez
+ * @author Andr    Felipe Rodrigues - corre      es e implementa      o de m   todos para robustez
  * @author Thaiz Souza Aiza
  * @version 1.0
  */
@@ -166,7 +166,7 @@ public class Probabilidades extends JFrame {
 
 		
 		if (jTextField1.getText().equals("")){
-			JOptionPane.showMessageDialog(null,"Campo não pode ser nulo!!!",
+			JOptionPane.showMessageDialog(null,"Campo n   o pode ser nulo!!!",
 			"ASDA - Erro",
 			JOptionPane.ERROR_MESSAGE);	
 			jTextField1.grabFocus();			
@@ -174,7 +174,7 @@ public class Probabilidades extends JFrame {
 		else
 		{
 			
-			if (posicao < no.getSize()-1) // se ainda não é a última posição de probabilidade
+			if (posicao < no.getSize()-1) // se ainda n   o     a    ltima posi      o de probabilidade
 			{
 				double somatemp = 0;
 				double probtemp;
@@ -195,9 +195,9 @@ public class Probabilidades extends JFrame {
 				}				
 				jTextField1.grabFocus();
 			}
-			else // está na ultima posição - preencher automaticamente
+			else // est    na ultima posi      o - preencher automaticamente
 			{
-			/*	if (no.getSize() > 1) // se tem mais que um nó (se tiver um nó só, já está como 100% preenchidos ao iniciar
+			/*	if (no.getSize() > 1) // se tem mais que um n    (se tiver um n    s   , j    est    como 100% preenchidos ao iniciar
 				{
 					double somatemp = 0;
 					double probtemp;

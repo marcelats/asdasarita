@@ -13,7 +13,7 @@ import java.awt.Color;
 
 
 /**
- * Classe que parametriza as informações do modelo.
+ * Classe que parametriza as informa      es do modelo.
  * @author Thais Souza Aiza
  * @version 1.0
  */
@@ -50,7 +50,7 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
   Border border3;
   
   /**
-   * Modelo que está sendo parametrizado.
+   * Modelo que est    sendo parametrizado.
    */
   public Graph graph;
   
@@ -58,7 +58,7 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
 
   /**
    * Construtor do Frame.
-   * @param graph Modelo que está sendo parametrizado.
+   * @param graph Modelo que est    sendo parametrizado.
    */
   public FModelo(Graph graph) {
   	
@@ -97,7 +97,7 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
 	jTextField1.setEnabled(false);
 	jTextField1.setBounds(new Rectangle(58, 15, 221, 20));
 	
-  	jLabel2.setText("Tempo de Execuçao");
+  	jLabel2.setText("Tempo de Execu   ao");
 	jLabel2.setBounds(new Rectangle(10, 50, 117, 16));
 	jTextField2.setText(graph.getTempoExecucao());
 	jTextField2.setBounds(new Rectangle(184, 43, 95, 22));
@@ -118,7 +118,7 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
 	jPanel2.setLayout(null);
 	
 	
-	jRadioButton1.setText("Automático");
+	jRadioButton1.setText("Autom   tico");
 	jRadioButton1.setBounds(new Rectangle(6, 20, 96, 25));
 		
 	jRadioButton2.setText("Definido");
@@ -165,7 +165,7 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
 
 	
 	
-	jLabel4.setText("Número Máximo de Entidades");
+	jLabel4.setText("N   mero M   ximo de Entidades");
 	jLabel4.setBounds(new Rectangle(11, 83, 169, 16));
 	jTextField5.setBounds(new Rectangle(184, 80, 95, 22));
 	jTextField5.addKeyListener(new KeyAdapter()  {
@@ -259,8 +259,8 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
   }
   
   /**
-   * Método que habilita/desabilita o campo tamanho do WarmUp conforme a escolha do usuário.
-   * @param e Indica em qual componente ocorreu uma ação.
+   * M   todo que habilita/desabilita o campo tamanho do WarmUp conforme a escolha do usu   rio.
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void actionPerformed(ActionEvent e) {
 	  if (jRadioButton2.isSelected()){	  	
@@ -278,9 +278,9 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
 
 
   /**
-   * Método que exibe o Frame FChegadaModelo.
+   * M   todo que exibe o Frame FChegadaModelo.
    * @see FChegadaModelo
-   * @param e Indica em qual componente ocorreu uma ação.
+   * @param e Indica em qual componente ocorreu uma a      o.
    */
   public void chegadaModelo(ActionEvent e){
   	
@@ -298,42 +298,42 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
   
 
   /**
-   * Método que verifica a consistência de todos os campos parametrizados do modelo.    
+   * M   todo que verifica a consist   ncia de todos os campos parametrizados do modelo.    
    * @param e Indica em qual componente ocorreu o ato de teclar.
    */
   void okPerformed(ActionEvent e){
   	JFrame frame = null;
   	
   	if (jTextField1.getText().equals("")){
-  		JOptionPane.showMessageDialog(frame,"Campo não pode ser nulo!!!",
+  		JOptionPane.showMessageDialog(frame,"Campo n   o pode ser nulo!!!",
   			  "ASDA - Erro",
   			  JOptionPane.ERROR_MESSAGE);
   			  jTextField1.grabFocus();
   	}
   	else{
   		if (jTextField2.getText().equals("")){
-			JOptionPane.showMessageDialog(frame,"Campo não pode ser nulo!!!",
+			JOptionPane.showMessageDialog(frame,"Campo n   o pode ser nulo!!!",
 				  "ASDA - Erro",
 				  JOptionPane.ERROR_MESSAGE);
 				  jTextField2.grabFocus();  					
   		}
   		else{
 			if (jTextField5.getText().equals("")){
-				JOptionPane.showMessageDialog(frame,"Campo não pode ser nulo!!!",
+				JOptionPane.showMessageDialog(frame,"Campo n   o pode ser nulo!!!",
 					  "ASDA - Erro",
 					  JOptionPane.ERROR_MESSAGE);
 					  jTextField5.grabFocus();  					
 			}
 			else{
 				if ((jRadioButton2.isSelected()) && (jTextField3.getText().equals(""))){
-					JOptionPane.showMessageDialog(frame,"Campo não pode ser nulo!!!",
+					JOptionPane.showMessageDialog(frame,"Campo n   o pode ser nulo!!!",
 						  "ASDA - Erro",
 						  JOptionPane.ERROR_MESSAGE);
 						  jTextField3.grabFocus();
 				}
 				else{
 					if (jTextField6.getText().equals("")){
-						JOptionPane.showMessageDialog(frame,"Campo não pode ser nulo!!!",
+						JOptionPane.showMessageDialog(frame,"Campo n   o pode ser nulo!!!",
 							  "ASDA - Erro",
 							  JOptionPane.ERROR_MESSAGE);
 							  jTextField6.grabFocus();
@@ -372,7 +372,7 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
 
 
 	/**
-	 * Método que verifica se as configurações de Warmup mudaram. 
+	 * M   todo que verifica se as configura      es de Warmup mudaram. 
 	 * @param e Indica em qual componente ocorreu o ato de clicar.
 	 */
 	public void itemStateChanged(ItemEvent e) {
@@ -395,7 +395,7 @@ public class FModelo extends JFrame implements ActionListener, ItemListener{
 	}
 	
 	/**
-	 * Método que fecha o Frame e não salva as alterações no modelo.
+	 * M   todo que fecha o Frame e n   o salva as altera      es no modelo.
 	 * @param e Indica em qual componente ocorreu o ato de teclar.
 	 */
 	public void cancelPerformed(ActionEvent e){

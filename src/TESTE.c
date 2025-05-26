@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------- 
-C�digo gerado com o ASDA - Ambiente de Simula��o Distribu�da Autom�tico
+C digo gerado com o ASDA - Ambiente de Simula  o Distribu da Autom tico
 --------------------------------------------------------------------------*/
 #include "queuing.h"
 

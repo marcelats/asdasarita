@@ -32,8 +32,8 @@ public class JFrameUtil {
     }
     
     /**
-     * Método emite um aviso sonoro se o caracter digitado é diferente de um número, a tecla
-     * de back space, delete ou ponto. Remove o caracter digitado se ele não é o permitido. 
+     * M   todo emite um aviso sonoro se o caracter digitado     diferente de um n   mero, a tecla
+     * de back space, delete ou ponto. Remove o caracter digitado se ele n   o     o permitido. 
      * @param e Indica em qual componente ocorreu o ato de teclar.
      */ 
     public static void verificaDigito(KeyEvent e) {
@@ -49,7 +49,7 @@ public class JFrameUtil {
     }
 
     /**
-     * Método que verifica se o número digitado é <code>float</code>.
+     * M   todo que verifica se o n   mero digitado     <code>float</code>.
      * @param e Indica qual componente perdeu o foco. 
      */  
     public static void verificaNumeroReal(FocusEvent e){
@@ -63,7 +63,7 @@ public class JFrameUtil {
   			  Double.parseDouble(content);			   
   		  } catch (NumberFormatException nfe) {
   			  //getToolkit().beep();
-  			  JOptionPane.showMessageDialog(frame,"Número Inválido!!!",
+  			  JOptionPane.showMessageDialog(frame,"N   mero Inv   lido!!!",
   			  "ASDA - Erro",
   			  JOptionPane.ERROR_MESSAGE);
   			  textField.requestFocus();				

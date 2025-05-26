@@ -11,11 +11,11 @@ import javax.swing.JButton;
 import asda.UsuarioCadastro;
 
 /**
- * Classe que permite que o superUsuário insira, edite e exclua os usuários do 
+ * Classe que permite que o superUsu   rio insira, edite e exclua os usu   rios do 
  * ASDA.
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues - responsável pela total reformulação 
- * 			desse Frame, visto que funcionava muito mal	na primeira versão)
+ * @author Andr    Felipe Rodrigues - respons   vel pela total reformula      o 
+ * 			desse Frame, visto que funcionava muito mal	na primeira vers   o)
  * @version 1.0
  */
 
@@ -88,18 +88,18 @@ public class FrameUsuario extends JFrame {
 
 	private JPasswordField jPasswordField1 = new JPasswordField();
 
-	private String[] usuariosStrings = { "SuperUsuário", "Usuário de Simulaçao" }; // não precisa de String de controle - só S ou U
+	private String[] usuariosStrings = { "SuperUsu   rio", "Usu   rio de Simula   ao" }; // n   o precisa de String de controle - s    S ou U
 
 	private JComboBox jComboBoxTipoUsuario = new JComboBox(usuariosStrings);
 
-	private String[] modelosStrings = { "Queuing Statecharts", "Redes de Filas" }; // por enquanto também não, só Q ou R
+	private String[] modelosStrings = { "Queuing Statecharts", "Redes de Filas" }; // por enquanto tamb   m n   o, s    Q ou R
 
 	private JComboBox jComboBoxTipoModelo = new JComboBox(modelosStrings);
 
-	private String[] abordagensStrings = { "Seqüencial", "MRIP", "SRIP - CMB",
+	private String[] abordagensStrings = { "Seq   encial", "MRIP", "SRIP - CMB",
 			"SRIP - TimeWarp", "SRIP - CMB/TW" };
 
-	private String[] abordagensCodes = { "S", "M", "C", "T", "B" }; // código para abordagens
+	private String[] abordagensCodes = { "S", "M", "C", "T", "B" }; // c   digo para abordagens
 	private String[] tipoCodes = { "S" , "U" };
 	private String[] tipoModeloCodes = { "Q" , "R" };
 
@@ -123,17 +123,17 @@ public class FrameUsuario extends JFrame {
 	private UsuarioCadastro userInfo;
 
 	/**
-	 * Usado como um auxiliar para a exibição apropriada dos dados
+	 * Usado como um auxiliar para a exibi      o apropriada dos dados
 	 */
 	private int idAnterior;
 
 	/**
-	 * Estabelece a conexão com o banco de dados.
+	 * Estabelece a conex   o com o banco de dados.
 	 */
 	private Connection con;
 
 	/**
-	 * Usado para indicar se está ocorrendo uma edição ou inserção no banco de dados.
+	 * Usado para indicar se est    ocorrendo uma edi      o ou inser      o no banco de dados.
 	 */
 	private boolean isEdit = false;
 
@@ -200,7 +200,7 @@ public class FrameUsuario extends JFrame {
 			jTextFieldPlataforma.setText(rs.getString(10));
 		} catch (SQLException sqlex) {
 			JOptionPane.showMessageDialog(null,
-					"Não foi possível obter as informações do banco de dados",
+					"N   o foi poss   vel obter as informa      es do banco de dados",
 					"Erro", JOptionPane.ERROR_MESSAGE);
 			sqlex.printStackTrace();
 		}
@@ -208,25 +208,25 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Inicialização dos Componentes. 
+	 * Inicializa      o dos Componentes. 
 	 */
 	private void jbInit() throws Exception {
 		contentPane = (JPanel) this.getContentPane();
 		titledBorder1 = new TitledBorder("");
 		contentPane.setLayout(borderLayout1);
 		this.setSize(new Dimension(527, 339));
-		this.setTitle("ASDA - SuperUsuário");
+		this.setTitle("ASDA - SuperUsu   rio");
 		this.setResizable(false);
 		statusBar.setFont(new java.awt.Font("Dialog", 1, 12));
 		statusBar.setBorder(BorderFactory.createEtchedBorder());
 		statusBar
-				.setText(" ASDA - Ambiente de Simulação Distribuída Automático");
+				.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico");
 		jPanel1.setLayout(null);
 		jPanel1.setBorder(BorderFactory.createLoweredBevelBorder());
-		jButtonProx.setToolTipText("Próximo usuário");
+		jButtonProx.setToolTipText("Pr   ximo usu   rio");
 		jButtonProx.setBounds(new Rectangle(87, 5, 54, 34));
 
-		jButtonAnt.setToolTipText("Usuário anterior");
+		jButtonAnt.setToolTipText("Usu   rio anterior");
 
 		jButtonIns.setToolTipText("Inserir");
 		jButtonIns.setBounds(new Rectangle(147, 5, 54, 34));
@@ -252,7 +252,7 @@ public class FrameUsuario extends JFrame {
 			}
 		});
 
-		//Botão que salva o novo registro/alterações na tabela "usuario"
+		//Bot   o que salva o novo registro/altera      es na tabela "usuario"
 		jButtonSalvar.setBounds(new Rectangle(325, 5, 54, 34));
 		jButtonSalvar.setToolTipText("Salvar");
 		jButtonSalvar.setEnabled(false);
@@ -265,18 +265,18 @@ public class FrameUsuario extends JFrame {
 		jButtonHelp.setToolTipText("Ajuda");
 		jButtonHelp.setBounds(new Rectangle(444, 5, 54, 34));
 		jLabel1.setFont(new java.awt.Font("Dialog", 1, 12));
-		jLabel1.setText("Id Usuário");
+		jLabel1.setText("Id Usu   rio");
 		jLabel1.setBounds(new java.awt.Rectangle(13, 60, 65, 21));
 		jLabel2.setBounds(new java.awt.Rectangle(167, 60, 84, 21));
 		jLabel2.setFont(new java.awt.Font("Dialog", 1, 12));
 		jLabel2.setToolTipText("");
-		jLabel2.setText("Nome Usuário");
+		jLabel2.setText("Nome Usu   rio");
 		jLabel3.setBounds(new Rectangle(13, 99, 43, 21));
 		jLabel3.setFont(new java.awt.Font("Dialog", 1, 12));
 		jLabel3.setText("Senha");
 		jLabel4.setBounds(new Rectangle(167, 99, 76, 21));
 		jLabel4.setFont(new java.awt.Font("Dialog", 1, 12));
-		jLabel4.setText("Tipo Usuário");
+		jLabel4.setText("Tipo Usu   rio");
 		jLabel5.setBounds(new Rectangle(13, 138, 76, 21));
 		jLabel5.setFont(new java.awt.Font("Dialog", 1, 12));
 		jLabel5.setText("Tipo Modelo");
@@ -301,9 +301,9 @@ public class FrameUsuario extends JFrame {
 			exibir(rs, false);
 		} else {
 			JOptionPane.showMessageDialog(null,
-					"Não existem usuários cadastrados - é necessário \n"
-							+ "cadastrar o primeiro super usuário! ",
-					"Atenção", JOptionPane.INFORMATION_MESSAGE);
+					"N   o existem usu   rios cadastrados -     necess   rio \n"
+							+ "cadastrar o primeiro super usu   rio! ",
+					"Aten      o", JOptionPane.INFORMATION_MESSAGE);
 			jButtonAnt.setEnabled(false);
 			jButtonProx.setEnabled(false);
 			jButtonEdit.setEnabled(false);
@@ -349,7 +349,7 @@ public class FrameUsuario extends JFrame {
 		});
 		jButton8.setBounds(new java.awt.Rectangle(414, 250, 89, 28));
 		jButton8.setFont(new java.awt.Font("Dialog", 1, 12));
-		jButton8.setToolTipText("Sair do sistema de cadastro de usuários");
+		jButton8.setToolTipText("Sair do sistema de cadastro de usu   rios");
 		jButton8.setText("Sair");
 		jButton8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -535,7 +535,7 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Método que edita as informações dos usuários na tabela <code>usuario</code>.
+	 * M   todo que edita as informa      es dos usu   rios na tabela <code>usuario</code>.
 	 * @param e Indica em qual componente ocorreu o ato de teclar.
 	 */
 	private void editaPerformed(ActionEvent e) {
@@ -543,9 +543,9 @@ public class FrameUsuario extends JFrame {
 		userInfo = saveStateForm();
 		isEdit = true;
 		statusBar
-				.setText(" ASDA - Ambiente de Simulação Distribuída Automático                        Editando Usuário");
+				.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico                        Editando Usu   rio");
 		jTextFieldNome.grabFocus();
-		jTextFieldID.setEditable(false); // como é edição - o id não muda
+		jTextFieldID.setEditable(false); // como     edi      o - o id n   o muda
 		jTextFieldNome.setEditable(true);
 		jTextFieldWarmUp.setEditable(true);
 		jTextFieldLote.setEditable(true);
@@ -565,9 +565,9 @@ public class FrameUsuario extends JFrame {
 			exibir(rs, true);
 		} catch (SQLException sqlex) {
 			JOptionPane.showMessageDialog(null,
-					"Problema na obtenção de senha do banco da dados\n"
+					"Problema na obten      o de senha do banco da dados\n"
 							+ "Por favor, digite uma nova senha",
-					"Erro na obtenção da senha", JOptionPane.ERROR_MESSAGE);
+					"Erro na obten      o da senha", JOptionPane.ERROR_MESSAGE);
 			jPasswordField1.setText("");
 			sqlex.printStackTrace();
 		}
@@ -583,7 +583,7 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Método que move uma posição a frente na tabela <code>usuario</code>.
+	 * M   todo que move uma posi      o a frente na tabela <code>usuario</code>.
 	 * @param e Indica em qual componente ocorreu o ato de teclar.
 	 */
 	private void proximoPerformed(ActionEvent e) {
@@ -606,10 +606,10 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Método que recua uma posição na tabela <code>usuario</code>.
+	 * M   todo que recua uma posi      o na tabela <code>usuario</code>.
 	 * @param e Indica em qual componente ocorreu o ato de teclar.
 	 * 
-	 * :-( mas não está recuando apenas uma, está recuando para o inicio da tabela ARRUMAR
+	 * :-( mas n   o est    recuando apenas uma, est    recuando para o inicio da tabela ARRUMAR
 	 * 
 	 */
 	private void anteriorPerformed(ActionEvent e) {
@@ -632,7 +632,7 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Método que insere um novo usuário na tabela <code>usuario</code>.
+	 * M   todo que insere um novo usu   rio na tabela <code>usuario</code>.
 	 * @param e Indica em qual componente ocorreu o ato de teclar. 
 	 */
 	private void inserePerformed(ActionEvent e) {
@@ -641,7 +641,7 @@ public class FrameUsuario extends JFrame {
 		userInfo = saveStateForm();
 
 		statusBar
-				.setText(" ASDA - Ambiente de Simulação Distribuída Automático                        Inserindo Usuário");
+				.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico                        Inserindo Usu   rio");
 		jTextFieldNome.grabFocus();
 		jTextFieldID.setEditable(false);
 		try {
@@ -675,7 +675,7 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Método que remove um usuário da tabela <code>usuario</code>.
+	 * M   todo que remove um usu   rio da tabela <code>usuario</code>.
 	 * @param e Indica em qual componente ocorreu o ato de teclar.
 	 */
 	private void deletePerformed(ActionEvent e) {
@@ -689,7 +689,7 @@ public class FrameUsuario extends JFrame {
 					&& !jPasswordField1.getPassword().equals("")) {
 
 				int n = JOptionPane.showConfirmDialog(null,
-						"Deseja excluir o usuário?", "ASDA",
+						"Deseja excluir o usu   rio?", "ASDA",
 						JOptionPane.YES_NO_OPTION);
 
 				if (n == JOptionPane.YES_OPTION) {
@@ -712,7 +712,7 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Método que cancela a inserção de um novo usuário ou a edição de um já existente
+	 * M   todo que cancela a inser      o de um novo usu   rio ou a edi      o de um j    existente
 	 * @param e Indica em qual componente ocorreu o ato de teclar.
 	 * 
 	 */
@@ -722,7 +722,7 @@ public class FrameUsuario extends JFrame {
 	}
 
 	/**
-	 * Método que salva as alterações na tabela <code>usuario</code>.
+	 * M   todo que salva as altera      es na tabela <code>usuario</code>.
 	 * @param e Indica em qual componente ocorreu o ato de teclar.
 	 */
 	private void salvaPerformed(ActionEvent e) {
@@ -730,12 +730,12 @@ public class FrameUsuario extends JFrame {
 		jButtonProx.grabFocus();
 		
 		statusBar
-		.setText(" ASDA - Ambiente de Simulação Distribuída Automático");
+		.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico");
 		
 		try {
 			Statement statement = con.createStatement();
 			
-			if (!jTextFieldNome.getText().equals("")) // pode cadastrar usuários com senhas vazias
+			if (!jTextFieldNome.getText().equals("")) // pode cadastrar usu   rios com senhas vazias
 			{
 				char[] tempSenha = jPasswordField1.getPassword();
 				
@@ -744,7 +744,7 @@ public class FrameUsuario extends JFrame {
 				String query = "SELECT * FROM usuario WHERE nomeUsuario = '"
 					+ jTextFieldNome.getText() + "'";
 				ResultSet rs = statement.executeQuery(query);
-				if (!rs.next()) // não tem usuário com o nome cadastrado
+				if (!rs.next()) // n   o tem usu   rio com o nome cadastrado
 				{
 					if (!isEdit) 
 					{
@@ -781,14 +781,14 @@ public class FrameUsuario extends JFrame {
 							
 							jButtonProx.grabFocus();
 							statusBar
-							.setText(" ASDA - Ambiente de Simulação Distribuída Automático");
+							.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico");
 							JOptionPane.showMessageDialog(null,
-									"Usuário inserido com sucesso!",
-									"Inserção de usuário",
+									"Usu   rio inserido com sucesso!",
+									"Inser      o de usu   rio",
 									JOptionPane.INFORMATION_MESSAGE);
 						} else {
 							JOptionPane.showMessageDialog(null,
-									"Inserção Fracassou! Tente novamente",
+									"Inser      o Fracassou! Tente novamente",
 									"ASDA - Erro", JOptionPane.ERROR_MESSAGE);
 							jButtonIns.grabFocus();
 							
@@ -837,10 +837,10 @@ public class FrameUsuario extends JFrame {
 								exibir(rs, false);
 								
 								statusBar
-								.setText(" ASDA - Ambiente de Simulação Distribuída Automático");
+								.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico");
 							} else {
 								JOptionPane.showMessageDialog(null,
-										"Edição Fracassou! Tente novamente",
+										"Edi      o Fracassou! Tente novamente",
 										"ASDA - Erro", JOptionPane.ERROR_MESSAGE);
 								jButtonIns.grabFocus();
 								camposSetEditable(true);
@@ -850,8 +850,8 @@ public class FrameUsuario extends JFrame {
 							JOptionPane
 							.showMessageDialog(
 									null,
-									"Usuário já existente - Inserção não permitida!",
-									"Usuário Duplicado",
+									"Usu   rio j    existente - Inser      o n   o permitida!",
+									"Usu   rio Duplicado",
 									JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
@@ -895,10 +895,10 @@ public class FrameUsuario extends JFrame {
 							exibir(rs, false);
 							
 							statusBar
-							.setText(" ASDA - Ambiente de Simulação Distribuída Automático");
+							.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico");
 						} else {
 							JOptionPane.showMessageDialog(null,
-									"Edição Fracassou! Tente novamente",
+									"Edi      o Fracassou! Tente novamente",
 									"ASDA - Erro", JOptionPane.ERROR_MESSAGE);
 							jButtonIns.grabFocus();
 							camposSetEditable(true);
@@ -908,16 +908,16 @@ public class FrameUsuario extends JFrame {
 						JOptionPane
 						.showMessageDialog(
 								null,
-								"Usuário já existente - Inserção não permitida!",
-								"Usuário Duplicado",
+								"Usu   rio j    existente - Inser      o n   o permitida!",
+								"Usu   rio Duplicado",
 								JOptionPane.INFORMATION_MESSAGE);
 					
 				}
 			}
 			else {
 				JOptionPane.showConfirmDialog(null,
-						"Campo Nome do Usuário não pode ser vazio!",
-						"Nome não digitado", JOptionPane.INFORMATION_MESSAGE);
+						"Campo Nome do Usu   rio n   o pode ser vazio!",
+						"Nome n   o digitado", JOptionPane.INFORMATION_MESSAGE);
 			}
 			
 			statement.close();
@@ -925,14 +925,14 @@ public class FrameUsuario extends JFrame {
 			sqlex.printStackTrace();
 			if (!isEdit) {
 				JOptionPane.showMessageDialog(null,
-						"Problemas na inserção - Tente novamente",
+						"Problemas na inser      o - Tente novamente",
 						"ASDA - Erro", JOptionPane.ERROR_MESSAGE);
-				statusBar.setText(" ASDA - Ambiente de Simulação Distribuída Automático"
-						+ "                       Inserção Fracassou!!!");
+				statusBar.setText(" ASDA - Ambiente de Simula      o Distribu   da Autom   tico"
+						+ "                       Inser      o Fracassou!!!");
 				camposSetEditable(true);
 			}
 			JOptionPane.showMessageDialog(null,
-					"IdUsuário Duplicado ou campos inválidos!\n"
+					"IdUsu   rio Duplicado ou campos inv   lidos!\n"
 					+ "Tente Novamente", "ASDA - Erro",
 					JOptionPane.ERROR_MESSAGE);
 			jButtonIns.grabFocus();
@@ -948,7 +948,7 @@ public class FrameUsuario extends JFrame {
 		if (jButtonIniciar == null) {
 			jButtonIniciar = new JButton();
 			jButtonIniciar.setBounds(new java.awt.Rectangle(316, 250, 85, 28));
-			jButtonIniciar.setToolTipText("Iniciar Ambiente de Simulação");
+			jButtonIniciar.setToolTipText("Iniciar Ambiente de Simula      o");
 			jButtonIniciar.setText("Iniciar");
 			jButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
 						public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -957,7 +957,7 @@ public class FrameUsuario extends JFrame {
 							{
 								JOptionPane.showMessageDialog(null,
 										"Problema com a primeira entrada",
-										"Reentre no ASDA e tente esse botão novamente",
+										"Reentre no ASDA e tente esse bot   o novamente",
 										JOptionPane.ERROR_MESSAGE);
 								jButtonIniciar.setEnabled(false);
 							}
@@ -968,7 +968,7 @@ public class FrameUsuario extends JFrame {
 							else
 								JOptionPane.showMessageDialog(
 										null,
-										"Não foi possível iniciar a janela de modelagem!",
+										"N   o foi poss   vel iniciar a janela de modelagem!",
 										"ASDA - Erro",
 										JOptionPane.ERROR_MESSAGE);
 							

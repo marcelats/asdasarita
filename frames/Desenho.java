@@ -29,50 +29,50 @@ import asda.UsuarioCadastro;
 /**
  * Classe que desenha todos os elementos do modelo. 
  * @author Thais Souza Aiza
- * @author Andr� Felipe Rodrigues
- * 		   cria��o do m�todo findValidID (corre��o de um erro existente na cria��o do grafo)
+ * @author Andr  Felipe Rodrigues
+ * 		   cria  o do m todo findValidID (corre  o de um erro existente na cria  o do grafo)
  * @version 1.0
  */
 
 public class Desenho extends JLabel{
 	
 	/**
-	 * Cria um novo objeto da classe <code>Graph</code> quando um novo desenho � iniciado.
+	 * Cria um novo objeto da classe <code>Graph</code> quando um novo desenho   iniciado.
 	 */
 	public Graph graph = new Graph();
 	
 	public boolean isSave = false;
 	
 	/**
-	 * Desenha a cabe�a da seta.
+	 * Desenha a cabe a da seta.
 	 */	
 	public DesenhaSeta lig = new DesenhaSeta();
 	
 	/**
-	 * Inicializa a coordenada x que indica a posi��o do mouse.
+	 * Inicializa a coordenada x que indica a posi  o do mouse.
 	 */
 	int mouseX = 0;
 	
 	/**
-	 * Inicializa a coordenada y que indica a posi��o do mouse.
+	 * Inicializa a coordenada y que indica a posi  o do mouse.
 	 */
 	int mouseY = 0;
 	
 	/**
-	 * Indica se o lugar onde o mouse est� pode ser desenhada uma linha.
+	 * Indica se o lugar onde o mouse est  pode ser desenhada uma linha.
 	 */
 	private boolean isDrawingMouseLine = false;
 	
 	/*
 	 * Como todos os simbolos possuem tamanhos iguais, 
-	 * nao � preciso armazenar largura e altura de todos
+	 * nao   preciso armazenar largura e altura de todos
 	 */
 	/**
-	 * Largura do s�mbolo que ser� desenhado.
+	 * Largura do s mbolo que ser  desenhado.
 	 */
 	int width;
 	/**
-	 * Altura do s�mbolo que ser� desenhado.
+	 * Altura do s mbolo que ser  desenhado.
 	 */
 	int height;
 	
@@ -87,30 +87,30 @@ public class Desenho extends JLabel{
 	private boolean isDragging = false;
 	
 	/**
-	 * Guarda a posi��o do n� de origem da liga��o
+	 * Guarda a posi  o do n  de origem da liga  o
 	 */
 	private int lineOriginObject;
 	
 	/**
-	 * Indica a posi��o onde o objeto est�. Valor � 0 quando ele foi solto e � incrementado
-	 * quando ele est� sendo arrastado.
+	 * Indica a posi  o onde o objeto est . Valor   0 quando ele foi solto e   incrementado
+	 * quando ele est  sendo arrastado.
 	 */
 	private int dragObject;
 	
 	/**
-	 * Identifica cada n� com uma chave �nica. Quando o primeiro template � desenhado ele 
-	 * recebe o valor 0 e � incrementado a medida que novos templates s�o desenhados.
+	 * Identifica cada n  com uma chave  nica. Quando o primeiro template   desenhado ele 
+	 * recebe o valor 0 e   incrementado a medida que novos templates s o desenhados.
 	 */
 	public int idNo = -1;
 	
 	/**
-	 * Vari�vel auxiliar utilizada em diversos m�todos.
+	 * Vari vel auxiliar utilizada em diversos m todos.
 	 */
 	int aux = 0;
 	
 
 	/**
-	 * Armazena o usu�rio dono do modelo de simula��o
+	 * Armazena o usu rio dono do modelo de simula  o
 	 */
 	private UsuarioCadastro user;
 	
@@ -121,7 +121,7 @@ public class Desenho extends JLabel{
 
 	
 	/**
-	 * M�todo que salva o modelo especificado.
+	 * M todo que salva o modelo especificado.
 	 * @param filename Nome do modelo
 	 * @param nomeArquivo Nomde do modelo
 	 */
@@ -154,7 +154,7 @@ public class Desenho extends JLabel{
 	}
 	
 	/**
-	 * M�todo que abre o modelo.
+	 * M todo que abre o modelo.
 	 * @param filename Nome do modelo.
 	 */
 	public void open(String filename, UsuarioCadastro userInfo) throws Exception{
@@ -300,7 +300,7 @@ public class Desenho extends JLabel{
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(
 					null,
-					"Arquivo inv�lido ou incompat�vel!",
+					"Arquivo inv lido ou incompat vel!",
 					"ASDA - Erro na abertura do arquivo",
 					JOptionPane.ERROR_MESSAGE);
 			throw e;
@@ -329,7 +329,7 @@ public class Desenho extends JLabel{
 				if (user==null)
 					JOptionPane.showMessageDialog(
 							null,
-							"Usuarios de modelos redes de filas s� abrem modelos redes de filas");
+							"Usuarios de modelos redes de filas s  abrem modelos redes de filas");
 			}*/
 			
 			//in.close();
@@ -338,7 +338,7 @@ public class Desenho extends JLabel{
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(
 					null,
-					"Arquivo inv�lido ou incompat�vel!",
+					"Arquivo inv lido ou incompat vel!",
 					"ASDA - Erro na abertura do arquivo",
 					JOptionPane.ERROR_MESSAGE);
 			throw e;
@@ -354,7 +354,7 @@ public class Desenho extends JLabel{
 	}*/
 	
 	 /**
-	  * Guarda a posi��o do n� de origem da liga��o.
+	  * Guarda a posi  o do n  de origem da liga  o.
 	  * @param x Coordenada x.
 	  * @param y Coordenada y.
 	  */
@@ -375,8 +375,8 @@ public class Desenho extends JLabel{
 	 }
 	 
 	 /**
-	  * Desenha o arco do n� de origem at� o n� de destino
-	  * @param g O objeto que est� sendo desenhado.
+	  * Desenha o arco do n  de origem at  o n  de destino
+	  * @param g O objeto que est  sendo desenhado.
 	  */
 	 public void drawLine(Graphics g){
 	 	g.setColor(Color.black);
@@ -393,15 +393,15 @@ public class Desenho extends JLabel{
 	 	this.clear = true;	 	
 	 	graph.removeAllElements();
 	 	graph.setNomeModelo("ASDA_NAO_SALVO");
-	 	idNo = -1;					// volta o id do n� para o in�cio da contagem
+	 	idNo = -1;					// volta o id do n  para o in cio da contagem
 	 	this.repaint(); 	
 	 		 	
 	 }
 	 
 	/**
-	 * Move o n� quando ele for arrastado pelo mouse (drag and drop) e os arcos.
-	 * @param x Coordenada x que o n� est� sendo arrastado.
-	 * @param y Coordenada y que o n� est� sendo arrastado.
+	 * Move o n  quando ele for arrastado pelo mouse (drag and drop) e os arcos.
+	 * @param x Coordenada x que o n  est  sendo arrastado.
+	 * @param y Coordenada y que o n  est  sendo arrastado.
 	 */
 	public void mover(float x, float y){
 
@@ -429,7 +429,7 @@ public class Desenho extends JLabel{
 	}
 	
 	/**
-	 * M�todo que determina que o n� n�o est� sendo arrastado.
+	 * M todo que determina que o n  n o est  sendo arrastado.
 	 */
 	public void setDraggingFalse(){
 		this.isDragging = false;
@@ -437,7 +437,7 @@ public class Desenho extends JLabel{
 	}
 	
 	/**
-	 * M�todo que determina que a posi��o onde est� sendo desenhada n�o � permitido o 
+	 * M todo que determina que a posi  o onde est  sendo desenhada n o   permitido o 
 	 * desenho.
 	 */
 	public void setDrawingFalse(){
@@ -445,16 +445,16 @@ public class Desenho extends JLabel{
 	}
 	
 	/**
-	 * Avisa quando existe um n� debaixo do cursor do mouse.
-	 * @param x Coordenada x onde o n� est� sendo arrastado.
-	 * @param y Coordenada y onde o n� est� sendo arrastado.
+	 * Avisa quando existe um n  debaixo do cursor do mouse.
+	 * @param x Coordenada x onde o n  est  sendo arrastado.
+	 * @param y Coordenada y onde o n  est  sendo arrastado.
 	 * @return Um valor <code>boolean</code>
 	 */
 	public boolean isDragabble (float x, float y){
 
 		for(int i=0;i<graph.getSize();i++){
 			Node node = graph.getNode(i);
-			if ((x>node.getX()-width/2)&&(x<node.getX()+width/2)&&(y>node.getY()-height/2)&&(y<node.getY()+height/2)) // fronteiras do desenho do n�
+			if ((x>node.getX()-width/2)&&(x<node.getX()+width/2)&&(y>node.getY()-height/2)&&(y<node.getY()+height/2)) // fronteiras do desenho do n 
 				return true;
 		}
 		return false;
@@ -462,7 +462,7 @@ public class Desenho extends JLabel{
 	
 	/**
 	 * Desenha as arestas do grafo.
-	 * @param g O objeto que est� sendo desenhado.
+	 * @param g O objeto que est  sendo desenhado.
 	 */
 	public void desenhaAresta(Graphics g){
 
@@ -490,17 +490,17 @@ public class Desenho extends JLabel{
 	
 				//Comprimento do arco
 				int deltaX = x1 - x0;
-				//Diferen�a de altura
+				//Diferen a de altura
 				int deltaY = y1 - y0;
 	
 				// Verifica o sentido que a aresta deve seguir ao ser desenhada
-				if(deltaX>0) sentidoX = DIREITA; //N� origem est� a esquerda do n� destino
-				else sentidoX = ESQUERDA; //N� origem est� a direita do n� de destino*/
+				if(deltaX>0) sentidoX = DIREITA; //N  origem est  a esquerda do n  destino
+				else sentidoX = ESQUERDA; //N  origem est  a direita do n  de destino*/
 				
 				sentidoX = DIREITA;
 				
-				if(deltaY<0) sentidoY = CIMA; //N� de origem � mais baixo que o n� de destino
-				else sentidoY = BAIXO; //N� de origem � mais alto que o n� de destino
+				if(deltaY<0) sentidoY = CIMA; //N  de origem   mais baixo que o n  de destino
+				else sentidoY = BAIXO; //N  de origem   mais alto que o n  de destino
 	
 				if (sentidoX==DIREITA) width = this.width;
 				else width = - this.width;
@@ -535,7 +535,7 @@ public class Desenho extends JLabel{
 	
 	/**
 	 * Remove o arco.
-	 * @param begin N� de origem do arco.
+	 * @param begin N  de origem do arco.
 	 */
 	public void removeArc(Node begin){
 		int arc = begin.getX();	
@@ -543,7 +543,7 @@ public class Desenho extends JLabel{
 	
 	
 	/**
-	 * Fixa a linha no n� de origem e no n� de destino.
+	 * Fixa a linha no n  de origem e no n  de destino.
 	 */	
 	public void fixLine(float x, float y){
 		Node nodeA = graph.getNode(this.lineOriginObject);
@@ -562,7 +562,7 @@ public class Desenho extends JLabel{
 	
 	/**
 	 * Pinta todo o painel de branco.
-	 * @param g O objeto que est� sendo desenhado. 
+	 * @param g O objeto que est  sendo desenhado. 
 	 */
 	private void setBackgroundWhite(Graphics g){
 		g.setColor(Color.white);
@@ -572,13 +572,13 @@ public class Desenho extends JLabel{
 	
 	/**
 	 * Desenha o grafo na tela.
-	 * @param g O objeto que est� sendo desenhado.
+	 * @param g O objeto que est  sendo desenhado.
 	 */
 	public void paint(Graphics g){
 		// Pinta todo o painel de branco
 		this.setBackgroundWhite(g);
 		int nArestas = 0;
-		// Caso n�o seja chamada somente para limpar o fundo, desenha o grafo
+		// Caso n o seja chamada somente para limpar o fundo, desenha o grafo
 		if (!clear){
 			// Desenha todos os Nos jah inseridos
 			for(int i=0;i<graph.getSize();i++){
@@ -617,15 +617,15 @@ public class Desenho extends JLabel{
 	}
 
 	/**
-	 * Fun��o que procura pelo grafo um id que ainda n�o foi utilizado
-	 * @author Andr�
-	 * @return um ID v�lido para um novo n� do grafo (Inteiro)
+	 * Fun  o que procura pelo grafo um id que ainda n o foi utilizado
+	 * @author Andr 
+	 * @return um ID v lido para um novo n  do grafo (Inteiro)
 	 */
 	private int findValidID()
 	{
 		int ret = 0;
 		int totElem = graph.getSize();
-		if (totElem > 0) // tem algum n� no grafo
+		if (totElem > 0) // tem algum n  no grafo
 		{
 			int cont = totElem;
 			int cont2 = cont;
@@ -643,7 +643,7 @@ public class Desenho extends JLabel{
 					ct++;
 					cont2--;
 				}
-				if (flag2) // n�o achou coincidencia
+				if (flag2) // n o achou coincidencia
 					flag = false;
 				else
 				{
@@ -660,7 +660,7 @@ public class Desenho extends JLabel{
 	 */
 	public void add(ImageIcon img, float x, float y, int tipoNo){
 	
-		idNo = findValidID(); // coloca um id que ainda n�o existe
+		idNo = findValidID(); // coloca um id que ainda n o existe
 		String nomeCentroServico = "CS_" + idNo;
 		graph.addNode(new Node((int)x, (int)y, img, (int)tipoNo, (int)idNo, nomeCentroServico));
 		isSave = false;

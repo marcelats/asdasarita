@@ -7,7 +7,7 @@ import javax.swing.border.*;
 /**
  * 
  * @author Thais Souza Aiza
- * @author André Felipe Rodrigues (modificações simples)
+ * @author Andr    Felipe Rodrigues (modifica      es simples)
  * @version 1.0
  */
 
@@ -44,7 +44,7 @@ public class FrameVisualizaCodigo extends JFrame {
 		jTextArea1.setEditable(false);
 	
 		
-		// SETAR UMA FONTE MELHOR PARA A VISUALIZAÇÃO DO TEXTO DO CÓDIGO :-(
+		// SETAR UMA FONTE MELHOR PARA A VISUALIZA      O DO TEXTO DO C   DIGO :-(
 		//	jTextArea1.setFont()
 				
 		JScrollPane scrollPane =
